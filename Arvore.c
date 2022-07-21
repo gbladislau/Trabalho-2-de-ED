@@ -35,7 +35,8 @@ Arv* ArvCriaVazia (void){
 
 Arv* ArvCria (char letra, int peso , Arv* esq, Arv* dir){
     Arv* nova = (Arv*)malloc(sizeof(Arv));
-    
+    assert(nova);
+
     nova->peso = peso;
     nova->dir = dir;
     nova->esq = esq;
@@ -93,10 +94,12 @@ int QntdFolhas (Arv* a){
 }
 
 char ArvChar (Arv* a){
+    assert(a);
     return a->letra;
 }
 
 int ArvAltura (Arv* a){
+    assert(a);
     if (ArvVazia(a))
         return -1;
     else
