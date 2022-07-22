@@ -29,7 +29,7 @@ static int max (int a, int b);
 
 //------------------------------------ Funções Publicas ----------------------------------//
 
-Arv* ArvCriaVazia (void){
+Arv* ArvCriaVazia (){
     return NULL;
 }
 
@@ -37,6 +37,7 @@ Arv* ArvCria (char letra, int peso , Arv* esq, Arv* dir){
     Arv* nova = (Arv*)malloc(sizeof(Arv));
     assert(nova);
 
+    nova->letra = letra;
     nova->peso = peso;
     nova->dir = dir;
     nova->esq = esq;
@@ -60,8 +61,8 @@ int ArvVazia (Arv* a){
 void ArvImprime (Arv* a){
     if(a){
         if(a->letra)
-            printf("%c");
-        printf("%d",a->peso);
+            printf("%c ",a->letra);
+        printf("%d; ",a->peso);
         ArvImprime(a->esq);
         ArvImprime(a->dir);
     }
@@ -109,3 +110,4 @@ int ArvAltura (Arv* a){
 static int max (int a, int b){
     return (a > b) ? a : b;
 }
+

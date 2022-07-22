@@ -1,6 +1,5 @@
 #include "Listagen.h"
 
-typedef struct celula Celula;
 
 /**
  * @brief Percorre a lista usando uma função de callback
