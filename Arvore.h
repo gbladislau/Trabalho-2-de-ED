@@ -83,7 +83,7 @@ Arv *ArvPai(Arv *a, char c);
 int QntdFolhas(Arv *a);
 
 /**
- * @brief Retorna o caractere da árvore a caso seja diferente de NULL
+ * @brief Retorna o caractere da árvore caso seja diferente de NULL
  *        Pré-condição: arvore conter um char.
  *        Pós-condição: retornar char.
  *
@@ -91,6 +91,14 @@ int QntdFolhas(Arv *a);
  * @return char*
  */
 char ArvChar(Arv *a);
+
+/**
+ * @brief Retorna o peso da árvore caso seja diferente de NULL
+ * 
+ * @param a - Arvore valida
+ * @return int - Peso referente a arvore fornecida
+ */
+int ArvPeso(Arv *a);
 
 /**
  * @brief Retorna altura da arvore a.
