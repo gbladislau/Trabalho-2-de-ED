@@ -110,8 +110,7 @@ int VaziaLista(Listagen *lista);
  * @param dado - Dado a ser passado a funcao
  * @return int
  */
-int PercorreLista(Listagen *lista, int (*cb)(void *, void *),
-                  void *dado);
+int PercorreLista(Listagen *lista, int (*cb)(void *));
 
 /**
  * @brief Retorna item presente no primeiro elemento da lista

@@ -3,8 +3,7 @@
 
 typedef struct celula Celula;
 
-static int PercorreLista(Listagen *lista, int (*cb)(void *, void *),
-                         void *dado);
+Listagen *RetiraDaListaGenPorCel(Listagen *lista, Celula *Cel);
 
 /**
  * @brief Sentinela da lista genérica, carrega prim e ult
@@ -74,7 +73,7 @@ Listagen *RetiraDaListaGen(Listagen *lista, void *chave,
     Celula *p;
     p = lista->prim;
 
-    while (Comparador(p->item, chave))
+    while (p && Comparador(p->item, chave) == 0)
     {
         p = p->prox;
     }
@@ -236,20 +235,15 @@ int VaziaLista(Listagen *lista)
     return 1;
 }
 
-// Precisa do dado?
-// Pq mais de um argumento?
-int PercorreLista(Listagen *lista, int (*cb)(void *, void *),
-                  void *dado)
+int PercorreLista(Listagen *lista, int (*cb)(void *))
 {
     assert(lista);
     Celula *p = lista->prim;
     for (; p; p = p->prox)
     {
-        int r = cb(p->item, dado);
+        int r = cb(p->item);
         if (r == 0)
-        {
             return r;
-        }
     }
     return 1;
 }
@@ -267,11 +261,13 @@ void *RetiraPrimeiro(Listagen *lista)
         Celula *liberar = lista->prim;
         lista->prim = lista->prim->prox;
         free(liberar);
+        return aux;
     }
     else
         return NULL;
 }
 
+// INSERE NO FINAL
 void InsereUltItemGen(Listagen *lista, void *item)
 {
     Celula *newnew = (Celula *)malloc(sizeof(Celula));
