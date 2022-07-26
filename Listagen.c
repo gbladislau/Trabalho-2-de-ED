@@ -3,11 +3,6 @@
 
 typedef struct celula Celula;
 
-<<<<<<< Updated upstream
-Listagen *RetiraDaListaGenPorCel(Listagen *lista, Celula *Cel);
-
-=======
->>>>>>> Stashed changes
 /**
  * @brief Sentinela da lista genérica, carrega prim e ult
  *
@@ -238,23 +233,7 @@ int VaziaLista(Listagen *lista)
     }
     return 1;
 }
-<<<<<<< Updated upstream
 
-int PercorreLista(Listagen *lista, int (*cb)(void *))
-{
-    assert(lista);
-    Celula *p = lista->prim;
-    for (; p; p = p->prox)
-    {
-        int r = cb(p->item);
-        if (r == 0)
-            return r;
-    }
-    return 1;
-}
-
-=======
->>>>>>> Stashed changes
 // Funcoes de grande utilidade p uso de pilha
 
 void *RetiraPrimeiro(Listagen *lista)
