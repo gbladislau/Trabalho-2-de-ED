@@ -3,8 +3,11 @@
 
 typedef struct celula Celula;
 
+<<<<<<< Updated upstream
 Listagen *RetiraDaListaGenPorCel(Listagen *lista, Celula *Cel);
 
+=======
+>>>>>>> Stashed changes
 /**
  * @brief Sentinela da lista genérica, carrega prim e ult
  *
@@ -27,6 +30,18 @@ struct celula
     Celula *ant;
 };
 
+//---------------------------- Funções Privadas --------------------------------------------------------------------//
+/**
+ * @brief Retira um item da lista usando um ponteiro para a Celula
+ *        onde o item está incluido.
+ * 
+ * @param lista - Lista válida
+ * @param Cel - Celula válida e incluida na lista
+ * @return void * - Item da celula removida
+ */
+static void* RetiraDaListaGenPorCel(Listagen *lista, Celula *Cel);
+//---------------------------------------------------------------------------------------------------------------------//
+
 Listagen *IniciaListaGen()
 {
     Listagen *lista = (Listagen *)malloc(sizeof(Listagen));
@@ -38,7 +53,7 @@ Listagen *IniciaListaGen()
 }
 
 // INSERE NO INICIO
-Listagen *InsereItemGen(Listagen *lista, void *item)
+void InsereItemGen(Listagen *lista, void *item)
 {
     assert(lista || item);
 
@@ -61,12 +76,10 @@ Listagen *InsereItemGen(Listagen *lista, void *item)
         nova->prox->ant = nova;
     }
 
-    return lista;
 }
 
-// Pq retornar lista?
-Listagen *RetiraDaListaGen(Listagen *lista, void *chave,
-                           int (*Comparador)(void *, void *))
+
+void* RetiraDaListaGen(Listagen *lista, void *chave, int (*Comparador)(void *, void *))
 {
     assert(lista || chave || Comparador);
 
@@ -78,18 +91,16 @@ Listagen *RetiraDaListaGen(Listagen *lista, void *chave,
         p = p->prox;
     }
 
-    if (!p)
-    {
-        return lista;
+    if(!p){
+        return NULL;
     }
-
+    void* item = p->item;
     // Unico
     if (lista->prim == p && p->prox == NULL)
     {
         lista->prim = NULL;
         lista->ult = NULL;
         free(p);
-        return lista;
     }
     // Primeiro
     else if (lista->prim == p)
@@ -97,7 +108,6 @@ Listagen *RetiraDaListaGen(Listagen *lista, void *chave,
         lista->prim = p->prox;
         p->prox->ant = NULL;
         free(p);
-        return lista;
     }
     // Ultimo
     else if (lista->ult == p)
@@ -105,33 +115,28 @@ Listagen *RetiraDaListaGen(Listagen *lista, void *chave,
         p->ant->prox = NULL;
         lista->ult = p->ant;
         free(p);
-        return lista;
     }
     else
     {
         p->ant->prox = p->prox;
         p->prox->ant = p->ant;
         free(p);
-        return lista;
     }
+    return item;
 }
 
-Listagen *RetiraDaListaGenPorCel(Listagen *lista, Celula *Cel)
+static void* RetiraDaListaGenPorCel(Listagen *lista, Celula *Cel)
 {
     assert(lista || Cel);
 
-    if (!Cel)
-    {
-        return lista;
-    }
-
+    void* item = Cel->item;
     // Unico
     if (lista->prim == Cel && Cel->prox == NULL)
     {
         lista->prim = NULL;
         lista->ult = NULL;
         free(Cel);
-        return lista;
+       
     }
     // Primeiro
     else if (lista->prim == Cel)
@@ -139,7 +144,6 @@ Listagen *RetiraDaListaGenPorCel(Listagen *lista, Celula *Cel)
         lista->prim = Cel->prox;
         Cel->prox->ant = NULL;
         free(Cel);
-        return lista;
     }
     // Ultimo
     else if (lista->ult == Cel)
@@ -147,15 +151,14 @@ Listagen *RetiraDaListaGenPorCel(Listagen *lista, Celula *Cel)
         Cel->ant->prox = NULL;
         lista->ult = Cel->ant;
         free(Cel);
-        return lista;
     }
     else
     {
         Cel->ant->prox = Cel->prox;
         Cel->prox->ant = Cel->ant;
         free(Cel);
-        return lista;
     }
+    return item;
 }
 
 void ImprimeListaGen(Listagen *lista, int (*Imprime)(void *))
@@ -176,7 +179,8 @@ void ImprimeListaGen(Listagen *lista, int (*Imprime)(void *))
     printf("\n");
 }
 
-// Pq destruir os itens aqui?
+// Pq destruir os itens aqui? (R)
+//(Se destroi é NULL eles não são destruidos) (GB)
 void LiberaListaGen(Listagen *lista, void (*Destroi)(void *))
 {
     assert(lista);
@@ -234,6 +238,7 @@ int VaziaLista(Listagen *lista)
     }
     return 1;
 }
+<<<<<<< Updated upstream
 
 int PercorreLista(Listagen *lista, int (*cb)(void *))
 {
@@ -248,6 +253,8 @@ int PercorreLista(Listagen *lista, int (*cb)(void *))
     return 1;
 }
 
+=======
+>>>>>>> Stashed changes
 // Funcoes de grande utilidade p uso de pilha
 
 void *RetiraPrimeiro(Listagen *lista)
@@ -257,9 +264,13 @@ void *RetiraPrimeiro(Listagen *lista)
 
     if (lista->prim)
     {
+        if(lista->prim == lista->ult){
+            lista->ult = lista->prim->prox;
+        }
         aux = lista->prim->item;
         Celula *liberar = lista->prim;
-        lista->prim = lista->prim->prox;
+        lista->prim = lista->prim->prox;    
+        
         free(liberar);
         return aux;
     }
@@ -270,15 +281,18 @@ void *RetiraPrimeiro(Listagen *lista)
 // INSERE NO FINAL
 void InsereUltItemGen(Listagen *lista, void *item)
 {
-    Celula *newnew = (Celula *)malloc(sizeof(Celula));
-    newnew->item = item;
-    newnew->prox = NULL;
-    newnew->ant = lista->ult;
-
-    lista->ult = newnew;
-
+    Celula *nova = (Celula *)malloc(sizeof(Celula));
+    nova->item = item;
+    nova->prox = NULL;
+    nova->ant = lista->ult;
+    //encadeando
+    if(lista->ult) 
+       lista->ult->prox = nova;
+    //lista vazia
     if (lista->prim == NULL)
-        lista->prim = newnew;
+        lista->prim = nova;
+
+    lista->ult = nova;
 }
 
 void *RetornaPrimeiro(Listagen *lista)

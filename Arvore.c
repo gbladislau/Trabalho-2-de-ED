@@ -132,7 +132,35 @@ int ArvAltura(Arv *a)
         return 1 + max(ArvAltura(a->esq), ArvAltura(a->dir));
 }
 
+bitmap *ExportaArvore(Arv *a){
+    assert(a);
+
+    int h = ArvAltura(a);
+    int qntdfolhas = QntdFolhas(a);
+    int tam = h+(qntdfolhas*9);
+    bitmap* mapa = bitmapInit(tam);
+
+    return mapa;
+}
+
+int EhNo(Arv* a){
+    assert(a);
+    if(a->dir || a->esq){
+        return 1;
+    }
+    return 0;
+}
+
+int EhFolha(Arv* a){
+    assert(a);
+    if(!a->dir && !a->esq){
+        return 1;
+    }
+    return 0;
+}
+
 static int max(int a, int b)
 {
     return (a > b) ? a : b;
 }
+

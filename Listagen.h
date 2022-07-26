@@ -12,49 +12,31 @@ typedef struct listagen Listagen;
  *        Pré-condição: Nenhuma.
  *        Pós-condição: Lista criada.
  *
- * @return Listagen*
+ * @return Listagen* - Lista alocada
  */
 Listagen *IniciaListaGen();
 
-// Precisa retornar listagen? Tem sentinela
 /**
  * @brief Insere um item no inicio da lista.
  *        Pré-condição: lista e item válidos.
  *        Pós-condição: lista inserida no inicio;
  *
- * @param lista
- * @param item
- * @return Listagen*
+ * @param lista - Lista válida
+ * @param item - Item Válido
+ * @return void
  */
-Listagen *InsereItemGen(Listagen *lista, void *item);
+void InsereItemGen(Listagen *lista, void *item);
 
 /**
  * @brief Retira um item da lista comparando com uma função
  *        de callback do tipo de item.
- *        Pré-condição: lista, chave e comparador existem.
- *        Pós-condição: item removido e lista encadeada corretamente.
- *
- * @param lista
- * @param chave
- * @param Comparador
- * @return Listagen*
+ * 
+ * @param lista - lista válida
+ * @param chave - chave válida
+ * @param Comparador - Função Valida
+ * @return void * - Item da Célula removida
  */
-Listagen *RetiraDaListaGen(Listagen *lista, void *chave,
-                           int (*Comparador)(void *, void *));
-
-// N sei se precisa// Quebra a opacidade
-// /**
-//  * @brief Retira um item da lista usando um ponteiro para a Celula
-//  *        onde o item está incluido.
-//  *        Pré-condição: a célula deve ser da lista passada como parâmetro.
-//  *        Pós-condição: celula retirada da lista e lista encadeada
-//  corretamente.
-//  *
-//  * @param lista
-//  * @param Cel
-//  * @return Listagen*
-//  */
-// //Listagen *RetiraDaListaGenPorCel(Listagen *lista, Celula *Cel);
+void *RetiraDaListaGen(Listagen *lista, void *chave, int (*Comparador)(void *, void *));
 
 /**
  * @brief Imprime a Lista Generica usando função de callback,
@@ -70,34 +52,28 @@ void ImprimeListaGen(Listagen *lista, int (*Imprime)(void *));
 /**
  * @brief Libera a lista dando free também no item dela caso
  *        a função de destruir do tipo seja passada como argumento.
- *        Pré-condição: lista válida.
- *        Pós-condição: lista liberada e itens destruidos caso destroi valida
  *
- * @param lista
- * @param Destroi
+ * @param lista - Lista válida
+ * @param Destroi 
  */
 void LiberaListaGen(Listagen *lista, void (*Destroi)(void *));
 
 /**
  * @brief Função para organizar a lista dependendo da função passada como
- * argumento, (Cria uma nova lista incluindo itens da antiga na nova, de acordo
- * com a ordem estabelecida pela função de callback). Pré-condição: Lista e
- * função são válidas. Pós-condição: Lista organizada da forma que a função de
- * comparar estabelecer.
+ *        argumento, (Cria uma nova lista incluindo itens da antiga na nova, de acordo
+ *        com a ordem estabelecida pela função de callback).
  *
- * @param lista
- * @param MenorQ
- * @return Listagen*
+ * @param lista - Lista válida
+ * @param MenorQ - Função válida
+ * @return Listagen* -Lista organizada
  */
 Listagen *ReorganizaLista(Listagen *lista, int (*MenorQ)(void *, void *));
 
 /**
  * @brief Retorna 1 se a lista esta vazia, 0 caso contrário.
- *        Pré-condição: lista válida.
- *        Pré-condição: retornar 1 ou 0.
  *
- * @param lista
- * @return int
+ * @param lista - Lista válida
+ * @return int - 1 se vazia
  */
 int VaziaLista(Listagen *lista);
 
