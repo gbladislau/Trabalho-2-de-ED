@@ -234,6 +234,19 @@ int VaziaLista(Listagen *lista)
     return 1;
 }
 
+int PercorreLista(Listagen *lista, int (*cb)(void *))
+{
+    assert(lista);
+    Celula *p = lista->prim;
+    for (; p; p = p->prox)
+    {
+        int r = cb(p->item);
+        if (r == 0)
+            return r;
+    }
+    return 1;
+}
+
 // Funcoes de grande utilidade p uso de pilha
 
 void *RetiraPrimeiro(Listagen *lista)

@@ -6,7 +6,6 @@
 #include <string.h>
 #include "Listagen.h"
 #include "Arvore.h"
-#include "VetChar.h"
 
 /**
  * @brief Inicializa lista de Arvores

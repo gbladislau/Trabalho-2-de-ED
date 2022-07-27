@@ -39,7 +39,7 @@ Arv *ArvLibera(Arv *a);
 
 /**
  * @brief Função que retorna 1 se a árvore está vazia.
- *        
+ *
  * @param a - Arvore existe
  * @return int - 1 caso vazia
  */
@@ -48,14 +48,14 @@ int ArvVazia(Arv *a);
 /**
  * @brief Função que imprime a arvore a,
  *        em pré-ordem.
- * 
+ *
  * @param a - Arvore válida
  */
 void ArvImprime(Arv *a);
 
 /**
  * @brief Procura o pai do nó que contém o caractere c.
- *    
+ *
  * @param a - Arvore válida
  * @param c - Caractere válido
  * @return Arv*
@@ -75,14 +75,14 @@ int QntdFolhas(Arv *a);
  *        Pré-condição: arvore conter um char.
  *        Pós-condição: retornar char.
  *
- * @param a - arvore valida 
+ * @param a - arvore valida
  * @return char* - caractere contido na arvore
  */
 char ArvChar(Arv *a);
 
 /**
  * @brief Retorna o peso da árvore caso seja diferente de NULL
- * 
+ *
  * @param a - Arvore valida
  * @return int - Peso referente a arvore fornecida
  */
@@ -90,21 +90,23 @@ int ArvPeso(Arv *a);
 
 /**
  * @brief Retorna altura da arvore a.
- *        
+ *
  * @param a - arvore valida
  * @return int - altura exata da arvore
  */
 int ArvAltura(Arv *a);
 
-//TODO:
 /**
  * @brief Retorna o bitmap referente a arvore de codificacao
  *        seguindo a travessia de pre-ordem e bit de identificacao
  *        para folhas e nós.
- * 
+ *
  * @param a - Arvore valida
  * @return bitmap* - Bitmap com a arvore
  */
 bitmap *ExportaArvore(Arv *a);
+
+//Retirar depois, esta aqui para teste na main
+void EscreveChar(bitmap *mapa, char letrona);
 
 #endif /* arvore_h */

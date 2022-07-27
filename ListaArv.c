@@ -13,18 +13,11 @@ void InsereListaArv(Listagen *lista, Arv *inserida)
     InsereItemGen(lista, inserida);
 }
 
-// TODO: Comparar qual sera de maior utilidade
-
 static int ComparaPeso(void *e1, void *e2)
 {
     Arv *a1 = (Arv *)e1;
     int *peso = (int *)e2;
     return (ArvPeso(e1) == *peso);
-}
-
-void RetiraListaArvPeso(Listagen *lista, int Peso)
-{
-    RetiraDaListaGen(lista, Peso, ComparaPeso);
 }
 
 static int ComparaLetra(void *e1, void *e2)
@@ -34,14 +27,27 @@ static int ComparaLetra(void *e1, void *e2)
     return (ArvChar(a1) == *letra);
 }
 
+void RetiraListaArvPeso(Listagen *lista, int Peso)
+{
+    void *arg = &Peso;
+    RetiraDaListaGen(lista, arg, ComparaPeso);
+}
+
 void RetiraListaArvLetra(Listagen *lista, char letra)
 {
-    RetiraDaListaGen(lista, letra, ComparaLetra);
+    void *arg = &letra;
+    RetiraDaListaGen(lista, arg, ComparaLetra);
+}
+
+static void ImprimeArvListada(void *e1)
+{
+    Arv *a1 = (Arv *)e1;
+    return ArvImprime(a1);
 }
 
 void ImprimeListaArv(Listagen *lista)
 {
-    ImprimeListaGen(lista, ArvImprime);
+    ImprimeListaGen(lista, ImprimeArvListada);
 }
 
 static int MenorPeso(void *e1, void *e2)
@@ -56,6 +62,7 @@ void ReorganizaListaArv(Listagen *lista)
     ReorganizaLista(lista, MenorPeso);
 }
 
+// TODO: Ver como corrigir conversao inadequada aqui
 int PercorreListaArv(Listagen *lista, void(func)(Arv *))
 {
     return PercorreLista(lista, func);
@@ -103,18 +110,36 @@ struct vetchar
 
 typedef struct vetchar VetChar;
 
-//TODO: TESTAR ISSO
-// Faz o vetor
+// TODO: CONTINUAR ISSO
+//  Faz o vetor
 static VetChar *VetCharCria(FILE *arqbase)
 {
+
+    // Convertendo o file p um vetor de char//byte
+    char *buffer;
+    long tam;
+    // Ir no final do arq
+    fseek(arqbase, 0, SEEK_END);
+    // Pega o tam
+    tam = ftell(arqbase);
+    // Volta no inicio
+    rewind(arqbase);
+    // Faz o buffer
+    buffer = (char *)malloc(tam * sizeof(char));
+    fread(buffer, tam, 1,arqbase);
+
+    // Agora vem aqui e vai varrendo o vetor e fazendo a contagem 
+    // de aparicoes colocando o resultado no vetchar
     // calloc p ser inicializado com 0
     VetChar *saida = (VetChar *)calloc(256, sizeof(int));
     char aux;
-    while (fscanf("%c", &aux)) // Enquanto tem 8bits no arq
-    {
-        saida->vetor[aux % 256]++;
-    }
-    return saida;
+
+    //Antigo n funcional
+    // while (fscanf("%c", &aux)) // Enquanto tem 8bits no arq
+    // {
+    //     saida->vetor[aux % 256]++;
+    // }
+    // return saida;
 }
 static void LiberaVetChar(VetChar *alvo)
 {
@@ -127,5 +152,4 @@ static void LiberaVetChar(VetChar *alvo)
 // Apos, chama organiza listadeArv, libera vetchar e retorna
 void PreencheLista(Listagen *lista, FILE *base)
 {
-    
 }
