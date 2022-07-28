@@ -3,6 +3,14 @@
 
 static int MenosdeDoisElementos(Listagen *lista);
 
+static int ComparaPeso(void *e1, void *e2);
+
+static int ComparaLetra(void *e1, void *e2);
+
+static int MenorPeso(void *e1, void *e2);
+
+static void ImprimeArvListada(void *e1);
+
 Listagen *IniciaListaArv()
 {
     return IniciaListaGen();
@@ -13,19 +21,6 @@ void InsereListaArv(Listagen *lista, Arv *inserida)
     InsereItemGen(lista, inserida);
 }
 
-static int ComparaPeso(void *e1, void *e2)
-{
-    Arv *a1 = (Arv *)e1;
-    int *peso = (int *)e2;
-    return (ArvPeso(e1) == *peso);
-}
-
-static int ComparaLetra(void *e1, void *e2)
-{
-    Arv *a1 = (Arv *)e1;
-    char *letra = (char *)e2;
-    return (ArvChar(a1) == *letra);
-}
 
 void RetiraListaArvPeso(Listagen *lista, int Peso)
 {
@@ -39,23 +34,11 @@ void RetiraListaArvLetra(Listagen *lista, char letra)
     RetiraDaListaGen(lista, arg, ComparaLetra);
 }
 
-static void ImprimeArvListada(void *e1)
-{
-    Arv *a1 = (Arv *)e1;
-    return ArvImprime(a1);
-}
-
 void ImprimeListaArv(Listagen *lista)
 {
     ImprimeListaGen(lista, ImprimeArvListada);
 }
 
-static int MenorPeso(void *e1, void *e2)
-{
-    Arv *a1 = (Arv *)e1;
-    Arv *a2 = (Arv *)e2;
-    return (ArvPeso(a1) < ArvPeso(a2));
-}
 
 void ReorganizaListaArv(Listagen *lista)
 {
@@ -84,6 +67,26 @@ int FundePrimeiros(Listagen *lista)
         return 0;
 }
 
+// SEM LIBERAR ARVORES
+void LiberaListaArv(Listagen *lista)
+{
+    LiberaListaGen(lista, NULL);
+}
+
+// Dentro dessa funcao, Usar VetCHAR para preencher a lista gen com as arvores respectivas.
+// Com ela, preenche a lista de arvores inserindo todos com peso diff de 0
+// Apos, chama organiza listadeArv, libera vetchar e retorna
+void PreencheLista(Listagen *lista,VetChar* vet ,FILE *base){
+    for (int i = 0; i < MAX_VET; i++)
+    {
+        if(VetGetPos(vet,i)){
+            Arv* a = ArvCria(i,VetGetPos(vet,i),NULL,NULL);
+            InsereItemListaArv(lista,a);
+        }
+        else continue;
+    }
+}
+
 static int MenosdeDoisElementos(Listagen *lista)
 {
     if (VaziaLista(lista) ||
@@ -93,8 +96,29 @@ static int MenosdeDoisElementos(Listagen *lista)
         return 0;
 }
 
-// SEM LIBERAR ARVORES
-void LiberaListaArv(Listagen *lista)
+static int ComparaPeso(void *e1, void *e2)
 {
-    LiberaListaGen(lista, NULL);
+    Arv *a1 = (Arv *)e1;
+    int *peso = (int *)e2;
+    return (ArvPeso(e1) == *peso);
+}
+
+static int ComparaLetra(void *e1, void *e2)
+{
+    Arv *a1 = (Arv *)e1;
+    char *letra = (char *)e2;
+    return (ArvChar(a1) == *letra);
+}
+
+static int MenorPeso(void *e1, void *e2)
+{
+    Arv *a1 = (Arv *)e1;
+    Arv *a2 = (Arv *)e2;
+    return (ArvPeso(a1) < ArvPeso(a2));
+}
+
+static void ImprimeArvListada(void *e1)
+{
+    Arv *a1 = (Arv *)e1;
+    return ArvImprime(a1);
 }

@@ -6,6 +6,7 @@
 #include <string.h>
 #include "Listagen.h"
 #include "Arvore.h"
+#include "Vetchar.h"
 
 /**
  * @brief Inicializa lista de Arvores
@@ -13,14 +14,6 @@
  * @return Listagen* - Lista de arvores inicializada
  */
 Listagen *IniciaListaArv();
-
-/**
- * @brief  Preenche a lista de arvores com base no arquivo
- *
- * @param lista - Lista de arvores valida
- * @param base - Arquivo descompactado valido
- */
-void PreencheLista(Listagen *lista, FILE *base);
 
 /**
  * @brief Insere arvore na lista passada
