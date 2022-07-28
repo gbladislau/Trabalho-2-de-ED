@@ -28,7 +28,7 @@ static int max(int a, int b);
 
 //------------------------------------ Funções Publicas ----------------------------------//
 
-void VarreduraArv(bitmap *mapa, Arv *a);
+static void VarreduraArv(bitmap *mapa, Arv *a);
 
 Arv *ArvCriaVazia()
 {
@@ -185,7 +185,7 @@ void EscreveChar(bitmap *mapa, char letrona)
     }
 }
 
-void VarreduraArv(bitmap *mapa, Arv *a)
+static void VarreduraArv(bitmap *mapa, Arv *a)
 {
     if (a != NULL)
     {
