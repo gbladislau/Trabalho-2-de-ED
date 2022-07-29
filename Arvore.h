@@ -106,11 +106,33 @@ int ArvAltura(Arv *a);
  */
 bitmap *ExportaArvore(Arv *a);
 
-int PosiscaoChar(Arv* raiz, char c);
+/**
+ * @brief Retorna se o no que possui o caractere a esta presente na esquerda
+ *        ou direita da arvore passada
+ *
+ * @param raiz - Arvore de referencia
+ * @param c - Caractere a ser procurado
+ * @return int - Resultado: 1=Direita, 0=Esquerda
+ */
+int PosiscaoChar(Arv *raiz, char c);
 
-int ExisteChar(Arv* a, char c);
+/**
+ * @brief Retorna se ha um no com o caractere c na arvore passada
+ *
+ * @param a - Arvore em que sera feita a busca
+ * @param c - Caractere a ser procurado
+ * @return int - 1=Possui, 0=Nao possui
+ */
+int ExisteChar(Arv *a, char c);
 
-void Recursiva(bitmap *codificando, Arv *a, char c);
+/**
+ * @brief Retorna o codigo referente ao caractere dado, na codificacao da arvore fornecida
+ *
+ * @param raiz  - Arvore valida, preenchida
+ * @param carac - Caractere a ser codificado
+ * @return bitmap* - Codigo referente ao caractere
+ */
+bitmap *CodificaChar(const Arv *raiz, char carac);
 
 // Retirar depois, esta aqui para teste na main
 void EscreveChar(bitmap *mapa, char letrona);

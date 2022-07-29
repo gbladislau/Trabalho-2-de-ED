@@ -1,19 +1,5 @@
 #include "Codificador.h"
 
-Arv *FazArvoreHuffman(Listagen *listabase);
-void CompletaByteBitmap(bitmap *entrada);
-void CodificaArq(FILE *arq, Arv *Huffman, VetChar *Vetor, FILE *saida);
-static Tabela *MontandoTabela(Arv *Huffman, VetChar *vetor, int tam);
-
-/**
- * @brief Retorna o codigo referente ao caractere dado, na codificacao da arvore fornecida
- *
- * @param a  - Arvore valida, preenchida
- * @param carac - Caractere a ser codificado
- * @return bitmap* - Codigo referente ao caractere
- */
-bitmap *CodificaChar(const Arv *raiz, char carac);
-
 struct TabelaDeCod
 {
     char *carac;
@@ -37,29 +23,26 @@ int main(int argc, char const *argv[])
     VetChar *VetorFreq = VetCharCria(arquivo);
     PreencheLista(lista, VetorFreq);
 
-    // Algoritmo de Huffman
+    // Prepara para Algoritmo de Huffman
     ReorganizaListaArv(lista);
-
-    // Cópia da Lista
     Listagen *lista2 = CopiaLista(lista);
 
+    // Algoritmo
     Arv *arvorebase = FazArvoreHuffman(lista);
 
     // debug
     ArvImprime(arvorebase);
 
     // Abre arquivo de saida
-    // TODO: Arquivo de saida entra aqui, como vai entrar e pah
     char aux2[200];
     sprintf(aux2, "./%[^.].comp", aux);
-
     FILE *saida = fopen(aux2, "w");
 
     // Faz Cabecalho
     bitmap *SaidaArvore = ExportaArvore(arvorebase);
     int tamArv = bitmapGetLength(SaidaArvore);
     fprintf(saida, "%d", tamArv);
-    CompletaByteBitmap(SaidaArvore); // errado fazer isso (programa vai ler de byte em byte mas vai separar por bits)
+    CompletaByteBitmap(SaidaArvore);
     fwrite(bitmapGetContents(SaidaArvore), 1, bitmapGetLength(SaidaArvore) / 8, saida);
     bitmapLibera(SaidaArvore);
 
@@ -73,19 +56,6 @@ int main(int argc, char const *argv[])
     LiberaVetChar(VetorFreq);
 
     return 0;
-}
-
-void AdicionaExtensao(char *arqEntrada, char *arqSaida)
-{
-    strcpy(arqSaida, arqEntrada);
-
-    // Vem "comendo" o final do arquivo ate encontrar um .
-    for (int i = strlen(arqSaida); i > 0 && arqSaida[i] != '.'; i--)
-    {
-        arqSaida[i] = '\0';
-    }
-
-    strcat(arqSaida, ".comp");
 }
 
 // Lembrar na hora de ler que a arvore vai comecar em um byte certinho, ou seja,
@@ -104,40 +74,6 @@ Arv *FazArvoreHuffman(Listagen *listabase)
     {
     }
     return RetornaPrimeiro(listabase);
-}
-
-void CodificaArq(FILE *arq, Arv *Huffman, VetChar *Vetor, FILE *saida)
-{
-    // 14MB
-    bitmap *saida = bitmapInit(112000000);
-    int tam = QntdFolhas(Huffman);
-
-    Tabela *tab = MontandoTabela(Huffman, Vetor, tam);
-    unsigned long int TAM_TOTAL = CalculaTamTotal(Vetor, tab, tam);
-    fprintf(saida, "%ld", TAM_TOTAL);
-
-    long long int saida = 0;
-    char aux;
-    int index;
-    bitmap *codificando;
-    while (!feof(arq))
-    {
-        // Ao ler um byte
-        if (fscanf(arq, "%1[]", aux))
-        {
-            // Procura o mesmo na tabela
-            index = 0;
-            while (index < tam && tab->carac[index] != aux)
-            {
-                index++;
-            }
-            codificando = tab->codigo[index];
-
-            saida += bitmapGetLength(codificando);
-        }
-    }
-    rewind(arq);
-    return saida;
 }
 
 void CodificaArq(FILE *arq, Arv *Huffman, VetChar *Vetor, FILE *saida)
@@ -189,14 +125,14 @@ void CodificaArq(FILE *arq, Arv *Huffman, VetChar *Vetor, FILE *saida)
     {
         CompletaByteBitmap(saida);
         fwrite(bitmapGetContents(saida), 1, bitmapGetLength(saida) / 8, saida);
-        bitmapLibera(saida);
     }
 
-    // TODO: Resolver, como saber que acabou, como informar o decoder que acabou (calcular antes o tamanho em bits e ir somando)
+    bitmapLibera(saida);
     LiberaTabela(tab, tam);
+    rewind(arq);
 }
 
-static Tabela *MontandoTabela(Arv *Huffman, VetChar *vetor, int tam)
+Tabela *MontandoTabela(Arv *Huffman, VetChar *vetor, int tam)
 {
     // Montando tabela de codificacao
 
@@ -247,13 +183,4 @@ unsigned long int CalculaTamTotal(VetChar *Vetor, Tabela *tab, int tam)
         }
     }
     return TAM_TOTAL;
-}
-
-bitmap *CodificaChar(const Arv *raiz, char carac)
-{
-    if (ExisteChar(raiz, carac))
-    {
-        bitmap *codigo = bitmapInit(8);
-        Recursiva(codigo, raiz, carac);
-    }
 }
