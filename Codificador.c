@@ -3,6 +3,15 @@
 Arv *FazArvoreHuffman(Listagen *listabase);
 void CompletaByteBitmap(bitmap *entrada);
 void CodificaArq(FILE *arq, Arv *Huffman, VetChar *Vetor, FILE *saida);
+static Tabela* MontandoTabela(Arv* Huffman,VetChar* vetor, int tam);
+
+struct TabelaDeCod
+{
+    char * carac;
+    bitmap** codigo;
+};
+
+
 
 int main(int argc, char const *argv[])
 {
@@ -78,23 +87,9 @@ void CodificaArq(FILE *arq, Arv *Huffman, VetChar *Vetor, FILE *saida)
 {
     // 14MB
     bitmap *saida = bitmapInit(112000000);
-
-    // Montando tabela de codificacao
     int tam = QntdFolhas(Huffman);
-    int count = 0;
-    char carac[tam];
-    bitmap *codigo[tam];
 
-    // Preenchendo a tabela
-    for (int i = 0; i < MAX_VET; i++)
-    {
-        if (VetGetPos(Vetor, i) != 0)
-        {
-            carac[count] = (char)i;
-            codigo[count] = CodificaChar(Huffman, carac[count]);
-            count++;
-        }
-    }
+    Tabela* tab = MontandoTabela(Huffman,Vetor,tam);
 
     // Codificacao do arquivo de fato
     char aux;
@@ -107,11 +102,11 @@ void CodificaArq(FILE *arq, Arv *Huffman, VetChar *Vetor, FILE *saida)
         {
             // Procura o mesmo na tabela
             index = 0;
-            while (index < tam && carac[index] != aux)
+            while (index < tam && tab->carac[index] != aux)
             {
                 index++;
             }
-            codificando = codigo[index];
+            codificando = tab->codigo[index];
 
             // Escreve no bitmap de saida o codigo do mesmo
             for (int i = 0; i < bitmapGetLength(codificando); i++)
@@ -139,4 +134,28 @@ void CodificaArq(FILE *arq, Arv *Huffman, VetChar *Vetor, FILE *saida)
     }
 
     // TODO: Resolver, como saber que acabou, como informar o decoder que acabou (calcular antes o tamanho em bits e ir somando)
+}
+
+static Tabela* MontandoTabela(Arv* Huffman,VetChar* vetor,int tam){
+    // Montando tabela de codificacao
+
+    Tabela* tab = (Tabela*)malloc(sizeof(Tabela));
+
+    int count = 0;
+    
+    tab->carac =(char*)malloc(tam*sizeof(char));
+    tab->codigo = (bitmap**)malloc(tam*sizeof(bitmap*));
+    
+    
+    // Preenchendo a tabela
+    for (int i = 0; i < MAX_VET; i++)
+    {
+        if (VetGetPos(vetor, i) != 0)
+        {
+            tab->carac[count] = (char)i;
+            tab->codigo[count] = CodificaChar(Huffman, tab->carac[count]);
+            count++;
+        }
+    }
+    return tab;
 }

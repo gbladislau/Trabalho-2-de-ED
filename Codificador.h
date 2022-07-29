@@ -5,4 +5,6 @@
 #include "Arvore.h"
 #include "Vetchar.h"
 
+typedef struct TabelaDeCod Tabela;
+
 #endif
