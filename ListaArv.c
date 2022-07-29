@@ -93,6 +93,10 @@ void PreencheLista(Listagen *lista, VetChar *VetTemp)
     }
 }
 
+Arv* BuscaArvChar(Listagen* lista, char c){
+    return BuscaLista(lista,ComparaLetra,c);
+}
+
 static int MenosdeDoisElementos(Listagen *lista)
 {
     if (VaziaLista(lista) ||
@@ -128,6 +132,8 @@ static void ImprimeArvListada(void *e1)
     Arv *a1 = (Arv *)e1;
     return ArvImprime(a1);
 }
+
+
 
 // void ConverteVetorALista(Listagen *lista, VetChar *vetor)
 // {

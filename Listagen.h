@@ -122,4 +122,6 @@ void *RetiraPrimeiro(Listagen *lista);
  */
 void InsereUltItemGen(Listagen *lista, void *item);
 
+void * BuscaLista(Listagen* lista, int (*Compara)(void*, void*), void* chave);
+
 #endif

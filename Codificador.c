@@ -1,4 +1,12 @@
 #include "Codificador.h"
+
+
+struct TabelaDeCod
+{
+    char *carac;
+    bitmap **codigo;
+};
+
 int main(int argc, char const *argv[])
 {
     if (argc < 2)
@@ -18,27 +26,32 @@ int main(int argc, char const *argv[])
 
     // Algoritmo de Huffman
     ReorganizaListaArv(lista);
+
+    // Cópia da Lista
+    Listagen *lista2 = CopiaLista(lista);
+
     Arv *arvorebase = FazArvoreHuffman(lista);
 
     // debug
     ArvImprime(arvorebase);
 
     // Abre arquivo de saida
-    char nomeArqSaida[200];
-    AdicionaExtensao(aux, nomeArqSaida);
-    FILE *saida = fopen(nomeArqSaida, "w");
+    // TODO: Arquivo de saida entra aqui, como vai entrar e pah
+    char aux2[200];
+    sprintf(aux2, "./%[^.].comp", aux);
+
+    FILE *saida = fopen(aux2, "w");
 
     // Faz Cabecalho
     bitmap *SaidaArvore = ExportaArvore(arvorebase);
     int tamArv = bitmapGetLength(SaidaArvore);
     fprintf(saida, "%d", tamArv);
-    fprintf(saida, "%lld", TamArq(arquivo, arvorebase, VetorFreq));
-    CompletaByteBitmap(SaidaArvore);
+    CompletaByteBitmap(SaidaArvore); // errado fazer isso (programa vai ler de byte em byte mas vai separar por bits)
     fwrite(bitmapGetContents(SaidaArvore), 1, bitmapGetLength(SaidaArvore) / 8, saida);
     bitmapLibera(SaidaArvore);
 
     // Codificacao e saida da arvore
-    CodificaArq(arquivo, arvorebase, lista, saida);
+    CodificaArq(arquivo, arvorebase, VetorFreq, saida);
 
     // Liberando memoria dinamica alocada
     fclose(arquivo);
@@ -80,24 +93,15 @@ Arv *FazArvoreHuffman(Listagen *listabase)
     return RetornaPrimeiro(listabase);
 }
 
-long long int TamArq(FILE *arq, Arv *Huffman, VetChar *Vetor)
+void CodificaArq(FILE *arq, Arv *Huffman, VetChar *Vetor, FILE *saida)
 {
-    // Montando tabela de codificacao
+    // 14MB
+    bitmap *saida = bitmapInit(112000000);
     int tam = QntdFolhas(Huffman);
-    int count = 0;
-    char carac[tam];
-    bitmap *codigo[tam];
 
-    // Preenchendo a tabela
-    for (int i = 0; i < MAX_VET; i++)
-    {
-        if (VetGetPos(Vetor, i) != 0)
-        {
-            carac[count] = (char)i;
-            codigo[tam] = CodificaChar(Huffman, carac[count]);
-            count++;
-        }
-    }
+    Tabela *tab = MontandoTabela(Huffman, Vetor, tam);
+    unsigned long int TAM_TOTAL = CalculaTamTotal(Vetor, tab, tam);
+    fprintf(saida, "%ld", TAM_TOTAL);
 
     long long int saida = 0;
     char aux;
@@ -110,11 +114,11 @@ long long int TamArq(FILE *arq, Arv *Huffman, VetChar *Vetor)
         {
             // Procura o mesmo na tabela
             index = 0;
-            while (index < tam && carac[index] != aux)
+            while (index < tam && tab->carac[index] != aux)
             {
                 index++;
             }
-            codificando = codigo[index];
+            codificando = tab->codigo[index];
 
             saida += bitmapGetLength(codificando);
         }
@@ -127,23 +131,11 @@ void CodificaArq(FILE *arq, Arv *Huffman, VetChar *Vetor, FILE *saida)
 {
     // 14MB
     bitmap *saida = bitmapInit(112000000);
-
-    // Montando tabela de codificacao
     int tam = QntdFolhas(Huffman);
-    int count = 0;
-    char carac[tam];
-    bitmap *codigo[tam];
 
-    // Preenchendo a tabela
-    for (int i = 0; i < MAX_VET; i++)
-    {
-        if (VetGetPos(Vetor, i) != 0)
-        {
-            carac[count] = (char)i;
-            codigo[tam] = CodificaChar(Huffman, carac[count]);
-            count++;
-        }
-    }
+    Tabela *tab = MontandoTabela(Huffman, Vetor, tam);
+    unsigned long int TAM_TOTAL = CalculaTamTotal(Vetor, tab, tam);
+    fprintf(saida, "%ld", TAM_TOTAL);
 
     // Codificacao do arquivo de fato
     char aux;
@@ -156,11 +148,11 @@ void CodificaArq(FILE *arq, Arv *Huffman, VetChar *Vetor, FILE *saida)
         {
             // Procura o mesmo na tabela
             index = 0;
-            while (index < tam && carac[index] != aux)
+            while (index < tam && tab->carac[index] != aux)
             {
                 index++;
             }
-            codificando = codigo[index];
+            codificando = tab->codigo[index];
 
             // Escreve no bitmap de saida o codigo do mesmo
             for (int i = 0; i < bitmapGetLength(codificando); i++)
@@ -187,5 +179,68 @@ void CodificaArq(FILE *arq, Arv *Huffman, VetChar *Vetor, FILE *saida)
         bitmapLibera(saida);
     }
 
-    rewind(arq);
+    // TODO: Resolver, como saber que acabou, como informar o decoder que acabou (calcular antes o tamanho em bits e ir somando)
+    LiberaTabela(tab, tam);
+}
+
+static Tabela *MontandoTabela(Arv *Huffman, VetChar *vetor, int tam)
+{
+    // Montando tabela de codificacao
+
+    Tabela *tab = (Tabela *)malloc(sizeof(Tabela));
+
+    int count = 0;
+
+    tab->carac = (char *)malloc(tam * sizeof(char));
+    tab->codigo = (bitmap **)malloc(tam * sizeof(bitmap *));
+
+    // Preenchendo a tabela
+    for (int i = 0; i < MAX_VET; i++)
+    {
+        if (VetGetPos(vetor, i) != 0)
+        {
+            tab->carac[count] = (char)i;
+            tab->codigo[count] = CodificaChar(Huffman, tab->carac[count]);
+            count++;
+        }
+    }
+    return tab;
+}
+
+void LiberaTabela(Tabela *tab, int qntd)
+{
+    free(tab->carac);
+    for (int i = 0; i < qntd; i++)
+    {
+        bitmapLibera(tab->codigo[i]);
+    }
+    free(tab);
+}
+
+unsigned long int CalculaTamTotal(VetChar *Vetor, Tabela *tab, int tam)
+{
+    unsigned long int TAM_TOTAL = 0;
+    for (int i = 0; i < MAX_VET; i++)
+    {
+        if (VetGetPos(Vetor, i) != 0)
+        {
+            for (int j = 0; j < tam; j++)
+            {
+                if (tab->carac[j] == (char)i)
+                {
+                    TAM_TOTAL += VetGetPos(Vetor, i) * bitmapGetLength(tab->codigo[j]);
+                }
+            }
+        }
+    }
+    return TAM_TOTAL;
+}
+
+bitmap *CodificaChar(const Arv *raiz, char carac)
+{
+    if (ExisteChar(raiz, carac))
+    {
+        bitmap *codigo = bitmapInit(8);
+        Recursiva(codigo, raiz, carac);
+    }
 }
