@@ -11,8 +11,6 @@ struct TabelaDeCod
     bitmap** codigo;
 };
 
-
-
 int main(int argc, char const *argv[])
 {
     if (argc < 2)
@@ -48,7 +46,7 @@ int main(int argc, char const *argv[])
     bitmap *SaidaArvore = ExportaArvore(arvorebase);
     int tamArv = bitmapGetLength(SaidaArvore);
     fprintf(saida, "%d", tamArv);
-    CompletaByteBitmap(SaidaArvore);
+    CompletaByteBitmap(SaidaArvore); // errado fazer isso (programa vai ler de byte em byte mas vai separar por bits)
     fwrite(bitmapGetContents(SaidaArvore), 1, bitmapGetLength(SaidaArvore) / 8, saida);
     bitmapLibera(SaidaArvore);
 
@@ -90,7 +88,9 @@ void CodificaArq(FILE *arq, Arv *Huffman, VetChar *Vetor, FILE *saida)
     int tam = QntdFolhas(Huffman);
 
     Tabela* tab = MontandoTabela(Huffman,Vetor,tam);
-
+    unsigned long int TAM_TOTAL = CalculaTamTotal(Vetor,tab,tam);
+    fprintf(saida,"%ld",TAM_TOTAL);
+    
     // Codificacao do arquivo de fato
     char aux;
     int index;
@@ -134,6 +134,7 @@ void CodificaArq(FILE *arq, Arv *Huffman, VetChar *Vetor, FILE *saida)
     }
 
     // TODO: Resolver, como saber que acabou, como informar o decoder que acabou (calcular antes o tamanho em bits e ir somando)
+    LiberaTabela(tab,tam);
 }
 
 static Tabela* MontandoTabela(Arv* Huffman,VetChar* vetor,int tam){
@@ -158,4 +159,30 @@ static Tabela* MontandoTabela(Arv* Huffman,VetChar* vetor,int tam){
         }
     }
     return tab;
+}
+
+void LiberaTabela(Tabela* tab, int qntd){
+    free(tab->carac);
+    for (int i = 0; i < qntd; i++)
+    {
+        bitmapLibera(tab->codigo[i]);
+    }
+    free(tab);    
+}
+
+unsigned long int CalculaTamTotal(VetChar* Vetor,Tabela* tab, int tam){
+    unsigned long int TAM_TOTAL = 0;
+    for (int i = 0; i < MAX_VET; i++)
+    {
+        if(VetGetPos(Vetor,i)!=0){
+            for (int j = 0; j < tam; j++)
+            {
+                if(tab->carac[j] == (char)i){
+                    TAM_TOTAL += VetGetPos(Vetor,i) * bitmapGetLength(tab->codigo[j]);
+                }
+            }
+            
+        }
+    }
+    return TAM_TOTAL;
 }
