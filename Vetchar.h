@@ -13,6 +13,6 @@ VetChar *VetCharCria(FILE *arqbase);
 
 void LiberaVetChar(VetChar *alvo);
 
-int VetGetPos(VetChar* vet,int i);
+int VetGetPos(VetChar *vet, int i);
 
 #endif

@@ -21,7 +21,6 @@ void InsereListaArv(Listagen *lista, Arv *inserida)
     InsereItemGen(lista, inserida);
 }
 
-
 void RetiraListaArvPeso(Listagen *lista, int Peso)
 {
     void *arg = &Peso;
@@ -38,7 +37,6 @@ void ImprimeListaArv(Listagen *lista)
 {
     ImprimeListaGen(lista, ImprimeArvListada);
 }
-
 
 void ReorganizaListaArv(Listagen *lista)
 {
@@ -58,7 +56,8 @@ int FundePrimeiros(Listagen *lista)
         Arv *esquerda = (Arv *)RetiraPrimeiro(lista);
         Arv *direita = (Arv *)RetiraPrimeiro(lista);
 
-        Arv *inserido = ArvCria(NULL, ArvPeso(esquerda) + ArvPeso(direita), esquerda, direita);
+        Arv *inserido = ArvCria(NULL, ArvPeso(esquerda) + ArvPeso(direita),
+                                esquerda, direita);
 
         InsereUltItemGen(lista, inserido);
         return 1;
@@ -76,14 +75,15 @@ void LiberaListaArv(Listagen *lista)
 // Dentro dessa funcao, Usar VetCHAR para preencher a lista gen com as arvores respectivas.
 // Com ela, preenche a lista de arvores inserindo todos com peso diff de 0
 // Apos, chama organiza listadeArv, libera vetchar e retorna
-void PreencheLista(Listagen *lista,VetChar* vet ,FILE *base){
+void PreencheLista(Listagen *lista, VetChar *VetTemp)
+{
     for (int i = 0; i < MAX_VET; i++)
     {
-        if(VetGetPos(vet,i)){
-            Arv* a = ArvCria(i,VetGetPos(vet,i),NULL,NULL);
-            InsereItemListaArv(lista,a);
+        if (VetGetPos(VetTemp, i))
+        {
+            Arv *a = ArvCria(i, VetGetPos(VetTemp, i), ArvCriaVazia(), ArvCriaVazia());
+            InsereItemListaArv(lista, a);
         }
-        else continue;
     }
 }
 
@@ -122,3 +122,15 @@ static void ImprimeArvListada(void *e1)
     Arv *a1 = (Arv *)e1;
     return ArvImprime(a1);
 }
+
+// void ConverteVetorALista(Listagen *lista, VetChar *vetor)
+// {
+//     for (int i = 0; i < MAX_VET; i++)
+//     {
+//         if ((VetGetPos(vetor, i)) != 0)
+//         {
+//             InsereListaArv(lista, ArvCria((char)i, VetGetPos(vetor, i),
+//                                           ArvCriaVazia(), ArvCriaVazia()));
+//         }
+//     }
+// }

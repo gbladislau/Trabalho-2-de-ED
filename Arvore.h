@@ -106,7 +106,16 @@ int ArvAltura(Arv *a);
  */
 bitmap *ExportaArvore(Arv *a);
 
-//Retirar depois, esta aqui para teste na main
+/**
+ * @brief Retorna o codigo referente ao caractere dado, na codificacao da arvore fornecida
+ *
+ * @param a  - Arvore valida, preenchida
+ * @param carac - Caractere a ser codificado
+ * @return int - Codigo referente ao caractere
+ */
+int CodificaChar(Arv *a, char carac);
+
+// Retirar depois, esta aqui para teste na main
 void EscreveChar(bitmap *mapa, char letrona);
 
 #endif /* arvore_h */

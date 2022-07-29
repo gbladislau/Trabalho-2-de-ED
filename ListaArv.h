@@ -25,7 +25,7 @@ void InsereListaArv(Listagen *lista, Arv *inserida);
 
 /**
  * @brief Retira a arvore da lista usando como chave de busca o peso
- * 
+ *
  * @param lista - Lista valida
  * @param Peso - Peso buscado
  */
@@ -33,7 +33,7 @@ void RetiraListaArvPeso(Listagen *lista, int Peso);
 
 /**
  * @brief Retira a arvore da lista usando como chave de busca a letra
- * 
+ *
  * @param lista - Lista valida
  * @param letra - Letra buscada
  */
@@ -73,10 +73,27 @@ int PercorreListaArv(Listagen *lista, void(func)(Arv *));
 int FundePrimeiros(Listagen *lista);
 
 /**
- * @brief Faz a liberacao da lista de Arvores, sem liberar arvores
+ * @brief Preenche a lista de arvores com os dados presentes no arquivo 
+ *        passado como parametro
  * 
+ * @param lista - Lista de arvores inicializada e valida
+ * @param base  - Arquivo valido
+ */
+void PreencheLista(Listagen *lista, VetChar *VetTemp);
+
+/**
+ * @brief Faz a liberacao da lista de Arvores, sem liberar arvores
+ *
  * @param lista - Lista valida
  */
 void LiberaListaArv(Listagen *lista);
+
+// /**
+//  * @brief Preenche a lista de arvores com os dados presentes no vetor
+//  *
+//  * @param lista - Lista de arvores valida
+//  * @param vetor - VetorChar valido preenchido
+//  */
+// void ConverteVetorALista(Listagen *lista, VetChar *vetor);
 
 #endif

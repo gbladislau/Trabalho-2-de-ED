@@ -1,5 +1,6 @@
 #include "Arvore.h"
 #include "Listagen.h"
+#include "ListaArv.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -29,22 +30,23 @@ int main(int argc, char *argv[])
         pai = ArvPai(teste, 'h');
         ArvImprime(pai);
 
-        // Teste e Arv Libera
-        // ArvLibera(teste);
+        // // Teste e Arv Libera
+        // // ArvLibera(teste);
 
-        bitmap *testador = ExportaArvore(teste);
-        // // bitmapAppendLeastSignificantBit(testador, 0);
-        // // bitmapAppendLeastSignificantBit(testador, 1);
-        // // bitmapAppendLeastSignificantBit(testador, 1);
-        // // bitmapAppendLeastSignificantBit(testador, 0);
+        // bitmap *testador = ExportaArvore(teste);
+        // // // bitmapAppendLeastSignificantBit(testador, 0);
+        // // // bitmapAppendLeastSignificantBit(testador, 1);
+        // // // bitmapAppendLeastSignificantBit(testador, 1);
+        // // // bitmapAppendLeastSignificantBit(testador, 0);
 
-        // // bitmapAppendLeastSignificantBit(testador, 0);
-        // // bitmapAppendLeastSignificantBit(testador, 0);
-        // // bitmapAppendLeastSignificantBit(testador, 0);
-        // // bitmapAppendLeastSignificantBit(testador, 1);
-        // EscreveChar(testador, '{');
-        unsigned char *saida = bitmapGetContents(testador);
-        // printf("%s", saida);
+        // // // bitmapAppendLeastSignificantBit(testador, 0);
+        // // // bitmapAppendLeastSignificantBit(testador, 0);
+        // // // bitmapAppendLeastSignificantBit(testador, 0);
+        // // // bitmapAppendLeastSignificantBit(testador, 1);
+        // // EscreveChar(testador, '{');
+        // unsigned char *saida = bitmapGetContents(testador);
+        // // printf("%s", saida);
 
-        int lalala = 1;
+        // int lalala = 1;
 }
+
