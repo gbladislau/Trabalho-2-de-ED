@@ -7,4 +7,6 @@
 
 typedef struct TabelaDeCod Tabela;
 
+void Recursiva(bitmap *codificando, Arv *a, char c);
+
 #endif

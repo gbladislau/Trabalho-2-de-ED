@@ -3,12 +3,21 @@
 Arv *FazArvoreHuffman(Listagen *listabase);
 void CompletaByteBitmap(bitmap *entrada);
 void CodificaArq(FILE *arq, Arv *Huffman, VetChar *Vetor, FILE *saida);
-static Tabela* MontandoTabela(Arv* Huffman,VetChar* vetor, int tam);
+static Tabela *MontandoTabela(Arv *Huffman, VetChar *vetor, int tam);
+
+/**
+ * @brief Retorna o codigo referente ao caractere dado, na codificacao da arvore fornecida
+ *
+ * @param a  - Arvore valida, preenchida
+ * @param carac - Caractere a ser codificado
+ * @return bitmap* - Codigo referente ao caractere
+ */
+bitmap *CodificaChar(const Arv *raiz, char carac);
 
 struct TabelaDeCod
 {
-    char * carac;
-    bitmap** codigo;
+    char *carac;
+    bitmap **codigo;
 };
 
 int main(int argc, char const *argv[])
@@ -30,6 +39,10 @@ int main(int argc, char const *argv[])
 
     // Algoritmo de Huffman
     ReorganizaListaArv(lista);
+
+    // Cópia da Lista
+    Listagen *lista2 = CopiaLista(lista);
+
     Arv *arvorebase = FazArvoreHuffman(lista);
 
     // debug
@@ -38,7 +51,7 @@ int main(int argc, char const *argv[])
     // Abre arquivo de saida
     // TODO: Arquivo de saida entra aqui, como vai entrar e pah
     char aux2[200];
-    sprintf(aux2,"./%[^.].comp",aux);
+    sprintf(aux2, "./%[^.].comp", aux);
 
     FILE *saida = fopen(aux2, "w");
 
@@ -58,7 +71,6 @@ int main(int argc, char const *argv[])
     fclose(saida);
     LiberaListaArv(lista);
     LiberaVetChar(VetorFreq);
-    ArvLibera(arvorebase);
 
     return 0;
 }
@@ -87,10 +99,10 @@ void CodificaArq(FILE *arq, Arv *Huffman, VetChar *Vetor, FILE *saida)
     bitmap *saida = bitmapInit(112000000);
     int tam = QntdFolhas(Huffman);
 
-    Tabela* tab = MontandoTabela(Huffman,Vetor,tam);
-    unsigned long int TAM_TOTAL = CalculaTamTotal(Vetor,tab,tam);
-    fprintf(saida,"%ld",TAM_TOTAL);
-    
+    Tabela *tab = MontandoTabela(Huffman, Vetor, tam);
+    unsigned long int TAM_TOTAL = CalculaTamTotal(Vetor, tab, tam);
+    fprintf(saida, "%ld", TAM_TOTAL);
+
     // Codificacao do arquivo de fato
     char aux;
     int index;
@@ -134,20 +146,20 @@ void CodificaArq(FILE *arq, Arv *Huffman, VetChar *Vetor, FILE *saida)
     }
 
     // TODO: Resolver, como saber que acabou, como informar o decoder que acabou (calcular antes o tamanho em bits e ir somando)
-    LiberaTabela(tab,tam);
+    LiberaTabela(tab, tam);
 }
 
-static Tabela* MontandoTabela(Arv* Huffman,VetChar* vetor,int tam){
+static Tabela *MontandoTabela(Arv *Huffman, VetChar *vetor, int tam)
+{
     // Montando tabela de codificacao
 
-    Tabela* tab = (Tabela*)malloc(sizeof(Tabela));
+    Tabela *tab = (Tabela *)malloc(sizeof(Tabela));
 
     int count = 0;
-    
-    tab->carac =(char*)malloc(tam*sizeof(char));
-    tab->codigo = (bitmap**)malloc(tam*sizeof(bitmap*));
-    
-    
+
+    tab->carac = (char *)malloc(tam * sizeof(char));
+    tab->codigo = (bitmap **)malloc(tam * sizeof(bitmap *));
+
     // Preenchendo a tabela
     for (int i = 0; i < MAX_VET; i++)
     {
@@ -161,28 +173,40 @@ static Tabela* MontandoTabela(Arv* Huffman,VetChar* vetor,int tam){
     return tab;
 }
 
-void LiberaTabela(Tabela* tab, int qntd){
+void LiberaTabela(Tabela *tab, int qntd)
+{
     free(tab->carac);
     for (int i = 0; i < qntd; i++)
     {
         bitmapLibera(tab->codigo[i]);
     }
-    free(tab);    
+    free(tab);
 }
 
-unsigned long int CalculaTamTotal(VetChar* Vetor,Tabela* tab, int tam){
+unsigned long int CalculaTamTotal(VetChar *Vetor, Tabela *tab, int tam)
+{
     unsigned long int TAM_TOTAL = 0;
     for (int i = 0; i < MAX_VET; i++)
     {
-        if(VetGetPos(Vetor,i)!=0){
+        if (VetGetPos(Vetor, i) != 0)
+        {
             for (int j = 0; j < tam; j++)
             {
-                if(tab->carac[j] == (char)i){
-                    TAM_TOTAL += VetGetPos(Vetor,i) * bitmapGetLength(tab->codigo[j]);
+                if (tab->carac[j] == (char)i)
+                {
+                    TAM_TOTAL += VetGetPos(Vetor, i) * bitmapGetLength(tab->codigo[j]);
                 }
             }
-            
         }
     }
     return TAM_TOTAL;
+}
+
+bitmap *CodificaChar(const Arv *raiz, char carac)
+{
+    if (ExisteChar(raiz, carac))
+    {
+        bitmap *codigo = bitmapInit(8);
+        Recursiva(codigo, raiz, carac);
+    }
 }

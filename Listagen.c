@@ -302,3 +302,15 @@ void *RetornaUlt(Listagen *lista)
     else
         return NULL;
 }
+//Compara entre arvore e char
+void * BuscaLista(Listagen* lista, int (*Compara)(void*, void*), void* chave){
+    Celula* p = lista->prim;
+    while (!Compara(p->item,chave) && p)
+    {
+        p = p->prox;
+    }
+    if(p)
+        return p->item;
+    else
+        return NULL;
+}
