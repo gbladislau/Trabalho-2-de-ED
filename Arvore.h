@@ -111,9 +111,9 @@ bitmap *ExportaArvore(Arv *a);
  *
  * @param a  - Arvore valida, preenchida
  * @param carac - Caractere a ser codificado
- * @return int - Codigo referente ao caractere
+ * @return bitmap* - Codigo referente ao caractere
  */
-int CodificaChar(Arv *a, char carac);
+bitmap* CodificaChar(Arv *a, char carac);
 
 // Retirar depois, esta aqui para teste na main
 void EscreveChar(bitmap *mapa, char letrona);

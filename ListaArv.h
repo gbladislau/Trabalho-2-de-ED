@@ -82,7 +82,7 @@ int FundePrimeiros(Listagen *lista);
 void PreencheLista(Listagen *lista, VetChar *VetTemp);
 
 /**
- * @brief Faz a liberacao da lista de Arvores, sem liberar arvores
+ * @brief Faz a liberacao da lista de Arvores, liberando suas arvores
  *
  * @param lista - Lista valida
  */

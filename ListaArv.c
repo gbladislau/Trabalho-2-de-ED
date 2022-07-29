@@ -66,10 +66,16 @@ int FundePrimeiros(Listagen *lista)
         return 0;
 }
 
-// SEM LIBERAR ARVORES
+void ArvListadaLibera(void *e1)
+{
+    Arv *a1 = e1;
+    ArvLibera(a1);
+}
+
+// LIBERANDO ARVORES
 void LiberaListaArv(Listagen *lista)
 {
-    LiberaListaGen(lista, NULL);
+    LiberaListaGen(lista, ArvListadaLibera);
 }
 
 // Dentro dessa funcao, Usar VetCHAR para preencher a lista gen com as arvores respectivas.
