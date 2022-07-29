@@ -30,7 +30,10 @@ int main(int argc, char const *argv[])
 
     // Abre arquivo de saida
     // TODO: Arquivo de saida entra aqui, como vai entrar e pah
-    FILE *saida = fopen(, "w");
+    char aux2[200];
+    sprintf(aux2,"./%[^.].comp",aux);
+
+    FILE *saida = fopen(aux2, "w");
 
     // Faz Cabecalho
     bitmap *SaidaArvore = ExportaArvore(arvorebase);
@@ -41,13 +44,14 @@ int main(int argc, char const *argv[])
     bitmapLibera(SaidaArvore);
 
     // Codificacao e saida da arvore
-    CodificaArq(arquivo, arvorebase, lista, saida);
+    CodificaArq(arquivo, arvorebase, VetorFreq, saida);
 
     // Liberando memoria dinamica alocada
     fclose(arquivo);
     fclose(saida);
     LiberaListaArv(lista);
     LiberaVetChar(VetorFreq);
+    ArvLibera(arvorebase);
 
     return 0;
 }
@@ -87,7 +91,7 @@ void CodificaArq(FILE *arq, Arv *Huffman, VetChar *Vetor, FILE *saida)
         if (VetGetPos(Vetor, i) != 0)
         {
             carac[count] = (char)i;
-            codigo[tam] = CodificaChar(Huffman, carac[count]);
+            codigo[count] = CodificaChar(Huffman, carac[count]);
             count++;
         }
     }
@@ -134,5 +138,5 @@ void CodificaArq(FILE *arq, Arv *Huffman, VetChar *Vetor, FILE *saida)
         bitmapLibera(saida);
     }
 
-    // TODO: Resolver, como saber que acabou, como informar o decoder que acabou
+    // TODO: Resolver, como saber que acabou, como informar o decoder que acabou (calcular antes o tamanho em bits e ir somando)
 }
