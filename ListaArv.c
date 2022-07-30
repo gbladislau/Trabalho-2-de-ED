@@ -44,7 +44,7 @@ void ReorganizaListaArv(Listagen *lista)
 }
 
 // TODO: Ver como corrigir conversao inadequada aqui
-int PercorreListaArv(Listagen *lista, void(func)(Arv *))
+int PercorreListaArv(Listagen *lista, int (*func)(void *))
 {
     return PercorreLista(lista, func);
 }
@@ -56,7 +56,7 @@ int FundePrimeiros(Listagen *lista)
         Arv *esquerda = (Arv *)RetiraPrimeiro(lista);
         Arv *direita = (Arv *)RetiraPrimeiro(lista);
 
-        Arv *inserido = ArvCria(NULL, ArvPeso(esquerda) + ArvPeso(direita),
+        Arv *inserido = ArvCria('\0', ArvPeso(esquerda) + ArvPeso(direita),
                                 esquerda, direita);
 
         InsereUltItemGen(lista, inserido);

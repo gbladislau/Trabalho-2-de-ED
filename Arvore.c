@@ -249,12 +249,12 @@ static void Recursiva(bitmap *codificando, Arv *a, char c)
     }
 }
 
-bitmap *CodificaChar(const Arv *raiz, char carac)
+bitmap *CodificaChar(Arv *raiz, char carac)
 {
-    Arv *temp = raiz;
-    if (ExisteChar(temp, carac))
+    
+    if (ExisteChar(raiz, carac))
     {
         bitmap *codigo = bitmapInit(8);
-        Recursiva(codigo, temp, carac);
+        Recursiva(codigo, raiz, carac);
     }
 }

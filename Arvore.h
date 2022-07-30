@@ -132,7 +132,7 @@ int ExisteChar(Arv *a, char c);
  * @param carac - Caractere a ser codificado
  * @return bitmap* - Codigo referente ao caractere
  */
-bitmap *CodificaChar(const Arv *raiz, char carac);
+bitmap *CodificaChar(Arv *raiz, char carac);
 
 // Retirar depois, esta aqui para teste na main
 void EscreveChar(bitmap *mapa, char letrona);

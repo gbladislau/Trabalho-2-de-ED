@@ -61,7 +61,7 @@ void ReorganizaListaArv(Listagen *lista);
  * @param func - Funcao a ser executada
  * @return int - Sucesso (1), falha (0)
  */
-int PercorreListaArv(Listagen *lista, void(func)(Arv *));
+int PercorreListaArv(Listagen *lista, int (*func)(void *));
 
 /**
  * @brief Retira as duas primeiras arvores da lista, cria um no raiz

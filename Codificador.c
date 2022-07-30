@@ -11,19 +11,24 @@ struct TabelaDeCod
 
 int main(int argc, char const *argv[])
 {
+    /*
     if (argc < 2)
     {
         printf("USO: ./prog <nomedoarquivo>\n");
         exit(1);
     }
-
+    */
+    // 
+    // strcpy(aux, argv[0]);
+    // for (int i = strlen(aux); aux[i] != '/' && i > 0; i--)
+    // {
+    //     aux[i] = '\0';
+    // }
     char aux[200];
-    strcpy(aux, argv[0]);
-    for (int i = strlen(aux); aux[i] != '/' && i > 0; i--)
-    {
-        aux[i] = '\0';
-    }
-    strcat(aux, argv[1]);
+    
+    //strcat(aux, argv[1]);
+    sprintf(aux,"./teste.txt");    
+    
     // Faz lista de arvores
     int teste = 1;
     FILE *arquivo = fopen(aux, "r");
@@ -32,9 +37,7 @@ int main(int argc, char const *argv[])
     PreencheLista(lista, VetorFreq);
 
     // Prepara para Algoritmo de Huffman
-    //TODO: Arrumar essa func que ta cagada, ver o resto
     ReorganizaListaArv(lista);
-    // Listagen *lista2 = CopiaLista(lista);
 
     // Algoritmo
     Arv *arvorebase = FazArvoreHuffman(lista);
@@ -44,9 +47,13 @@ int main(int argc, char const *argv[])
 
     // Abre arquivo de saida
     char aux2[200];
-    sprintf(aux2, "./%[^.] .comp", aux);
-    FILE *saida = fopen(aux2, "w");
+    sscanf(aux,"./%[^.]",aux2);
+    
+    char aux3[205];
+    sprintf(aux3,"%s.comp",aux2);
 
+    FILE *saida = fopen(aux3, "w");
+ 
     // Faz Cabecalho
     bitmap *SaidaArvore = ExportaArvore(arvorebase);
     int tamArv = bitmapGetLength(SaidaArvore);

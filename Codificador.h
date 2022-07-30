@@ -8,15 +8,6 @@
 typedef struct TabelaDeCod Tabela;
 
 /**
- * @brief Retorna o codigo referente ao caractere dado, na codificacao da arvore fornecida
- *
- * @param a  - Arvore valida, preenchida
- * @param carac - Caractere a ser codificado
- * @return bitmap* - Codigo referente ao caractere
- */
-bitmap *CodificaChar(const Arv *raiz, char carac);
-
-/**
  * @brief Dada uma lista de arvores, aplica o algoritmo de Huffman
  *        e retorna a raiz da arvore resultante
  *
