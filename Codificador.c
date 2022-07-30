@@ -1,4 +1,7 @@
 #include "Codificador.h"
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 struct TabelaDeCod
 {
@@ -15,17 +18,25 @@ int main(int argc, char const *argv[])
     }
 
     char aux[200];
-    sprintf(aux, "%s", argv[1]);
-
+    strcpy(aux, argv[0]);
+    for (int i = strlen(aux); aux[i] != '/' && i > 0; i--)
+    {
+        aux[i] = '\0';
+    }
+    strcat(aux, argv[1]);
     // Faz lista de arvores
+    int teste = 1;
     FILE *arquivo = fopen(aux, "r");
+    // fscanf(arquivo, "%s", aux);
+    // printf("%s",aux);
+    // rewind(arquivo);
     Listagen *lista = IniciaListaArv();
     VetChar *VetorFreq = VetCharCria(arquivo);
     PreencheLista(lista, VetorFreq);
 
     // Prepara para Algoritmo de Huffman
     ReorganizaListaArv(lista);
-    Listagen *lista2 = CopiaLista(lista);
+    // Listagen *lista2 = CopiaLista(lista);
 
     // Algoritmo
     Arv *arvorebase = FazArvoreHuffman(lista);
@@ -35,7 +46,7 @@ int main(int argc, char const *argv[])
 
     // Abre arquivo de saida
     char aux2[200];
-    sprintf(aux2, "./%[^.].comp", aux);
+    sprintf(aux2, "./%[^.] .comp", aux);
     FILE *saida = fopen(aux2, "w");
 
     // Faz Cabecalho
@@ -76,7 +87,7 @@ Arv *FazArvoreHuffman(Listagen *listabase)
     return RetornaPrimeiro(listabase);
 }
 
-void CodificaArq(FILE *arq, Arv *Huffman, VetChar *Vetor, FILE *saida)
+void CodificaArq(FILE *arq, Arv *Huffman, VetChar *Vetor, FILE *arqSaida)
 {
     // 14MB
     bitmap *saida = bitmapInit(112000000);
@@ -84,7 +95,7 @@ void CodificaArq(FILE *arq, Arv *Huffman, VetChar *Vetor, FILE *saida)
 
     Tabela *tab = MontandoTabela(Huffman, Vetor, tam);
     unsigned long int TAM_TOTAL = CalculaTamTotal(Vetor, tab, tam);
-    fprintf(saida, "%ld", TAM_TOTAL);
+    fprintf(arqSaida, "%ld", TAM_TOTAL);
 
     // Codificacao do arquivo de fato
     char aux;
@@ -114,7 +125,7 @@ void CodificaArq(FILE *arq, Arv *Huffman, VetChar *Vetor, FILE *saida)
         // Escreve em disco caso buffer esteja maior que 7MB (50%) e tenha bytes completos
         if (bitmapGetLength(saida) > 56000000 && (bitmapGetLength(saida) % 8) == 0)
         {
-            fwrite(bitmapGetContents(saida), 1, bitmapGetLength(saida) / 8, saida);
+            fwrite(bitmapGetContents(saida), 1, bitmapGetLength(saida) / 8, arqSaida);
             bitmapLibera(saida);
             bitmap *saida = bitmapInit(112000000);
         }
@@ -124,7 +135,7 @@ void CodificaArq(FILE *arq, Arv *Huffman, VetChar *Vetor, FILE *saida)
     if (bitmapGetLength(saida))
     {
         CompletaByteBitmap(saida);
-        fwrite(bitmapGetContents(saida), 1, bitmapGetLength(saida) / 8, saida);
+        fwrite(bitmapGetContents(saida), 1, bitmapGetLength(saida) / 8, arqSaida);
     }
 
     bitmapLibera(saida);

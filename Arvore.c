@@ -234,17 +234,7 @@ static int max(int a, int b)
     return (a > b) ? a : b;
 }
 
-
-bitmap *CodificaChar(const Arv *raiz, char carac)
-{
-    if (ExisteChar(raiz, carac))
-    {
-        bitmap *codigo = bitmapInit(8);
-        Recursiva(codigo, raiz, carac);
-    }
-}
-
-//TODO: RENOMEIA E PIPIPPOPO
+// TODO: RENOMEIA E PIPIPPOPO
 static void Recursiva(bitmap *codificando, Arv *a, char c)
 {
     if (!PosiscaoChar(a, c)) // Esta na esquerda
@@ -256,5 +246,15 @@ static void Recursiva(bitmap *codificando, Arv *a, char c)
     {
         bitmapAppendLeastSignificantBit(codificando, 1);
         Recursiva(codificando, a->dir, c);
+    }
+}
+
+bitmap *CodificaChar(const Arv *raiz, char carac)
+{
+    Arv *temp = raiz;
+    if (ExisteChar(temp, carac))
+    {
+        bitmap *codigo = bitmapInit(8);
+        Recursiva(codigo, temp, carac);
     }
 }

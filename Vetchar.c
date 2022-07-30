@@ -34,9 +34,10 @@ int VetGetPos(VetChar *vet, int i)
 static void PreencheVetChar(VetChar *vetorDfreq, FILE *arq)
 {
     char aux;
+    //TODO:VOLTAR AQUi
     while (!feof(arq))
     {
-        if (fscanf(arq, "%1[]", aux))
+        if (fscanf(arq, "%c", &aux))
         {
             if (!aux)
                 vetorDfreq->vetor[0]++;

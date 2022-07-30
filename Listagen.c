@@ -29,12 +29,12 @@ struct celula
 /**
  * @brief Retira um item da lista usando um ponteiro para a Celula
  *        onde o item está incluido.
- * 
+ *
  * @param lista - Lista válida
  * @param Cel - Celula válida e incluida na lista
  * @return void * - Item da celula removida
  */
-static void* RetiraDaListaGenPorCel(Listagen *lista, Celula *Cel);
+static void *RetiraDaListaGenPorCel(Listagen *lista, Celula *Cel);
 //---------------------------------------------------------------------------------------------------------------------//
 
 Listagen *IniciaListaGen()
@@ -70,11 +70,9 @@ void InsereItemGen(Listagen *lista, void *item)
         lista->prim = nova; // caso comum
         nova->prox->ant = nova;
     }
-
 }
 
-
-void* RetiraDaListaGen(Listagen *lista, void *chave, int (*Comparador)(void *, void *))
+void *RetiraDaListaGen(Listagen *lista, void *chave, int (*Comparador)(void *, void *))
 {
     assert(lista || chave || Comparador);
 
@@ -86,10 +84,11 @@ void* RetiraDaListaGen(Listagen *lista, void *chave, int (*Comparador)(void *, v
         p = p->prox;
     }
 
-    if(!p){
+    if (!p)
+    {
         return NULL;
     }
-    void* item = p->item;
+    void *item = p->item;
     // Unico
     if (lista->prim == p && p->prox == NULL)
     {
@@ -120,18 +119,18 @@ void* RetiraDaListaGen(Listagen *lista, void *chave, int (*Comparador)(void *, v
     return item;
 }
 
-static void* RetiraDaListaGenPorCel(Listagen *lista, Celula *Cel)
+static void *RetiraDaListaGenPorCel(Listagen *lista, Celula *Cel)
 {
-    assert(lista || Cel);
+    assert(lista);
+    assert(Cel);
 
-    void* item = Cel->item;
+    void *item = Cel->item;
     // Unico
     if (lista->prim == Cel && Cel->prox == NULL)
     {
         lista->prim = NULL;
         lista->ult = NULL;
         free(Cel);
-       
     }
     // Primeiro
     else if (lista->prim == Cel)
@@ -156,7 +155,7 @@ static void* RetiraDaListaGenPorCel(Listagen *lista, Celula *Cel)
     return item;
 }
 
-void ImprimeListaGen(Listagen *lista, int (*Imprime)(void *))
+void ImprimeListaGen(Listagen *lista, void (*Imprime)(void *))
 {
     assert(lista);
     if (lista->prim == NULL)
@@ -203,7 +202,7 @@ Listagen *ReorganizaLista(Listagen *lista, int (*MenorQ)(void *, void *))
         {
             Celula *p = lista->prim;
             Celula *aux;
-            for (; p; p = p->prox)
+            for (; p && p->prox; p = p->prox)
             {
                 aux = p->prox;
                 if (MenorQ(aux, p))
@@ -225,7 +224,7 @@ int VaziaLista(Listagen *lista)
     assert(lista);
     if (lista)
     {
-        if (lista->prim == lista->ult == NULL)
+        if (lista->prim == lista->ult && lista->prim == NULL)
         {
             return 1;
         }
@@ -256,13 +255,14 @@ void *RetiraPrimeiro(Listagen *lista)
 
     if (lista->prim)
     {
-        if(lista->prim == lista->ult){
+        if (lista->prim == lista->ult)
+        {
             lista->ult = lista->prim->prox;
         }
         aux = lista->prim->item;
         Celula *liberar = lista->prim;
-        lista->prim = lista->prim->prox;    
-        
+        lista->prim = lista->prim->prox;
+
         free(liberar);
         return aux;
     }
@@ -277,10 +277,10 @@ void InsereUltItemGen(Listagen *lista, void *item)
     nova->item = item;
     nova->prox = NULL;
     nova->ant = lista->ult;
-    //encadeando
-    if(lista->ult) 
-       lista->ult->prox = nova;
-    //lista vazia
+    // encadeando
+    if (lista->ult)
+        lista->ult->prox = nova;
+    // lista vazia
     if (lista->prim == NULL)
         lista->prim = nova;
 
@@ -302,14 +302,15 @@ void *RetornaUlt(Listagen *lista)
     else
         return NULL;
 }
-//Compara entre arvore e char
-void * BuscaLista(Listagen* lista, int (*Compara)(void*, void*), void* chave){
-    Celula* p = lista->prim;
-    while (!Compara(p->item,chave) && p)
+// Compara entre arvore e char
+void *BuscaLista(Listagen *lista, int (*Compara)(void *, void *), void *chave)
+{
+    Celula *p = lista->prim;
+    while (!Compara(p->item, chave) && p)
     {
         p = p->prox;
     }
-    if(p)
+    if (p)
         return p->item;
     else
         return NULL;

@@ -47,7 +47,7 @@ void *RetiraDaListaGen(Listagen *lista, void *chave, int (*Comparador)(void *, v
  * @param lista
  * @param Imprime
  */
-void ImprimeListaGen(Listagen *lista, int (*Imprime)(void *));
+void ImprimeListaGen(Listagen *lista, void (*Imprime)(void *));
 
 /**
  * @brief Libera a lista dando free também no item dela caso
