@@ -27,14 +27,12 @@ int main(int argc, char const *argv[])
     // Faz lista de arvores
     int teste = 1;
     FILE *arquivo = fopen(aux, "r");
-    // fscanf(arquivo, "%s", aux);
-    // printf("%s",aux);
-    // rewind(arquivo);
     VetChar *VetorFreq = VetCharCria(arquivo);
     Listagen *lista = IniciaListaArv();
     PreencheLista(lista, VetorFreq);
 
     // Prepara para Algoritmo de Huffman
+    //TODO: Arrumar essa func que ta cagada, ver o resto
     ReorganizaListaArv(lista);
     // Listagen *lista2 = CopiaLista(lista);
 
@@ -104,7 +102,7 @@ void CodificaArq(FILE *arq, Arv *Huffman, VetChar *Vetor, FILE *arqSaida)
     while (!feof(arq))
     {
         // Ao ler um byte
-        if (fscanf(arq, "%1[]", aux))
+        if (fread(&aux,1,1,arq))
         {
             // Procura o mesmo na tabela
             index = 0;
