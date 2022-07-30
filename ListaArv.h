@@ -50,8 +50,9 @@ void ImprimeListaArv(Listagen *lista);
  * @brief Reorganiza lista baseada em peso
  *
  * @param lista - Lista de arvores valida
+ * @return Listagen* - Lista organizada
  */
-void ReorganizaListaArv(Listagen *lista);
+Listagen* ReorganizaListaArv(Listagen *lista);
 
 /**
  * @brief Percorre a lista de arvores executando a funcao

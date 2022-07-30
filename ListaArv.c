@@ -38,9 +38,9 @@ void ImprimeListaArv(Listagen *lista)
     ImprimeListaGen(lista, ImprimeArvListada);
 }
 
-void ReorganizaListaArv(Listagen *lista)
+Listagen* ReorganizaListaArv(Listagen *lista)
 {
-    ReorganizaLista(lista, MenorPeso);
+    return ReorganizaLista(lista, MenorPeso);
 }
 
 // TODO: Ver como corrigir conversao inadequada aqui

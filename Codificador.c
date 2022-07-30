@@ -9,6 +9,15 @@ struct TabelaDeCod
     bitmap **codigo;
 };
 
+/**
+ * @brief Abre o arquivo de saída com o nome do arquivo 
+ *        de entrada
+ * 
+ * @param path 
+ * @return FILE* 
+ */
+static FILE* AbreSaida(char path[200]);
+
 int main(int argc, char const *argv[])
 {
     /*
@@ -18,43 +27,46 @@ int main(int argc, char const *argv[])
         exit(1);
     }
     */
-    // 
+
+    //  Não precisa
     // strcpy(aux, argv[0]);
     // for (int i = strlen(aux); aux[i] != '/' && i > 0; i--)
     // {
     //     aux[i] = '\0';
     // }
-    char aux[200];
+
+    char path[200];
     
-    //strcat(aux, argv[1]);
-    sprintf(aux,"./teste.txt");    
+//    strcat(path, argv[1]);
+
+    //DEBUG
+    sprintf(path,"./teste.txt");    
+    
+    //Abre arquivo de entrada
+    FILE *arquivo = fopen(path, "r");
+    // Abre arquivo de saida//////////
+    FILE* saida = AbreSaida(path);
+
+    //Cria vetor de frequencia de char
+    VetChar *VetorFreq = VetCharCria(arquivo);
     
     // Faz lista de arvores
-    int teste = 1;
-    FILE *arquivo = fopen(aux, "r");
-    VetChar *VetorFreq = VetCharCria(arquivo);
     Listagen *lista = IniciaListaArv();
     PreencheLista(lista, VetorFreq);
 
-    // Prepara para Algoritmo de Huffman
-    ReorganizaListaArv(lista);
+    // Prepara para Algoritmo de Huffman(menor para maior)
+    lista = ReorganizaListaArv(lista);
 
     // Algoritmo
+    // Quebrado????
     Arv *arvorebase = FazArvoreHuffman(lista);
 
     // debug
     ArvImprime(arvorebase);
 
-    // Abre arquivo de saida
-    char aux2[200];
-    sscanf(aux,"./%[^.]",aux2);
-    
-    char aux3[205];
-    sprintf(aux3,"%s.comp",aux2);
+    // Faz Cabecalho 
+    // Pode virar uma função? FazCabecalho();
 
-    FILE *saida = fopen(aux3, "w");
- 
-    // Faz Cabecalho
     bitmap *SaidaArvore = ExportaArvore(arvorebase);
     int tamArv = bitmapGetLength(SaidaArvore);
     fprintf(saida, "%d", tamArv);
@@ -66,6 +78,7 @@ int main(int argc, char const *argv[])
     CodificaArq(arquivo, arvorebase, VetorFreq, saida);
 
     // Liberando memoria dinamica alocada
+    //Pode virar função? LiberaCodificador()
     fclose(arquivo);
     fclose(saida);
     LiberaListaArv(lista);
@@ -199,4 +212,14 @@ unsigned long int CalculaTamTotal(VetChar *Vetor, Tabela *tab, int tam)
         }
     }
     return TAM_TOTAL;
+}
+
+static FILE* AbreSaida(char path[200]){
+    char aux2[200];
+    sscanf(path,"./%[^.]",aux2);
+    
+    char aux3[205];
+    sprintf(aux3,"%s.comp",aux2);
+    
+    return fopen(aux3, "w");
 }
