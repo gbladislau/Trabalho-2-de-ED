@@ -87,7 +87,7 @@ void PreencheLista(Listagen *lista, VetChar *VetTemp)
     {
         if (VetGetPos(VetTemp, i))
         {
-            Arv *a = ArvCria(i, VetGetPos(VetTemp, i), ArvCriaVazia(), ArvCriaVazia());
+            Arv *a = ArvCria((char)i, VetGetPos(VetTemp, i), ArvCriaVazia(), ArvCriaVazia());
             InsereListaArv(lista, a);
         }
     }
@@ -133,7 +133,6 @@ static void ImprimeArvListada(void *e1)
     Arv *a1 = (Arv *)e1;
     return ArvImprime(a1);
 }
-
 
 // void ConverteVetorALista(Listagen *lista, VetChar *vetor)
 // {

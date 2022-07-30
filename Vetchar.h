@@ -1,7 +1,7 @@
 #ifndef VC_h
 #define VC_h
 
-#define MAX_VET 256
+#define MAX_VET 257
 
 #include <stdio.h>
 #include <stdlib.h>

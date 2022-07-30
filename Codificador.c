@@ -30,8 +30,8 @@ int main(int argc, char const *argv[])
     // fscanf(arquivo, "%s", aux);
     // printf("%s",aux);
     // rewind(arquivo);
-    Listagen *lista = IniciaListaArv();
     VetChar *VetorFreq = VetCharCria(arquivo);
+    Listagen *lista = IniciaListaArv();
     PreencheLista(lista, VetorFreq);
 
     // Prepara para Algoritmo de Huffman
