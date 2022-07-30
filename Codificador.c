@@ -56,9 +56,7 @@ int main(int argc, char const *argv[])
 
     // Prepara para Algoritmo de Huffman(menor para maior)
     lista = ReorganizaListaArv(lista);
-
     // Algoritmo
-    // Quebrado????
     Arv *arvorebase = FazArvoreHuffman(lista);
 
     // debug
@@ -75,6 +73,9 @@ int main(int argc, char const *argv[])
     bitmapLibera(SaidaArvore);
 
     // Codificacao e saida da arvore
+    // Resto todo parece funcionar sem problemas (ALG de Huffman parece estar ok)
+    // porém 
+    // CODIFICA CHAR COM PROBLEMAS (HELP!!!)
     CodificaArq(arquivo, arvorebase, VetorFreq, saida);
 
     // Liberando memoria dinamica alocada

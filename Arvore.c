@@ -140,7 +140,11 @@ bitmap *ExportaArvore(Arv *a)
     unsigned int h = ArvAltura(a);
     unsigned int qntdfolhas = QntdFolhas(a);
     unsigned int tam = 1 + (h * 2) + (qntdfolhas * 8);
-
+    while (tam%8)
+    {
+        tam++;
+    }
+    
     bitmap *mapa = bitmapInit(tam);
 
     VarreduraArv(mapa, a);
@@ -187,13 +191,14 @@ void EscreveChar(bitmap *mapa, char letrona)
 
 int PosiscaoChar(Arv *raiz, char c)
 {
-    if (ExisteChar(raiz->esq, c))
-    {
-        return 0;
+    if(raiz){
+        if (ExisteChar(raiz->esq, c))
+            return 0;
+        else
+            return 1;
     }
-    else
-        return 1;
 }
+
 
 int ExisteChar(Arv *a, char c)
 {
@@ -237,15 +242,17 @@ static int max(int a, int b)
 // TODO: RENOMEIA E PIPIPPOPO
 static void Recursiva(bitmap *codificando, Arv *a, char c)
 {
-    if (!PosiscaoChar(a, c)) // Esta na esquerda
-    {
-        bitmapAppendLeastSignificantBit(codificando, 0);
-        Recursiva(codificando, a->esq, c);
-    }
-    else // Esta na direita
-    {
-        bitmapAppendLeastSignificantBit(codificando, 1);
-        Recursiva(codificando, a->dir, c);
+    if(a){
+        if (!PosiscaoChar(a, c)) // Esta na esquerda
+        {
+            bitmapAppendLeastSignificantBit(codificando, 0);
+            Recursiva(codificando, a->esq, c);
+        }
+        else // Esta na direita
+        {
+            bitmapAppendLeastSignificantBit(codificando, 1);
+            Recursiva(codificando, a->dir, c);
+        }
     }
 }
 
