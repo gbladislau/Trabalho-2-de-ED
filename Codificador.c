@@ -18,6 +18,9 @@ struct TabelaDeCod
  */
 static FILE* AbreSaida(char path[200]);
 
+
+static void LiberaCodificador(FILE* ent, FILE* saida, VetChar* vetor, Listagen* lista);
+
 int main(int argc, char const *argv[])
 {
     /*
@@ -64,7 +67,6 @@ int main(int argc, char const *argv[])
 
     // Faz Cabecalho 
     // Pode virar uma função? FazCabecalho();
-
     bitmap *SaidaArvore = ExportaArvore(arvorebase);
     int tamArv = bitmapGetLength(SaidaArvore);
     fprintf(saida, "%d", tamArv);
@@ -80,11 +82,8 @@ int main(int argc, char const *argv[])
 
     // Liberando memoria dinamica alocada
     //Pode virar função? LiberaCodificador()
-    fclose(arquivo);
-    fclose(saida);
-    LiberaListaArv(lista);
-    LiberaVetChar(VetorFreq);
 
+    LiberaCodificador(arquivo,saida,VetorFreq,lista);
     return 0;
 }
 
@@ -223,4 +222,11 @@ static FILE* AbreSaida(char path[200]){
     sprintf(aux3,"%s.comp",aux2);
     
     return fopen(aux3, "w");
+}
+
+static void LiberaCodificador(FILE* ent, FILE* saida, VetChar* vetor, Listagen* lista){
+    fclose(ent);
+    fclose(saida);
+    LiberaVetChar(vetor);
+    LiberaListaArv(lista);
 }
