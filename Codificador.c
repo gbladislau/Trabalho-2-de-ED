@@ -53,18 +53,18 @@ static void LiberaCodificador(FILE *ent, FILE *saida, VetChar *vetor, Listagen *
 int main(int argc, char const *argv[])
 {
     
-    if (argc < 2)
-    {
-        printf("USO: ./prog <nomedoarquivo>\n");
-        exit(1);
-    }
+    // if (argc < 2)
+    // {
+    //     printf("USO: ./prog <nomedoarquivo>\n");
+    //     exit(1);
+    // }
     
 
     char path[200];
-    strcpy(path,argv[1]);
+   // strcpy(path,argv[1]);
 
     // DEBUG
-    //sprintf(path, "./teste.txt");
+    sprintf(path, "./teste.txt");
 
     // Abre arquivo de entrada
     FILE *arquivo = fopen(path, "r");
@@ -139,9 +139,12 @@ void CodificaArq(FILE *arq, Arv *Huffman, VetChar *Vetor, FILE *arqSaida)
     while (!feof(arq))
     {
         // Ao ler um byte
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////// 
+        //////////////// ERRO: não lê ç Ç Á á ////// solução mudar char aux para unsigned int (tem q mudar la em cima tbm)/
         if (fread(&aux, 1, 1, arq))
         {
-            // Procura o mesmo na tabela
+            // Procura o mesmo na tabela(precisa??????)
             index = 0;
             while (index < tam && tab->carac[index] != aux)
             {
