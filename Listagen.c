@@ -50,18 +50,18 @@ Listagen *IniciaListaGen()
 // INSERE NO INICIO
 void InsereItemGen(Listagen *lista, void *item)
 {
-    assert(lista&& item);
+    assert(lista && item);
 
-    Celula* nova = (Celula*)malloc(sizeof(Celula));
+    Celula *nova = (Celula *)malloc(sizeof(Celula));
     assert(nova != NULL);
-    
+
     nova->ant = lista->ult;
 
-    if(lista->ult)
+    if (lista->ult)
         lista->ult->prox = nova;
-    if(!lista->prim)
+    if (!lista->prim)
         lista->prim = nova;
-    
+
     lista->ult = nova;
     nova->prox = NULL;
     nova->item = item;
@@ -85,31 +85,37 @@ void *RetiraDaListaGen(Listagen *lista, void *chave, int (*Comparador)(void *, v
     }
     void *item = aux->item;
 
-    //lista vazia
-    if(aux == NULL) return NULL;
+    // lista vazia
+    if (aux == NULL)
+        return NULL;
 
-    if(aux == lista->prim){
-        //unico da lista
-        if(aux == lista->ult){
+    if (aux == lista->prim)
+    {
+        // unico da lista
+        if (aux == lista->ult)
+        {
             free(aux);
             lista->prim = NULL;
             lista->ult = NULL;
         }
-        //primeiro da lista
-        else{
+        // primeiro da lista
+        else
+        {
             aux->prox->ant = NULL;
             lista->prim = aux->prox;
             free(aux);
         }
     }
-    //ultimo da lista
-    else if(aux == lista->ult){
+    // ultimo da lista
+    else if (aux == lista->ult)
+    {
         aux->ant->prox = NULL;
         lista->ult = aux->ant;
         free(aux);
     }
     // meio da lista
-    else{
+    else
+    {
         aux->ant->prox = aux->prox;
         aux->prox->ant = aux->ant;
         free(aux);
@@ -125,39 +131,44 @@ static void *RetiraDaListaGenPorCel(Listagen *lista, Celula *aux)
 
     void *item = aux->item;
 
-    //lista vazia
-    if(aux == NULL) return NULL;
+    // lista vazia
+    if (aux == NULL)
+        return NULL;
 
-    if(aux == lista->prim){
-        //unico da lista
-        if(aux == lista->ult){
+    if (aux == lista->prim)
+    {
+        // unico da lista
+        if (aux == lista->ult)
+        {
             free(aux);
             lista->prim = NULL;
             lista->ult = NULL;
         }
-        //primeiro da lista
-        else{
+        // primeiro da lista
+        else
+        {
             aux->prox->ant = NULL;
             lista->prim = aux->prox;
             free(aux);
         }
     }
-    //ultimo da lista
-    else if(aux == lista->ult){
+    // ultimo da lista
+    else if (aux == lista->ult)
+    {
         aux->ant->prox = NULL;
         lista->ult = aux->ant;
         free(aux);
     }
     // meio da lista
-    else{
+    else
+    {
         aux->ant->prox = aux->prox;
-        if(aux->prox)
+        if (aux->prox)
             aux->prox->ant = aux->ant;
         free(aux);
     }
 
     return item;
-    
 }
 
 void ImprimeListaGen(Listagen *lista, void (*Imprime)(void *))
@@ -209,7 +220,7 @@ Listagen *ReorganizaLista(Listagen *lista, int (*MenorQ)(void *, void *))
             Celula *aux = p;
             for (; p && p->prox; p = p->prox)
             {
-                 aux = p->prox;
+                aux = p->prox;
                 if (MenorQ(aux, p))
                 {
                     aux = p;
@@ -218,7 +229,7 @@ Listagen *ReorganizaLista(Listagen *lista, int (*MenorQ)(void *, void *))
             InsereItemGen(listaNova, aux->item);
             RetiraDaListaGenPorCel(lista, aux);
         }
-
+        free(lista);
         return listaNova;
     }
     return lista;

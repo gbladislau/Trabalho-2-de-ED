@@ -50,7 +50,7 @@ Arv *ArvCria(char letra, int peso, Arv *esq, Arv *dir)
 
 Arv *ArvLibera(Arv *a)
 {
-    if (a != NULL)
+    if (a)
     {
         ArvLibera(a->dir);
         ArvLibera(a->esq);
@@ -68,14 +68,16 @@ int ArvVazia(Arv *a)
 
 void ArvImprime(Arv *a)
 {
+    printf("<");
     if (a)
     {
         if (a->letra)
-            printf("%c ", a->letra);
-        printf("%d; ", a->peso);
+            printf("%c-", a->letra);
+        printf("%d", a->peso);
         ArvImprime(a->esq);
         ArvImprime(a->dir);
     }
+    printf(">");
 }
 
 Arv *ArvPai(Arv *a, char c)
@@ -139,12 +141,12 @@ bitmap *ExportaArvore(Arv *a)
 
     unsigned int h = ArvAltura(a);
     unsigned int qntdfolhas = QntdFolhas(a);
-    unsigned int tam = 1 + (h * 2) + (qntdfolhas * 8);
-    while (tam%8)
+    unsigned int tam = (1 + (h * 2) + (qntdfolhas * 8) * 2);
+    while (tam % 8)
     {
         tam++;
     }
-    
+
     bitmap *mapa = bitmapInit(tam);
 
     VarreduraArv(mapa, a);
@@ -191,14 +193,14 @@ void EscreveChar(bitmap *mapa, char letrona)
 
 int PosiscaoChar(Arv *raiz, char c)
 {
-    if(raiz){
+    if (raiz)
+    {
         if (ExisteChar(raiz->esq, c))
             return 0;
         else
             return 1;
     }
 }
-
 
 int ExisteChar(Arv *a, char c)
 {
@@ -242,13 +244,15 @@ static int max(int a, int b)
 // TODO: RENOMEIA E PIPIPPOPO
 static void Recursiva(bitmap *codificando, Arv *a, char c)
 {
-    if(a){
+    //Tem que verificar se eh um no, pq caso seja uma folha nao precisa codificar
+    if (EhNo(a))
+    {
         if (!PosiscaoChar(a, c)) // Esta na esquerda
         {
             bitmapAppendLeastSignificantBit(codificando, 0);
             Recursiva(codificando, a->esq, c);
         }
-        else // Esta na direita
+        else// Esta na direita
         {
             bitmapAppendLeastSignificantBit(codificando, 1);
             Recursiva(codificando, a->dir, c);
@@ -258,10 +262,10 @@ static void Recursiva(bitmap *codificando, Arv *a, char c)
 
 bitmap *CodificaChar(Arv *raiz, char carac)
 {
-    
+    bitmap *codigo = bitmapInit(ArvAltura(raiz) * 2);
     if (ExisteChar(raiz, carac))
     {
-        bitmap *codigo = bitmapInit(8);
         Recursiva(codigo, raiz, carac);
     }
+    return codigo;
 }

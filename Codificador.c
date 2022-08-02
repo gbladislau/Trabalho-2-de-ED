@@ -10,16 +10,15 @@ struct TabelaDeCod
 };
 
 /**
- * @brief Abre o arquivo de saída com o nome do arquivo 
+ * @brief Abre o arquivo de saída com o nome do arquivo
  *        de entrada
- * 
- * @param path 
- * @return FILE* 
+ *
+ * @param path
+ * @return FILE*
  */
-static FILE* AbreSaida(char path[200]);
+static FILE *AbreSaida(char path[200]);
 
-
-static void LiberaCodificador(FILE* ent, FILE* saida, VetChar* vetor, Listagen* lista);
+static void LiberaCodificador(FILE *ent, FILE *saida, VetChar *vetor, Listagen *lista);
 
 int main(int argc, char const *argv[])
 {
@@ -39,25 +38,26 @@ int main(int argc, char const *argv[])
     // }
 
     char path[200];
-    
-//    strcat(path, argv[1]);
 
-    //DEBUG
-    sprintf(path,"./teste.txt");    
-    
-    //Abre arquivo de entrada
+    //    strcat(path, argv[1]);
+
+    // DEBUG
+    sprintf(path, "./teste.txt");
+
+    // Abre arquivo de entrada
     FILE *arquivo = fopen(path, "r");
     // Abre arquivo de saida//////////
-    FILE* saida = AbreSaida(path);
+    FILE *saida = AbreSaida(path);
 
-    //Cria vetor de frequencia de char
+    // Cria vetor de frequencia de char
     VetChar *VetorFreq = VetCharCria(arquivo);
-    
+
     // Faz lista de arvores
     Listagen *lista = IniciaListaArv();
     PreencheLista(lista, VetorFreq);
 
     // Prepara para Algoritmo de Huffman(menor para maior)
+    //O VAZAMENTO DE MEMORIA ACONTECE AQUI
     lista = ReorganizaListaArv(lista);
     // Precisa verificar a lista após reoganização
     // imprimir lista ;
@@ -68,8 +68,10 @@ int main(int argc, char const *argv[])
     // debug
     ArvImprime(arvorebase);
 
-    // Faz Cabecalho 
+    // Faz Cabecalho
     // Pode virar uma função? FazCabecalho();
+    //TODO: Testar se realmente todos os dados do cabecalho estao sendo escritos corretamente
+
     bitmap *SaidaArvore = ExportaArvore(arvorebase);
     int tamArv = bitmapGetLength(SaidaArvore);
     fprintf(saida, "%d", tamArv);
@@ -77,17 +79,20 @@ int main(int argc, char const *argv[])
     fwrite(bitmapGetContents(SaidaArvore), 1, bitmapGetLength(SaidaArvore) / 8, saida);
     bitmapLibera(SaidaArvore);
 
-    // Codificacao e saida da arvore
-    // Resto todo parece funcionar sem problemas (ALG de Huffman parece estar ok)
-    // porém 
-    // CODIFICA CHAR COM PROBLEMAS (HELP!!!)
-    // Olhei a fundo e precisamos resolver a parte que o código não esta sendo escrito no Bitmap(dando muito errado);
+
+    //Agora totalmente funcional
     CodificaArq(arquivo, arvorebase, VetorFreq, saida);
 
     // Liberando memoria dinamica alocada
-    //Pode virar função? LiberaCodificador()
+    // Pode virar função? LiberaCodificador()
 
-    LiberaCodificador(arquivo,saida,VetorFreq,lista);
+    // LiberaCodificador(arquivo,saida,VetorFreq,lista);
+
+    fclose(arquivo);
+    fclose(saida);
+    LiberaListaArv(lista);
+    LiberaVetChar(VetorFreq);
+
     return 0;
 }
 
@@ -116,6 +121,8 @@ void CodificaArq(FILE *arq, Arv *Huffman, VetChar *Vetor, FILE *arqSaida)
     int tam = QntdFolhas(Huffman);
 
     Tabela *tab = MontandoTabela(Huffman, Vetor, tam);
+
+    // Escreve o tamanho total do arquivo - Subcabecalho do arquivo
     unsigned long int TAM_TOTAL = CalculaTamTotal(Vetor, tab, tam);
     fprintf(arqSaida, "%ld", TAM_TOTAL);
 
@@ -126,7 +133,7 @@ void CodificaArq(FILE *arq, Arv *Huffman, VetChar *Vetor, FILE *arqSaida)
     while (!feof(arq))
     {
         // Ao ler um byte
-        if (fread(&aux,1,1,arq))
+        if (fread(&aux, 1, 1, arq))
         {
             // Procura o mesmo na tabela
             index = 0;
@@ -191,11 +198,12 @@ Tabela *MontandoTabela(Arv *Huffman, VetChar *vetor, int tam)
 
 void LiberaTabela(Tabela *tab, int qntd)
 {
-    free(tab->carac);
     for (int i = 0; i < qntd; i++)
     {
         bitmapLibera(tab->codigo[i]);
     }
+    free(tab->codigo);
+    free(tab->carac);
     free(tab);
 }
 
@@ -218,17 +226,19 @@ unsigned long int CalculaTamTotal(VetChar *Vetor, Tabela *tab, int tam)
     return TAM_TOTAL;
 }
 
-static FILE* AbreSaida(char path[200]){
+static FILE *AbreSaida(char path[200])
+{
     char aux2[200];
-    sscanf(path,"./%[^.]",aux2);
-    
+    sscanf(path, "./%[^.]", aux2);
+
     char aux3[205];
-    sprintf(aux3,"%s.comp",aux2);
-    
+    sprintf(aux3, "%s.comp", aux2);
+
     return fopen(aux3, "w");
 }
 
-static void LiberaCodificador(FILE* ent, FILE* saida, VetChar* vetor, Listagen* lista){
+static void LiberaCodificador(FILE *ent, FILE *saida, VetChar *vetor, Listagen *lista)
+{
     fclose(ent);
     fclose(saida);
     LiberaVetChar(vetor);
