@@ -9,7 +9,7 @@
  */
 struct arv
 {
-    char letra;
+    unsigned char letra;
     int peso;
     Arv *esq;
     Arv *dir;
@@ -35,7 +35,7 @@ Arv *ArvCriaVazia()
     return NULL;
 }
 
-Arv *ArvCria(char letra, int peso, Arv *esq, Arv *dir)
+Arv *ArvCria(unsigned char letra, int peso, Arv *esq, Arv *dir)
 {
     Arv *nova = (Arv *)malloc(sizeof(Arv));
     assert(nova);
@@ -80,7 +80,7 @@ void ArvImprime(Arv *a)
     printf(">");
 }
 
-Arv *ArvPai(Arv *a, char c)
+Arv *ArvPai(Arv *a, unsigned char c)
 {
     if (a)
     {
@@ -115,7 +115,7 @@ int QntdFolhas(Arv *a)
     }
 }
 
-char ArvChar(Arv *a)
+unsigned char ArvChar(Arv *a)
 {
     assert(a);
     return a->letra;
@@ -174,7 +174,7 @@ int EhFolha(Arv *a)
     return 0;
 }
 
-void EscreveChar(bitmap *mapa, char letrona)
+void EscreveChar(bitmap *mapa, unsigned char letrona)
 {
     unsigned int aux = (unsigned int)letrona;
     unsigned int enviado = 0;
@@ -191,7 +191,7 @@ void EscreveChar(bitmap *mapa, char letrona)
     }
 }
 
-int PosiscaoChar(Arv *raiz, char c)
+int PosiscaoChar(Arv *raiz, unsigned char c)
 {
     if (raiz)
     {
@@ -202,7 +202,7 @@ int PosiscaoChar(Arv *raiz, char c)
     }
 }
 
-int ExisteChar(Arv *a, char c)
+int ExisteChar(Arv *a, unsigned char c)
 {
     if (a)
     {
@@ -242,7 +242,7 @@ static int max(int a, int b)
 }
 
 // TODO: RENOMEIA E PIPIPPOPO
-static void Recursiva(bitmap *codificando, Arv *a, char c)
+static void Recursiva(bitmap *codificando, Arv *a, unsigned char c)
 {
     //Tem que verificar se eh um no, pq caso seja uma folha nao precisa codificar
     if (EhNo(a))
@@ -260,7 +260,7 @@ static void Recursiva(bitmap *codificando, Arv *a, char c)
     }
 }
 
-bitmap *CodificaChar(Arv *raiz, char carac)
+bitmap *CodificaChar(Arv *raiz, unsigned char carac)
 {
     bitmap *codigo = bitmapInit(ArvAltura(raiz) * 2);
     if (ExisteChar(raiz, carac))

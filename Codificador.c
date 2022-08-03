@@ -6,11 +6,11 @@
 /**
  * @brief Tabela que carrega os caracteres e seus
  *        respectivos códigos em bitmap;
- * 
+ *
  */
 struct TabelaDeCod
 {
-    char *carac;
+    unsigned char *carac;
     bitmap **codigo;
 };
 //------------------------- Funções Privadas ----------------------------------------//
@@ -24,24 +24,24 @@ struct TabelaDeCod
 static FILE *AbreSaida(char path[200]);
 
 /**
- * @brief 
- * 
+ * @brief
+ *
  * @param path - local e nome do arq. de entrada
  * @param saida  - arq de saida
  */
-static void ColocaExtensaoNaSaida(char path[200], FILE* saida);
+static void ColocaExtensaoNaSaida(char path[200], FILE *saida);
 
 /**
  * @brief Monta o cabeçalho do arquivo comprimido
- * 
- * @param arvorebase - arvore de huffman 
+ *
+ * @param arvorebase - arvore de huffman
  * @param saida - arquivo de saida
  */
-static void ColocaArvoreNaSaida(Arv* arvorebase, FILE* saida);
+static void ColocaArvoreNaSaida(Arv *arvorebase, FILE *saida);
 
 /**
  * @brief Libera a memoria dinamicamente alocada
- * 
+ *
  * @param ent - arquivo de entrada
  * @param saida - arquivo de saida
  * @param vetor - vetor de frenquencia de char
@@ -52,16 +52,15 @@ static void LiberaCodificador(FILE *ent, FILE *saida, VetChar *vetor, Listagen *
 
 int main(int argc, char const *argv[])
 {
-    
+
     // if (argc < 2)
     // {
     //     printf("USO: ./prog <nomedoarquivo>\n");
     //     exit(1);
     // }
-    
 
     char path[200];
-   // strcpy(path,argv[1]);
+    // strcpy(path,argv[1]);
 
     // DEBUG
     sprintf(path, "./teste.txt");
@@ -70,8 +69,8 @@ int main(int argc, char const *argv[])
     FILE *arquivo = fopen(path, "r");
     // Abre arquivo de saida//////////
     FILE *saida = AbreSaida(path);
-    
-    ColocaExtensaoNaSaida(path,saida);
+
+    ColocaExtensaoNaSaida(path, saida);
 
     // Cria vetor de frequencia de char
     VetChar *VetorFreq = VetCharCria(arquivo);
@@ -89,15 +88,15 @@ int main(int argc, char const *argv[])
     // debug
     ArvImprime(arvorebase);
 
-    //Faz o cabeçalho do arquivo de saida
-    //ARVORE EXPORTADA COM SUCESSO, ATENÇÂO NA HORA DE LER (gastou 2 bytes para escrever o tamanho(19) com o teste = oi)
-    ColocaArvoreNaSaida(arvorebase,saida);
+    // Faz o cabeçalho do arquivo de saida
+    // ARVORE EXPORTADA COM SUCESSO, ATENÇÂO NA HORA DE LER (gastou 2 bytes para escrever o tamanho(19) com o teste = oi)
+    ColocaArvoreNaSaida(arvorebase, saida);
 
     // Codifica o arquivo de acordo com a arvore de huffman
     CodificaArq(arquivo, arvorebase, VetorFreq, saida);
 
     // Liberando memoria dinamica alocada
-    LiberaCodificador(arquivo,saida,VetorFreq,lista);
+    LiberaCodificador(arquivo, saida, VetorFreq, lista);
 
     return 0;
 }
@@ -133,14 +132,14 @@ void CodificaArq(FILE *arq, Arv *Huffman, VetChar *Vetor, FILE *arqSaida)
     fprintf(arqSaida, "%ld", TAM_TOTAL);
 
     // Codificacao do arquivo de fato
-    char aux;
+    unsigned char aux;
     int index;
     bitmap *codificando;
     while (!feof(arq))
     {
         // Ao ler um byte
 
-        ///////////////////////////////////////////////////////////////////////////////////////////////////// 
+        /////////////////////////////////////////////////////////////////////////////////////////////////////
         //////////////// ERRO: não lê ç Ç Á á ////// solução mudar char aux para unsigned int (tem q mudar la em cima tbm)/
         if (fread(&aux, 1, 1, arq))
         {
@@ -190,7 +189,7 @@ Tabela *MontandoTabela(Arv *Huffman, VetChar *vetor, int tam)
 
     int count = 0;
 
-    tab->carac = (char *)malloc(tam * sizeof(char));
+    tab->carac = (unsigned char *)malloc(tam * sizeof(unsigned char));
     tab->codigo = (bitmap **)malloc(tam * sizeof(bitmap *));
 
     // Preenchendo a tabela
@@ -200,7 +199,7 @@ Tabela *MontandoTabela(Arv *Huffman, VetChar *vetor, int tam)
         {
             // para cada caracter existente no arquivo de saida um código é criado aqui
             // o i representa o caracter no vetor de frequencia
-            tab->carac[count] = (char)i;
+            tab->carac[count] = (unsigned char)i;
             tab->codigo[count] = CodificaChar(Huffman, tab->carac[count]);
             count++;
         }
@@ -228,7 +227,7 @@ unsigned long int CalculaTamTotal(VetChar *Vetor, Tabela *tab, int tam)
         {
             for (int j = 0; j < tam; j++)
             {
-                if (tab->carac[j] == (char)i)
+                if (tab->carac[j] == (unsigned char)i)
                 {
                     TAM_TOTAL += VetGetPos(Vetor, i) * bitmapGetLength(tab->codigo[j]);
                 }
@@ -257,17 +256,19 @@ static void LiberaCodificador(FILE *ent, FILE *saida, VetChar *vetor, Listagen *
     LiberaListaArv(lista);
 }
 
-static void ColocaArvoreNaSaida(Arv* arvorebase, FILE* saida){
+static void ColocaArvoreNaSaida(Arv *arvorebase, FILE *saida)
+{
     bitmap *SaidaArvore = ExportaArvore(arvorebase);
     unsigned int tamArv = bitmapGetLength(SaidaArvore);
     fprintf(saida, "%d", tamArv);
     CompletaByteBitmap(SaidaArvore);
-    fwrite(bitmapGetContents(SaidaArvore), 1, bitmapGetLength(SaidaArvore) / 8, saida);    
+    fwrite(bitmapGetContents(SaidaArvore), 1, bitmapGetLength(SaidaArvore) / 8, saida);
     bitmapLibera(SaidaArvore);
 }
 
-static void ColocaExtensaoNaSaida(char path[200], FILE* saida){
+static void ColocaExtensaoNaSaida(char path[200], FILE *saida)
+{
     char ext[200];
-    sscanf(path,"./%*[^.]%s",ext);
-    fprintf(saida, "%ld%s", strlen(ext),ext);
+    sscanf(path, "./%*[^.]%s", ext);
+    fprintf(saida, "%ld%s", strlen(ext), ext);
 }

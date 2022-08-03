@@ -37,7 +37,7 @@ void RetiraListaArvPeso(Listagen *lista, int Peso);
  * @param lista - Lista valida
  * @param letra - Letra buscada
  */
-void RetiraListaArvLetra(Listagen *lista, char letra);
+void RetiraListaArvLetra(Listagen *lista, unsigned char letra);
 
 /**
  * @brief Imprime a lista de arvores
@@ -97,7 +97,7 @@ void LiberaListaArv(Listagen *lista);
  */
 void ConverteVetorALista(Listagen *lista, VetChar *vetor);
 
-Arv* BuscaArvChar(Listagen* lista, char c);
+Arv* BuscaArvChar(Listagen* lista, unsigned char c);
 
 // Listagen* CopiaLista(Listagen* origem);
 

@@ -27,7 +27,7 @@ void RetiraListaArvPeso(Listagen *lista, int Peso)
     RetiraDaListaGen(lista, arg, ComparaPeso);
 }
 
-void RetiraListaArvLetra(Listagen *lista, char letra)
+void RetiraListaArvLetra(Listagen *lista, unsigned char letra)
 {
     void *arg = &letra;
     RetiraDaListaGen(lista, arg, ComparaLetra);
@@ -87,13 +87,13 @@ void PreencheLista(Listagen *lista, VetChar *VetTemp)
     {
         if (VetGetPos(VetTemp, i))
         {
-            Arv *a = ArvCria((char)i, VetGetPos(VetTemp, i), ArvCriaVazia(), ArvCriaVazia());
+            Arv *a = ArvCria((unsigned char)i, VetGetPos(VetTemp, i), ArvCriaVazia(), ArvCriaVazia());
             InsereListaArv(lista, a);
         }
     }
 }
 
-Arv *BuscaArvChar(Listagen *lista, char c)
+Arv *BuscaArvChar(Listagen *lista, unsigned char c)
 {
     return BuscaLista(lista, ComparaLetra, &c);
 }
@@ -117,7 +117,7 @@ static int ComparaPeso(void *e1, void *e2)
 static int ComparaLetra(void *e1, void *e2)
 {
     Arv *a1 = (Arv *)e1;
-    char *letra = (char *)e2;
+    unsigned char *letra = (unsigned char *)e2;
     return (ArvChar(a1) == *letra);
 }
 

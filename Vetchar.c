@@ -33,7 +33,7 @@ int VetGetPos(VetChar *vet, int i)
 
 static void PreencheVetChar(VetChar *vetorDfreq, FILE *arq)
 {
-    char aux;
+    unsigned char aux;
     // TODO:VOLTAR AQUi
     while (!feof(arq))
     {
