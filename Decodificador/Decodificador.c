@@ -30,7 +30,10 @@ int main(int argc, char const *argv[])
     FILE *saida = CriaSaida(entrada, argv[1]);
 
     // pegando arvore
-    Arv *huffman = PegaArvore(entrada);
+    Arv *arvore = PegaArvore(entrada);
+
+    //ler arquivo e usar arvore para descoficiar
+    DescodificarSaida(saida,arvore,saida);
 
 
     return 0;
@@ -90,7 +93,7 @@ Arv *PegaArvore(FILE *entrada)
     PreencheBitMapArquivo(arv, entrada, qntDeBits);
     Arv *arvoresaida = FazArvdeBitMap(arv);
 
-    return arvore;
+    return arvoresaida;
 }
 
 void PreencheBitMapArquivo(bitmap *arv, FILE *arquivo, int qntBit)
@@ -131,47 +134,6 @@ void PreencheBitMapArquivo(bitmap *arv, FILE *arquivo, int qntBit)
     }
 }
 
-/*  Tipo bitmap indexado, esta aqui temporariamente para
-    facilitar acesso. Ele trata um bitmap como uma pilha */
-typedef struct bitIndex BitIndex;
-
-struct bitIndex
-{
-    bitmap *bitmap;
-    int index;
-};
-
-BitIndex *IniciaBitIndex(bitmap *bitm)
-{
-    BitIndex *saida = (BitIndex *)malloc(sizeof(BitIndex));
-    saida->bitmap = bitm;
-    saida->index = 0;
-    return saida;
-}
-
-unsigned char ProxBit(BitIndex *bitmap)
-{
-    bitmap->index++;
-    return bitmapGetBit(bitmap->bitmap, bitmap->index - 1);
-}
-
-unsigned char LeCaractere(BitIndex *base)
-{
-    bitmap *temp = bitmapInit(9);
-
-    for (int i = 0; i < 8; i++)
-    {
-        bitmapAppendLeastSignificantBit(temp, ProxBit(base));
-    }
-
-    return bitmapGetContents(temp);
-}
-
-// N libera o bitmap dentro!
-void LiberaBitIndx(BitIndex *bitmap) { free(bitmap); }
-
-// Fim de Bitmap Indexado
-
 //Talvez isso deveria ir para arvore
 //Funcao para iniciar o loop//recursao
 Arv *FazArvdeBitMap(bitmap *bitmap)
@@ -190,12 +152,49 @@ Arv *FazArvdeBitMap(bitmap *bitmap)
         saida = ArvCria(NULL, 0,
                         ArvCriaVazia(),
                         ArvCriaVazia());
+        //definida em Arvore.c
         RecursividadeArvBit(bitindexado, saida);
     }
     return saida;
 }
 
-//Aqui seguira o desenhado na folha - imagem no nagazap
-void RecursividadeArvBit(BitIndex *bitmap, Arv *pai)
-{
+void DescodificarEntrada(FILE* entrada, Arv* arvore, FILE* saida){
+    unsigned long int tamTotal;
+    fscanf(entrada,"%ld", &tamTotal);
+
+    unsigned char aux;
+    unsigned char charDecodificado;
+    
+
+    int resto = 0
+    while (!feof(entrada))
+    {
+    
+        if(fread(&aux, 1, 1, arq) == 0)
+            break;
+    
+        bitmap* descodificando = bitmapInit(8 + resto);
+        //escreve um byte em bitmap
+        EscreveChar(descodificando,aux);
+       
+        // bitmap para bitindex
+        BitIndex* p = IniciaBitIndex(descodificando);
+        free(descodificando);
+
+        //pega o caractere de acordo com a arvore
+        charDecodificado = PercorreArvorePorBit(p,arvore);
+        
+        //Aqui temos que criar uma forma de concatenar um byte
+        //ao que falta de bits do byte anterior (ajuda)
+        for (int i = 0; i < ; i++)
+        {
+                /* code */
+        }
+            
+
+
+    }
+
+    bitmapLibera(s);
+    LiberaBitIndx(saida);
 }

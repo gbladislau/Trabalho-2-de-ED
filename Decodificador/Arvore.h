@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <assert.h>
 #include "bitmap.h"
+#include "Bitindex.h"
 
 typedef struct arv Arv;
 
@@ -134,6 +135,19 @@ int ExisteChar(Arv *a, unsigned char c);
  */
 bitmap *CodificaChar(Arv *raiz, unsigned char carac);
 
-// Retirar depois, esta aqui para teste na main
+/**
+ * @brief Escreve o char em bits (ascii)
+ * 
+ * @param mapa - onde o char sera escrito
+ * @param letrona - char a ser escrito em bits
+ */
 void EscreveChar(bitmap *mapa, unsigned char letrona);
+
+/**
+ * @brief 
+ * 
+ * @param bitmap 
+ * @param pai 
+ */
+void RecursividadeArvBit(BitIndex *bitmap, Arv *pai);
 #endif /* arvore_h */

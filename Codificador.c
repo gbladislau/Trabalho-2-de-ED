@@ -138,12 +138,9 @@ void CodificaArq(FILE *arq, Arv *Huffman, VetChar *Vetor, FILE *arqSaida)
     while (!feof(arq))
     {
         // Ao ler um byte
-
-        /////////////////////////////////////////////////////////////////////////////////////////////////////
-        //////////////// ERRO: não lê ç Ç Á á ////// solução mudar char aux para unsigned int (tem q mudar la em cima tbm)/
         if (fread(&aux, 1, 1, arq))
         {
-            // Procura o mesmo na tabela(precisa??????)
+            // Procura o mesmo na tabela
             index = 0;
             while (index < tam && tab->carac[index] != aux)
             {

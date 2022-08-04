@@ -269,3 +269,48 @@ bitmap *CodificaChar(Arv *raiz, unsigned char carac)
     }
     return codigo;
 }
+
+//Aqui seguira o desenhado na folha - imagem no nagazap
+void RecursividadeArvBit(BitIndex *bitmap, Arv *pai)
+{
+    //se pai for nó
+    if(EhNo(pai)){
+        //verifica se prox é 0 ou 1
+        if(ProxBit(bitmap)){
+
+            //verifica se a esquerda ja tem algo 
+            if(!pai->esq){
+                //coloca char
+                pai->esq = ArvCria(LeCaractere(bitmap), 0, ArvCriaVazia(), ArvCriaVazia());
+            }
+            //verifica se a direita ja tem algo
+            else if(!pai->dir){
+                //coloca char
+                pai->dir = ArvCria(LeCaractere(bitmap), 0, ArvCriaVazia(), ArvCriaVazia());
+            }
+        
+        }
+        //se for 0 abre uma nova folha
+        else{
+            if(!pai->esq)
+                RecursividadeArvBit(bitmap,pai->esq);
+            else if(!pai->dir)
+                RecursividadeArvBit(bitmap,pai->dir);
+        }    
+    }
+    
+}
+
+unsigned char PercorreArvorePorBit(BitIndex* p,Arv* arvore){
+    if(EhNo(arvore)){ 
+        if(ProxBit(p)){
+            PercorreArvorePorBit(p,arvore->dir);
+        }
+        else{
+            PercorreArvorePorBit(p,arvore->esq);
+        }
+    }
+    if(EhFolha(arvore)){
+        return arvore->letra;
+    }
+}
