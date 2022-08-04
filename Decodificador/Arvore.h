@@ -26,7 +26,7 @@ Arv *ArvCriaVazia();
  * @param dir - Arvore válida
  * @return Arv* - Arvore criada com os parametros passados
  */
-Arv *ArvCria(char letra, int peso, Arv *esq, Arv *dir);
+Arv *ArvCria(unsigned char letra, int peso, Arv *esq, Arv *dir);
 
 /**
  * @brief Função para liberar todo o espaço ocupado pela
@@ -60,7 +60,7 @@ void ArvImprime(Arv *a);
  * @param c - Caractere válido
  * @return Arv*
  */
-Arv *ArvPai(Arv *a, char c);
+Arv *ArvPai(Arv *a, unsigned char c);
 
 /**
  * @brief Retorna a quantidade de folhas de certa árvore.
@@ -78,7 +78,7 @@ int QntdFolhas(Arv *a);
  * @param a - arvore valida
  * @return char* - caractere contido na arvore
  */
-char ArvChar(Arv *a);
+unsigned char ArvChar(Arv *a);
 
 /**
  * @brief Retorna o peso da árvore caso seja diferente de NULL
@@ -114,7 +114,7 @@ bitmap *ExportaArvore(Arv *a);
  * @param c - Caractere a ser procurado
  * @return int - Resultado: 1=Direita, 0=Esquerda
  */
-int PosiscaoChar(Arv *raiz, char c);
+int PosiscaoChar(Arv *raiz, unsigned char c);
 
 /**
  * @brief Retorna se ha um no com o caractere c na arvore passada
@@ -123,7 +123,7 @@ int PosiscaoChar(Arv *raiz, char c);
  * @param c - Caractere a ser procurado
  * @return int - 1=Possui, 0=Nao possui
  */
-int ExisteChar(Arv *a, char c);
+int ExisteChar(Arv *a, unsigned char c);
 
 /**
  * @brief Retorna o codigo referente ao caractere dado, na codificacao da arvore fornecida
@@ -132,8 +132,8 @@ int ExisteChar(Arv *a, char c);
  * @param carac - Caractere a ser codificado
  * @return bitmap* - Codigo referente ao caractere
  */
-bitmap *CodificaChar(Arv *raiz, char carac);
+bitmap *CodificaChar(Arv *raiz, unsigned char carac);
 
 // Retirar depois, esta aqui para teste na main
-void EscreveChar(bitmap *mapa, char letrona);
+void EscreveChar(bitmap *mapa, unsigned char letrona);
 #endif /* arvore_h */
