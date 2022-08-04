@@ -150,4 +150,8 @@ void EscreveChar(bitmap *mapa, unsigned char letrona);
  * @param pai 
  */
 void RecursividadeArvBit(BitIndex *bitmap, Arv *pai);
+
+void PercorreArvorePorBitEEscreveSaida(BitIndex* arquivo,Arv* arvore,unsigned long int * tamTotalBits,FILE* saida);
+
+unsigned char RetornaCharRecursivamente(BitIndex* p, Arv* arvore, unsigned long int * contadorDebits);
 #endif /* arvore_h */

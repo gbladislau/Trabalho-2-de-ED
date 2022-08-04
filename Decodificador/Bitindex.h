@@ -1,6 +1,7 @@
 #ifndef BI_H
 #define BI_H
 #include "bitmap.h"
+#include <stdlib.h>
 
 typedef struct bitIndex BitIndex;
 
@@ -26,7 +27,7 @@ unsigned char ProxBit(BitIndex *bitmap);
  * @param base 
  * @return unsigned char 
  */
-unsigned char LeCaractere(BitIndex *base);
+unsigned char* LeCaractere(BitIndex *base);
 
 // N libera o bitmap dentro!
 void LiberaBitIndx(BitIndex *bitmap);

@@ -281,12 +281,12 @@ void RecursividadeArvBit(BitIndex *bitmap, Arv *pai)
             //verifica se a esquerda ja tem algo 
             if(!pai->esq){
                 //coloca char
-                pai->esq = ArvCria(LeCaractere(bitmap), 0, ArvCriaVazia(), ArvCriaVazia());
+                pai->esq = ArvCria(LeCaractere(bitmap)[0], 0, ArvCriaVazia(), ArvCriaVazia());
             }
             //verifica se a direita ja tem algo
             else if(!pai->dir){
                 //coloca char
-                pai->dir = ArvCria(LeCaractere(bitmap), 0, ArvCriaVazia(), ArvCriaVazia());
+                pai->dir = ArvCria(LeCaractere(bitmap)[0], 0, ArvCriaVazia(), ArvCriaVazia());
             }
         
         }
@@ -301,13 +301,23 @@ void RecursividadeArvBit(BitIndex *bitmap, Arv *pai)
     
 }
 
-unsigned char PercorreArvorePorBit(BitIndex* p,Arv* arvore){
+void PercorreArvorePorBitEEscreveSaida(BitIndex* arquivo,Arv* arvore,unsigned long int * tamTotalBits,FILE* saida){
+    unsigned long int contadorDebits = *(tamTotalBits);
+    unsigned char aux;
+    while (contadorDebits != 0){   
+        aux = RetornaCharRecursivamente(arquivo,arvore,&contadorDebits);
+        fprintf(saida,"%c",aux);
+    }
+}
+
+unsigned char RetornaCharRecursivamente(BitIndex* p, Arv* arvore, unsigned long int * contadorDebits){
     if(EhNo(arvore)){ 
+        *(contadorDebits)--;
         if(ProxBit(p)){
-            PercorreArvorePorBit(p,arvore->dir);
+            RetornaCharRecursivamente(p,arvore->dir, contadorDebits);
         }
         else{
-            PercorreArvorePorBit(p,arvore->esq);
+            RetornaCharRecursivamente(p,arvore->esq, contadorDebits);
         }
     }
     if(EhFolha(arvore)){

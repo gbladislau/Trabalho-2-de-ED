@@ -1,20 +1,14 @@
 #include "Decodificador.h"
 
-/**
- * @brief
- *
- * @param arg
- * @return FILE*
- */
-FILE *AbreEntrada(char *arg);
-
-/**
- * @brief
- *
- * @param entrada
- * @return Arv*
- */
 Arv *PegaArvore(FILE *entrada);
+
+FILE *CriaSaida(FILE *entrada,const char *path);
+
+FILE *AbreEntrada(const char *arg);
+
+void PreencheBitMapArquivo(bitmap *arv, FILE *arquivo, int qntBit);
+
+Arv *FazArvdeBitMap(bitmap *bitmap);
 
 int main(int argc, char const *argv[])
 {
@@ -25,7 +19,8 @@ int main(int argc, char const *argv[])
     // }
 
     // abrindo entrada.
-    FILE *entrada = AbreEntrada(argv[1]);
+    //FILE *entrada = AbreEntrada(argv[1]);
+    FILE* entrada = AbreEntrada("teste.comp");
     // abrindo saida
     FILE *saida = CriaSaida(entrada, argv[1]);
 
@@ -33,20 +28,20 @@ int main(int argc, char const *argv[])
     Arv *arvore = PegaArvore(entrada);
 
     //ler arquivo e usar arvore para descoficiar
-    DescodificarSaida(saida,arvore,saida);
+    DescodificarEntrada(entrada,arvore,saida);
 
 
     return 0;
 }
 
-FILE *AbreEntrada(char *arg)
+FILE *AbreEntrada(const char *arg)
 {
     char aux[200];
     strcpy(aux, arg);
     return fopen(aux, "r");
 }
 
-FILE *CriaSaida(FILE *entrada, char *path)
+FILE *CriaSaida(FILE *entrada,const char *path)
 {
     char aux[200];
     strcpy(aux, path);
@@ -62,7 +57,7 @@ FILE *CriaSaida(FILE *entrada, char *path)
     // lendo extensao
     for (int i = 0; i < ndebytes; i++)
     {
-        fscanf(entrada, "%c", ext[i]);
+        fscanf(entrada, "%c", &ext[i]);
     }
 
     // concatenando nome do arquivo + extensão
@@ -79,19 +74,12 @@ Arv *PegaArvore(FILE *entrada)
     int qntDeBits;
     fscanf(entrada, "%d", &qntDeBits);
 
-    // // aqui estou simplesmente pegando o numero de bytes que
-    // // a arvore gasta no total (multiplos de 8);
-    // int qntDeBitsGastos = qntDeBits;
-    // while (qntDeBitsGastos % 8)
-    //     qntDeBitsGastos++;
-    // int bytes = qntDeBitsGastos / 8;
-
     // iniciando bitmap com o tamanho, +7 so p debug e garantia
     bitmap *arvore = bitmapInit(qntDeBits + 7);
-    unsigned char arv;
 
-    PreencheBitMapArquivo(arv, entrada, qntDeBits);
-    Arv *arvoresaida = FazArvdeBitMap(arv);
+    PreencheBitMapArquivo(arvore, entrada, qntDeBits);
+    Arv *arvoresaida = FazArvdeBitMap(arvore);
+    bitmapLibera(arvore);
 
     return arvoresaida;
 }
@@ -108,7 +96,7 @@ void PreencheBitMapArquivo(bitmap *arv, FILE *arquivo, int qntBit)
     int i = 0, j = 0;
     while (i <= qntBy)
     {
-        fread(temp, 1, 1, arquivo);
+        fread(&temp, 1, 1, arquivo);
         // Se nao eh o final da arvore
         if (j < qntBit - 7)
         {
@@ -143,13 +131,13 @@ Arv *FazArvdeBitMap(bitmap *bitmap)
 
     if (ProxBit(bitindexado)) // Eh folha
     {
-        saida = ArvCria(LeCaractere(bitindexado), 0,
+        saida = ArvCria(LeCaractere(bitindexado)[0], 0,
                         ArvCriaVazia(),
                         ArvCriaVazia());
     }
     else // Eh No
     {
-        saida = ArvCria(NULL, 0,
+        saida = ArvCria('\0', 0,
                         ArvCriaVazia(),
                         ArvCriaVazia());
         //definida em Arvore.c
@@ -159,42 +147,36 @@ Arv *FazArvdeBitMap(bitmap *bitmap)
 }
 
 void DescodificarEntrada(FILE* entrada, Arv* arvore, FILE* saida){
-    unsigned long int tamTotal;
-    fscanf(entrada,"%ld", &tamTotal);
+    //pega tam do arq (tam sem lixo)
+    unsigned long int tamTotalBits;
+    fscanf(entrada,"%ld", &tamTotalBits);
 
     unsigned char aux;
-    unsigned char charDecodificado;
-    
+ 
+    int tamTotalBitsGastos = tamTotalBits;
 
-    int resto = 0
-    while (!feof(entrada))
+    //tam com lixo
+    while (tamTotalBitsGastos%8)
+        tamTotalBitsGastos++;
+    
+    //inicializando bitmap do arquivo
+    bitmap* btmapArq = bitmapInit(tamTotalBitsGastos);
+    BitIndex* arquivo = IniciaBitIndex(btmapArq);
+    
+    int counter = 0;
+
+    while (counter != tamTotalBitsGastos/8)
     {
-    
-        if(fread(&aux, 1, 1, arq) == 0)
+        if(fread(&aux, 1, 1, entrada) == 0)
             break;
-    
-        bitmap* descodificando = bitmapInit(8 + resto);
+
         //escreve um byte em bitmap
-        EscreveChar(descodificando,aux);
-       
-        // bitmap para bitindex
-        BitIndex* p = IniciaBitIndex(descodificando);
-        free(descodificando);
-
-        //pega o caractere de acordo com a arvore
-        charDecodificado = PercorreArvorePorBit(p,arvore);
-        
-        //Aqui temos que criar uma forma de concatenar um byte
-        //ao que falta de bits do byte anterior (ajuda)
-        for (int i = 0; i < ; i++)
-        {
-                /* code */
-        }
-            
-
-
+        EscreveChar(btmapArq,aux);
+        counter++;
     }
+    
+    PercorreArvorePorBitEEscreveSaida(arquivo,arvore,&tamTotalBits,saida);
 
-    bitmapLibera(s);
-    LiberaBitIndx(saida);
+    bitmapLibera(btmapArq);
+    LiberaBitIndx(arquivo);
 }
