@@ -244,7 +244,7 @@ static int max(int a, int b)
 // TODO: RENOMEIA E PIPIPPOPO
 static void Recursiva(bitmap *codificando, Arv *a, unsigned char c)
 {
-    //Tem que verificar se eh um no, pq caso seja uma folha nao precisa codificar
+    // Tem que verificar se eh um no, pq caso seja uma folha nao precisa codificar
     if (EhNo(a))
     {
         if (!PosiscaoChar(a, c)) // Esta na esquerda
@@ -252,7 +252,7 @@ static void Recursiva(bitmap *codificando, Arv *a, unsigned char c)
             bitmapAppendLeastSignificantBit(codificando, 0);
             Recursiva(codificando, a->esq, c);
         }
-        else// Esta na direita
+        else // Esta na direita
         {
             bitmapAppendLeastSignificantBit(codificando, 1);
             Recursiva(codificando, a->dir, c);
@@ -270,57 +270,74 @@ bitmap *CodificaChar(Arv *raiz, unsigned char carac)
     return codigo;
 }
 
-//Aqui seguira o desenhado na folha - imagem no nagazap
+// Aqui seguira o desenhado na folha - imagem no nagazap
 void RecursividadeArvBit(BitIndex *bitmap, Arv *pai)
 {
-    //se pai for nó
-    if(EhNo(pai)){
-        //verifica se prox é 0 ou 1
-        if(ProxBit(bitmap)){
+    if (pai)
+    {
+        // verifica se prox é 0 ou 1
+        if (ProxBit(bitmap))
+        {
 
-            //verifica se a esquerda ja tem algo 
-            if(!pai->esq){
-                //coloca char
+            // verifica se a esquerda ja tem algo
+            if (!pai->esq)
+            {
+                // coloca char
                 pai->esq = ArvCria(LeCaractere(bitmap)[0], 0, ArvCriaVazia(), ArvCriaVazia());
             }
-            //verifica se a direita ja tem algo
-            else if(!pai->dir){
-                //coloca char
+            // verifica se a direita ja tem algo
+            else if (!pai->dir)
+            {
+                // coloca char
                 pai->dir = ArvCria(LeCaractere(bitmap)[0], 0, ArvCriaVazia(), ArvCriaVazia());
             }
-        
         }
-        //se for 0 abre uma nova folha
-        else{
-            if(!pai->esq)
-                RecursividadeArvBit(bitmap,pai->esq);
-            else if(!pai->dir)
-                RecursividadeArvBit(bitmap,pai->dir);
-        }    
+        // se for 0 abre uma nova folha
+        else
+        {
+            if (!pai->esq)
+            {
+                pai->esq = ArvCria('\0', 0,
+                                   ArvCriaVazia(), ArvCriaVazia());
+            }
+            if (!pai->dir)
+            {
+                pai->dir = ArvCria('\0', 0,
+                                   ArvCriaVazia(), ArvCriaVazia());
+            }
+            RecursividadeArvBit(bitmap, pai->esq);
+            RecursividadeArvBit(bitmap, pai->dir);
+        }
     }
-    
 }
 
-void PercorreArvorePorBitEEscreveSaida(BitIndex* arquivo,Arv* arvore,unsigned long int * tamTotalBits,FILE* saida){
+void PercorreArvorePorBitEEscreveSaida(BitIndex *arquivo, Arv *arvore, unsigned long int *tamTotalBits, FILE *saida)
+{
     unsigned long int contadorDebits = *(tamTotalBits);
     unsigned char aux;
-    while (contadorDebits != 0){   
-        aux = RetornaCharRecursivamente(arquivo,arvore,&contadorDebits);
-        fprintf(saida,"%c",aux);
+    while (contadorDebits != 0)
+    {
+        aux = RetornaCharRecursivamente(arquivo, arvore, &contadorDebits);
+        fprintf(saida, "%c", aux);
     }
 }
 
-unsigned char RetornaCharRecursivamente(BitIndex* p, Arv* arvore, unsigned long int * contadorDebits){
-    if(EhNo(arvore)){ 
+unsigned char RetornaCharRecursivamente(BitIndex *p, Arv *arvore, unsigned long int *contadorDebits)
+{
+    if (EhNo(arvore))
+    {
         *(contadorDebits)--;
-        if(ProxBit(p)){
-            RetornaCharRecursivamente(p,arvore->dir, contadorDebits);
+        if (ProxBit(p))
+        {
+            RetornaCharRecursivamente(p, arvore->dir, contadorDebits);
         }
-        else{
-            RetornaCharRecursivamente(p,arvore->esq, contadorDebits);
+        else
+        {
+            RetornaCharRecursivamente(p, arvore->esq, contadorDebits);
         }
     }
-    if(EhFolha(arvore)){
+    if (EhFolha(arvore))
+    {
         return arvore->letra;
     }
 }
