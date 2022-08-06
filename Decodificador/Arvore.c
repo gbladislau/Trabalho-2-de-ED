@@ -42,8 +42,9 @@ Arv *ArvCria(unsigned char letra, int peso, Arv *esq, Arv *dir)
 
     nova->letra = letra;
     nova->peso = peso;
-    nova->dir = dir;
     nova->esq = esq;
+    nova->dir = dir;
+    
 
     return nova;
 }
@@ -178,15 +179,16 @@ void EscreveChar(bitmap *mapa, unsigned char letrona)
 {
     unsigned int aux = (unsigned int)letrona;
     unsigned int enviado = 0;
-    for (int i = 10000000; aux != 0; i /= 10)
-    {
-        enviado += (aux % 2) * i;
-        aux = aux / 2;
-    }
 
+    bitmap *temporarioInvertido = bitmapInit(8);
     for (int i = 0; i < 8; i++)
     {
-        bitmapAppendLeastSignificantBit(mapa, enviado % 10);
+        bitmapAppendLeastSignificantBit(temporarioInvertido, aux % 2);
+        aux = aux / 2;
+    }
+    for (int i = 0; i < 8; i++)
+    {
+        bitmapAppendLeastSignificantBit(mapa, bitmapGetBit(temporarioInvertido, 7 - i));
         enviado = enviado / 10;
     }
 }
@@ -270,45 +272,34 @@ bitmap *CodificaChar(Arv *raiz, unsigned char carac)
     return codigo;
 }
 
-// Aqui seguira o desenhado na folha - imagem no nagazap
-void RecursividadeArvBit(BitIndex *bitmap, Arv *pai)
+Arv *RecursividadeCriadora(BitIndex *bitmap)
 {
-    if (pai)
+    Arv *saida;
+    if (ProxBit(bitmap)) // Se for folha
     {
-        // verifica se prox é 0 ou 1
-        if (ProxBit(bitmap))
-        {
-
-            // verifica se a esquerda ja tem algo
-            if (!pai->esq)
-            {
-                // coloca char
-                pai->esq = ArvCria(LeCaractere(bitmap)[0], 0, ArvCriaVazia(), ArvCriaVazia());
-            }
-            // verifica se a direita ja tem algo
-            else if (!pai->dir)
-            {
-                // coloca char
-                pai->dir = ArvCria(LeCaractere(bitmap)[0], 0, ArvCriaVazia(), ArvCriaVazia());
-            }
-        }
-        // se for 0 abre uma nova folha
-        else
-        {
-            if (!pai->esq)
-            {
-                pai->esq = ArvCria('\0', 0,
-                                   ArvCriaVazia(), ArvCriaVazia());
-            }
-            if (!pai->dir)
-            {
-                pai->dir = ArvCria('\0', 0,
-                                   ArvCriaVazia(), ArvCriaVazia());
-            }
-            RecursividadeArvBit(bitmap, pai->esq);
-            RecursividadeArvBit(bitmap, pai->dir);
-        }
+        saida = ArvCria(LeCaractere(bitmap), 1,
+                        ArvCriaVazia(),
+                        ArvCriaVazia());
+        return saida;
     }
+    else // Eh no
+    {
+        saida = ArvCria(NULL, 0,
+                        ArvCriaVazia(),
+                        ArvCriaVazia());
+        saida->esq = RecursividadeCriadora(bitmap);
+        saida->dir = RecursividadeCriadora(bitmap);
+        return saida;
+    }
+    return saida;
+}
+
+Arv *FazArvdeBitMap(bitmap *bitmap)
+{
+    BitIndex *bitindexado = IniciaBitIndex(bitmap);
+    Arv *saida;
+    saida = RecursividadeCriadora(bitindexado);
+    return saida;
 }
 
 void PercorreArvorePorBitEEscreveSaida(BitIndex *arquivo, Arv *arvore, unsigned long int *tamTotalBits, FILE *saida)

@@ -97,9 +97,10 @@ void PreencheBitMapArquivo(bitmap *arv, FILE *arquivo, int qntBit)
         qntBy++;
 
     int i = 0, j = 0;
-    while (i <= qntBy)
+    while (i < qntBy)
     {
         fread(&temp, 1, 1, arquivo);
+        
         // Se nao eh o final da arvore
         if (j < qntBit - 7)
         {
@@ -110,46 +111,20 @@ void PreencheBitMapArquivo(bitmap *arv, FILE *arquivo, int qntBit)
         {
             unsigned int aux = (unsigned int)temp;
             unsigned int enviado = 0;
-            for (int z = 10000000; aux != 0; z /= 10)
+            bitmap *temporarioInvertido = bitmapInit(8);
+            for (int i = 0; i < 8; i++)
             {
-                enviado += (aux % 2) * z;
+                bitmapAppendLeastSignificantBit(temporarioInvertido, aux % 2);
                 aux = aux / 2;
             }
-            // Garantir so escrever ate o ultimo bit que de fato vale algo
-            while (j < qntBit)
+            for (int i = 0; i < (qntBit - j); i++)
             {
-                bitmapAppendLeastSignificantBit(arv, enviado % 10);
+                bitmapAppendLeastSignificantBit(arv, bitmapGetBit(temporarioInvertido, 7 - i));
                 enviado = enviado / 10;
-                j++;
             }
         }
         i++;
     }
-}
-
-// Talvez isso deveria ir para arvore
-// Funcao para iniciar o loop//recursao
-Arv *FazArvdeBitMap(bitmap *bitmap)
-{
-    BitIndex *bitindexado = IniciaBitIndex(bitmap);
-    Arv *saida;
-
-    if (ProxBit(bitindexado)) // Eh folha
-    {
-        saida = ArvCria(LeCaractere(bitindexado)[0], 0,
-                        ArvCriaVazia(),
-                        ArvCriaVazia());
-    }
-    else // Eh No
-    {
-        saida = ArvCria('\0', 0,
-                        ArvCriaVazia(),
-                        ArvCriaVazia());
-        // definida em Arvore.c
-        //TODO: CONTINUAR A ARRUMAR ESSA FUNC, N PREENCHE DIREITA
-        RecursividadeArvBit(bitindexado, saida);
-    }
-    return saida;
 }
 
 void DescodificarEntrada(FILE *entrada, Arv *arvore, FILE *saida)

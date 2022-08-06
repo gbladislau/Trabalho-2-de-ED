@@ -22,24 +22,27 @@ unsigned char ProxBit(BitIndex *bitmap)
     return bitmapGetBit(bitmap->bitmap, bitmap->index - 1);
 }
 
-unsigned char* LeCaractere(BitIndex *base)
+unsigned char *LeCaractere(BitIndex *base)
 {
-    bitmap *temp = bitmapInit(9);
+    bitmap *temp = bitmapInit(16);
 
     for (int i = 0; i < 8; i++)
     {
         bitmapAppendLeastSignificantBit(temp, ProxBit(base));
     }
 
-    return bitmapGetContents(temp);
+    unsigned char *stringsaida = bitmapGetContents(temp);
+    return stringsaida[0];
 }
 
 // N libera o bitmap dentro!
-void LiberaBitIndx(BitIndex *bitmap) {
+void LiberaBitIndx(BitIndex *bitmap)
+{
     free(bitmap);
 }
 
-int ReturnIndex(BitIndex* b){
+int ReturnIndex(BitIndex *b)
+{
     return b->index;
 }
 
