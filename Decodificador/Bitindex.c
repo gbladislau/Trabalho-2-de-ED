@@ -22,7 +22,7 @@ unsigned char ProxBit(BitIndex *bitmap)
     return bitmapGetBit(bitmap->bitmap, bitmap->index - 1);
 }
 
-unsigned char *LeCaractere(BitIndex *base)
+unsigned char LeCaractere(BitIndex *base)
 {
     bitmap *temp = bitmapInit(16);
 

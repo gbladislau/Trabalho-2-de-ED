@@ -284,7 +284,7 @@ Arv *RecursividadeCriadora(BitIndex *bitmap)
     }
     else // Eh no
     {
-        saida = ArvCria(NULL, 0,
+        saida = ArvCria('\0', 0,
                         ArvCriaVazia(),
                         ArvCriaVazia());
         saida->esq = RecursividadeCriadora(bitmap);
@@ -302,14 +302,15 @@ Arv *FazArvdeBitMap(bitmap *bitmap)
     return saida;
 }
 
-void PercorreArvorePorBitEEscreveSaida(BitIndex *arquivo, Arv *arvore, unsigned long int *tamTotalBits, FILE *saida)
+void PercorreArvorePorBitEEscreveSaida(BitIndex *arquivo, Arv *arvore, unsigned long int tamTotalBits, FILE *saida)
 {
-    unsigned long int contadorDebits = *(tamTotalBits);
+    unsigned long int contadorDebits[1];
+    contadorDebits[0] = tamTotalBits;
     unsigned char aux;
-    while (contadorDebits != 0)
+    while (contadorDebits[0] != 0)
     {
-        aux = RetornaCharRecursivamente(arquivo, arvore, &contadorDebits);
-        fprintf(saida, "%c", aux);
+        aux = RetornaCharRecursivamente(arquivo, arvore, contadorDebits);
+        fwrite(&aux,1,1,saida);
     }
 }
 
@@ -317,14 +318,14 @@ unsigned char RetornaCharRecursivamente(BitIndex *p, Arv *arvore, unsigned long 
 {
     if (EhNo(arvore))
     {
-        *(contadorDebits)--;
+        contadorDebits[0]--;
         if (ProxBit(p))
         {
-            RetornaCharRecursivamente(p, arvore->dir, contadorDebits);
+            return RetornaCharRecursivamente(p, arvore->dir, contadorDebits);
         }
         else
         {
-            RetornaCharRecursivamente(p, arvore->esq, contadorDebits);
+            return RetornaCharRecursivamente(p, arvore->esq, contadorDebits);
         }
     }
     if (EhFolha(arvore))

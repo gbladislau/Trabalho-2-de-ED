@@ -27,7 +27,7 @@ unsigned char ProxBit(BitIndex *bitmap);
  * @param base 
  * @return unsigned char 
  */
-unsigned char* LeCaractere(BitIndex *base);
+unsigned char LeCaractere(BitIndex *base);
 
 // N libera o bitmap dentro!
 void LiberaBitIndx(BitIndex *bitmap);

@@ -156,7 +156,7 @@ Arv *FazArvdeBitMap(bitmap *bitmap);
 Arv *RecursividadeCriadora(BitIndex *bitmap);
 
 
-void PercorreArvorePorBitEEscreveSaida(BitIndex* arquivo,Arv* arvore,unsigned long int * tamTotalBits,FILE* saida);
+void PercorreArvorePorBitEEscreveSaida(BitIndex* arquivo,Arv* arvore,unsigned long int tamTotalBits,FILE* saida);
 
 unsigned char RetornaCharRecursivamente(BitIndex* p, Arv* arvore, unsigned long int * contadorDebits);
 #endif /* arvore_h */

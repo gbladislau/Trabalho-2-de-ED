@@ -12,17 +12,17 @@ Arv *FazArvdeBitMap(bitmap *bitmap);
 
 int main(int argc, char const *argv[])
 {
-    // if (argc < 2)
-    // {
-    //     printf("USO: ./prog <nomedoarquivo>\n");
-    //     exit(1);
-    // }
-
+    /*if (argc < 2)
+    {
+        printf("USO: ./prog <nomedoarquivo>\n");
+        exit(1);
+    }
+    */
     // abrindo entrada.
-    // FILE *entrada = AbreEntrada(argv[1]);
+    //FILE *entrada = AbreEntrada(argv[1]);
     FILE *entrada = AbreEntrada("./teste.comp");
+
     // abrindo saida
-    // FILE *saida = CriaSaida(entrada, argv[1]);
     FILE *saida = CriaSaida(entrada, "./teste.comp");
 
     // pegando arvore
@@ -61,7 +61,7 @@ FILE *CriaSaida(FILE *entrada, const char *path)
     {
         fscanf(entrada, "%c", &ext[i]);
     }
-
+    ext[ndebytes] = '\0';
     // concatenando nome do arquivo + extensão
     unsigned char aux3[strlen(aux2) + strlen(ext) + 1];
     sprintf(aux3, "%s%s", aux2, ext);
@@ -157,7 +157,7 @@ void DescodificarEntrada(FILE *entrada, Arv *arvore, FILE *saida)
         counter++;
     }
 
-    PercorreArvorePorBitEEscreveSaida(arquivo, arvore, &tamTotalBits, saida);
+    PercorreArvorePorBitEEscreveSaida(arquivo, arvore, tamTotalBits, saida);
 
     bitmapLibera(btmapArq);
     LiberaBitIndx(arquivo);
