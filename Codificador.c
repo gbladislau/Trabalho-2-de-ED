@@ -53,17 +53,17 @@ static void LiberaCodificador(FILE *ent, FILE *saida, VetChar *vetor, Listagen *
 int main(int argc, char const *argv[])
 {
 
-    if (argc < 2)
-    {
-        printf("USO: ./prog <nomedoarquivo>\n");
-        exit(1);
-    }
+    // if (argc < 2)
+    // {
+    //     printf("USO: ./prog <nomedoarquivo>\n");
+    //     exit(1);
+    // }
 
     char path[200];
-    strcpy(path,argv[1]);
+    //strcpy(path,argv[1]);
 
     // DEBUG
-    //sprintf(path, "./teste.txt");
+    sprintf(path, "./testejpegOk.jpg");
 
     // Abre arquivo de entrada
     FILE *arquivo = fopen(path, "r");

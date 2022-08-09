@@ -20,10 +20,10 @@ int main(int argc, char const *argv[])
     */
     // abrindo entrada.
     //FILE *entrada = AbreEntrada(argv[1]);
-    FILE *entrada = AbreEntrada("./teste.comp");
+    FILE *entrada = AbreEntrada("./testejpegOk.comp");
 
     // abrindo saida
-    FILE *saida = CriaSaida(entrada, "./teste.comp");
+    FILE *saida = CriaSaida(entrada, "./testejpegOk.comp");
 
     // pegando arvore
     Arv *arvore = PegaArvore(entrada);

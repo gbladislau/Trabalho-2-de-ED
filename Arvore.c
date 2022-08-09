@@ -206,7 +206,7 @@ int ExisteChar(Arv *a, unsigned char c)
 {
     if (a)
     {
-        if (a->letra == c)
+        if (a->letra == c && !a->esq) //Eh folha com o caractere
         {
             return 1;
         }
