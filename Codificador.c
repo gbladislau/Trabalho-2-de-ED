@@ -53,17 +53,17 @@ static void LiberaCodificador(FILE *ent, FILE *saida, VetChar *vetor, Listagen *
 int main(int argc, char const *argv[])
 {
 
-    // if (argc < 2)
-    // {
-    //     printf("USO: ./prog <nomedoarquivo>\n");
-    //     exit(1);
-    // }
+    if (argc < 2)
+    {
+         printf("USO: ./prog <nomedoarquivo>\n");
+        exit(1);
+    }
 
     char path[200];
-    //strcpy(path,argv[1]);
+    strcpy(path,argv[1]);
 
     // DEBUG
-    sprintf(path, "./testejpegOk.jpg");
+    //sprintf(path, "./testejpegOk.jpg");
 
     // Abre arquivo de entrada
     FILE *arquivo = fopen(path, "r");
@@ -86,7 +86,7 @@ int main(int argc, char const *argv[])
     Arv *arvorebase = FazArvoreHuffman(lista);
 
     // debug
-    ArvImprime(arvorebase);
+    //ArvImprime(arvorebase);
 
     // Faz o cabeçalho do arquivo de saida
     // ARVORE EXPORTADA COM SUCESSO, ATENÇÂO NA HORA DE LER (gastou 2 bytes para escrever o tamanho(19) com o teste = oi)

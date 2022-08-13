@@ -12,23 +12,24 @@ Arv *FazArvdeBitMap(bitmap *bitmap);
 
 int main(int argc, char const *argv[])
 {
-    /*if (argc < 2)
+    if (argc < 2)
     {
         printf("USO: ./prog <nomedoarquivo>\n");
         exit(1);
     }
-    */
+    
     // abrindo entrada.
-    //FILE *entrada = AbreEntrada(argv[1]);
-    FILE *entrada = AbreEntrada("./testejpegOk.comp");
+    FILE *entrada = AbreEntrada(argv[1]);
+    //FILE *entrada = AbreEntrada("./testejpegOk.comp");
 
     // abrindo saida
-    FILE *saida = CriaSaida(entrada, "./testejpegOk.comp");
+    FILE *saida = CriaSaida(entrada, argv[1]);
 
     // pegando arvore
     Arv *arvore = PegaArvore(entrada);
-
-    ArvImprime(arvore);
+    
+    //DEBUG
+    //ArvImprime(arvore);
 
     // ler arquivo e usar arvore para descoficiar
     DescodificarEntrada(entrada, arvore, saida);
