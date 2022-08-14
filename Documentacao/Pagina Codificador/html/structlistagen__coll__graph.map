@@ -1,0 +1,4 @@
+<map id="listagen" name="listagen">
+<area shape="rect" id="node1" title="Sentinela da lista genérica, carrega prim e ult." alt="" coords="5,112,80,137"/>
+<area shape="rect" id="node2" href="$structcelula.html" title="Célula da lista genérica, carrega o item e ponteiros para próxima celula e anterior (lista duplamente..." alt="" coords="12,7,73,33"/>
+</map>

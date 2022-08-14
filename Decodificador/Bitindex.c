@@ -4,6 +4,12 @@
 
 /*  Tipo bitmap indexado, esta aqui temporariamente para
     facilitar acesso. Ele trata um bitmap como uma pilha */
+
+/**
+ * @brief Bitmap Indexado, tem funcoes para facilitar acesso continuo
+ *        e tratar-lo como pilha
+ *
+ */
 struct bitIndex
 {
     bitmap *bitmap;

@@ -1,0 +1,9 @@
+<map id="PercorreArvorePorBitEEscreveSaida" name="PercorreArvorePorBitEEscreveSaida">
+<area shape="rect" id="node1" title="Decodifica o conteudo de um Bitmap Indexado com base na Arvore de Huffman passada,..." alt="" coords="5,49,223,89"/>
+<area shape="rect" id="node2" href="$_arvore_8c.html#a9dc4c14ca5384fca4c32be6d40e5b2b1" title="Funcao recusiva auxiliar de PercorreArvorePorBitEEscreveSaida. Faz a decodificacao de um caractere pr..." alt="" coords="271,56,480,81"/>
+<area shape="rect" id="node3" href="$_arvore_8c.html#a0c15d546ee7d6c913839864f04e1c47a" title=" " alt="" coords="663,5,737,31"/>
+<area shape="rect" id="node5" href="$_arvore_8c.html#ae23fe165e1bc7caaa0ed488b078c7694" title=" " alt="" coords="535,56,591,81"/>
+<area shape="rect" id="node6" href="$_bitindex_8c.html#a3d10e37dd981c668b0db91cebc255246" title="Retorna o proximo bit do bitmap, caso omesmo fosse tratado como uma pilha." alt="" coords="528,105,597,131"/>
+<area shape="rect" id="node4" href="$bitmap_8c.html#ae6321531d73ebab0e0f1081a903be53c" title=" " alt="" coords="803,56,865,81"/>
+<area shape="rect" id="node7" href="$bitmap_8c.html#ac67802da30c1b2aa2fd983818b11d435" title=" " alt="" coords="645,107,755,132"/>
+</map>

@@ -1,0 +1,13 @@
+<map id="bitmapInit" name="bitmapInit">
+<area shape="rect" id="node1" title=" " alt="" coords="817,157,907,183"/>
+<area shape="rect" id="node2" href="$_arvore_8c.html#a7a7b30394ce1cb20cb9c3c044d267f28" title="Retorna o codigo referente ao caractere dado, na codificacao da arvore fornecida." alt="" coords="660,5,764,31"/>
+<area shape="rect" id="node3" href="$_decodificador_8c.html#a92327d77e14adac52847850f2aded1f3" title="Decodifica o arquivo de entrada com base na arvore de Huffman passada Escrevendo o resultado no arqui..." alt="" coords="441,107,593,132"/>
+<area shape="rect" id="node5" href="$_arvore_8c.html#abef2d066901108b1a90121a6411e43c4" title="Escreve o char em bits (ascii)" alt="" coords="661,107,763,132"/>
+<area shape="rect" id="node6" href="$_decodificador_8c.html#ae772ebf98171e99b223a791bc867fbbf" title="Preenche bitmap com a quantidade de bits informada do arquivo passado." alt="" coords="428,157,607,183"/>
+<area shape="rect" id="node7" href="$_decodificador_8c.html#a350e3a2d1764f2357fe860705c2be1a3" title="Monta uma arvore de Huffman com base no cabecalho presente no arquivo de entrada." alt="" coords="108,183,205,208"/>
+<area shape="rect" id="node8" href="$_arvore_8c.html#ad9dbcc1eff0144c00dd5fa224684232f" title="Retorna o bitmap referente a arvore de codificacao seguindo a travessia de pre&#45;ordem e bit de identif..." alt="" coords="655,259,769,284"/>
+<area shape="rect" id="node9" href="$_bitindex_8c.html#a0593341cccbcde30b5c85c832e1d4aa2" title="Retorna os proximos 8 bits do bitmap, concatenados em um char." alt="" coords="662,308,762,333"/>
+<area shape="rect" id="node4" href="$_decodificador_8c.html#abf9e6b7e6f15df4b525a2e7705ba3089" title=" " alt="" coords="5,157,60,183"/>
+<area shape="rect" id="node10" href="$_arvore_8c.html#a87505f6fe3718fc93dc8f907127a6a6b" title="Funcao recursiva auxiliar de FazArvdeBitMap. Nessa funcao, lemos o bitmap indexado contendo a arvore ..." alt="" coords="433,295,602,320"/>
+<area shape="rect" id="node11" href="$_arvore_8c.html#a8fe51cc09bbed0a34bd2ac0d826c9512" title="Dado um bitmap contendo a arvore serializada em pre&#45;ordem, retorna a mesma desserializada para uso no..." alt="" coords="253,271,380,296"/>
+</map>

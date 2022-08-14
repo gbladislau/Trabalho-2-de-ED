@@ -1,0 +1,29 @@
+digraph "ProxBit"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [label="ProxBit",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Retorna o proximo bit do bitmap, caso omesmo fosse tratado como uma pilha."];
+  Node1 -> Node2 [dir="back",color="steelblue1",style="solid"];
+  Node2 [label="LeCaractere",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_bitindex_8c.html#a0593341cccbcde30b5c85c832e1d4aa2",tooltip="Retorna os proximos 8 bits do bitmap, concatenados em um char."];
+  Node2 -> Node3 [dir="back",color="steelblue1",style="solid"];
+  Node3 [label="RecursividadeCriadora",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_arvore_8c.html#a87505f6fe3718fc93dc8f907127a6a6b",tooltip="Funcao recursiva auxiliar de FazArvdeBitMap. Nessa funcao, lemos o bitmap indexado contendo a arvore ..."];
+  Node3 -> Node4 [dir="back",color="steelblue1",style="solid"];
+  Node4 [label="FazArvdeBitMap",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_arvore_8c.html#a8fe51cc09bbed0a34bd2ac0d826c9512",tooltip="Dado um bitmap contendo a arvore serializada em pre-ordem, retorna a mesma desserializada para uso no..."];
+  Node4 -> Node5 [dir="back",color="steelblue1",style="solid"];
+  Node5 [label="PegaArvore",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_decodificador_8c.html#a350e3a2d1764f2357fe860705c2be1a3",tooltip="Monta uma arvore de Huffman com base no cabecalho presente no arquivo de entrada."];
+  Node5 -> Node6 [dir="back",color="steelblue1",style="solid"];
+  Node6 [label="main",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_decodificador_8c.html#abf9e6b7e6f15df4b525a2e7705ba3089",tooltip=" "];
+  Node3 -> Node3 [dir="back",color="steelblue1",style="solid"];
+  Node1 -> Node3 [dir="back",color="steelblue1",style="solid"];
+  Node1 -> Node7 [dir="back",color="steelblue1",style="solid"];
+  Node7 [label="RetornaCharRecursivamente",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_arvore_8c.html#a9dc4c14ca5384fca4c32be6d40e5b2b1",tooltip="Funcao recusiva auxiliar de PercorreArvorePorBitEEscreveSaida. Faz a decodificacao de um caractere pr..."];
+  Node7 -> Node8 [dir="back",color="steelblue1",style="solid"];
+  Node8 [label="PercorreArvorePorBitEEscreve\lSaida",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_arvore_8c.html#a2a046926fc047d7085c4a1714366a868",tooltip="Decodifica o conteudo de um Bitmap Indexado com base na Arvore de Huffman passada,..."];
+  Node8 -> Node9 [dir="back",color="steelblue1",style="solid"];
+  Node9 [label="DescodificarEntrada",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_decodificador_8c.html#a92327d77e14adac52847850f2aded1f3",tooltip="Decodifica o arquivo de entrada com base na arvore de Huffman passada Escrevendo o resultado no arqui..."];
+  Node9 -> Node6 [dir="back",color="steelblue1",style="solid"];
+  Node7 -> Node7 [dir="back",color="steelblue1",style="solid"];
+}

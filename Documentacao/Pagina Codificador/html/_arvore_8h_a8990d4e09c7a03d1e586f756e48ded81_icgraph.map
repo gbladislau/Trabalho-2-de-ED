@@ -1,0 +1,8 @@
+<map id="ArvAltura" name="ArvAltura">
+<area shape="rect" id="node1" title="Retorna altura da arvore a." alt="" coords="592,31,675,56"/>
+<area shape="rect" id="node2" href="$_arvore_8c.html#a7a7b30394ce1cb20cb9c3c044d267f28" title="Retorna o codigo referente ao caractere dado, na codificacao da arvore fornecida." alt="" coords="435,5,539,31"/>
+<area shape="rect" id="node6" href="$_arvore_8c.html#ad9dbcc1eff0144c00dd5fa224684232f" title="Retorna o bitmap referente a arvore de codificacao seguindo a travessia de pre&#45;ordem e bit de identif..." alt="" coords="429,55,544,80"/>
+<area shape="rect" id="node3" href="$_codificador_8c.html#ae32543537d391c5756cb24ef60e2fdfc" title="Inicia uma tabela de codificacao, a preenchendo com a informacao obtida a partir do vetor de frequenc..." alt="" coords="252,5,381,31"/>
+<area shape="rect" id="node4" href="$_codificador_8c.html#a74594cf130186445476babf7b7af8483" title="Utilizando da arvore fornecida, codifica o arquivo de entrada senguindo o algotimo de Huffman,..." alt="" coords="108,5,204,31"/>
+<area shape="rect" id="node5" href="$_codificador_8c.html#abf9e6b7e6f15df4b525a2e7705ba3089" title=" " alt="" coords="5,5,60,31"/>
+</map>

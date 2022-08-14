@@ -1,0 +1,5 @@
+<map id="ArvAltura" name="ArvAltura">
+<area shape="rect" id="node1" title="Retorna altura da arvore a." alt="" coords="168,31,251,56"/>
+<area shape="rect" id="node2" href="$_arvore_8c.html#a7a7b30394ce1cb20cb9c3c044d267f28" title="Retorna o codigo referente ao caractere dado, na codificacao da arvore fornecida." alt="" coords="11,5,115,31"/>
+<area shape="rect" id="node3" href="$_arvore_8c.html#ad9dbcc1eff0144c00dd5fa224684232f" title="Retorna o bitmap referente a arvore de codificacao seguindo a travessia de pre&#45;ordem e bit de identif..." alt="" coords="5,55,120,80"/>
+</map>

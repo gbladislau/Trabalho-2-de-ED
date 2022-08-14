@@ -1,0 +1,166 @@
+\hypertarget{bitmap_8h}{}\doxysection{/home/gnizama/\+Documents/2022 1/2\+ED/\+Novo/\+Trabalho-\/2-\/de-\/\+ED/bitmap.h File Reference}
+\label{bitmap_8h}\index{/home/gnizama/Documents/2022 1/2ED/Novo/Trabalho-\/2-\/de-\/ED/bitmap.h@{/home/gnizama/Documents/2022 1/2ED/Novo/Trabalho-\/2-\/de-\/ED/bitmap.h}}
+This graph shows which files directly or indirectly include this file\+:
+% FIG 0
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structmap}{map}} \mbox{\hyperlink{bitmap_8h_a8b52a6f322f22e4781bce4ec7d325066}{bitmap}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+unsigned char $\ast$ \mbox{\hyperlink{bitmap_8h_a35de4ff0d4746abe845d9977cd622120}{bitmap\+Get\+Contents}} (\mbox{\hyperlink{bitmap_8h_a8b52a6f322f22e4781bce4ec7d325066}{bitmap}} $\ast$bm)
+\item 
+unsigned int \mbox{\hyperlink{bitmap_8h_a14491586b92919ade75bb4cd7949a996}{bitmap\+Get\+Max\+Size}} (\mbox{\hyperlink{bitmap_8h_a8b52a6f322f22e4781bce4ec7d325066}{bitmap}} $\ast$bm)
+\item 
+unsigned int \mbox{\hyperlink{bitmap_8h_a98677dcbb43e9d69c5d0153675d9a978}{bitmap\+Get\+Length}} (\mbox{\hyperlink{bitmap_8h_a8b52a6f322f22e4781bce4ec7d325066}{bitmap}} $\ast$bm)
+\item 
+\mbox{\hyperlink{bitmap_8h_a8b52a6f322f22e4781bce4ec7d325066}{bitmap}} $\ast$ \mbox{\hyperlink{bitmap_8h_a6fe05cb2e9889f347653f98edac7a114}{bitmap\+Init}} (unsigned int max\+\_\+size)
+\item 
+unsigned char \mbox{\hyperlink{bitmap_8h_ac67802da30c1b2aa2fd983818b11d435}{bitmap\+Get\+Bit}} (\mbox{\hyperlink{bitmap_8h_a8b52a6f322f22e4781bce4ec7d325066}{bitmap}} $\ast$bm, unsigned int index)
+\item 
+void \mbox{\hyperlink{bitmap_8h_a8bee243b51ff8daf8cf577d11e7e735c}{bitmap\+Append\+Least\+Significant\+Bit}} (\mbox{\hyperlink{bitmap_8h_a8b52a6f322f22e4781bce4ec7d325066}{bitmap}} $\ast$bm, unsigned char bit)
+\item 
+void \mbox{\hyperlink{bitmap_8h_a08def9dc3e8ae0e4d83a0039d770205c}{bitmap\+Libera}} (\mbox{\hyperlink{bitmap_8h_a8b52a6f322f22e4781bce4ec7d325066}{bitmap}} $\ast$bm)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Define um TAD representando um mapa de bits.
+
+\begin{DoxyAuthor}{Author}
+Joao Paulo Andrade Almeida (\href{mailto:jpalmeida@inf.ufes.br}{\texttt{ jpalmeida@inf.\+ufes.\+br}}) 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{bitmap_8h_a8b52a6f322f22e4781bce4ec7d325066}\label{bitmap_8h_a8b52a6f322f22e4781bce4ec7d325066}} 
+\index{bitmap.h@{bitmap.h}!bitmap@{bitmap}}
+\index{bitmap@{bitmap}!bitmap.h@{bitmap.h}}
+\doxysubsubsection{\texorpdfstring{bitmap}{bitmap}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structmap}{map}} \mbox{\hyperlink{bitmap_8h_a8b52a6f322f22e4781bce4ec7d325066}{bitmap}}}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{bitmap_8h_a8bee243b51ff8daf8cf577d11e7e735c}\label{bitmap_8h_a8bee243b51ff8daf8cf577d11e7e735c}} 
+\index{bitmap.h@{bitmap.h}!bitmapAppendLeastSignificantBit@{bitmapAppendLeastSignificantBit}}
+\index{bitmapAppendLeastSignificantBit@{bitmapAppendLeastSignificantBit}!bitmap.h@{bitmap.h}}
+\doxysubsubsection{\texorpdfstring{bitmapAppendLeastSignificantBit()}{bitmapAppendLeastSignificantBit()}}
+{\footnotesize\ttfamily void bitmap\+Append\+Least\+Significant\+Bit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{bitmap_8h_a8b52a6f322f22e4781bce4ec7d325066}{bitmap}} $\ast$}]{bm,  }\item[{unsigned char}]{bit }\end{DoxyParamCaption})}
+
+Adiciona um bit no final do mapa de bits. 
+\begin{DoxyParams}{Parameters}
+{\em bm} & O mapa de bits. \\
+\hline
+{\em bit} & O novo valor do bit. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+bitmap\+Get\+Length(bm) \texorpdfstring{$<$}{<} bitmap\+Get\+Max\+Size(bm) 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+(bitmap\+Get\+Bit(bm,bitmap\+Get\+Length(bm) @ pre)==bit) and (bitmap\+Get\+Length(bm) == bitmap\+Get\+Length(bm) @ pre+1) 
+\end{DoxyPostcond}
+Here is the call graph for this function\+:
+% FIG 1
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{bitmap_8h_ac67802da30c1b2aa2fd983818b11d435}\label{bitmap_8h_ac67802da30c1b2aa2fd983818b11d435}} 
+\index{bitmap.h@{bitmap.h}!bitmapGetBit@{bitmapGetBit}}
+\index{bitmapGetBit@{bitmapGetBit}!bitmap.h@{bitmap.h}}
+\doxysubsubsection{\texorpdfstring{bitmapGetBit()}{bitmapGetBit()}}
+{\footnotesize\ttfamily unsigned char bitmap\+Get\+Bit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{bitmap_8h_a8b52a6f322f22e4781bce4ec7d325066}{bitmap}} $\ast$}]{bm,  }\item[{unsigned int}]{index }\end{DoxyParamCaption})}
+
+Retorna o valor do bit na posicao index. 
+\begin{DoxyParams}{Parameters}
+{\em bm} & O mapa de bits. \\
+\hline
+{\em index} & A posicao do bit. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+index\texorpdfstring{$<$}{<}bitmap\+Get\+Length(bm) 
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+O valor do bit. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 3
+Here is the caller graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{bitmap_8h_a35de4ff0d4746abe845d9977cd622120}\label{bitmap_8h_a35de4ff0d4746abe845d9977cd622120}} 
+\index{bitmap.h@{bitmap.h}!bitmapGetContents@{bitmapGetContents}}
+\index{bitmapGetContents@{bitmapGetContents}!bitmap.h@{bitmap.h}}
+\doxysubsubsection{\texorpdfstring{bitmapGetContents()}{bitmapGetContents()}}
+{\footnotesize\ttfamily unsigned char $\ast$ bitmap\+Get\+Contents (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{bitmap_8h_a8b52a6f322f22e4781bce4ec7d325066}{bitmap}} $\ast$}]{bm }\end{DoxyParamCaption})}
+
+Retorna o conteudo do mapa de bits. 
+\begin{DoxyParams}{Parameters}
+{\em bm} & O mapa de bits. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{bitmap_8h_a98677dcbb43e9d69c5d0153675d9a978}\label{bitmap_8h_a98677dcbb43e9d69c5d0153675d9a978}} 
+\index{bitmap.h@{bitmap.h}!bitmapGetLength@{bitmapGetLength}}
+\index{bitmapGetLength@{bitmapGetLength}!bitmap.h@{bitmap.h}}
+\doxysubsubsection{\texorpdfstring{bitmapGetLength()}{bitmapGetLength()}}
+{\footnotesize\ttfamily unsigned int bitmap\+Get\+Length (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{bitmap_8h_a8b52a6f322f22e4781bce4ec7d325066}{bitmap}} $\ast$}]{bm }\end{DoxyParamCaption})}
+
+Retorna o tamanho atual do mapa de bits. 
+\begin{DoxyParams}{Parameters}
+{\em bm} & O mapa de bits. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+O tamanho atual do mapa de bits. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{bitmap_8h_a14491586b92919ade75bb4cd7949a996}\label{bitmap_8h_a14491586b92919ade75bb4cd7949a996}} 
+\index{bitmap.h@{bitmap.h}!bitmapGetMaxSize@{bitmapGetMaxSize}}
+\index{bitmapGetMaxSize@{bitmapGetMaxSize}!bitmap.h@{bitmap.h}}
+\doxysubsubsection{\texorpdfstring{bitmapGetMaxSize()}{bitmapGetMaxSize()}}
+{\footnotesize\ttfamily unsigned int bitmap\+Get\+Max\+Size (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{bitmap_8h_a8b52a6f322f22e4781bce4ec7d325066}{bitmap}} $\ast$}]{bm }\end{DoxyParamCaption})}
+
+Retorna o tamanho maximo do mapa de bits. 
+\begin{DoxyParams}{Parameters}
+{\em bm} & O mapa de bits. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+O tamanho maximo do mapa de bits. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bitmap_8h_a6fe05cb2e9889f347653f98edac7a114}\label{bitmap_8h_a6fe05cb2e9889f347653f98edac7a114}} 
+\index{bitmap.h@{bitmap.h}!bitmapInit@{bitmapInit}}
+\index{bitmapInit@{bitmapInit}!bitmap.h@{bitmap.h}}
+\doxysubsubsection{\texorpdfstring{bitmapInit()}{bitmapInit()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{bitmap_8h_a8b52a6f322f22e4781bce4ec7d325066}{bitmap}} $\ast$ bitmap\+Init (\begin{DoxyParamCaption}\item[{unsigned int}]{max\+\_\+size }\end{DoxyParamCaption})}
+
+Constroi um novo mapa de bits, definindo um tamanho maximo. 
+\begin{DoxyParams}{Parameters}
+{\em max\+\_\+size} & O tamanho maximo para o mapa de bits. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+O mapa de bits inicializado. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 7
+Here is the caller graph for this function\+:
+% FIG 8
+\mbox{\Hypertarget{bitmap_8h_a08def9dc3e8ae0e4d83a0039d770205c}\label{bitmap_8h_a08def9dc3e8ae0e4d83a0039d770205c}} 
+\index{bitmap.h@{bitmap.h}!bitmapLibera@{bitmapLibera}}
+\index{bitmapLibera@{bitmapLibera}!bitmap.h@{bitmap.h}}
+\doxysubsubsection{\texorpdfstring{bitmapLibera()}{bitmapLibera()}}
+{\footnotesize\ttfamily void bitmap\+Libera (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{bitmap_8h_a8b52a6f322f22e4781bce4ec7d325066}{bitmap}} $\ast$}]{bm }\end{DoxyParamCaption})}
+
+Libera a memória dinâmica alocada para o mapa de bits. 
+\begin{DoxyParams}{Parameters}
+{\em bm} & O mapa de bits. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 9

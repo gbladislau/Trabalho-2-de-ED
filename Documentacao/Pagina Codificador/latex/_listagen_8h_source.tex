@@ -1,0 +1,43 @@
+\hypertarget{_listagen_8h_source}{}\doxysection{/home/gnizama/\+Documents/2022 1/2\+ED/\+Novo/\+Trabalho-\/2-\/de-\/\+ED/\+Listagen.h}
+\mbox{\hyperlink{_listagen_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef ListaGEN}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define ListaGEN}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <assert.h>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <string.h>}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structlistagen}{listagen}} \mbox{\hyperlink{structlistagen}{Listagen}};}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{15 \mbox{\hyperlink{structlistagen}{Listagen}} *\mbox{\hyperlink{_listagen_8h_aa3d3ca705d1add67cffc08320b527b8f}{IniciaListaGen}}();}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{23 \textcolor{keywordtype}{void} \mbox{\hyperlink{_listagen_8h_a5d9040485e36346089247b105cd770bc}{InsereItemGen}}(\mbox{\hyperlink{structlistagen}{Listagen}} *lista, \textcolor{keywordtype}{void} *item);}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{34 \textcolor{keywordtype}{void} *\mbox{\hyperlink{_listagen_8h_afa2e7d29636585bbf57d3918f96fc8ff}{RetiraDaListaGen}}(\mbox{\hyperlink{structlistagen}{Listagen}} *lista, \textcolor{keywordtype}{void} *chave, \textcolor{keywordtype}{int} (*Comparador)(\textcolor{keywordtype}{void} *, \textcolor{keywordtype}{void} *));}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{42 \textcolor{keywordtype}{void} \mbox{\hyperlink{_listagen_8h_a61608ee5a24a69973526fe6f3cda8592}{ImprimeListaGen}}(\mbox{\hyperlink{structlistagen}{Listagen}} *lista, \textcolor{keywordtype}{void} (*Imprime)(\textcolor{keywordtype}{void} *));}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{51 \textcolor{keywordtype}{void} \mbox{\hyperlink{_listagen_8h_aaa3734ea3c72cd3f3ae9634882098d85}{LiberaListaGen}}(\mbox{\hyperlink{structlistagen}{Listagen}} *lista, \textcolor{keywordtype}{void} (*Destroi)(\textcolor{keywordtype}{void} *));}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{62 \mbox{\hyperlink{structlistagen}{Listagen}} *\mbox{\hyperlink{_listagen_8h_a03547a8459045cdeecc13cfeb60de6d2}{ReorganizaLista}}(\mbox{\hyperlink{structlistagen}{Listagen}} *lista, \textcolor{keywordtype}{int} (*MenorQ)(\textcolor{keywordtype}{void} *, \textcolor{keywordtype}{void} *));}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{70 \textcolor{keywordtype}{int} \mbox{\hyperlink{_listagen_8h_ac4d8e872692a99169cacc1ef8e07e453}{VaziaLista}}(\mbox{\hyperlink{structlistagen}{Listagen}} *lista);}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{80 \textcolor{keywordtype}{int} \mbox{\hyperlink{_listagen_8h_a0987171ed48568a79ff5334e21e5de23}{PercorreLista}}(\mbox{\hyperlink{structlistagen}{Listagen}} *lista, \textcolor{keywordtype}{int} (*cb)(\textcolor{keywordtype}{void} *));}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{88 \textcolor{keywordtype}{void} *\mbox{\hyperlink{_listagen_8h_a41e6a25a5273318a453b37d3424e6761}{RetornaPrimeiro}}(\mbox{\hyperlink{structlistagen}{Listagen}} *lista);}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{96 \textcolor{keywordtype}{void} *\mbox{\hyperlink{_listagen_8h_a4d085829ac9c5a5c7b83688865fa757f}{RetornaUlt}}(\mbox{\hyperlink{structlistagen}{Listagen}} *lista);}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98 \textcolor{comment}{// Funcoes de grande utilidade p uso de pilha //}}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{106 \textcolor{keywordtype}{void} *\mbox{\hyperlink{_listagen_8h_a5cf433a568957a594680bae921c13462}{RetiraPrimeiro}}(\mbox{\hyperlink{structlistagen}{Listagen}} *lista);}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{114 \textcolor{keywordtype}{void} \mbox{\hyperlink{_listagen_8h_a68b0dd1179285db1358b19f96a022004}{InsereUltItemGen}}(\mbox{\hyperlink{structlistagen}{Listagen}} *lista, \textcolor{keywordtype}{void} *item);}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{125 \textcolor{keywordtype}{void} *\mbox{\hyperlink{_listagen_8h_a4ef53e86997ff03c63fd09c5702e8d75}{BuscaLista}}(\mbox{\hyperlink{structlistagen}{Listagen}} *lista, \textcolor{keywordtype}{int} (*Compara)(\textcolor{keywordtype}{void} *, \textcolor{keywordtype}{void} *), \textcolor{keywordtype}{void} *chave);}
+\DoxyCodeLine{126 }
+\DoxyCodeLine{127 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

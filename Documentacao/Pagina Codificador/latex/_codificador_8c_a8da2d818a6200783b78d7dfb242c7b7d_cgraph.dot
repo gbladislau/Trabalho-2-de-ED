@@ -1,0 +1,13 @@
+digraph "CalculaTamTotal"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [label="CalculaTamTotal",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Faz o calculo de quantos bits serao ocupados pelo arquivo a ser codificado dada a tabela de codificac..."];
+  Node1 -> Node2 [color="steelblue1",style="solid"];
+  Node2 [label="bitmapGetLength",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$bitmap_8c.html#a98677dcbb43e9d69c5d0153675d9a978",tooltip=" "];
+  Node1 -> Node3 [color="steelblue1",style="solid"];
+  Node3 [label="VetGetPos",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_vetchar_8c.html#ad45019d807e44f1b7eb100266afc5b4b",tooltip="Retorna quantas vezes uma dada combinacao de btis apareceu no arquivo."];
+}

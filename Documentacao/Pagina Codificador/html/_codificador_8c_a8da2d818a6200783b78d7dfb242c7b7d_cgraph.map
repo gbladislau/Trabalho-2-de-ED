@@ -1,0 +1,5 @@
+<map id="CalculaTamTotal" name="CalculaTamTotal">
+<area shape="rect" id="node1" title="Faz o calculo de quantos bits serao ocupados pelo arquivo a ser codificado dada a tabela de codificac..." alt="" coords="5,31,133,56"/>
+<area shape="rect" id="node2" href="$bitmap_8c.html#a98677dcbb43e9d69c5d0153675d9a978" title=" " alt="" coords="181,5,316,31"/>
+<area shape="rect" id="node3" href="$_vetchar_8c.html#ad45019d807e44f1b7eb100266afc5b4b" title="Retorna quantas vezes uma dada combinacao de btis apareceu no arquivo." alt="" coords="204,55,293,80"/>
+</map>

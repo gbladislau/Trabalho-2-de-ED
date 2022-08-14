@@ -1,0 +1,13 @@
+digraph "FundePrimeiros"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [label="FundePrimeiros",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Retira as duas primeiras arvores da lista, cria um no raiz com o peso = soma dos pesos,..."];
+  Node1 -> Node2 [dir="back",color="steelblue1",style="solid"];
+  Node2 [label="FazArvoreHuffman",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_codificador_8c.html#a5b6627a39040b553a21e3c881473cd7d",tooltip="Dada uma lista de arvores, aplica o algoritmo de Huffman e retorna a raiz da arvore resultante."];
+  Node2 -> Node3 [dir="back",color="steelblue1",style="solid"];
+  Node3 [label="main",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_codificador_8c.html#abf9e6b7e6f15df4b525a2e7705ba3089",tooltip=" "];
+}

@@ -1,5 +1,10 @@
 #include "Vetchar.h"
 
+/**
+ * @brief Vetor frequencia, onde eh armazenada a quantidade 
+ *        de aparicoes de cada combinacao de 8 bits
+ * 
+ */
 struct vetchar
 {
     int vetor[MAX_VET];

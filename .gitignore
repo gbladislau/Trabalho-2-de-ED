@@ -1,7 +1,5 @@
 teste
 *.comp
-*.jpg
-*.txt
 .vscode/
 tasks.json
 Decodificador

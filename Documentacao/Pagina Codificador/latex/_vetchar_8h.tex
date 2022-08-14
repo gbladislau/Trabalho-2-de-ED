@@ -1,0 +1,106 @@
+\hypertarget{_vetchar_8h}{}\doxysection{/home/gnizama/\+Documents/2022 1/2\+ED/\+Novo/\+Trabalho-\/2-\/de-\/\+ED/\+Vetchar.h File Reference}
+\label{_vetchar_8h}\index{/home/gnizama/Documents/2022 1/2ED/Novo/Trabalho-\/2-\/de-\/ED/Vetchar.h@{/home/gnizama/Documents/2022 1/2ED/Novo/Trabalho-\/2-\/de-\/ED/Vetchar.h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Listagen.\+h\char`\"{}}\newline
+Include dependency graph for Vetchar.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_vetchar_8h_a4a6bbe8bb29265c001ee75389d55643d}{MAX\+\_\+\+VET}}~257
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structvetchar}{vetchar}} \mbox{\hyperlink{_vetchar_8h_a887e8aa49952abdf68551797c2d2e055}{Vet\+Char}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_vetchar_8h_a887e8aa49952abdf68551797c2d2e055}{Vet\+Char}} $\ast$ \mbox{\hyperlink{_vetchar_8h_a8ca4fdc59bbff65c70b166ec2c88f4ac}{Vet\+Char\+Cria}} (FILE $\ast$arqbase)
+\begin{DoxyCompactList}\small\item\em Faz a criacao de um vetor frequencia dado um arquivo base. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_vetchar_8h_a4b998fac5b31d1edec2838af7efde2e9}{Libera\+Vet\+Char}} (\mbox{\hyperlink{_vetchar_8h_a887e8aa49952abdf68551797c2d2e055}{Vet\+Char}} $\ast$alvo)
+\begin{DoxyCompactList}\small\item\em Libera o vetor frequencia. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_vetchar_8h_ad45019d807e44f1b7eb100266afc5b4b}{Vet\+Get\+Pos}} (\mbox{\hyperlink{_vetchar_8h_a887e8aa49952abdf68551797c2d2e055}{Vet\+Char}} $\ast$vet, int i)
+\begin{DoxyCompactList}\small\item\em Retorna quantas vezes uma dada combinacao de btis apareceu no arquivo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_vetchar_8h_a4a6bbe8bb29265c001ee75389d55643d}\label{_vetchar_8h_a4a6bbe8bb29265c001ee75389d55643d}} 
+\index{Vetchar.h@{Vetchar.h}!MAX\_VET@{MAX\_VET}}
+\index{MAX\_VET@{MAX\_VET}!Vetchar.h@{Vetchar.h}}
+\doxysubsubsection{\texorpdfstring{MAX\_VET}{MAX\_VET}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+VET~257}
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{_vetchar_8h_a887e8aa49952abdf68551797c2d2e055}\label{_vetchar_8h_a887e8aa49952abdf68551797c2d2e055}} 
+\index{Vetchar.h@{Vetchar.h}!VetChar@{VetChar}}
+\index{VetChar@{VetChar}!Vetchar.h@{Vetchar.h}}
+\doxysubsubsection{\texorpdfstring{VetChar}{VetChar}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structvetchar}{vetchar}} \mbox{\hyperlink{_vetchar_8h_a887e8aa49952abdf68551797c2d2e055}{Vet\+Char}}}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_vetchar_8h_a4b998fac5b31d1edec2838af7efde2e9}\label{_vetchar_8h_a4b998fac5b31d1edec2838af7efde2e9}} 
+\index{Vetchar.h@{Vetchar.h}!LiberaVetChar@{LiberaVetChar}}
+\index{LiberaVetChar@{LiberaVetChar}!Vetchar.h@{Vetchar.h}}
+\doxysubsubsection{\texorpdfstring{LiberaVetChar()}{LiberaVetChar()}}
+{\footnotesize\ttfamily void Libera\+Vet\+Char (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_vetchar_8h_a887e8aa49952abdf68551797c2d2e055}{Vet\+Char}} $\ast$}]{alvo }\end{DoxyParamCaption})}
+
+
+
+Libera o vetor frequencia. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em alvo} & -\/ Vetor frequencia a ser liberado \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_vetchar_8h_a8ca4fdc59bbff65c70b166ec2c88f4ac}\label{_vetchar_8h_a8ca4fdc59bbff65c70b166ec2c88f4ac}} 
+\index{Vetchar.h@{Vetchar.h}!VetCharCria@{VetCharCria}}
+\index{VetCharCria@{VetCharCria}!Vetchar.h@{Vetchar.h}}
+\doxysubsubsection{\texorpdfstring{VetCharCria()}{VetCharCria()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_vetchar_8h_a887e8aa49952abdf68551797c2d2e055}{Vet\+Char}} $\ast$ Vet\+Char\+Cria (\begin{DoxyParamCaption}\item[{FILE $\ast$}]{arqbase }\end{DoxyParamCaption})}
+
+
+
+Faz a criacao de um vetor frequencia dado um arquivo base. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arqbase} & -\/ Arquivo base \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vet\+Char$\ast$ -\/ Vetor frequencia 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{_vetchar_8h_ad45019d807e44f1b7eb100266afc5b4b}\label{_vetchar_8h_ad45019d807e44f1b7eb100266afc5b4b}} 
+\index{Vetchar.h@{Vetchar.h}!VetGetPos@{VetGetPos}}
+\index{VetGetPos@{VetGetPos}!Vetchar.h@{Vetchar.h}}
+\doxysubsubsection{\texorpdfstring{VetGetPos()}{VetGetPos()}}
+{\footnotesize\ttfamily int Vet\+Get\+Pos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_vetchar_8h_a887e8aa49952abdf68551797c2d2e055}{Vet\+Char}} $\ast$}]{vet,  }\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+Retorna quantas vezes uma dada combinacao de btis apareceu no arquivo. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vet} & -\/ Vetor frequencia \\
+\hline
+{\em i} & -\/ Numero dado a combinacao de bits procurada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ Aparicoes dessa combinacao de bits 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 3

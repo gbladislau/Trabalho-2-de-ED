@@ -1,0 +1,13 @@
+digraph "PercorreListaArv"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [label="PercorreListaArv",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Percorre a lista de arvores executando a funcao fornecida para cada elemento presente na lista."];
+  Node1 -> Node2 [color="steelblue1",style="solid"];
+  Node2 [label="PercorreLista",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_listagen_8c.html#a0987171ed48568a79ff5334e21e5de23",tooltip="Percorre a lista executando a funcao passada como parametro."];
+  Node2 -> Node3 [color="steelblue1",style="solid"];
+  Node3 [label="assert",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$bitmap_8c.html#ae6321531d73ebab0e0f1081a903be53c",tooltip=" "];
+}

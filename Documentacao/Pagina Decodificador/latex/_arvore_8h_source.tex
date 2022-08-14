@@ -1,0 +1,59 @@
+\hypertarget{_arvore_8h_source}{}\doxysection{Arvore.\+h}
+\label{_arvore_8h_source}\index{/home/gnizama/Documents/2022 1/2ED/Novo/Trabalho-\/2-\/de-\/ED/Decodificador/Arvore.h@{/home/gnizama/Documents/2022 1/2ED/Novo/Trabalho-\/2-\/de-\/ED/Decodificador/Arvore.h}}
+\mbox{\hyperlink{_arvore_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef arvore\_h}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define arvore\_h}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <string.h>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <assert.h>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{bitmap_8h}{bitmap.h}}"{}}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_bitindex_8h}{Bitindex.h}}"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structarv}{arv}} \mbox{\hyperlink{structarv}{Arv}};}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{17 \mbox{\hyperlink{structarv}{Arv}} *\mbox{\hyperlink{_arvore_8h_a85910c70213c534fa1f5b61056e4dd4c}{ArvCriaVazia}}();}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{30 \mbox{\hyperlink{structarv}{Arv}} *\mbox{\hyperlink{_arvore_8h_ab523d769f5fa825ecfed60ccbf80735f}{ArvCria}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} \mbox{\hyperlink{structarv_a2b7a3ebcdd83b71dc367da5c72dd8737}{letra}}, \textcolor{keywordtype}{int} \mbox{\hyperlink{structarv_a42cd64244a918a5ac7790523e97d1181}{peso}}, \mbox{\hyperlink{structarv}{Arv}} *\mbox{\hyperlink{structarv_ae4d31042dbf41f70281592511cf6cb8e}{esq}}, \mbox{\hyperlink{structarv}{Arv}} *\mbox{\hyperlink{structarv_a37628e22f08c906af4dae47bb876175d}{dir}});}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{39 \mbox{\hyperlink{structarv}{Arv}} *\mbox{\hyperlink{_arvore_8h_aca9c171e4c536291a32333edff1b0b3b}{ArvLibera}}(\mbox{\hyperlink{structarv}{Arv}} *a);}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{47 \textcolor{keywordtype}{int} \mbox{\hyperlink{_arvore_8h_a2964d6de6e94445e6bc575e68a36918e}{ArvVazia}}(\mbox{\hyperlink{structarv}{Arv}} *a);}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{55 \textcolor{keywordtype}{void} \mbox{\hyperlink{_arvore_8h_abb5c5af8b08c174e2302c05df2dfd9bb}{ArvImprime}}(\mbox{\hyperlink{structarv}{Arv}} *a);}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{64 \mbox{\hyperlink{structarv}{Arv}} *\mbox{\hyperlink{_arvore_8h_a2277070fbf493eb3ecda0642fc2bd0c1}{ArvPai}}(\mbox{\hyperlink{structarv}{Arv}} *a, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} c);}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{72 \textcolor{keywordtype}{int} \mbox{\hyperlink{_arvore_8h_a55bfb2f6fc17e62c97e93553709419e5}{QntdFolhas}}(\mbox{\hyperlink{structarv}{Arv}} *a);}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{82 \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} \mbox{\hyperlink{_arvore_8h_a38c5945a9e3f36721f6af8f951861e5a}{ArvChar}}(\mbox{\hyperlink{structarv}{Arv}} *a);}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{90 \textcolor{keywordtype}{int} \mbox{\hyperlink{_arvore_8h_adbfc4cec04e2ca0f3b4976d68d874fa5}{ArvPeso}}(\mbox{\hyperlink{structarv}{Arv}} *a);}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{98 \textcolor{keywordtype}{int} \mbox{\hyperlink{_arvore_8h_a8990d4e09c7a03d1e586f756e48ded81}{ArvAltura}}(\mbox{\hyperlink{structarv}{Arv}} *a);}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{108 \mbox{\hyperlink{structmap}{bitmap}} *\mbox{\hyperlink{_arvore_8h_ad9dbcc1eff0144c00dd5fa224684232f}{ExportaArvore}}(\mbox{\hyperlink{structarv}{Arv}} *a);}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{118 \textcolor{keywordtype}{int} \mbox{\hyperlink{_arvore_8h_a5f0a02dc974d88b197cbb39423281c06}{PosiscaoChar}}(\mbox{\hyperlink{structarv}{Arv}} *raiz, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} c);}
+\DoxyCodeLine{119 }
+\DoxyCodeLine{127 \textcolor{keywordtype}{int} \mbox{\hyperlink{_arvore_8h_a7e1ecc34ed066d00ffb60402853ba9e3}{ExisteChar}}(\mbox{\hyperlink{structarv}{Arv}} *a, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} c);}
+\DoxyCodeLine{128 }
+\DoxyCodeLine{136 \mbox{\hyperlink{structmap}{bitmap}} *\mbox{\hyperlink{_arvore_8h_a7a7b30394ce1cb20cb9c3c044d267f28}{CodificaChar}}(\mbox{\hyperlink{structarv}{Arv}} *raiz, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} carac);}
+\DoxyCodeLine{137 }
+\DoxyCodeLine{144 \textcolor{keywordtype}{void} \mbox{\hyperlink{_arvore_8h_abef2d066901108b1a90121a6411e43c4}{EscreveChar}}(\mbox{\hyperlink{structmap}{bitmap}} *mapa, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} letrona);}
+\DoxyCodeLine{145 }
+\DoxyCodeLine{146 \textcolor{comment}{// /**}}
+\DoxyCodeLine{147 \textcolor{comment}{//  * @brief }}
+\DoxyCodeLine{148 \textcolor{comment}{//  * }}
+\DoxyCodeLine{149 \textcolor{comment}{//  * @param bitmap }}
+\DoxyCodeLine{150 \textcolor{comment}{//  * @param pai }}
+\DoxyCodeLine{151 \textcolor{comment}{//  */}}
+\DoxyCodeLine{152 \textcolor{comment}{// void RecursividadeArvBit(BitIndex *bitmap, Arv *pai);}}
+\DoxyCodeLine{153 }
+\DoxyCodeLine{161 \mbox{\hyperlink{structarv}{Arv}} *\mbox{\hyperlink{_arvore_8h_a8fe51cc09bbed0a34bd2ac0d826c9512}{FazArvdeBitMap}}(\mbox{\hyperlink{structmap}{bitmap}} *\mbox{\hyperlink{structmap}{bitmap}});}
+\DoxyCodeLine{162 }
+\DoxyCodeLine{172 \textcolor{keywordtype}{void} \mbox{\hyperlink{_arvore_8h_a2a046926fc047d7085c4a1714366a868}{PercorreArvorePorBitEEscreveSaida}}(\mbox{\hyperlink{structbit_index}{BitIndex}}* arquivo,\mbox{\hyperlink{structarv}{Arv}}* arvore,\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} tamTotalBits,FILE* saida);}
+\DoxyCodeLine{173 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* arvore\_h */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

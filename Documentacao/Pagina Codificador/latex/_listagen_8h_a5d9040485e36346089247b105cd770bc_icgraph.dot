@@ -1,0 +1,20 @@
+digraph "InsereItemGen"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [label="InsereItemGen",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Insere um item no inicio da lista."];
+  Node1 -> Node2 [dir="back",color="steelblue1",style="solid"];
+  Node2 [label="InsereListaArv",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_lista_arv_8c.html#aa8b1bfcba54f261f4dc02046fe06a1b0",tooltip="Insere arvore na lista passada."];
+  Node2 -> Node3 [dir="back",color="steelblue1",style="solid"];
+  Node3 [label="PreencheLista",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_lista_arv_8c.html#a83264b1c9d394c1d3dcf4e081060c9b3",tooltip="Preenche a lista de arvores com os dados presentes no arquivo passado como parametro."];
+  Node3 -> Node4 [dir="back",color="steelblue1",style="solid"];
+  Node4 [label="main",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_codificador_8c.html#abf9e6b7e6f15df4b525a2e7705ba3089",tooltip=" "];
+  Node1 -> Node5 [dir="back",color="steelblue1",style="solid"];
+  Node5 [label="ReorganizaLista",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_listagen_8c.html#a03547a8459045cdeecc13cfeb60de6d2",tooltip="Função para organizar a lista dependendo da função passada como argumento, (Cria uma nova lista inclu..."];
+  Node5 -> Node6 [dir="back",color="steelblue1",style="solid"];
+  Node6 [label="ReorganizaListaArv",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_lista_arv_8c.html#af158e4c216192f206bf822c3cdb1c507",tooltip="Reorganiza lista baseada em peso."];
+  Node6 -> Node4 [dir="back",color="steelblue1",style="solid"];
+}

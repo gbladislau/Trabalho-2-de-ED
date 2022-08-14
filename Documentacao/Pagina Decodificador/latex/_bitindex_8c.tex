@@ -1,0 +1,115 @@
+\hypertarget{_bitindex_8c}{}\doxysection{/home/gnizama/\+Documents/2022 1/2\+ED/\+Novo/\+Trabalho-\/2-\/de-\/\+ED/\+Decodificador/\+Bitindex.c File Reference}
+\label{_bitindex_8c}\index{/home/gnizama/Documents/2022 1/2ED/Novo/Trabalho-\/2-\/de-\/ED/Decodificador/Bitindex.c@{/home/gnizama/Documents/2022 1/2ED/Novo/Trabalho-\/2-\/de-\/ED/Decodificador/Bitindex.c}}
+{\ttfamily \#include \char`\"{}Bitindex.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$strings.\+h$>$}\newline
+Include dependency graph for Bitindex.\+c\+:
+% FIG 0
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structbit_index}{bit\+Index}}
+\begin{DoxyCompactList}\small\item\em Bitmap Indexado, tem funcoes para facilitar acesso continuo e tratar-\/lo como pilha. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_bitindex_8h_a21c51523591fc4eb088b9011da000d32}{Bit\+Index}} $\ast$ \mbox{\hyperlink{_bitindex_8c_a8e4f2606d9ca79f193f8a7dc3d890455}{Inicia\+Bit\+Index}} (\mbox{\hyperlink{bitmap_8h_a8b52a6f322f22e4781bce4ec7d325066}{bitmap}} $\ast$bitm)
+\begin{DoxyCompactList}\small\item\em Inicia um Bitmap indexado, dado um bitmap comum. \end{DoxyCompactList}\item 
+unsigned char \mbox{\hyperlink{_bitindex_8c_a3d10e37dd981c668b0db91cebc255246}{Prox\+Bit}} (\mbox{\hyperlink{_bitindex_8h_a21c51523591fc4eb088b9011da000d32}{Bit\+Index}} $\ast$\mbox{\hyperlink{bitmap_8h_a8b52a6f322f22e4781bce4ec7d325066}{bitmap}})
+\begin{DoxyCompactList}\small\item\em Retorna o proximo bit do bitmap, caso omesmo fosse tratado como uma pilha. \end{DoxyCompactList}\item 
+unsigned char \mbox{\hyperlink{_bitindex_8c_a0593341cccbcde30b5c85c832e1d4aa2}{Le\+Caractere}} (\mbox{\hyperlink{_bitindex_8h_a21c51523591fc4eb088b9011da000d32}{Bit\+Index}} $\ast$base)
+\begin{DoxyCompactList}\small\item\em Retorna os proximos 8 bits do bitmap, concatenados em um char. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_bitindex_8c_af0d17881c29ba316cfa620283c7b7e7b}{Libera\+Bit\+Indx}} (\mbox{\hyperlink{_bitindex_8h_a21c51523591fc4eb088b9011da000d32}{Bit\+Index}} $\ast$\mbox{\hyperlink{bitmap_8h_a8b52a6f322f22e4781bce4ec7d325066}{bitmap}})
+\begin{DoxyCompactList}\small\item\em Libera a estrutura de Bit\+Indexado, sem liberar o bitmap em que foi baseado. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_bitindex_8c_a52a01da1f3fcf52db776dfadd900c53f}{Return\+Index}} (\mbox{\hyperlink{_bitindex_8h_a21c51523591fc4eb088b9011da000d32}{Bit\+Index}} $\ast$b)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_bitindex_8c_a8e4f2606d9ca79f193f8a7dc3d890455}\label{_bitindex_8c_a8e4f2606d9ca79f193f8a7dc3d890455}} 
+\index{Bitindex.c@{Bitindex.c}!IniciaBitIndex@{IniciaBitIndex}}
+\index{IniciaBitIndex@{IniciaBitIndex}!Bitindex.c@{Bitindex.c}}
+\doxysubsubsection{\texorpdfstring{IniciaBitIndex()}{IniciaBitIndex()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_bitindex_8h_a21c51523591fc4eb088b9011da000d32}{Bit\+Index}} $\ast$ Inicia\+Bit\+Index (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{bitmap_8h_a8b52a6f322f22e4781bce4ec7d325066}{bitmap}} $\ast$}]{bitm }\end{DoxyParamCaption})}
+
+
+
+Inicia um Bitmap indexado, dado um bitmap comum. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bitm} & -\/ Bitmap base \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Bit\+Index$\ast$ -\/ Bitmap indexado 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{_bitindex_8c_a0593341cccbcde30b5c85c832e1d4aa2}\label{_bitindex_8c_a0593341cccbcde30b5c85c832e1d4aa2}} 
+\index{Bitindex.c@{Bitindex.c}!LeCaractere@{LeCaractere}}
+\index{LeCaractere@{LeCaractere}!Bitindex.c@{Bitindex.c}}
+\doxysubsubsection{\texorpdfstring{LeCaractere()}{LeCaractere()}}
+{\footnotesize\ttfamily unsigned char Le\+Caractere (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_bitindex_8h_a21c51523591fc4eb088b9011da000d32}{Bit\+Index}} $\ast$}]{base }\end{DoxyParamCaption})}
+
+
+
+Retorna os proximos 8 bits do bitmap, concatenados em um char. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em base} & -\/ Bitmap Indexado \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+unsigned char -\/ Bits obtidos concatenados 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{_bitindex_8c_af0d17881c29ba316cfa620283c7b7e7b}\label{_bitindex_8c_af0d17881c29ba316cfa620283c7b7e7b}} 
+\index{Bitindex.c@{Bitindex.c}!LiberaBitIndx@{LiberaBitIndx}}
+\index{LiberaBitIndx@{LiberaBitIndx}!Bitindex.c@{Bitindex.c}}
+\doxysubsubsection{\texorpdfstring{LiberaBitIndx()}{LiberaBitIndx()}}
+{\footnotesize\ttfamily void Libera\+Bit\+Indx (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_bitindex_8h_a21c51523591fc4eb088b9011da000d32}{Bit\+Index}} $\ast$}]{bitmap }\end{DoxyParamCaption})}
+
+
+
+Libera a estrutura de Bit\+Indexado, sem liberar o bitmap em que foi baseado. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bitmap} & -\/ Bitmap Indexado a ser liberado \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{_bitindex_8c_a3d10e37dd981c668b0db91cebc255246}\label{_bitindex_8c_a3d10e37dd981c668b0db91cebc255246}} 
+\index{Bitindex.c@{Bitindex.c}!ProxBit@{ProxBit}}
+\index{ProxBit@{ProxBit}!Bitindex.c@{Bitindex.c}}
+\doxysubsubsection{\texorpdfstring{ProxBit()}{ProxBit()}}
+{\footnotesize\ttfamily unsigned char Prox\+Bit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_bitindex_8h_a21c51523591fc4eb088b9011da000d32}{Bit\+Index}} $\ast$}]{bitmap }\end{DoxyParamCaption})}
+
+
+
+Retorna o proximo bit do bitmap, caso omesmo fosse tratado como uma pilha. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bitmap} & -\/ Bitmap Indexado \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+unsigned char -\/ Bit obtido 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 5
+Here is the caller graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{_bitindex_8c_a52a01da1f3fcf52db776dfadd900c53f}\label{_bitindex_8c_a52a01da1f3fcf52db776dfadd900c53f}} 
+\index{Bitindex.c@{Bitindex.c}!ReturnIndex@{ReturnIndex}}
+\index{ReturnIndex@{ReturnIndex}!Bitindex.c@{Bitindex.c}}
+\doxysubsubsection{\texorpdfstring{ReturnIndex()}{ReturnIndex()}}
+{\footnotesize\ttfamily int Return\+Index (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_bitindex_8h_a21c51523591fc4eb088b9011da000d32}{Bit\+Index}} $\ast$}]{b }\end{DoxyParamCaption})}
+

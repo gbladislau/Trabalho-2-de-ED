@@ -1,0 +1,8 @@
+<map id="RetornaCharRecursivamente" name="RetornaCharRecursivamente">
+<area shape="rect" id="node1" title="Funcao recusiva auxiliar de PercorreArvorePorBitEEscreveSaida. Faz a decodificacao de um caractere pr..." alt="" coords="5,56,215,81"/>
+<area shape="rect" id="node2" href="$_arvore_8c.html#a0c15d546ee7d6c913839864f04e1c47a" title=" " alt="" coords="398,5,471,31"/>
+<area shape="rect" id="node4" href="$_arvore_8c.html#ae23fe165e1bc7caaa0ed488b078c7694" title=" " alt="" coords="269,56,325,81"/>
+<area shape="rect" id="node5" href="$_bitindex_8c.html#a3d10e37dd981c668b0db91cebc255246" title="Retorna o proximo bit do bitmap, caso omesmo fosse tratado como uma pilha." alt="" coords="263,105,332,131"/>
+<area shape="rect" id="node3" href="$bitmap_8c.html#ae6321531d73ebab0e0f1081a903be53c" title=" " alt="" coords="537,56,600,81"/>
+<area shape="rect" id="node6" href="$bitmap_8c.html#ac67802da30c1b2aa2fd983818b11d435" title=" " alt="" coords="380,107,489,132"/>
+</map>

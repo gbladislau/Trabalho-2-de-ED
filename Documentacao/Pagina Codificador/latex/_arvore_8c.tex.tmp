@@ -1,0 +1,380 @@
+\hypertarget{_arvore_8c}{}\doxysection{/home/gnizama/\+Documents/2022 1/2\+ED/\+Novo/\+Trabalho-\/2-\/de-\/\+ED/\+Arvore.c File Reference}
+\label{_arvore_8c}\index{/home/gnizama/Documents/2022 1/2ED/Novo/Trabalho-\/2-\/de-\/ED/Arvore.c@{/home/gnizama/Documents/2022 1/2ED/Novo/Trabalho-\/2-\/de-\/ED/Arvore.c}}
+{\ttfamily \#include \char`\"{}Arvore.\+h\char`\"{}}\newline
+Include dependency graph for Arvore.\+c\+:
+% FIG 0
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structarv}{arv}}
+\begin{DoxyCompactList}\small\item\em Estrutura da Arvore que carega o peso do caractere e o próprio caractere para implementação do Algoritimo de Huffman. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$ \mbox{\hyperlink{_arvore_8c_a85910c70213c534fa1f5b61056e4dd4c}{Arv\+Cria\+Vazia}} ()
+\begin{DoxyCompactList}\small\item\em Cria arv Vazia. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$ \mbox{\hyperlink{_arvore_8c_ab523d769f5fa825ecfed60ccbf80735f}{Arv\+Cria}} (unsigned char letra, int peso, \mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$esq, \mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$dir)
+\begin{DoxyCompactList}\small\item\em Função para criar Arvore, aqui podemos adicionar um caractere e seu peso correspodente na contagem do Algoritimo de Huffman. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$ \mbox{\hyperlink{_arvore_8c_aca9c171e4c536291a32333edff1b0b3b}{Arv\+Libera}} (\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$a)
+\begin{DoxyCompactList}\small\item\em Função para liberar todo o espaço ocupado pela árvore a, libera também suas raizes. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_arvore_8c_a2964d6de6e94445e6bc575e68a36918e}{Arv\+Vazia}} (\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$a)
+\begin{DoxyCompactList}\small\item\em Função que retorna 1 se a árvore está vazia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_arvore_8c_abb5c5af8b08c174e2302c05df2dfd9bb}{Arv\+Imprime}} (\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$a)
+\begin{DoxyCompactList}\small\item\em Função que imprime a arvore a, em pré-\/ordem. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$ \mbox{\hyperlink{_arvore_8c_a2277070fbf493eb3ecda0642fc2bd0c1}{Arv\+Pai}} (\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$a, unsigned char c)
+\begin{DoxyCompactList}\small\item\em Procura o pai do nó que contém o caractere c. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_arvore_8c_a55bfb2f6fc17e62c97e93553709419e5}{Qntd\+Folhas}} (\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$a)
+\begin{DoxyCompactList}\small\item\em Retorna a quantidade de folhas de certa árvore. \end{DoxyCompactList}\item 
+unsigned char \mbox{\hyperlink{_arvore_8c_a38c5945a9e3f36721f6af8f951861e5a}{Arv\+Char}} (\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$a)
+\begin{DoxyCompactList}\small\item\em Retorna o caractere da árvore caso seja diferente de NULL Pré-\/condição\+: arvore conter um char. Pós-\/condição\+: retornar char. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_arvore_8c_adbfc4cec04e2ca0f3b4976d68d874fa5}{Arv\+Peso}} (\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$a)
+\begin{DoxyCompactList}\small\item\em Retorna o peso da árvore caso seja diferente de NULL. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_arvore_8c_a8990d4e09c7a03d1e586f756e48ded81}{Arv\+Altura}} (\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$a)
+\begin{DoxyCompactList}\small\item\em Retorna altura da arvore a. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{bitmap_8h_a8b52a6f322f22e4781bce4ec7d325066}{bitmap}} $\ast$ \mbox{\hyperlink{_arvore_8c_ad9dbcc1eff0144c00dd5fa224684232f}{Exporta\+Arvore}} (\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$a)
+\begin{DoxyCompactList}\small\item\em Retorna o bitmap referente a arvore de codificacao seguindo a travessia de pre-\/ordem e bit de identificacao para folhas e nós. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_arvore_8c_ae23fe165e1bc7caaa0ed488b078c7694}{Eh\+No}} (\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$a)
+\item 
+int \mbox{\hyperlink{_arvore_8c_a0c15d546ee7d6c913839864f04e1c47a}{Eh\+Folha}} (\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$a)
+\item 
+void \mbox{\hyperlink{_arvore_8c_abef2d066901108b1a90121a6411e43c4}{Escreve\+Char}} (\mbox{\hyperlink{bitmap_8h_a8b52a6f322f22e4781bce4ec7d325066}{bitmap}} $\ast$mapa, unsigned char letrona)
+\item 
+int \mbox{\hyperlink{_arvore_8c_a5f0a02dc974d88b197cbb39423281c06}{Posiscao\+Char}} (\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$raiz, unsigned char c)
+\begin{DoxyCompactList}\small\item\em Retorna se o no que possui o caractere a esta presente na esquerda ou direita da arvore passada. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_arvore_8c_a7e1ecc34ed066d00ffb60402853ba9e3}{Existe\+Char}} (\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$a, unsigned char c)
+\begin{DoxyCompactList}\small\item\em Retorna se ha um no com o caractere c na arvore passada. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{bitmap_8h_a8b52a6f322f22e4781bce4ec7d325066}{bitmap}} $\ast$ \mbox{\hyperlink{_arvore_8c_a7a7b30394ce1cb20cb9c3c044d267f28}{Codifica\+Char}} (\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$raiz, unsigned char carac)
+\begin{DoxyCompactList}\small\item\em Retorna o codigo referente ao caractere dado, na codificacao da arvore fornecida. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_arvore_8c_a8990d4e09c7a03d1e586f756e48ded81}\label{_arvore_8c_a8990d4e09c7a03d1e586f756e48ded81}} 
+\index{Arvore.c@{Arvore.c}!ArvAltura@{ArvAltura}}
+\index{ArvAltura@{ArvAltura}!Arvore.c@{Arvore.c}}
+\doxysubsubsection{\texorpdfstring{ArvAltura()}{ArvAltura()}}
+{\footnotesize\ttfamily int Arv\+Altura (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$}]{a }\end{DoxyParamCaption})}
+
+
+
+Retorna altura da arvore a. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & -\/ arvore valida \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ altura exata da arvore 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 1
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{_arvore_8c_a38c5945a9e3f36721f6af8f951861e5a}\label{_arvore_8c_a38c5945a9e3f36721f6af8f951861e5a}} 
+\index{Arvore.c@{Arvore.c}!ArvChar@{ArvChar}}
+\index{ArvChar@{ArvChar}!Arvore.c@{Arvore.c}}
+\doxysubsubsection{\texorpdfstring{ArvChar()}{ArvChar()}}
+{\footnotesize\ttfamily unsigned char Arv\+Char (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$}]{a }\end{DoxyParamCaption})}
+
+
+
+Retorna o caractere da árvore caso seja diferente de NULL Pré-\/condição\+: arvore conter um char. Pós-\/condição\+: retornar char. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & -\/ arvore valida \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char$\ast$ -\/ caractere contido na arvore 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 3
+Here is the caller graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{_arvore_8c_ab523d769f5fa825ecfed60ccbf80735f}\label{_arvore_8c_ab523d769f5fa825ecfed60ccbf80735f}} 
+\index{Arvore.c@{Arvore.c}!ArvCria@{ArvCria}}
+\index{ArvCria@{ArvCria}!Arvore.c@{Arvore.c}}
+\doxysubsubsection{\texorpdfstring{ArvCria()}{ArvCria()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$ Arv\+Cria (\begin{DoxyParamCaption}\item[{unsigned char}]{letra,  }\item[{int}]{peso,  }\item[{\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$}]{esq,  }\item[{\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$}]{dir }\end{DoxyParamCaption})}
+
+
+
+Função para criar Arvore, aqui podemos adicionar um caractere e seu peso correspodente na contagem do Algoritimo de Huffman. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em letra} & -\/ Letra válida \\
+\hline
+{\em peso} & -\/ Peso válido \\
+\hline
+{\em esq} & -\/ Arvore válida \\
+\hline
+{\em dir} & -\/ Arvore válida \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Arv$\ast$ -\/ Arvore criada com os parametros passados 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 5
+Here is the caller graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{_arvore_8c_a85910c70213c534fa1f5b61056e4dd4c}\label{_arvore_8c_a85910c70213c534fa1f5b61056e4dd4c}} 
+\index{Arvore.c@{Arvore.c}!ArvCriaVazia@{ArvCriaVazia}}
+\index{ArvCriaVazia@{ArvCriaVazia}!Arvore.c@{Arvore.c}}
+\doxysubsubsection{\texorpdfstring{ArvCriaVazia()}{ArvCriaVazia()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$ Arv\+Cria\+Vazia (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Cria arv Vazia. 
+
+\begin{DoxyReturn}{Returns}
+Arv$\ast$ (NULL) 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{_arvore_8c_abb5c5af8b08c174e2302c05df2dfd9bb}\label{_arvore_8c_abb5c5af8b08c174e2302c05df2dfd9bb}} 
+\index{Arvore.c@{Arvore.c}!ArvImprime@{ArvImprime}}
+\index{ArvImprime@{ArvImprime}!Arvore.c@{Arvore.c}}
+\doxysubsubsection{\texorpdfstring{ArvImprime()}{ArvImprime()}}
+{\footnotesize\ttfamily void Arv\+Imprime (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$}]{a }\end{DoxyParamCaption})}
+
+
+
+Função que imprime a arvore a, em pré-\/ordem. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & -\/ Arvore válida \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 8
+Here is the caller graph for this function\+:
+% FIG 9
+\mbox{\Hypertarget{_arvore_8c_aca9c171e4c536291a32333edff1b0b3b}\label{_arvore_8c_aca9c171e4c536291a32333edff1b0b3b}} 
+\index{Arvore.c@{Arvore.c}!ArvLibera@{ArvLibera}}
+\index{ArvLibera@{ArvLibera}!Arvore.c@{Arvore.c}}
+\doxysubsubsection{\texorpdfstring{ArvLibera()}{ArvLibera()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$ Arv\+Libera (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$}]{a }\end{DoxyParamCaption})}
+
+
+
+Função para liberar todo o espaço ocupado pela árvore a, libera também suas raizes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & -\/ Arvore valida \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Arv$\ast$ -\/ Arvore totalmente liberada 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 10
+Here is the caller graph for this function\+:
+% FIG 11
+\mbox{\Hypertarget{_arvore_8c_a2277070fbf493eb3ecda0642fc2bd0c1}\label{_arvore_8c_a2277070fbf493eb3ecda0642fc2bd0c1}} 
+\index{Arvore.c@{Arvore.c}!ArvPai@{ArvPai}}
+\index{ArvPai@{ArvPai}!Arvore.c@{Arvore.c}}
+\doxysubsubsection{\texorpdfstring{ArvPai()}{ArvPai()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$ Arv\+Pai (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$}]{a,  }\item[{unsigned char}]{c }\end{DoxyParamCaption})}
+
+
+
+Procura o pai do nó que contém o caractere c. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & -\/ Arvore válida \\
+\hline
+{\em c} & -\/ Caractere válido \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Arv$\ast$ 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 12
+Here is the caller graph for this function\+:
+% FIG 13
+\mbox{\Hypertarget{_arvore_8c_adbfc4cec04e2ca0f3b4976d68d874fa5}\label{_arvore_8c_adbfc4cec04e2ca0f3b4976d68d874fa5}} 
+\index{Arvore.c@{Arvore.c}!ArvPeso@{ArvPeso}}
+\index{ArvPeso@{ArvPeso}!Arvore.c@{Arvore.c}}
+\doxysubsubsection{\texorpdfstring{ArvPeso()}{ArvPeso()}}
+{\footnotesize\ttfamily int Arv\+Peso (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$}]{a }\end{DoxyParamCaption})}
+
+
+
+Retorna o peso da árvore caso seja diferente de NULL. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & -\/ Arvore valida \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ Peso referente a arvore fornecida 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 14
+Here is the caller graph for this function\+:
+% FIG 15
+\mbox{\Hypertarget{_arvore_8c_a2964d6de6e94445e6bc575e68a36918e}\label{_arvore_8c_a2964d6de6e94445e6bc575e68a36918e}} 
+\index{Arvore.c@{Arvore.c}!ArvVazia@{ArvVazia}}
+\index{ArvVazia@{ArvVazia}!Arvore.c@{Arvore.c}}
+\doxysubsubsection{\texorpdfstring{ArvVazia()}{ArvVazia()}}
+{\footnotesize\ttfamily int Arv\+Vazia (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$}]{a }\end{DoxyParamCaption})}
+
+
+
+Função que retorna 1 se a árvore está vazia. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & -\/ Arvore existe \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ 1 caso vazia 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 16
+\mbox{\Hypertarget{_arvore_8c_a7a7b30394ce1cb20cb9c3c044d267f28}\label{_arvore_8c_a7a7b30394ce1cb20cb9c3c044d267f28}} 
+\index{Arvore.c@{Arvore.c}!CodificaChar@{CodificaChar}}
+\index{CodificaChar@{CodificaChar}!Arvore.c@{Arvore.c}}
+\doxysubsubsection{\texorpdfstring{CodificaChar()}{CodificaChar()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{bitmap_8h_a8b52a6f322f22e4781bce4ec7d325066}{bitmap}} $\ast$ Codifica\+Char (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$}]{raiz,  }\item[{unsigned char}]{carac }\end{DoxyParamCaption})}
+
+
+
+Retorna o codigo referente ao caractere dado, na codificacao da arvore fornecida. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em raiz} & -\/ Arvore valida, preenchida \\
+\hline
+{\em carac} & -\/ Caractere a ser codificado \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bitmap$\ast$ -\/ Codigo referente ao caractere 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 17
+Here is the caller graph for this function\+:
+% FIG 18
+\mbox{\Hypertarget{_arvore_8c_a0c15d546ee7d6c913839864f04e1c47a}\label{_arvore_8c_a0c15d546ee7d6c913839864f04e1c47a}} 
+\index{Arvore.c@{Arvore.c}!EhFolha@{EhFolha}}
+\index{EhFolha@{EhFolha}!Arvore.c@{Arvore.c}}
+\doxysubsubsection{\texorpdfstring{EhFolha()}{EhFolha()}}
+{\footnotesize\ttfamily int Eh\+Folha (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$}]{a }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 19
+\mbox{\Hypertarget{_arvore_8c_ae23fe165e1bc7caaa0ed488b078c7694}\label{_arvore_8c_ae23fe165e1bc7caaa0ed488b078c7694}} 
+\index{Arvore.c@{Arvore.c}!EhNo@{EhNo}}
+\index{EhNo@{EhNo}!Arvore.c@{Arvore.c}}
+\doxysubsubsection{\texorpdfstring{EhNo()}{EhNo()}}
+{\footnotesize\ttfamily int Eh\+No (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$}]{a }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 20
+\mbox{\Hypertarget{_arvore_8c_abef2d066901108b1a90121a6411e43c4}\label{_arvore_8c_abef2d066901108b1a90121a6411e43c4}} 
+\index{Arvore.c@{Arvore.c}!EscreveChar@{EscreveChar}}
+\index{EscreveChar@{EscreveChar}!Arvore.c@{Arvore.c}}
+\doxysubsubsection{\texorpdfstring{EscreveChar()}{EscreveChar()}}
+{\footnotesize\ttfamily void Escreve\+Char (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{bitmap_8h_a8b52a6f322f22e4781bce4ec7d325066}{bitmap}} $\ast$}]{mapa,  }\item[{unsigned char}]{letrona }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 21
+\mbox{\Hypertarget{_arvore_8c_a7e1ecc34ed066d00ffb60402853ba9e3}\label{_arvore_8c_a7e1ecc34ed066d00ffb60402853ba9e3}} 
+\index{Arvore.c@{Arvore.c}!ExisteChar@{ExisteChar}}
+\index{ExisteChar@{ExisteChar}!Arvore.c@{Arvore.c}}
+\doxysubsubsection{\texorpdfstring{ExisteChar()}{ExisteChar()}}
+{\footnotesize\ttfamily int Existe\+Char (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$}]{a,  }\item[{unsigned char}]{c }\end{DoxyParamCaption})}
+
+
+
+Retorna se ha um no com o caractere c na arvore passada. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & -\/ Arvore em que sera feita a busca \\
+\hline
+{\em c} & -\/ Caractere a ser procurado \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ 1=Possui, 0=Nao possui 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 22
+Here is the caller graph for this function\+:
+% FIG 23
+\mbox{\Hypertarget{_arvore_8c_ad9dbcc1eff0144c00dd5fa224684232f}\label{_arvore_8c_ad9dbcc1eff0144c00dd5fa224684232f}} 
+\index{Arvore.c@{Arvore.c}!ExportaArvore@{ExportaArvore}}
+\index{ExportaArvore@{ExportaArvore}!Arvore.c@{Arvore.c}}
+\doxysubsubsection{\texorpdfstring{ExportaArvore()}{ExportaArvore()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{bitmap_8h_a8b52a6f322f22e4781bce4ec7d325066}{bitmap}} $\ast$ Exporta\+Arvore (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$}]{a }\end{DoxyParamCaption})}
+
+
+
+Retorna o bitmap referente a arvore de codificacao seguindo a travessia de pre-\/ordem e bit de identificacao para folhas e nós. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & -\/ Arvore valida \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bitmap$\ast$ -\/ Bitmap com a arvore 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 24
+\mbox{\Hypertarget{_arvore_8c_a5f0a02dc974d88b197cbb39423281c06}\label{_arvore_8c_a5f0a02dc974d88b197cbb39423281c06}} 
+\index{Arvore.c@{Arvore.c}!PosiscaoChar@{PosiscaoChar}}
+\index{PosiscaoChar@{PosiscaoChar}!Arvore.c@{Arvore.c}}
+\doxysubsubsection{\texorpdfstring{PosiscaoChar()}{PosiscaoChar()}}
+{\footnotesize\ttfamily int Posiscao\+Char (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$}]{raiz,  }\item[{unsigned char}]{c }\end{DoxyParamCaption})}
+
+
+
+Retorna se o no que possui o caractere a esta presente na esquerda ou direita da arvore passada. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em raiz} & -\/ Arvore de referencia \\
+\hline
+{\em c} & -\/ Caractere a ser procurado \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ Resultado\+: 1=Direita, 0=Esquerda 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 25
+\mbox{\Hypertarget{_arvore_8c_a55bfb2f6fc17e62c97e93553709419e5}\label{_arvore_8c_a55bfb2f6fc17e62c97e93553709419e5}} 
+\index{Arvore.c@{Arvore.c}!QntdFolhas@{QntdFolhas}}
+\index{QntdFolhas@{QntdFolhas}!Arvore.c@{Arvore.c}}
+\doxysubsubsection{\texorpdfstring{QntdFolhas()}{QntdFolhas()}}
+{\footnotesize\ttfamily int Qntd\+Folhas (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$}]{a }\end{DoxyParamCaption})}
+
+
+
+Retorna a quantidade de folhas de certa árvore. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & -\/ arvore valida \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ valor exato de folhas 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 26
+Here is the caller graph for this function\+:
+% FIG 27

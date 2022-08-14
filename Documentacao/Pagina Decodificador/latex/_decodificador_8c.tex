@@ -1,0 +1,141 @@
+\hypertarget{_decodificador_8c}{}\doxysection{/home/gnizama/\+Documents/2022 1/2\+ED/\+Novo/\+Trabalho-\/2-\/de-\/\+ED/\+Decodificador/\+Decodificador.c File Reference}
+\label{_decodificador_8c}\index{/home/gnizama/Documents/2022 1/2ED/Novo/Trabalho-\/2-\/de-\/ED/Decodificador/Decodificador.c@{/home/gnizama/Documents/2022 1/2ED/Novo/Trabalho-\/2-\/de-\/ED/Decodificador/Decodificador.c}}
+{\ttfamily \#include \char`\"{}Decodificador.\+h\char`\"{}}\newline
+Include dependency graph for Decodificador.\+c\+:
+% FIG 0
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{_decodificador_8c_abf9e6b7e6f15df4b525a2e7705ba3089}{main}} (int argc, char const $\ast$argv\mbox{[}$\,$\mbox{]})
+\item 
+FILE $\ast$ \mbox{\hyperlink{_decodificador_8c_a2453c5cdbc44244e5c5d9d61002cb282}{Abre\+Entrada}} (const char $\ast$arg)
+\begin{DoxyCompactList}\small\item\em Faz a abertura de um arquivo cujo caminho foi passado. \end{DoxyCompactList}\item 
+FILE $\ast$ \mbox{\hyperlink{_decodificador_8c_ae12eabf39d1f2843956d6790f17f898e}{Cria\+Saida}} (FILE $\ast$entrada, const char $\ast$path)
+\begin{DoxyCompactList}\small\item\em Dada a informacao presente no cabecalho, eh criado o arquivo para a saida da decodificacao. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$ \mbox{\hyperlink{_decodificador_8c_a350e3a2d1764f2357fe860705c2be1a3}{Pega\+Arvore}} (FILE $\ast$entrada)
+\begin{DoxyCompactList}\small\item\em Monta uma arvore de Huffman com base no cabecalho presente no arquivo de entrada. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_decodificador_8c_ae772ebf98171e99b223a791bc867fbbf}{Preenche\+Bit\+Map\+Arquivo}} (\mbox{\hyperlink{bitmap_8h_a8b52a6f322f22e4781bce4ec7d325066}{bitmap}} $\ast$\mbox{\hyperlink{structarv}{arv}}, FILE $\ast$arquivo, int qnt\+Bit)
+\begin{DoxyCompactList}\small\item\em Preenche bitmap com a quantidade de bits informada do arquivo passado. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_decodificador_8c_a92327d77e14adac52847850f2aded1f3}{Descodificar\+Entrada}} (FILE $\ast$entrada, \mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$arvore, FILE $\ast$saida)
+\begin{DoxyCompactList}\small\item\em Decodifica o arquivo de entrada com base na arvore de Huffman passada Escrevendo o resultado no arquivo de saida. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_decodificador_8c_a2453c5cdbc44244e5c5d9d61002cb282}\label{_decodificador_8c_a2453c5cdbc44244e5c5d9d61002cb282}} 
+\index{Decodificador.c@{Decodificador.c}!AbreEntrada@{AbreEntrada}}
+\index{AbreEntrada@{AbreEntrada}!Decodificador.c@{Decodificador.c}}
+\doxysubsubsection{\texorpdfstring{AbreEntrada()}{AbreEntrada()}}
+{\footnotesize\ttfamily FILE $\ast$ Abre\+Entrada (\begin{DoxyParamCaption}\item[{const char $\ast$}]{arg }\end{DoxyParamCaption})}
+
+
+
+Faz a abertura de um arquivo cujo caminho foi passado. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arg} & -\/ Diretorio do arquivo a ser aberto \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+FILE$\ast$ -\/ Arquivo aberto no formato utilizado no projeto 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{_decodificador_8c_ae12eabf39d1f2843956d6790f17f898e}\label{_decodificador_8c_ae12eabf39d1f2843956d6790f17f898e}} 
+\index{Decodificador.c@{Decodificador.c}!CriaSaida@{CriaSaida}}
+\index{CriaSaida@{CriaSaida}!Decodificador.c@{Decodificador.c}}
+\doxysubsubsection{\texorpdfstring{CriaSaida()}{CriaSaida()}}
+{\footnotesize\ttfamily FILE $\ast$ Cria\+Saida (\begin{DoxyParamCaption}\item[{FILE $\ast$}]{entrada,  }\item[{const char $\ast$}]{path }\end{DoxyParamCaption})}
+
+
+
+Dada a informacao presente no cabecalho, eh criado o arquivo para a saida da decodificacao. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entrada} & \\
+\hline
+{\em path} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+FILE$\ast$ 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{_decodificador_8c_a92327d77e14adac52847850f2aded1f3}\label{_decodificador_8c_a92327d77e14adac52847850f2aded1f3}} 
+\index{Decodificador.c@{Decodificador.c}!DescodificarEntrada@{DescodificarEntrada}}
+\index{DescodificarEntrada@{DescodificarEntrada}!Decodificador.c@{Decodificador.c}}
+\doxysubsubsection{\texorpdfstring{DescodificarEntrada()}{DescodificarEntrada()}}
+{\footnotesize\ttfamily void Descodificar\+Entrada (\begin{DoxyParamCaption}\item[{FILE $\ast$}]{entrada,  }\item[{\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$}]{arvore,  }\item[{FILE $\ast$}]{saida }\end{DoxyParamCaption})}
+
+
+
+Decodifica o arquivo de entrada com base na arvore de Huffman passada Escrevendo o resultado no arquivo de saida. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entrada} & -\/ Arquivo codificado, sem cabecalho de arvore \\
+\hline
+{\em arvore} & -\/ Arvore usada para a codificacao \\
+\hline
+{\em saida} & -\/ Arquivo de saida \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 3
+Here is the caller graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{_decodificador_8c_abf9e6b7e6f15df4b525a2e7705ba3089}\label{_decodificador_8c_abf9e6b7e6f15df4b525a2e7705ba3089}} 
+\index{Decodificador.c@{Decodificador.c}!main@{main}}
+\index{main@{main}!Decodificador.c@{Decodificador.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char const $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{_decodificador_8c_a350e3a2d1764f2357fe860705c2be1a3}\label{_decodificador_8c_a350e3a2d1764f2357fe860705c2be1a3}} 
+\index{Decodificador.c@{Decodificador.c}!PegaArvore@{PegaArvore}}
+\index{PegaArvore@{PegaArvore}!Decodificador.c@{Decodificador.c}}
+\doxysubsubsection{\texorpdfstring{PegaArvore()}{PegaArvore()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$ Pega\+Arvore (\begin{DoxyParamCaption}\item[{FILE $\ast$}]{entrada }\end{DoxyParamCaption})}
+
+
+
+Monta uma arvore de Huffman com base no cabecalho presente no arquivo de entrada. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entrada} & -\/ Arquivo de entrada contendo o cabecalho \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Arv$\ast$ -\/ Arvore de huffman 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 6
+Here is the caller graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{_decodificador_8c_ae772ebf98171e99b223a791bc867fbbf}\label{_decodificador_8c_ae772ebf98171e99b223a791bc867fbbf}} 
+\index{Decodificador.c@{Decodificador.c}!PreencheBitMapArquivo@{PreencheBitMapArquivo}}
+\index{PreencheBitMapArquivo@{PreencheBitMapArquivo}!Decodificador.c@{Decodificador.c}}
+\doxysubsubsection{\texorpdfstring{PreencheBitMapArquivo()}{PreencheBitMapArquivo()}}
+{\footnotesize\ttfamily void Preenche\+Bit\+Map\+Arquivo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{bitmap_8h_a8b52a6f322f22e4781bce4ec7d325066}{bitmap}} $\ast$}]{arv,  }\item[{FILE $\ast$}]{arquivo,  }\item[{int}]{qnt\+Bit }\end{DoxyParamCaption})}
+
+
+
+Preenche bitmap com a quantidade de bits informada do arquivo passado. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arv} & -\/ Bitmap a ser preenchido \\
+\hline
+{\em arquivo} & -\/ Arquivo base \\
+\hline
+{\em qnt\+Bit} & -\/ Quantidade de bits a serem colocados no bitmap \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 8
+Here is the caller graph for this function\+:
+% FIG 9

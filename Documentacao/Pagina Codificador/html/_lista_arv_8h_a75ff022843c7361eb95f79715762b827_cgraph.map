@@ -1,0 +1,7 @@
+<map id="LiberaListaArv" name="LiberaListaArv">
+<area shape="rect" id="node1" title="Faz a liberacao da lista de Arvores, liberando suas arvores." alt="" coords="5,55,120,80"/>
+<area shape="rect" id="node2" href="$_lista_arv_8c.html#a8650b5c98eebc4cf49cb591fcec3b37e" title=" " alt="" coords="168,29,299,55"/>
+<area shape="rect" id="node4" href="$_listagen_8c.html#aaa3734ea3c72cd3f3ae9634882098d85" title="Libera a lista dando free também no item dela caso a função de destruir do tipo seja passada como arg..." alt="" coords="174,79,293,104"/>
+<area shape="rect" id="node3" href="$_arvore_8c.html#aca9c171e4c536291a32333edff1b0b3b" title="Função para liberar todo o espaço ocupado pela árvore a, libera também suas raizes." alt="" coords="347,29,431,55"/>
+<area shape="rect" id="node5" href="$bitmap_8c.html#ae6321531d73ebab0e0f1081a903be53c" title=" " alt="" coords="357,79,420,104"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="bitmapAppendLeastSignificantBit" name="bitmapAppendLeastSignificantBit">
+<area shape="rect" id="node1" title=" " alt="" coords="463,31,701,56"/>
+<area shape="rect" id="node2" href="$_codificador_8c.html#a74594cf130186445476babf7b7af8483" title="Utilizando da arvore fornecida, codifica o arquivo de entrada senguindo o algotimo de Huffman,..." alt="" coords="108,5,204,31"/>
+<area shape="rect" id="node4" href="$_codificador_8c.html#a2ce69d6a0063b64e46d17291840a583d" title="Funcao que verifica o bitmap e caso o mesmo esteja com o byte final incompleto, completa&#45;o com 0&#39;s." alt="" coords="252,31,415,56"/>
+<area shape="rect" id="node5" href="$_arvore_8c.html#abef2d066901108b1a90121a6411e43c4" title=" " alt="" coords="282,80,385,105"/>
+<area shape="rect" id="node3" href="$_codificador_8c.html#abf9e6b7e6f15df4b525a2e7705ba3089" title=" " alt="" coords="5,5,60,31"/>
+</map>

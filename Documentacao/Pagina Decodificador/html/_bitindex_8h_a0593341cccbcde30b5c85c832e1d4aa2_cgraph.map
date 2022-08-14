@@ -1,0 +1,10 @@
+<map id="LeCaractere" name="LeCaractere">
+<area shape="rect" id="node1" title="Retorna os proximos 8 bits do bitmap, concatenados em um char." alt="" coords="5,89,105,114"/>
+<area shape="rect" id="node2" href="$bitmap_8c.html#a8bee243b51ff8daf8cf577d11e7e735c" title=" " alt="" coords="351,14,589,40"/>
+<area shape="rect" id="node4" href="$bitmap_8c.html#a35de4ff0d4746abe845d9977cd622120" title=" " alt="" coords="153,38,303,64"/>
+<area shape="rect" id="node5" href="$bitmap_8c.html#a6fe05cb2e9889f347653f98edac7a114" title=" " alt="" coords="425,89,515,114"/>
+<area shape="rect" id="node6" href="$bitmap_8c.html#a08def9dc3e8ae0e4d83a0039d770205c" title=" " alt="" coords="174,140,282,165"/>
+<area shape="rect" id="node7" href="$_bitindex_8c.html#a3d10e37dd981c668b0db91cebc255246" title="Retorna o proximo bit do bitmap, caso omesmo fosse tratado como uma pilha." alt="" coords="193,189,263,214"/>
+<area shape="rect" id="node3" href="$bitmap_8c.html#ae6321531d73ebab0e0f1081a903be53c" title=" " alt="" coords="637,89,700,114"/>
+<area shape="rect" id="node8" href="$bitmap_8c.html#ac67802da30c1b2aa2fd983818b11d435" title=" " alt="" coords="415,164,525,189"/>
+</map>

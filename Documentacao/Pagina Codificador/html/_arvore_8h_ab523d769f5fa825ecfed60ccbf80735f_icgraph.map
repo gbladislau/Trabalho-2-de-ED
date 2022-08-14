@@ -1,0 +1,7 @@
+<map id="ArvCria" name="ArvCria">
+<area shape="rect" id="node1" title="Função para criar Arvore, aqui podemos adicionar um caractere e seu peso correspodente na contagem do..." alt="" coords="469,31,540,56"/>
+<area shape="rect" id="node2" href="$_lista_arv_8c.html#a54aa3bfd5b757ffc5b07e1e05a76078c" title="Retira as duas primeiras arvores da lista, cria um no raiz com o peso = soma dos pesos,..." alt="" coords="299,5,421,31"/>
+<area shape="rect" id="node5" href="$_lista_arv_8c.html#a83264b1c9d394c1d3dcf4e081060c9b3" title="Preenche a lista de arvores com os dados presentes no arquivo passado como parametro." alt="" coords="123,56,236,81"/>
+<area shape="rect" id="node3" href="$_codificador_8c.html#a5b6627a39040b553a21e3c881473cd7d" title="Dada uma lista de arvores, aplica o algoritmo de Huffman e retorna a raiz da arvore resultante." alt="" coords="108,7,251,32"/>
+<area shape="rect" id="node4" href="$_codificador_8c.html#abf9e6b7e6f15df4b525a2e7705ba3089" title=" " alt="" coords="5,32,60,57"/>
+</map>

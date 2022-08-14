@@ -1,0 +1,12 @@
+digraph "PosiscaoChar"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [label="PosiscaoChar",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Retorna se o no que possui o caractere a esta presente na esquerda ou direita da arvore passada."];
+  Node1 -> Node2 [color="steelblue1",style="solid"];
+  Node2 [label="ExisteChar",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_arvore_8c.html#a7e1ecc34ed066d00ffb60402853ba9e3",tooltip="Retorna se ha um no com o caractere c na arvore passada."];
+  Node2 -> Node2 [color="steelblue1",style="solid"];
+}
