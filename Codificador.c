@@ -62,8 +62,6 @@ int main(int argc, char const *argv[])
     char path[200];
     strcpy(path,argv[1]);
 
-    // DEBUG
-    //sprintf(path, "./testejpegOk.jpg");
 
     // Abre arquivo de entrada
     FILE *arquivo = fopen(path, "r");
@@ -85,11 +83,7 @@ int main(int argc, char const *argv[])
     // Algoritmo
     Arv *arvorebase = FazArvoreHuffman(lista);
 
-    // debug
-    //ArvImprime(arvorebase);
-
     // Faz o cabeçalho do arquivo de saida
-    // ARVORE EXPORTADA COM SUCESSO, ATENÇÂO NA HORA DE LER (gastou 2 bytes para escrever o tamanho(19) com o teste = oi)
     ColocaArvoreNaSaida(arvorebase, saida);
 
     // Codifica o arquivo de acordo com a arvore de huffman
