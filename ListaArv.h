@@ -97,7 +97,7 @@ void LiberaListaArv(Listagen *lista);
  */
 void ConverteVetorALista(Listagen *lista, VetChar *vetor);
 
-Arv* BuscaArvChar(Listagen* lista, unsigned char c);
+//Arv* BuscaArvChar(Listagen* lista, unsigned char c);
 
 // Listagen* CopiaLista(Listagen* origem);
 

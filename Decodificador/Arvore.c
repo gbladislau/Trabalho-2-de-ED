@@ -22,31 +22,53 @@ struct arv
  *
  * @param a
  * @param b
- * @return int
+ * @return int - Maior dos dois numeros passados
  */
 static int max(int a, int b);
 
 /**
- * @brief Varre a arvore de HUffman para exporta-la
- *        para o cabeçalho do arquivo de saída. 
- * 
- * @param mapa 
- * @param a 
+ * @brief Funcao recusiva auxiliar de ExportaArvore.
+ *        Varre a arvore de Huffman para exporta-la
+ *        para o cabeçalho do arquivo de saída.
+ *
+ * @param mapa - bitmap de saida
+ * @param a - Arvore a ser exportada
  */
 static void VarreduraArv(bitmap *mapa, Arv *a);
 
 /**
- * @brief Percorre a arvore até chegar no caracter requerido
+ * @brief Percorre a arvore buscando o caractere passado,
  *        adicionando 0's e 1's no bitmap para descobrir como
  *        tal caractere está codificado na arvore de Huffman.
- * 
- * @param codificando 
- * @param a 
- * @param c 
+ *
+ * @param codificando - Bitmap de saida
+ * @param a - Arvore de Huffman
+ * @param c - Caractere sendo buscado
  */
 static void Recursiva(bitmap *codificando, Arv *a, unsigned char c);
-//------------------------------------ Funções Publicas ----------------------------------//
 
+/**
+ * @brief Funcao recursiva auxiliar de FazArvdeBitMap.
+ *        Nessa funcao, lemos o bitmap indexado
+ *        contendo a arvore serializada bit a bit, a desserializando 
+ * 
+ * @param bitmap - Bitmap indexado contend a arvore serializada
+ * @return Arv* - Arvore desserializada
+ */
+Arv *RecursividadeCriadora(BitIndex *bitmap);
+
+/**
+ * @brief Funcao recusiva auxiliar de PercorreArvorePorBitEEscreveSaida.
+ *        Faz a decodificacao de um caractere presente no Bitmap Indexado,
+ *        dada a arvore de huffman
+ * 
+ * @param p - Bitmap Indexado contendo o caractere a ser decodificado
+ * @param arvore - Arvore de Huffman
+ * @param contadorDebits - Auxiliar para uso na funcao principal
+ * @return unsigned char - Caractere decodificado
+ */
+unsigned char RetornaCharRecursivamente(BitIndex *p, Arv *arvore, unsigned long int *contadorDebits);
+//------------------------------------ Funções Publicas ----------------------------------//
 
 Arv *ArvCriaVazia()
 {
@@ -62,7 +84,6 @@ Arv *ArvCria(unsigned char letra, int peso, Arv *esq, Arv *dir)
     nova->peso = peso;
     nova->esq = esq;
     nova->dir = dir;
-    
 
     return nova;
 }
@@ -209,6 +230,7 @@ void EscreveChar(bitmap *mapa, unsigned char letrona)
         bitmapAppendLeastSignificantBit(mapa, bitmapGetBit(temporarioInvertido, 7 - i));
         enviado = enviado / 10;
     }
+    bitmapLibera(temporarioInvertido);
 }
 
 int PosiscaoChar(Arv *raiz, unsigned char c)
@@ -316,6 +338,7 @@ Arv *FazArvdeBitMap(bitmap *bitmap)
     BitIndex *bitindexado = IniciaBitIndex(bitmap);
     Arv *saida;
     saida = RecursividadeCriadora(bitindexado);
+    LiberaBitIndx(bitindexado);
     return saida;
 }
 
@@ -327,7 +350,7 @@ void PercorreArvorePorBitEEscreveSaida(BitIndex *arquivo, Arv *arvore, unsigned 
     while (contadorDebits[0] != 0)
     {
         aux = RetornaCharRecursivamente(arquivo, arvore, contadorDebits);
-        fwrite(&aux,1,1,saida);
+        fwrite(&aux, 1, 1, saida);
     }
 }
 

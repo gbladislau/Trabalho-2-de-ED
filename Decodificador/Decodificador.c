@@ -1,15 +1,5 @@
 #include "Decodificador.h"
 
-Arv *PegaArvore(FILE *entrada);
-
-FILE *CriaSaida(FILE *entrada, const char *path);
-
-FILE *AbreEntrada(const char *arg);
-
-void PreencheBitMapArquivo(bitmap *arv, FILE *arquivo, int qntBit);
-
-Arv *FazArvdeBitMap(bitmap *bitmap);
-
 int main(int argc, char const *argv[])
 {
     if (argc < 2)
@@ -17,22 +7,25 @@ int main(int argc, char const *argv[])
         printf("USO: ./prog <nomedoarquivo>\n");
         exit(1);
     }
-    
+
     // abrindo entrada.
     FILE *entrada = AbreEntrada(argv[1]);
-    //FILE *entrada = AbreEntrada("./testejpegOk.comp");
-
     // abrindo saida
     FILE *saida = CriaSaida(entrada, argv[1]);
 
-    // pegando arvore
+    // Leitura de arvore
     Arv *arvore = PegaArvore(entrada);
-    
-    //DEBUG
-    //ArvImprime(arvore);
 
-    // ler arquivo e usar arvore para descoficiar
+    // DEBUG
+    // ArvImprime(arvore);
+
+    // ler arquivo e usar arvore para descodificar
     DescodificarEntrada(entrada, arvore, saida);
+
+    // Liberacao de memoria
+    fclose(entrada);
+    fclose(saida);
+    ArvLibera(arvore);
 
     return 0;
 }
@@ -55,7 +48,7 @@ FILE *CriaSaida(FILE *entrada, const char *path)
     // pegando a extensao usada
     int ndebytes = 0;
     fscanf(entrada, "%d", &ndebytes);
-    //+1 por causa do \0
+    // +1 por causa do \0
     unsigned char ext[ndebytes + 1];
     // lendo extensao
     for (int i = 0; i < ndebytes; i++)
@@ -101,7 +94,7 @@ void PreencheBitMapArquivo(bitmap *arv, FILE *arquivo, int qntBit)
     while (i < qntBy)
     {
         fread(&temp, 1, 1, arquivo);
-        
+
         // Se nao eh o final da arvore
         if (j < qntBit - 7)
         {
@@ -123,6 +116,7 @@ void PreencheBitMapArquivo(bitmap *arv, FILE *arquivo, int qntBit)
                 bitmapAppendLeastSignificantBit(arv, bitmapGetBit(temporarioInvertido, 7 - i));
                 enviado = enviado / 10;
             }
+            bitmapLibera(temporarioInvertido);
         }
         i++;
     }

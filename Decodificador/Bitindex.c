@@ -1,4 +1,6 @@
 #include "Bitindex.h"
+#include <string.h>
+#include <strings.h>
 
 /*  Tipo bitmap indexado, esta aqui temporariamente para
     facilitar acesso. Ele trata um bitmap como uma pilha */
@@ -31,8 +33,10 @@ unsigned char LeCaractere(BitIndex *base)
         bitmapAppendLeastSignificantBit(temp, ProxBit(base));
     }
 
-    unsigned char *stringsaida = bitmapGetContents(temp);
-    return stringsaida[0];
+    unsigned char stringsaida = bitmapGetContents(temp)[0];
+
+    bitmapLibera(temp);
+    return stringsaida;
 }
 
 // N libera o bitmap dentro!

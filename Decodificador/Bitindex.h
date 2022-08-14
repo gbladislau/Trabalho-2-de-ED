@@ -6,30 +6,36 @@
 typedef struct bitIndex BitIndex;
 
 /**
- * @brief 
+ * @brief Inicia um Bitmap indexado, dado um bitmap comum
  * 
- * @param bitm 
- * @return BitIndex* 
+ * @param bitm - Bitmap base
+ * @return BitIndex* - Bitmap indexado
  */
 BitIndex *IniciaBitIndex(bitmap *bitm);
 
 /**
- * @brief 
+ * @brief Retorna o proximo bit do bitmap, 
+ *        caso omesmo fosse tratado como uma pilha
  * 
- * @param bitmap 
- * @return unsigned char 
+ * @param bitmap - Bitmap Indexado 
+ * @return unsigned char - Bit obtido
  */
 unsigned char ProxBit(BitIndex *bitmap);
 
 /**
- * @brief 
+ * @brief Retorna os proximos 8 bits do bitmap, concatenados em um char
  * 
- * @param base 
- * @return unsigned char 
+ * @param base - Bitmap Indexado
+ * @return unsigned char - Bits obtidos concatenados
  */
 unsigned char LeCaractere(BitIndex *base);
 
-// N libera o bitmap dentro!
+/**
+ * @brief Libera a estrutura de BitIndexado, 
+ *        sem liberar o bitmap em que foi baseado
+ * 
+ * @param bitmap - Bitmap Indexado a ser liberado
+ */
 void LiberaBitIndx(BitIndex *bitmap);
 
 

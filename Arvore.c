@@ -26,9 +26,15 @@ struct arv
  */
 static int max(int a, int b);
 
-//------------------------------------ Funções Publicas ----------------------------------//
-
+/**
+ * @brief 
+ * 
+ * @param mapa 
+ * @param a 
+ */
 static void VarreduraArv(bitmap *mapa, Arv *a);
+
+//------------------------------------ Funções Publicas ----------------------------------//
 
 Arv *ArvCriaVazia()
 {
@@ -206,7 +212,7 @@ int ExisteChar(Arv *a, unsigned char c)
 {
     if (a)
     {
-        if (a->letra == c && !a->esq) //Eh folha com o caractere
+        if (a->letra == c && !a->esq) // Eh folha com o caractere
         {
             return 1;
         }
@@ -244,7 +250,7 @@ static int max(int a, int b)
 // TODO: RENOMEIA E PIPIPPOPO
 static void Recursiva(bitmap *codificando, Arv *a, unsigned char c)
 {
-    //Tem que verificar se eh um no, pq caso seja uma folha nao precisa codificar
+    // Tem que verificar se eh um no, pq caso seja uma folha nao precisa codificar
     if (EhNo(a))
     {
         if (!PosiscaoChar(a, c)) // Esta na esquerda
@@ -252,7 +258,7 @@ static void Recursiva(bitmap *codificando, Arv *a, unsigned char c)
             bitmapAppendLeastSignificantBit(codificando, 0);
             Recursiva(codificando, a->esq, c);
         }
-        else// Esta na direita
+        else // Esta na direita
         {
             bitmapAppendLeastSignificantBit(codificando, 1);
             Recursiva(codificando, a->dir, c);

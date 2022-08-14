@@ -134,7 +134,4 @@ int ExisteChar(Arv *a, unsigned char c);
  */
 bitmap *CodificaChar(Arv *raiz, unsigned char carac);
 
-// Retirar depois, esta aqui para teste na main
-void EscreveChar(bitmap *mapa, unsigned char letrona);
-
 #endif /* arvore_h */

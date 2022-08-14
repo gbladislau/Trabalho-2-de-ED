@@ -143,20 +143,31 @@ bitmap *CodificaChar(Arv *raiz, unsigned char carac);
  */
 void EscreveChar(bitmap *mapa, unsigned char letrona);
 
-/**
- * @brief 
- * 
- * @param bitmap 
- * @param pai 
- */
-void RecursividadeArvBit(BitIndex *bitmap, Arv *pai);
+// /**
+//  * @brief 
+//  * 
+//  * @param bitmap 
+//  * @param pai 
+//  */
+// void RecursividadeArvBit(BitIndex *bitmap, Arv *pai);
 
+/**
+ * @brief Dado um bitmap contendo a arvore serializada em pre-ordem, retorna a 
+ *        mesma desserializada para uso no projeto
+ * 
+ * @param bitmap - Arvore serializada em pre-ordem
+ * @return Arv* - Arvore desserializada
+ */
 Arv *FazArvdeBitMap(bitmap *bitmap);
 
-Arv *RecursividadeCriadora(BitIndex *bitmap);
-
-
+/**
+ * @brief Decodifica o conteudo de um Bitmap Indexado com base na Arvore de Huffman passada, 
+ *        escrevendo no arquivo de saida o resultado da decodificacao
+ * 
+ * @param arquivo - Bitmap Indexado a ser decodificado
+ * @param arvore - Arvore de Huffman
+ * @param tamTotalBits - Tamanho total do arquivo
+ * @param saida - Arquivo em que a decodificacao sera escrita
+ */
 void PercorreArvorePorBitEEscreveSaida(BitIndex* arquivo,Arv* arvore,unsigned long int tamTotalBits,FILE* saida);
-
-unsigned char RetornaCharRecursivamente(BitIndex* p, Arv* arvore, unsigned long int * contadorDebits);
 #endif /* arvore_h */
