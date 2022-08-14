@@ -26,9 +26,27 @@ struct arv
  */
 static int max(int a, int b);
 
+/**
+ * @brief Varre a arvore de HUffman para exporta-la
+ *        para o cabeçalho do arquivo de saída. 
+ * 
+ * @param mapa 
+ * @param a 
+ */
+static void VarreduraArv(bitmap *mapa, Arv *a);
+
+/**
+ * @brief Percorre a arvore até chegar no caracter requerido
+ *        adicionando 0's e 1's no bitmap para descobrir como
+ *        tal caractere está codificado na arvore de Huffman.
+ * 
+ * @param codificando 
+ * @param a 
+ * @param c 
+ */
+static void Recursiva(bitmap *codificando, Arv *a, unsigned char c);
 //------------------------------------ Funções Publicas ----------------------------------//
 
-static void VarreduraArv(bitmap *mapa, Arv *a);
 
 Arv *ArvCriaVazia()
 {
@@ -243,7 +261,6 @@ static int max(int a, int b)
     return (a > b) ? a : b;
 }
 
-// TODO: RENOMEIA E PIPIPPOPO
 static void Recursiva(bitmap *codificando, Arv *a, unsigned char c)
 {
     // Tem que verificar se eh um no, pq caso seja uma folha nao precisa codificar
