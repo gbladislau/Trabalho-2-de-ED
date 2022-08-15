@@ -7,7 +7,7 @@ digraph "bitmapGetBit"
   rankdir="RL";
   Node1 [label="bitmapGetBit",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
   Node1 -> Node2 [dir="back",color="steelblue1",style="solid"];
-  Node2 [label="EscreveChar",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_arvore_8c.html#abef2d066901108b1a90121a6411e43c4",tooltip="Escreve o char em bits (ascii)"];
+  Node2 [label="EscreveChar",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$bitmap_8c.html#abef2d066901108b1a90121a6411e43c4",tooltip="Escreve um byte//char em um bitmap."];
   Node2 -> Node3 [dir="back",color="steelblue1",style="solid"];
   Node3 [label="DescodificarEntrada",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_decodificador_8c.html#a92327d77e14adac52847850f2aded1f3",tooltip="Decodifica o arquivo de entrada com base na arvore de Huffman passada Escrevendo o resultado no arqui..."];
   Node3 -> Node4 [dir="back",color="steelblue1",style="solid"];

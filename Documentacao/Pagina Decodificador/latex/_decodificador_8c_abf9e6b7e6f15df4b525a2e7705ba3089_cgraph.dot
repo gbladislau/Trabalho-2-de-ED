@@ -22,7 +22,7 @@ digraph "main"
   Node5 -> Node8 [color="steelblue1",style="solid"];
   Node8 [label="bitmapLibera",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$bitmap_8c.html#a08def9dc3e8ae0e4d83a0039d770205c",tooltip=" "];
   Node5 -> Node9 [color="steelblue1",style="solid"];
-  Node9 [label="EscreveChar",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_arvore_8c.html#abef2d066901108b1a90121a6411e43c4",tooltip="Escreve o char em bits (ascii)"];
+  Node9 [label="EscreveChar",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$bitmap_8c.html#abef2d066901108b1a90121a6411e43c4",tooltip="Escreve um byte//char em um bitmap."];
   Node9 -> Node10 [color="steelblue1",style="solid"];
   Node10 [label="bitmapAppendLeastSignificantBit",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$bitmap_8c.html#a8bee243b51ff8daf8cf577d11e7e735c",tooltip=" "];
   Node10 -> Node7 [color="steelblue1",style="solid"];

@@ -73,8 +73,6 @@ int QntdFolhas(Arv *a);
 
 /**
  * @brief Retorna o caractere da árvore caso seja diferente de NULL
- *        Pré-condição: arvore conter um char.
- *        Pós-condição: retornar char.
  *
  * @param a - arvore valida
  * @return char* - caractere contido na arvore
@@ -135,39 +133,31 @@ int ExisteChar(Arv *a, unsigned char c);
  */
 bitmap *CodificaChar(Arv *raiz, unsigned char carac);
 
-/**
- * @brief Escreve o char em bits (ascii)
- * 
- * @param mapa - onde o char sera escrito
- * @param letrona - char a ser escrito em bits
- */
-void EscreveChar(bitmap *mapa, unsigned char letrona);
-
 // /**
-//  * @brief 
-//  * 
-//  * @param bitmap 
-//  * @param pai 
+//  * @brief
+//  *
+//  * @param bitmap
+//  * @param pai
 //  */
 // void RecursividadeArvBit(BitIndex *bitmap, Arv *pai);
 
 /**
- * @brief Dado um bitmap contendo a arvore serializada em pre-ordem, retorna a 
+ * @brief Dado um bitmap contendo a arvore serializada em pre-ordem, retorna a
  *        mesma desserializada para uso no projeto
- * 
+ *
  * @param bitmap - Arvore serializada em pre-ordem
  * @return Arv* - Arvore desserializada
  */
 Arv *FazArvdeBitMap(bitmap *bitmap);
 
 /**
- * @brief Decodifica o conteudo de um Bitmap Indexado com base na Arvore de Huffman passada, 
+ * @brief Decodifica o conteudo de um Bitmap Indexado com base na Arvore de Huffman passada,
  *        escrevendo no arquivo de saida o resultado da decodificacao
- * 
+ *
  * @param arquivo - Bitmap Indexado a ser decodificado
  * @param arvore - Arvore de Huffman
  * @param tamTotalBits - Tamanho total do arquivo
  * @param saida - Arquivo em que a decodificacao sera escrita
  */
-void PercorreArvorePorBitEEscreveSaida(BitIndex* arquivo,Arv* arvore,unsigned long int tamTotalBits,FILE* saida);
+void PercorreArvorePorBitEEscreveSaida(BitIndex *arquivo, Arv *arvore, unsigned long int tamTotalBits, FILE *saida);
 #endif /* arvore_h */

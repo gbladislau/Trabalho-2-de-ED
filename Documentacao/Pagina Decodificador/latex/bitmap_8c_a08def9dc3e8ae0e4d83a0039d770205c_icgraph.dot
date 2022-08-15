@@ -11,7 +11,7 @@ digraph "bitmapLibera"
   Node2 -> Node3 [dir="back",color="steelblue1",style="solid"];
   Node3 [label="main",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_decodificador_8c.html#abf9e6b7e6f15df4b525a2e7705ba3089",tooltip=" "];
   Node1 -> Node4 [dir="back",color="steelblue1",style="solid"];
-  Node4 [label="EscreveChar",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_arvore_8c.html#abef2d066901108b1a90121a6411e43c4",tooltip="Escreve o char em bits (ascii)"];
+  Node4 [label="EscreveChar",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$bitmap_8c.html#abef2d066901108b1a90121a6411e43c4",tooltip="Escreve um byte//char em um bitmap."];
   Node4 -> Node2 [dir="back",color="steelblue1",style="solid"];
   Node4 -> Node5 [dir="back",color="steelblue1",style="solid"];
   Node5 [label="PreencheBitMapArquivo",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_decodificador_8c.html#ae772ebf98171e99b223a791bc867fbbf",tooltip="Preenche bitmap com a quantidade de bits informada do arquivo passado."];

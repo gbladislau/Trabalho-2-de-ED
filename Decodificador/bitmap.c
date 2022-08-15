@@ -145,3 +145,22 @@ void bitmapLibera(bitmap *bm)
 	free(bm->contents);
 	free(bm);
 }
+
+void EscreveChar(bitmap *mapa, unsigned char letrona)
+{
+    unsigned int aux = (unsigned int)letrona;
+    unsigned int enviado = 0;
+
+    bitmap *temporarioInvertido = bitmapInit(8);
+    for (int i = 0; i < 8; i++)
+    {
+        bitmapAppendLeastSignificantBit(temporarioInvertido, aux % 2);
+        aux = aux / 2;
+    }
+    for (int i = 0; i < 8; i++)
+    {
+        bitmapAppendLeastSignificantBit(mapa, bitmapGetBit(temporarioInvertido, 7 - i));
+        enviado = enviado / 10;
+    }
+    bitmapLibera(temporarioInvertido);
+}

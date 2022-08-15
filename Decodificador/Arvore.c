@@ -50,8 +50,8 @@ static void Recursiva(bitmap *codificando, Arv *a, unsigned char c);
 /**
  * @brief Funcao recursiva auxiliar de FazArvdeBitMap.
  *        Nessa funcao, lemos o bitmap indexado
- *        contendo a arvore serializada bit a bit, a desserializando 
- * 
+ *        contendo a arvore serializada bit a bit, a desserializando
+ *
  * @param bitmap - Bitmap indexado contend a arvore serializada
  * @return Arv* - Arvore desserializada
  */
@@ -61,7 +61,7 @@ Arv *RecursividadeCriadora(BitIndex *bitmap);
  * @brief Funcao recusiva auxiliar de PercorreArvorePorBitEEscreveSaida.
  *        Faz a decodificacao de um caractere presente no Bitmap Indexado,
  *        dada a arvore de huffman
- * 
+ *
  * @param p - Bitmap Indexado contendo o caractere a ser decodificado
  * @param arvore - Arvore de Huffman
  * @param contadorDebits - Auxiliar para uso na funcao principal
@@ -212,25 +212,6 @@ int EhFolha(Arv *a)
         return 1;
     }
     return 0;
-}
-
-void EscreveChar(bitmap *mapa, unsigned char letrona)
-{
-    unsigned int aux = (unsigned int)letrona;
-    unsigned int enviado = 0;
-
-    bitmap *temporarioInvertido = bitmapInit(8);
-    for (int i = 0; i < 8; i++)
-    {
-        bitmapAppendLeastSignificantBit(temporarioInvertido, aux % 2);
-        aux = aux / 2;
-    }
-    for (int i = 0; i < 8; i++)
-    {
-        bitmapAppendLeastSignificantBit(mapa, bitmapGetBit(temporarioInvertido, 7 - i));
-        enviado = enviado / 10;
-    }
-    bitmapLibera(temporarioInvertido);
 }
 
 int PosiscaoChar(Arv *raiz, unsigned char c)

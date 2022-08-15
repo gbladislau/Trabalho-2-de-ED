@@ -48,7 +48,7 @@ digraph "PegaArvore"
   Node16 -> Node2 [color="steelblue1",style="solid"];
   Node16 -> Node4 [color="steelblue1",style="solid"];
   Node16 -> Node17 [color="steelblue1",style="solid"];
-  Node17 [label="EscreveChar",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_arvore_8c.html#abef2d066901108b1a90121a6411e43c4",tooltip="Escreve o char em bits (ascii)"];
+  Node17 [label="EscreveChar",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$bitmap_8c.html#abef2d066901108b1a90121a6411e43c4",tooltip="Escreve um byte//char em um bitmap."];
   Node17 -> Node12 [color="steelblue1",style="solid"];
   Node17 -> Node15 [color="steelblue1",style="solid"];
   Node17 -> Node2 [color="steelblue1",style="solid"];

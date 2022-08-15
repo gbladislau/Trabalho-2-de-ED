@@ -13,7 +13,7 @@ digraph "DescodificarEntrada"
   Node1 -> Node4 [color="steelblue1",style="solid"];
   Node4 [label="bitmapLibera",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$bitmap_8c.html#a08def9dc3e8ae0e4d83a0039d770205c",tooltip=" "];
   Node1 -> Node5 [color="steelblue1",style="solid"];
-  Node5 [label="EscreveChar",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_arvore_8c.html#abef2d066901108b1a90121a6411e43c4",tooltip="Escreve o char em bits (ascii)"];
+  Node5 [label="EscreveChar",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$bitmap_8c.html#abef2d066901108b1a90121a6411e43c4",tooltip="Escreve um byte//char em um bitmap."];
   Node5 -> Node6 [color="steelblue1",style="solid"];
   Node6 [label="bitmapAppendLeastSignificantBit",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$bitmap_8c.html#a8bee243b51ff8daf8cf577d11e7e735c",tooltip=" "];
   Node6 -> Node3 [color="steelblue1",style="solid"];

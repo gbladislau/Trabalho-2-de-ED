@@ -19,4 +19,12 @@ unsigned char bitmapGetBit(bitmap* bm, unsigned int index);
 void bitmapAppendLeastSignificantBit(bitmap* bm, unsigned char bit);
 void bitmapLibera (bitmap* bm);
 
+/**
+ * @brief Escreve um byte//char em um bitmap
+ * 
+ * @param mapa - onde o char sera escrito
+ * @param letrona - char a ser escrito em bits
+ */
+void EscreveChar(bitmap *mapa, unsigned char letrona);
+
 #endif /*BITMAP_H_*/

@@ -1,7 +1,7 @@
 <map id="bitmapLibera" name="bitmapLibera">
 <area shape="rect" id="node1" title=" " alt="" coords="805,80,913,105"/>
 <area shape="rect" id="node2" href="$_decodificador_8c.html#a92327d77e14adac52847850f2aded1f3" title="Decodifica o arquivo de entrada com base na arvore de Huffman passada Escrevendo o resultado no arqui..." alt="" coords="441,29,593,54"/>
-<area shape="rect" id="node4" href="$_arvore_8c.html#abef2d066901108b1a90121a6411e43c4" title="Escreve o char em bits (ascii)" alt="" coords="655,29,757,54"/>
+<area shape="rect" id="node4" href="$bitmap_8c.html#abef2d066901108b1a90121a6411e43c4" title="Escreve um byte//char em um bitmap." alt="" coords="655,29,757,54"/>
 <area shape="rect" id="node5" href="$_decodificador_8c.html#ae772ebf98171e99b223a791bc867fbbf" title="Preenche bitmap com a quantidade de bits informada do arquivo passado." alt="" coords="428,80,607,105"/>
 <area shape="rect" id="node6" href="$_decodificador_8c.html#a350e3a2d1764f2357fe860705c2be1a3" title="Monta uma arvore de Huffman com base no cabecalho presente no arquivo de entrada." alt="" coords="108,105,205,130"/>
 <area shape="rect" id="node7" href="$_bitindex_8c.html#a0593341cccbcde30b5c85c832e1d4aa2" title="Retorna os proximos 8 bits do bitmap, concatenados em um char." alt="" coords="656,193,756,218"/>

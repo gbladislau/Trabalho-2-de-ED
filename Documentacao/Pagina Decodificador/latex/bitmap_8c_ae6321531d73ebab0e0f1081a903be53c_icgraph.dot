@@ -7,7 +7,7 @@ digraph "assert"
   rankdir="RL";
   Node1 [label="assert",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
   Node1 -> Node2 [dir="back",color="steelblue1",style="solid"];
-  Node2 [label="ArvChar",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_arvore_8c.html#a38c5945a9e3f36721f6af8f951861e5a",tooltip="Retorna o caractere da árvore caso seja diferente de NULL Pré-condição: arvore conter um char...."];
+  Node2 [label="ArvChar",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_arvore_8c.html#a38c5945a9e3f36721f6af8f951861e5a",tooltip="Retorna o caractere da árvore caso seja diferente de NULL."];
   Node2 -> Node3 [dir="back",color="steelblue1",style="solid"];
   Node3 [label="ArvPai",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_arvore_8c.html#a2277070fbf493eb3ecda0642fc2bd0c1",tooltip="Procura o pai do nó que contém o caractere c."];
   Node3 -> Node3 [dir="back",color="steelblue1",style="solid"];
@@ -27,7 +27,7 @@ digraph "assert"
   Node1 -> Node10 [dir="back",color="steelblue1",style="solid"];
   Node10 [label="bitmapAppendLeastSignificantBit",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$bitmap_8c.html#a8bee243b51ff8daf8cf577d11e7e735c",tooltip=" "];
   Node10 -> Node11 [dir="back",color="steelblue1",style="solid"];
-  Node11 [label="EscreveChar",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_arvore_8c.html#abef2d066901108b1a90121a6411e43c4",tooltip="Escreve o char em bits (ascii)"];
+  Node11 [label="EscreveChar",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$bitmap_8c.html#abef2d066901108b1a90121a6411e43c4",tooltip="Escreve um byte//char em um bitmap."];
   Node11 -> Node12 [dir="back",color="steelblue1",style="solid"];
   Node12 [label="DescodificarEntrada",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_decodificador_8c.html#a92327d77e14adac52847850f2aded1f3",tooltip="Decodifica o arquivo de entrada com base na arvore de Huffman passada Escrevendo o resultado no arqui..."];
   Node12 -> Node8 [dir="back",color="steelblue1",style="solid"];

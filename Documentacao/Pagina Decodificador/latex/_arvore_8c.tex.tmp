@@ -30,7 +30,7 @@ void \mbox{\hyperlink{_arvore_8c_abb5c5af8b08c174e2302c05df2dfd9bb}{Arv\+Imprime
 int \mbox{\hyperlink{_arvore_8c_a55bfb2f6fc17e62c97e93553709419e5}{Qntd\+Folhas}} (\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$a)
 \begin{DoxyCompactList}\small\item\em Retorna a quantidade de folhas de certa árvore. \end{DoxyCompactList}\item 
 unsigned char \mbox{\hyperlink{_arvore_8c_a38c5945a9e3f36721f6af8f951861e5a}{Arv\+Char}} (\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$a)
-\begin{DoxyCompactList}\small\item\em Retorna o caractere da árvore caso seja diferente de NULL Pré-\/condição\+: arvore conter um char. Pós-\/condição\+: retornar char. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Retorna o caractere da árvore caso seja diferente de NULL. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{_arvore_8c_adbfc4cec04e2ca0f3b4976d68d874fa5}{Arv\+Peso}} (\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$a)
 \begin{DoxyCompactList}\small\item\em Retorna o peso da árvore caso seja diferente de NULL. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{_arvore_8c_a8990d4e09c7a03d1e586f756e48ded81}{Arv\+Altura}} (\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$a)
@@ -41,8 +41,6 @@ int \mbox{\hyperlink{_arvore_8c_ae23fe165e1bc7caaa0ed488b078c7694}{Eh\+No}} (\mb
 \item 
 int \mbox{\hyperlink{_arvore_8c_a0c15d546ee7d6c913839864f04e1c47a}{Eh\+Folha}} (\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$a)
 \item 
-void \mbox{\hyperlink{_arvore_8c_abef2d066901108b1a90121a6411e43c4}{Escreve\+Char}} (\mbox{\hyperlink{bitmap_8h_a8b52a6f322f22e4781bce4ec7d325066}{bitmap}} $\ast$mapa, unsigned char letrona)
-\begin{DoxyCompactList}\small\item\em Escreve o char em bits (ascii) \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{_arvore_8c_a5f0a02dc974d88b197cbb39423281c06}{Posiscao\+Char}} (\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$raiz, unsigned char c)
 \begin{DoxyCompactList}\small\item\em Retorna se o no que possui o caractere a esta presente na esquerda ou direita da arvore passada. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{_arvore_8c_a7e1ecc34ed066d00ffb60402853ba9e3}{Existe\+Char}} (\mbox{\hyperlink{_arvore_8h_a39723bf3217f72d2685eaa4b364218d8}{Arv}} $\ast$a, unsigned char c)
@@ -86,7 +84,7 @@ Here is the caller graph for this function\+:
 
 
 
-Retorna o caractere da árvore caso seja diferente de NULL Pré-\/condição\+: arvore conter um char. Pós-\/condição\+: retornar char. 
+Retorna o caractere da árvore caso seja diferente de NULL. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -290,27 +288,6 @@ Here is the call graph for this function\+:
 % FIG 19
 Here is the caller graph for this function\+:
 % FIG 20
-\mbox{\Hypertarget{_arvore_8c_abef2d066901108b1a90121a6411e43c4}\label{_arvore_8c_abef2d066901108b1a90121a6411e43c4}} 
-\index{Arvore.c@{Arvore.c}!EscreveChar@{EscreveChar}}
-\index{EscreveChar@{EscreveChar}!Arvore.c@{Arvore.c}}
-\doxysubsubsection{\texorpdfstring{EscreveChar()}{EscreveChar()}}
-{\footnotesize\ttfamily void Escreve\+Char (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{bitmap_8h_a8b52a6f322f22e4781bce4ec7d325066}{bitmap}} $\ast$}]{mapa,  }\item[{unsigned char}]{letrona }\end{DoxyParamCaption})}
-
-
-
-Escreve o char em bits (ascii) 
-
-
-\begin{DoxyParams}{Parameters}
-{\em mapa} & -\/ onde o char sera escrito \\
-\hline
-{\em letrona} & -\/ char a ser escrito em bits \\
-\hline
-\end{DoxyParams}
-Here is the call graph for this function\+:
-% FIG 21
-Here is the caller graph for this function\+:
-% FIG 22
 \mbox{\Hypertarget{_arvore_8c_a7e1ecc34ed066d00ffb60402853ba9e3}\label{_arvore_8c_a7e1ecc34ed066d00ffb60402853ba9e3}} 
 \index{Arvore.c@{Arvore.c}!ExisteChar@{ExisteChar}}
 \index{ExisteChar@{ExisteChar}!Arvore.c@{Arvore.c}}
@@ -332,9 +309,9 @@ Retorna se ha um no com o caractere c na arvore passada.
 int -\/ 1=Possui, 0=Nao possui 
 \end{DoxyReturn}
 Here is the call graph for this function\+:
-% FIG 23
+% FIG 21
 Here is the caller graph for this function\+:
-% FIG 24
+% FIG 22
 \mbox{\Hypertarget{_arvore_8c_ad9dbcc1eff0144c00dd5fa224684232f}\label{_arvore_8c_ad9dbcc1eff0144c00dd5fa224684232f}} 
 \index{Arvore.c@{Arvore.c}!ExportaArvore@{ExportaArvore}}
 \index{ExportaArvore@{ExportaArvore}!Arvore.c@{Arvore.c}}
@@ -354,7 +331,7 @@ Retorna o bitmap referente a arvore de codificacao seguindo a travessia de pre-\
 bitmap$\ast$ -\/ Bitmap com a arvore 
 \end{DoxyReturn}
 Here is the call graph for this function\+:
-% FIG 25
+% FIG 23
 \mbox{\Hypertarget{_arvore_8c_a8fe51cc09bbed0a34bd2ac0d826c9512}\label{_arvore_8c_a8fe51cc09bbed0a34bd2ac0d826c9512}} 
 \index{Arvore.c@{Arvore.c}!FazArvdeBitMap@{FazArvdeBitMap}}
 \index{FazArvdeBitMap@{FazArvdeBitMap}!Arvore.c@{Arvore.c}}
@@ -374,9 +351,9 @@ Dado um bitmap contendo a arvore serializada em pre-\/ordem, retorna a mesma des
 Arv$\ast$ -\/ Arvore desserializada 
 \end{DoxyReturn}
 Here is the call graph for this function\+:
-% FIG 26
+% FIG 24
 Here is the caller graph for this function\+:
-% FIG 27
+% FIG 25
 \mbox{\Hypertarget{_arvore_8c_a2a046926fc047d7085c4a1714366a868}\label{_arvore_8c_a2a046926fc047d7085c4a1714366a868}} 
 \index{Arvore.c@{Arvore.c}!PercorreArvorePorBitEEscreveSaida@{PercorreArvorePorBitEEscreveSaida}}
 \index{PercorreArvorePorBitEEscreveSaida@{PercorreArvorePorBitEEscreveSaida}!Arvore.c@{Arvore.c}}
@@ -399,9 +376,9 @@ Decodifica o conteudo de um Bitmap Indexado com base na Arvore de Huffman passad
 \hline
 \end{DoxyParams}
 Here is the call graph for this function\+:
-% FIG 28
+% FIG 26
 Here is the caller graph for this function\+:
-% FIG 29
+% FIG 27
 \mbox{\Hypertarget{_arvore_8c_a5f0a02dc974d88b197cbb39423281c06}\label{_arvore_8c_a5f0a02dc974d88b197cbb39423281c06}} 
 \index{Arvore.c@{Arvore.c}!PosiscaoChar@{PosiscaoChar}}
 \index{PosiscaoChar@{PosiscaoChar}!Arvore.c@{Arvore.c}}
@@ -423,7 +400,7 @@ Retorna se o no que possui o caractere a esta presente na esquerda ou direita da
 int -\/ Resultado\+: 1=Direita, 0=Esquerda 
 \end{DoxyReturn}
 Here is the call graph for this function\+:
-% FIG 30
+% FIG 28
 \mbox{\Hypertarget{_arvore_8c_a55bfb2f6fc17e62c97e93553709419e5}\label{_arvore_8c_a55bfb2f6fc17e62c97e93553709419e5}} 
 \index{Arvore.c@{Arvore.c}!QntdFolhas@{QntdFolhas}}
 \index{QntdFolhas@{QntdFolhas}!Arvore.c@{Arvore.c}}
@@ -443,9 +420,9 @@ Retorna a quantidade de folhas de certa árvore.
 int -\/ valor exato de folhas 
 \end{DoxyReturn}
 Here is the call graph for this function\+:
-% FIG 31
+% FIG 29
 Here is the caller graph for this function\+:
-% FIG 32
+% FIG 30
 \mbox{\Hypertarget{_arvore_8c_a87505f6fe3718fc93dc8f907127a6a6b}\label{_arvore_8c_a87505f6fe3718fc93dc8f907127a6a6b}} 
 \index{Arvore.c@{Arvore.c}!RecursividadeCriadora@{RecursividadeCriadora}}
 \index{RecursividadeCriadora@{RecursividadeCriadora}!Arvore.c@{Arvore.c}}
@@ -465,9 +442,9 @@ Funcao recursiva auxiliar de Faz\+Arvde\+Bit\+Map. Nessa funcao, lemos o bitmap 
 Arv$\ast$ -\/ Arvore desserializada 
 \end{DoxyReturn}
 Here is the call graph for this function\+:
-% FIG 33
+% FIG 31
 Here is the caller graph for this function\+:
-% FIG 34
+% FIG 32
 \mbox{\Hypertarget{_arvore_8c_a9dc4c14ca5384fca4c32be6d40e5b2b1}\label{_arvore_8c_a9dc4c14ca5384fca4c32be6d40e5b2b1}} 
 \index{Arvore.c@{Arvore.c}!RetornaCharRecursivamente@{RetornaCharRecursivamente}}
 \index{RetornaCharRecursivamente@{RetornaCharRecursivamente}!Arvore.c@{Arvore.c}}
@@ -491,6 +468,6 @@ Funcao recusiva auxiliar de Percorre\+Arvore\+Por\+Bit\+EEscreve\+Saida. Faz a d
 unsigned char -\/ Caractere decodificado 
 \end{DoxyReturn}
 Here is the call graph for this function\+:
-% FIG 35
+% FIG 33
 Here is the caller graph for this function\+:
-% FIG 36
+% FIG 34

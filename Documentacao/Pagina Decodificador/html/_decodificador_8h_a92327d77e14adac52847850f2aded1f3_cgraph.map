@@ -2,7 +2,7 @@
 <area shape="rect" id="node1" title="Decodifica o arquivo de entrada com base na arvore de Huffman passada Escrevendo o resultado no arqui..." alt="" coords="5,188,157,213"/>
 <area shape="rect" id="node2" href="$bitmap_8c.html#a6fe05cb2e9889f347653f98edac7a114" title=" " alt="" coords="531,7,620,32"/>
 <area shape="rect" id="node4" href="$bitmap_8c.html#a08def9dc3e8ae0e4d83a0039d770205c" title=" " alt="" coords="521,159,629,184"/>
-<area shape="rect" id="node5" href="$_arvore_8c.html#abef2d066901108b1a90121a6411e43c4" title="Escreve o char em bits (ascii)" alt="" coords="263,108,365,133"/>
+<area shape="rect" id="node5" href="$bitmap_8c.html#abef2d066901108b1a90121a6411e43c4" title="Escreve um byte//char em um bitmap." alt="" coords="263,108,365,133"/>
 <area shape="rect" id="node8" href="$_bitindex_8c.html#a8e4f2606d9ca79f193f8a7dc3d890455" title="Inicia um Bitmap indexado, dado um bitmap comum." alt="" coords="259,273,369,299"/>
 <area shape="rect" id="node9" href="$_bitindex_8c.html#af0d17881c29ba316cfa620283c7b7e7b" title="Libera a estrutura de BitIndexado, sem liberar o bitmap em que foi baseado." alt="" coords="260,323,368,348"/>
 <area shape="rect" id="node10" href="$_arvore_8c.html#a2a046926fc047d7085c4a1714366a868" title="Decodifica o conteudo de um Bitmap Indexado com base na Arvore de Huffman passada,..." alt="" coords="205,209,423,249"/>

@@ -19,7 +19,7 @@ digraph "PreencheBitMapArquivo"
   Node1 -> Node6 [color="steelblue1",style="solid"];
   Node6 [label="bitmapLibera",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$bitmap_8c.html#a08def9dc3e8ae0e4d83a0039d770205c",tooltip=" "];
   Node1 -> Node7 [color="steelblue1",style="solid"];
-  Node7 [label="EscreveChar",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_arvore_8c.html#abef2d066901108b1a90121a6411e43c4",tooltip="Escreve o char em bits (ascii)"];
+  Node7 [label="EscreveChar",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$bitmap_8c.html#abef2d066901108b1a90121a6411e43c4",tooltip="Escreve um byte//char em um bitmap."];
   Node7 -> Node2 [color="steelblue1",style="solid"];
   Node7 -> Node4 [color="steelblue1",style="solid"];
   Node7 -> Node5 [color="steelblue1",style="solid"];

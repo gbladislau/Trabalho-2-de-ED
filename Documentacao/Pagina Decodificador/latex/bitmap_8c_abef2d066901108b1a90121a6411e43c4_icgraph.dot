@@ -1,0 +1,18 @@
+digraph "EscreveChar"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [label="EscreveChar",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Escreve um byte//char em um bitmap."];
+  Node1 -> Node2 [dir="back",color="steelblue1",style="solid"];
+  Node2 [label="DescodificarEntrada",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_decodificador_8c.html#a92327d77e14adac52847850f2aded1f3",tooltip="Decodifica o arquivo de entrada com base na arvore de Huffman passada Escrevendo o resultado no arqui..."];
+  Node2 -> Node3 [dir="back",color="steelblue1",style="solid"];
+  Node3 [label="main",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_decodificador_8c.html#abf9e6b7e6f15df4b525a2e7705ba3089",tooltip=" "];
+  Node1 -> Node4 [dir="back",color="steelblue1",style="solid"];
+  Node4 [label="PreencheBitMapArquivo",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_decodificador_8c.html#ae772ebf98171e99b223a791bc867fbbf",tooltip="Preenche bitmap com a quantidade de bits informada do arquivo passado."];
+  Node4 -> Node5 [dir="back",color="steelblue1",style="solid"];
+  Node5 [label="PegaArvore",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_decodificador_8c.html#a350e3a2d1764f2357fe860705c2be1a3",tooltip="Monta uma arvore de Huffman com base no cabecalho presente no arquivo de entrada."];
+  Node5 -> Node3 [dir="back",color="steelblue1",style="solid"];
+}
