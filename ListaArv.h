@@ -89,14 +89,6 @@ void PreencheLista(Listagen *lista, VetChar *VetTemp);
  */
 void LiberaListaArv(Listagen *lista);
 
-/**
- * @brief Preenche a lista de arvores com os dados presentes no vetor
- *
- * @param lista - Lista de arvores valida
- * @param vetor - VetorChar valido preenchido
- */
-void ConverteVetorALista(Listagen *lista, VetChar *vetor);
-
 //Arv* BuscaArvChar(Listagen* lista, unsigned char c);
 
 // Listagen* CopiaLista(Listagen* origem);

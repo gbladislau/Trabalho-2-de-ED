@@ -38,7 +38,7 @@ void ImprimeListaArv(Listagen *lista)
     ImprimeListaGen(lista, ImprimeArvListada);
 }
 
-Listagen* ReorganizaListaArv(Listagen *lista)
+Listagen *ReorganizaListaArv(Listagen *lista)
 {
     return ReorganizaLista(lista, MenorPeso);
 }
@@ -87,7 +87,8 @@ void PreencheLista(Listagen *lista, VetChar *VetTemp)
     {
         if (VetGetPos(VetTemp, i))
         {
-            Arv *a = ArvCria((unsigned char)i, VetGetPos(VetTemp, i), ArvCriaVazia(), ArvCriaVazia());
+            Arv *a = ArvCria((unsigned char)i, VetGetPos(VetTemp, i),
+                             ArvCriaVazia(), ArvCriaVazia());
             InsereListaArv(lista, a);
         }
     }

@@ -1,13 +1,13 @@
-<map id="/home/gnizama/Documents/2022 1/2ED/Novo/Trabalho&#45;2&#45;de&#45;ED/Codificador.c" name="/home/gnizama/Documents/2022 1/2ED/Novo/Trabalho&#45;2&#45;de&#45;ED/Codificador.c">
-<area shape="rect" id="node1" title=" " alt="" coords="107,5,309,60"/>
-<area shape="rect" id="node2" href="$_codificador_8h.html" title=" " alt="" coords="231,108,337,133"/>
-<area shape="rect" id="node5" title=" " alt="" coords="79,401,145,427"/>
-<area shape="rect" id="node6" title=" " alt="" coords="490,401,561,427"/>
-<area shape="rect" id="node7" title=" " alt="" coords="274,401,345,427"/>
-<area shape="rect" id="node3" href="$_lista_arv_8h.html" title=" " alt="" coords="291,181,378,207"/>
-<area shape="rect" id="node9" href="$_arvore_8h.html" title=" " alt="" coords="195,328,272,353"/>
-<area shape="rect" id="node11" href="$_vetchar_8h.html" title=" " alt="" coords="455,255,537,280"/>
-<area shape="rect" id="node4" title=" " alt="" coords="369,401,444,427"/>
-<area shape="rect" id="node8" href="$_listagen_8h.html" title=" " alt="" coords="347,328,437,353"/>
-<area shape="rect" id="node10" href="$bitmap_8h.html" title=" " alt="" coords="169,401,249,427"/>
+<map id="Codificador.c" name="Codificador.c">
+<area shape="rect" id="node1" title=" " alt="" coords="155,5,261,31"/>
+<area shape="rect" id="node2" href="$_codificador_8h.html" title=" " alt="" coords="231,79,337,104"/>
+<area shape="rect" id="node5" title=" " alt="" coords="79,372,145,397"/>
+<area shape="rect" id="node6" title=" " alt="" coords="490,372,561,397"/>
+<area shape="rect" id="node7" title=" " alt="" coords="274,372,345,397"/>
+<area shape="rect" id="node3" href="$_lista_arv_8h.html" title=" " alt="" coords="291,152,378,177"/>
+<area shape="rect" id="node9" href="$_arvore_8h.html" title=" " alt="" coords="195,299,272,324"/>
+<area shape="rect" id="node11" href="$_vetchar_8h.html" title=" " alt="" coords="455,225,537,251"/>
+<area shape="rect" id="node4" title=" " alt="" coords="369,372,444,397"/>
+<area shape="rect" id="node8" href="$_listagen_8h.html" title=" " alt="" coords="347,299,437,324"/>
+<area shape="rect" id="node10" href="$bitmap_8h.html" title=" " alt="" coords="169,372,249,397"/>
 </map>

@@ -323,7 +323,8 @@ Arv *FazArvdeBitMap(bitmap *bitmap)
     return saida;
 }
 
-void PercorreArvorePorBitEEscreveSaida(BitIndex *arquivo, Arv *arvore, unsigned long int tamTotalBits, FILE *saida)
+void PercorreArvorePorBitEEscreveSaida(BitIndex *arquivo, Arv *arvore,
+                                       unsigned long int tamTotalBits, FILE *saida)
 {
     unsigned long int contadorDebits[1];
     contadorDebits[0] = tamTotalBits;
@@ -335,7 +336,8 @@ void PercorreArvorePorBitEEscreveSaida(BitIndex *arquivo, Arv *arvore, unsigned 
     }
 }
 
-unsigned char RetornaCharRecursivamente(BitIndex *p, Arv *arvore, unsigned long int *contadorDebits)
+unsigned char RetornaCharRecursivamente(BitIndex *p, Arv *arvore,
+                                        unsigned long int *contadorDebits)
 {
     if (EhNo(arvore))
     {
