@@ -120,7 +120,7 @@ void CodificaArq(FILE *arq, Arv *Huffman, VetChar *Vetor, FILE *arqSaida)
     int tam = QntdFolhas(Huffman);
 
     Tabela *tab = MontandoTabela(Huffman, Vetor, tam);
-    // Tabela está funcionando por enquanto
+    
     // Escreve o tamanho total do arquivo - Subcabecalho do arquivo
     unsigned long int TAM_TOTAL = CalculaTamTotal(Vetor, tab, tam);
     fprintf(arqSaida, "%ld", TAM_TOTAL);
