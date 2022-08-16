@@ -1,7 +1,0 @@
-<map id="bitmapGetLength" name="bitmapGetLength">
-<area shape="rect" id="node1" title=" " alt="" coords="463,56,597,81"/>
-<area shape="rect" id="node2" href="$_codificador_8c.html#a8da2d818a6200783b78d7dfb242c7b7d" title="Faz o calculo de quantos bits serao ocupados pelo arquivo a ser codificado dada a tabela de codificac..." alt="" coords="269,5,397,31"/>
-<area shape="rect" id="node3" href="$_codificador_8c.html#a74594cf130186445476babf7b7af8483" title="Utilizando da arvore fornecida, codifica o arquivo de entrada senguindo o algotimo de Huffman,..." alt="" coords="108,56,204,81"/>
-<area shape="rect" id="node5" href="$_codificador_8c.html#a2ce69d6a0063b64e46d17291840a583d" title="Funcao que verifica o bitmap e caso o mesmo esteja com o byte final incompleto, completa&#45;o com 0&#39;s." alt="" coords="252,107,415,132"/>
-<area shape="rect" id="node4" href="$_codificador_8c.html#abf9e6b7e6f15df4b525a2e7705ba3089" title=" " alt="" coords="5,56,60,81"/>
-</map>

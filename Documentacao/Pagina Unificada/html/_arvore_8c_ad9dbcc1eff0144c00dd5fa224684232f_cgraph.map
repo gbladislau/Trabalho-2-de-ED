@@ -1,8 +1,0 @@
-<map id="ExportaArvore" name="ExportaArvore">
-<area shape="rect" id="node1" title="Retorna o bitmap referente a arvore de codificacao seguindo a travessia de pre&#45;ordem e bit de identif..." alt="" coords="5,128,120,153"/>
-<area shape="rect" id="node2" href="$_arvore_8c.html#a8990d4e09c7a03d1e586f756e48ded81" title="Retorna altura da arvore a." alt="" coords="174,29,257,55"/>
-<area shape="rect" id="node4" href="$bitmap_8c.html#ae6321531d73ebab0e0f1081a903be53c" title=" " alt="" coords="319,179,381,204"/>
-<area shape="rect" id="node5" href="$bitmap_8c.html#a6fe05cb2e9889f347653f98edac7a114" title=" " alt="" coords="171,204,260,229"/>
-<area shape="rect" id="node6" href="$_arvore_8c.html#a55bfb2f6fc17e62c97e93553709419e5" title="Retorna a quantidade de folhas de certa árvore." alt="" coords="168,103,263,128"/>
-<area shape="rect" id="node3" href="$_arvore_8c.html#a2964d6de6e94445e6bc575e68a36918e" title="Função que retorna 1 se a árvore está vazia." alt="" coords="311,67,389,92"/>
-</map>

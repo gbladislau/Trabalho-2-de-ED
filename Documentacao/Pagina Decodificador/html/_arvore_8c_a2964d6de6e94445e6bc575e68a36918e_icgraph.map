@@ -1,7 +1,0 @@
-<map id="ArvVazia" name="ArvVazia">
-<area shape="rect" id="node1" title="Função que retorna 1 se a árvore está vazia." alt="" coords="311,67,389,92"/>
-<area shape="rect" id="node2" href="$_arvore_8c.html#a8990d4e09c7a03d1e586f756e48ded81" title="Retorna altura da arvore a." alt="" coords="174,29,257,55"/>
-<area shape="rect" id="node5" href="$_arvore_8c.html#a55bfb2f6fc17e62c97e93553709419e5" title="Retorna a quantidade de folhas de certa árvore." alt="" coords="168,103,263,128"/>
-<area shape="rect" id="node3" href="$_arvore_8c.html#a7a7b30394ce1cb20cb9c3c044d267f28" title="Retorna o codigo referente ao caractere dado, na codificacao da arvore fornecida." alt="" coords="11,29,115,55"/>
-<area shape="rect" id="node4" href="$_arvore_8c.html#ad9dbcc1eff0144c00dd5fa224684232f" title="Retorna o bitmap referente a arvore de codificacao seguindo a travessia de pre&#45;ordem e bit de identif..." alt="" coords="5,91,120,116"/>
-</map>

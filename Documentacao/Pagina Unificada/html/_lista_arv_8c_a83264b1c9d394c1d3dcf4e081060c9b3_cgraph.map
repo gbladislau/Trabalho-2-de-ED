@@ -1,9 +1,0 @@
-<map id="PreencheLista" name="PreencheLista">
-<area shape="rect" id="node1" title="Preenche a lista de arvores com os dados presentes no arquivo passado como parametro." alt="" coords="5,68,119,93"/>
-<area shape="rect" id="node2" href="$_arvore_8c.html#ab523d769f5fa825ecfed60ccbf80735f" title="Função para criar Arvore, aqui podemos adicionar um caractere e seu peso correspodente na contagem do..." alt="" coords="353,5,424,31"/>
-<area shape="rect" id="node4" href="$_arvore_8c.html#a85910c70213c534fa1f5b61056e4dd4c" title="Cria arv Vazia." alt="" coords="171,43,277,68"/>
-<area shape="rect" id="node5" href="$_lista_arv_8c.html#aa8b1bfcba54f261f4dc02046fe06a1b0" title="Insere arvore na lista passada." alt="" coords="167,92,281,117"/>
-<area shape="rect" id="node7" href="$_vetchar_8c.html#ad45019d807e44f1b7eb100266afc5b4b" title="Retorna quantas vezes uma dada combinacao de btis apareceu no arquivo." alt="" coords="179,141,269,167"/>
-<area shape="rect" id="node3" href="$bitmap_8c.html#ae6321531d73ebab0e0f1081a903be53c" title=" " alt="" coords="496,43,559,68"/>
-<area shape="rect" id="node6" href="$_listagen_8c.html#a5d9040485e36346089247b105cd770bc" title="Insere um item no inicio da lista." alt="" coords="329,67,448,92"/>
-</map>

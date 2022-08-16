@@ -1,7 +1,0 @@
-<map id="ArvCria" name="ArvCria">
-<area shape="rect" id="node1" title="Função para criar Arvore, aqui podemos adicionar um caractere e seu peso correspodente na contagem do..." alt="" coords="645,29,716,55"/>
-<area shape="rect" id="node2" href="$_arvore_8c.html#a87505f6fe3718fc93dc8f907127a6a6b" title="Funcao recursiva auxiliar de FazArvdeBitMap. Nessa funcao, lemos o bitmap indexado contendo a arvore ..." alt="" coords="428,29,597,55"/>
-<area shape="rect" id="node3" href="$_arvore_8c.html#a8fe51cc09bbed0a34bd2ac0d826c9512" title="Dado um bitmap contendo a arvore serializada em pre&#45;ordem, retorna a mesma desserializada para uso no..." alt="" coords="253,29,380,55"/>
-<area shape="rect" id="node4" href="$_decodificador_8c.html#a350e3a2d1764f2357fe860705c2be1a3" title="Monta uma arvore de Huffman com base no cabecalho presente no arquivo de entrada." alt="" coords="108,29,205,55"/>
-<area shape="rect" id="node5" href="$_decodificador_8c.html#abf9e6b7e6f15df4b525a2e7705ba3089" title=" " alt="" coords="5,29,60,55"/>
-</map>

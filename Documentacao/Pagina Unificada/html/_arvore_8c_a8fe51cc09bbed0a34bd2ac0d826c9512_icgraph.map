@@ -1,5 +1,0 @@
-<map id="FazArvdeBitMap" name="FazArvdeBitMap">
-<area shape="rect" id="node1" title="Dado um bitmap contendo a arvore serializada em pre&#45;ordem, retorna a mesma desserializada para uso no..." alt="" coords="253,5,380,31"/>
-<area shape="rect" id="node2" href="$_decodificador_8c.html#a350e3a2d1764f2357fe860705c2be1a3" title="Monta uma arvore de Huffman com base no cabecalho presente no arquivo de entrada." alt="" coords="108,5,205,31"/>
-<area shape="rect" id="node3" href="$_decodificador_8c.html#abf9e6b7e6f15df4b525a2e7705ba3089" title=" " alt="" coords="5,5,60,31"/>
-</map>

@@ -1,6 +1,0 @@
-<map id="RetornaCharRecursivamente" name="RetornaCharRecursivamente">
-<area shape="rect" id="node1" title="Funcao recusiva auxiliar de PercorreArvorePorBitEEscreveSaida. Faz a decodificacao de um caractere pr..." alt="" coords="573,29,783,55"/>
-<area shape="rect" id="node2" href="$_arvore_8c.html#a2a046926fc047d7085c4a1714366a868" title="Decodifica o conteudo de um Bitmap Indexado com base na Arvore de Huffman passada,..." alt="" coords="308,22,525,62"/>
-<area shape="rect" id="node3" href="$_decodificador_8c.html#a92327d77e14adac52847850f2aded1f3" title="Decodifica o arquivo de entrada com base na arvore de Huffman passada Escrevendo o resultado no arqui..." alt="" coords="108,29,260,55"/>
-<area shape="rect" id="node4" href="$_decodificador_8c.html#abf9e6b7e6f15df4b525a2e7705ba3089" title=" " alt="" coords="5,29,60,55"/>
-</map>

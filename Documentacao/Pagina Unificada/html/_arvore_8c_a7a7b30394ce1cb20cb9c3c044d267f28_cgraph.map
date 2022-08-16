@@ -1,8 +1,0 @@
-<map id="CodificaChar" name="CodificaChar">
-<area shape="rect" id="node1" title="Retorna o codigo referente ao caractere dado, na codificacao da arvore fornecida." alt="" coords="5,79,109,104"/>
-<area shape="rect" id="node2" href="$_arvore_8c.html#a8990d4e09c7a03d1e586f756e48ded81" title="Retorna altura da arvore a." alt="" coords="162,29,245,55"/>
-<area shape="rect" id="node4" href="$bitmap_8c.html#a6fe05cb2e9889f347653f98edac7a114" title=" " alt="" coords="159,79,248,104"/>
-<area shape="rect" id="node6" href="$_arvore_8c.html#a7e1ecc34ed066d00ffb60402853ba9e3" title="Retorna se ha um no com o caractere c na arvore passada." alt="" coords="157,152,249,177"/>
-<area shape="rect" id="node3" href="$_arvore_8c.html#a2964d6de6e94445e6bc575e68a36918e" title="Função que retorna 1 se a árvore está vazia." alt="" coords="297,29,376,55"/>
-<area shape="rect" id="node5" href="$bitmap_8c.html#ae6321531d73ebab0e0f1081a903be53c" title=" " alt="" coords="305,79,368,104"/>
-</map>

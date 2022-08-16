@@ -1,5 +1,0 @@
-<map id="RetiraDaListaGen" name="RetiraDaListaGen">
-<area shape="rect" id="node1" title="Retira um item da lista comparando com uma função de callback do tipo de item." alt="" coords="200,31,336,56"/>
-<area shape="rect" id="node2" href="$_lista_arv_8c.html#a5e58079e55a4b754c7588e30a57ceb91" title="Retira a arvore da lista usando como chave de busca a letra." alt="" coords="5,5,152,31"/>
-<area shape="rect" id="node3" href="$_lista_arv_8c.html#ac5c599d287176935b145ab3915029622" title="Retira a arvore da lista usando como chave de busca o peso." alt="" coords="6,55,151,80"/>
-</map>

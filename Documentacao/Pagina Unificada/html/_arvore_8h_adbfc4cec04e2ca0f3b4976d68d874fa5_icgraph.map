@@ -1,6 +1,0 @@
-<map id="ArvPeso" name="ArvPeso">
-<area shape="rect" id="node1" title="Retorna o peso da árvore caso seja diferente de NULL." alt="" coords="469,5,544,31"/>
-<area shape="rect" id="node2" href="$_lista_arv_8c.html#a54aa3bfd5b757ffc5b07e1e05a76078c" title="Retira as duas primeiras arvores da lista, cria um no raiz com o peso = soma dos pesos,..." alt="" coords="299,5,421,31"/>
-<area shape="rect" id="node3" href="$_codificador_8c.html#a5b6627a39040b553a21e3c881473cd7d" title="Dada uma lista de arvores, aplica o algoritmo de Huffman e retorna a raiz da arvore resultante." alt="" coords="108,5,251,31"/>
-<area shape="rect" id="node4" href="$_codificador_8c.html#abf9e6b7e6f15df4b525a2e7705ba3089" title=" " alt="" coords="5,5,60,31"/>
-</map>
