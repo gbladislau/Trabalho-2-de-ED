@@ -1,4 +1,4 @@
-all: decodificador codificador
+all: decodificador codificador Clear
 
 decodificador: Arvore.o Bitindex.o bitmap.o Decodificador.o
 	gcc -o decodificador Arvore.o Bitindex.o bitmap.o Decodificador.o
@@ -29,3 +29,6 @@ Vetchar.o: Vetchar.c Listagen.h Vetchar.h
 
 Decodificador.o: Decodificador.c Decodificador.h Arvore.h
 	gcc -o Decodificador.o Decodificador.c -c
+	
+Clear:
+	rm *.o
