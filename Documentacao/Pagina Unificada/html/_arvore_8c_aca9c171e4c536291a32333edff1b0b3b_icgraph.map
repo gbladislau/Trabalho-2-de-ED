@@ -1,0 +1,6 @@
+<map id="ArvLibera" name="ArvLibera">
+<area shape="rect" id="node1" title="Função para liberar todo o espaço ocupado pela árvore a, libera também suas raizes." alt="" coords="347,31,431,56"/>
+<area shape="rect" id="node2" href="$_lista_arv_8c.html#a8650b5c98eebc4cf49cb591fcec3b37e" title=" " alt="" coords="168,5,299,31"/>
+<area shape="rect" id="node4" href="$_decodificador_8c.html#abf9e6b7e6f15df4b525a2e7705ba3089" title=" " alt="" coords="206,55,261,80"/>
+<area shape="rect" id="node3" href="$_lista_arv_8c.html#a75ff022843c7361eb95f79715762b827" title="Faz a liberacao da lista de Arvores, liberando suas arvores." alt="" coords="5,5,120,31"/>
+</map>

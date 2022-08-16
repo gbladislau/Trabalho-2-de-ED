@@ -1,0 +1,8 @@
+<map id="VetGetPos" name="VetGetPos">
+<area shape="rect" id="node1" title="Retorna quantas vezes uma dada combinacao de btis apareceu no arquivo." alt="" coords="447,55,536,80"/>
+<area shape="rect" id="node2" href="$_codificador_8c.html#a8da2d818a6200783b78d7dfb242c7b7d" title="Faz o calculo de quantos bits serao ocupados pelo arquivo a ser codificado dada a tabela de codificac..." alt="" coords="270,5,398,31"/>
+<area shape="rect" id="node5" href="$_codificador_8c.html#ae32543537d391c5756cb24ef60e2fdfc" title="Inicia uma tabela de codificacao, a preenchendo com a informacao obtida a partir do vetor de frequenc..." alt="" coords="269,55,399,80"/>
+<area shape="rect" id="node6" href="$_lista_arv_8c.html#a83264b1c9d394c1d3dcf4e081060c9b3" title="Preenche a lista de arvores com os dados presentes no arquivo passado como parametro." alt="" coords="108,104,221,129"/>
+<area shape="rect" id="node3" href="$_codificador_8c.html#a74594cf130186445476babf7b7af8483" title="Utilizando da arvore fornecida, codifica o arquivo de entrada senguindo o algotimo de Huffman,..." alt="" coords="117,55,213,80"/>
+<area shape="rect" id="node4" href="$_codificador_8c.html#abf9e6b7e6f15df4b525a2e7705ba3089" title=" " alt="" coords="5,80,60,105"/>
+</map>

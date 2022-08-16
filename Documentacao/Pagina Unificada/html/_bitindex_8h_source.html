@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.5"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Decodificador e Codificador Huffman: Código-Fonte de Bitindex.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Decodificador e Codificador Huffman
+   </div>
+   <div id="projectbrief">Trabalho de Estrutura de dados - Feito por Gabriel Braga e Rhuan Garcia</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.9.5 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Busca');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Bitindex.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_bitindex_8h.html">Vá para a documentação desse arquivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef BI_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define BI_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="bitmap_8h.html">bitmap.h</a>&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="_bitindex_8h.html#a21c51523591fc4eb088b9011da000d32">    6</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structbit_index.html">bitIndex</a> <a class="code hl_struct" href="structbit_index.html">BitIndex</a>;</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><a class="code hl_struct" href="structbit_index.html">BitIndex</a> *<a class="code hl_function" href="_bitindex_8h.html#a8e4f2606d9ca79f193f8a7dc3d890455">IniciaBitIndex</a>(<a class="code hl_struct" href="structmap.html">bitmap</a> *bitm);</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code hl_function" href="_bitindex_8h.html#a3d10e37dd981c668b0db91cebc255246">ProxBit</a>(<a class="code hl_struct" href="structbit_index.html">BitIndex</a> *<a class="code hl_struct" href="structmap.html">bitmap</a>);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code hl_function" href="_bitindex_8h.html#a0593341cccbcde30b5c85c832e1d4aa2">LeCaractere</a>(<a class="code hl_struct" href="structbit_index.html">BitIndex</a> *base);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keywordtype">void</span> <a class="code hl_function" href="_bitindex_8h.html#af0d17881c29ba316cfa620283c7b7e7b">LiberaBitIndx</a>(<a class="code hl_struct" href="structbit_index.html">BitIndex</a> *<a class="code hl_struct" href="structmap.html">bitmap</a>);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="a_bitindex_8h_html_a0593341cccbcde30b5c85c832e1d4aa2"><div class="ttname"><a href="_bitindex_8h.html#a0593341cccbcde30b5c85c832e1d4aa2">LeCaractere</a></div><div class="ttdeci">unsigned char LeCaractere(BitIndex *base)</div><div class="ttdoc">Retorna os proximos 8 bits do bitmap, concatenados em um char.</div><div class="ttdef"><b>Definition:</b> <a href="_bitindex_8c_source.html#l00033">Bitindex.c:33</a></div></div>
+<div class="ttc" id="a_bitindex_8h_html_a3d10e37dd981c668b0db91cebc255246"><div class="ttname"><a href="_bitindex_8h.html#a3d10e37dd981c668b0db91cebc255246">ProxBit</a></div><div class="ttdeci">unsigned char ProxBit(BitIndex *bitmap)</div><div class="ttdoc">Retorna o proximo bit do bitmap, caso omesmo fosse tratado como uma pilha.</div><div class="ttdef"><b>Definition:</b> <a href="_bitindex_8c_source.html#l00027">Bitindex.c:27</a></div></div>
+<div class="ttc" id="a_bitindex_8h_html_a8e4f2606d9ca79f193f8a7dc3d890455"><div class="ttname"><a href="_bitindex_8h.html#a8e4f2606d9ca79f193f8a7dc3d890455">IniciaBitIndex</a></div><div class="ttdeci">BitIndex * IniciaBitIndex(bitmap *bitm)</div><div class="ttdoc">Inicia um Bitmap indexado, dado um bitmap comum.</div><div class="ttdef"><b>Definition:</b> <a href="_bitindex_8c_source.html#l00019">Bitindex.c:19</a></div></div>
+<div class="ttc" id="a_bitindex_8h_html_af0d17881c29ba316cfa620283c7b7e7b"><div class="ttname"><a href="_bitindex_8h.html#af0d17881c29ba316cfa620283c7b7e7b">LiberaBitIndx</a></div><div class="ttdeci">void LiberaBitIndx(BitIndex *bitmap)</div><div class="ttdoc">Libera a estrutura de BitIndexado, sem liberar o bitmap em que foi baseado.</div><div class="ttdef"><b>Definition:</b> <a href="_bitindex_8c_source.html#l00049">Bitindex.c:49</a></div></div>
+<div class="ttc" id="abitmap_8h_html"><div class="ttname"><a href="bitmap_8h.html">bitmap.h</a></div></div>
+<div class="ttc" id="astructbit_index_html"><div class="ttname"><a href="structbit_index.html">bitIndex</a></div><div class="ttdoc">Bitmap Indexado, tem funcoes para facilitar acesso continuo e tratar-lo como pilha.</div><div class="ttdef"><b>Definition:</b> <a href="_bitindex_8c_source.html#l00013">Bitindex.c:14</a></div></div>
+<div class="ttc" id="astructmap_html"><div class="ttname"><a href="structmap.html">map</a></div><div class="ttdoc">Estrutura para representar um mapa de bits.</div><div class="ttdef"><b>Definition:</b> <a href="bitmap_8c_source.html#l00016">bitmap.c:17</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5
+</small></address>
+</body>
+</html>

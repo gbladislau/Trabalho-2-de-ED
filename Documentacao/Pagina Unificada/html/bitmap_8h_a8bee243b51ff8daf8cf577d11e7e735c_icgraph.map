@@ -1,0 +1,14 @@
+<map id="bitmapAppendLeastSignificantBit" name="bitmapAppendLeastSignificantBit">
+<area shape="rect" id="node1" title=" " alt="" coords="920,84,1159,109"/>
+<area shape="rect" id="node2" href="$_codificador_8c.html#a74594cf130186445476babf7b7af8483" title="Utilizando da arvore fornecida, codifica o arquivo de entrada senguindo o algotimo de Huffman,..." alt="" coords="524,5,620,31"/>
+<area shape="rect" id="node4" href="$_codificador_8c.html#a2ce69d6a0063b64e46d17291840a583d" title="Funcao que verifica o bitmap e caso o mesmo esteja com o byte final incompleto, completa&#45;o com 0&#39;s." alt="" coords="709,35,872,60"/>
+<area shape="rect" id="node5" href="$bitmap_8c.html#abef2d066901108b1a90121a6411e43c4" title="Escreve um byte//char em um bitmap." alt="" coords="739,84,842,109"/>
+<area shape="rect" id="node8" href="$_decodificador_8c.html#ae772ebf98171e99b223a791bc867fbbf" title="Preenche bitmap com a quantidade de bits informada do arquivo passado." alt="" coords="483,128,661,153"/>
+<area shape="rect" id="node10" href="$_bitindex_8c.html#a0593341cccbcde30b5c85c832e1d4aa2" title="Retorna os proximos 8 bits do bitmap, concatenados em um char." alt="" coords="741,191,841,216"/>
+<area shape="rect" id="node3" href="$_codificador_8c.html#abf9e6b7e6f15df4b525a2e7705ba3089" title=" " alt="" coords="344,5,399,31"/>
+<area shape="rect" id="node6" href="$_decodificador_8c.html#a92327d77e14adac52847850f2aded1f3" title="Decodifica o arquivo de entrada com base na arvore de Huffman passada Escrevendo o resultado no arqui..." alt="" coords="108,79,260,104"/>
+<area shape="rect" id="node7" href="$_decodificador_8c.html#abf9e6b7e6f15df4b525a2e7705ba3089" title=" " alt="" coords="5,104,60,129"/>
+<area shape="rect" id="node9" href="$_decodificador_8c.html#a350e3a2d1764f2357fe860705c2be1a3" title="Monta uma arvore de Huffman com base no cabecalho presente no arquivo de entrada." alt="" coords="135,128,233,153"/>
+<area shape="rect" id="node11" href="$_arvore_8c.html#a87505f6fe3718fc93dc8f907127a6a6b" title="Funcao recursiva auxiliar de FazArvdeBitMap. Nessa funcao, lemos o bitmap indexado contendo a arvore ..." alt="" coords="487,201,657,227"/>
+<area shape="rect" id="node12" href="$_arvore_8c.html#a8fe51cc09bbed0a34bd2ac0d826c9512" title="Dado um bitmap contendo a arvore serializada em pre&#45;ordem, retorna a mesma desserializada para uso no..." alt="" coords="308,189,435,215"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="IniciaBitIndex" name="IniciaBitIndex">
+<area shape="rect" id="node1" title="Inicia um Bitmap indexado, dado um bitmap comum." alt="" coords="483,29,593,55"/>
+<area shape="rect" id="node2" href="$_decodificador_8c.html#a92327d77e14adac52847850f2aded1f3" title="Decodifica o arquivo de entrada com base na arvore de Huffman passada Escrevendo o resultado no arqui..." alt="" coords="108,5,260,31"/>
+<area shape="rect" id="node4" href="$_arvore_8c.html#a8fe51cc09bbed0a34bd2ac0d826c9512" title="Dado um bitmap contendo a arvore serializada em pre&#45;ordem, retorna a mesma desserializada para uso no..." alt="" coords="308,55,435,80"/>
+<area shape="rect" id="node3" href="$_decodificador_8c.html#abf9e6b7e6f15df4b525a2e7705ba3089" title=" " alt="" coords="5,31,60,56"/>
+<area shape="rect" id="node5" href="$_decodificador_8c.html#a350e3a2d1764f2357fe860705c2be1a3" title="Monta uma arvore de Huffman com base no cabecalho presente no arquivo de entrada." alt="" coords="135,55,233,80"/>
+</map>

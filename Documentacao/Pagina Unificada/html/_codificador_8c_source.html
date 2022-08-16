@@ -1,0 +1,342 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.5"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Decodificador e Codificador Huffman: Código-Fonte de Codificador.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Decodificador e Codificador Huffman
+   </div>
+   <div id="projectbrief">Trabalho de Estrutura de dados - Feito por Gabriel Braga e Rhuan Garcia</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.9.5 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Busca');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Codificador.c</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_codificador_8c.html">Vá para a documentação desse arquivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="_codificador_8h.html">Codificador.h</a>&quot;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="struct_tabela_de_cod.html">   11</a></span><span class="keyword">struct </span><a class="code hl_struct" href="struct_tabela_de_cod.html">TabelaDeCod</a></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>{</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="struct_tabela_de_cod.html#a3b47cb0a41682f55ff81e709890e9943">   13</a></span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *<a class="code hl_variable" href="struct_tabela_de_cod.html#a3b47cb0a41682f55ff81e709890e9943">carac</a>;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="struct_tabela_de_cod.html#a5af2dc11d3c56bfb6088e35156d42188">   14</a></span>    <a class="code hl_struct" href="structmap.html">bitmap</a> **<a class="code hl_variable" href="struct_tabela_de_cod.html#a5af2dc11d3c56bfb6088e35156d42188">codigo</a>;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>};</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">//------------------------- Funções Privadas ----------------------------------------//</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment"></span><span class="keyword">static</span> FILE *AbreSaida(<span class="keywordtype">char</span> path[200]);</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">static</span> <span class="keywordtype">void</span> ColocaExtensaoNaSaida(<span class="keywordtype">char</span> path[200], FILE *saida);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keyword">static</span> <span class="keywordtype">void</span> ColocaArvoreNaSaida(<a class="code hl_struct" href="structarv.html">Arv</a> *arvorebase, FILE *saida);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keyword">static</span> <span class="keywordtype">void</span> LiberaCodificador(FILE *ent, FILE *saida, <a class="code hl_struct" href="structvetchar.html">VetChar</a> *vetor, <a class="code hl_struct" href="structlistagen.html">Listagen</a> *lista);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">//------------------------- Funções Privadas -------------------------------------------//</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="_codificador_8c.html#abf9e6b7e6f15df4b525a2e7705ba3089">   53</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="_codificador_8c.html#abf9e6b7e6f15df4b525a2e7705ba3089">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> <span class="keyword">const</span> *argv[])</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>{</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordflow">if</span> (argc &lt; 2)</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    {</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>         printf(<span class="stringliteral">&quot;USO: ./prog &lt;nomedoarquivo&gt;\n&quot;</span>);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        exit(1);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    }</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordtype">char</span> path[200] = <span class="stringliteral">&quot;./&quot;</span>;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    strcat(path,argv[1]);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="comment">// Abre arquivo de entrada</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    FILE *arquivo = fopen(path, <span class="stringliteral">&quot;r&quot;</span>);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="comment">// Abre arquivo de saida//////////</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    FILE *saida = AbreSaida(path);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    ColocaExtensaoNaSaida(path, saida);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="comment">// Cria vetor de frequencia de char</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <a class="code hl_struct" href="structvetchar.html">VetChar</a> *VetorFreq = <a class="code hl_function" href="_vetchar_8c.html#a8ca4fdc59bbff65c70b166ec2c88f4ac">VetCharCria</a>(arquivo);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="comment">// Faz lista de arvores</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <a class="code hl_struct" href="structlistagen.html">Listagen</a> *lista = <a class="code hl_function" href="_lista_arv_8c.html#a05965e86679a66c7e47fc6a1c0d21bfc">IniciaListaArv</a>();</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <a class="code hl_function" href="_lista_arv_8c.html#a83264b1c9d394c1d3dcf4e081060c9b3">PreencheLista</a>(lista, VetorFreq);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="comment">// Prepara para Algoritmo de Huffman(menor para maior)</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    lista = <a class="code hl_function" href="_lista_arv_8c.html#af158e4c216192f206bf822c3cdb1c507">ReorganizaListaArv</a>(lista);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="comment">// Algoritmo</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <a class="code hl_struct" href="structarv.html">Arv</a> *arvorebase = <a class="code hl_function" href="_codificador_8c.html#a5b6627a39040b553a21e3c881473cd7d">FazArvoreHuffman</a>(lista);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="comment">// Faz o cabeçalho do arquivo de saida</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    ColocaArvoreNaSaida(arvorebase, saida);</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="comment">// Codifica o arquivo de acordo com a arvore de huffman</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <a class="code hl_function" href="_codificador_8c.html#a74594cf130186445476babf7b7af8483">CodificaArq</a>(arquivo, arvorebase, VetorFreq, saida);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="comment">// Liberando memoria dinamica alocada</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    LiberaCodificador(arquivo, saida, VetorFreq, lista);</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>}</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="comment">// Lembrar na hora de ler que a arvore vai comecar em um byte certinho, ou seja,</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="comment">// q foi compensado aqui diferencas no tamanho da arvore</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="_codificador_8c.html#a2ce69d6a0063b64e46d17291840a583d">  100</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="_codificador_8c.html#a2ce69d6a0063b64e46d17291840a583d">CompletaByteBitmap</a>(<a class="code hl_struct" href="structmap.html">bitmap</a> *entrada)</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>{</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="keywordflow">while</span> (<a class="code hl_function" href="bitmap_8c.html#a98677dcbb43e9d69c5d0153675d9a978">bitmapGetLength</a>(entrada) % 8)</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    {</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        <a class="code hl_function" href="bitmap_8c.html#a8bee243b51ff8daf8cf577d11e7e735c">bitmapAppendLeastSignificantBit</a>(entrada, 0);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    }</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>}</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno"><a class="line" href="_codificador_8c.html#a5b6627a39040b553a21e3c881473cd7d">  108</a></span><a class="code hl_struct" href="structarv.html">Arv</a> *<a class="code hl_function" href="_codificador_8c.html#a5b6627a39040b553a21e3c881473cd7d">FazArvoreHuffman</a>(<a class="code hl_struct" href="structlistagen.html">Listagen</a> *listabase)</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>{</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="keywordflow">while</span> (<a class="code hl_function" href="_lista_arv_8c.html#a54aa3bfd5b757ffc5b07e1e05a76078c">FundePrimeiros</a>(listabase))</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    {</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    }</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="_listagen_8c.html#a41e6a25a5273318a453b37d3424e6761">RetornaPrimeiro</a>(listabase);</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>}</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno"><a class="line" href="_codificador_8c.html#a74594cf130186445476babf7b7af8483">  116</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="_codificador_8c.html#a74594cf130186445476babf7b7af8483">CodificaArq</a>(FILE *arq, <a class="code hl_struct" href="structarv.html">Arv</a> *Huffman, <a class="code hl_struct" href="structvetchar.html">VetChar</a> *Vetor, FILE *arqSaida)</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>{</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="comment">// 14MB</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <a class="code hl_struct" href="structmap.html">bitmap</a> *saida = <a class="code hl_function" href="bitmap_8c.html#a6fe05cb2e9889f347653f98edac7a114">bitmapInit</a>(112000000);</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keywordtype">int</span> tam = <a class="code hl_function" href="_arvore_8c.html#a55bfb2f6fc17e62c97e93553709419e5">QntdFolhas</a>(Huffman);</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <a class="code hl_struct" href="struct_tabela_de_cod.html">Tabela</a> *tab = <a class="code hl_function" href="_codificador_8c.html#ae32543537d391c5756cb24ef60e2fdfc">MontandoTabela</a>(Huffman, Vetor, tam);</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="comment">// Escreve o tamanho total do arquivo - Subcabecalho do arquivo</span></div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> TAM_TOTAL = <a class="code hl_function" href="_codificador_8c.html#a8da2d818a6200783b78d7dfb242c7b7d">CalculaTamTotal</a>(Vetor, tab, tam);</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    fprintf(arqSaida, <span class="stringliteral">&quot;%ld&quot;</span>, TAM_TOTAL);</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <span class="comment">// Codificacao do arquivo de fato</span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> aux;</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <span class="keywordtype">int</span> index;</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <a class="code hl_struct" href="structmap.html">bitmap</a> *codificando;</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <span class="keywordflow">while</span> (!feof(arq))</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    {</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        <span class="comment">// Ao ler um byte</span></div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        <span class="keywordflow">if</span> (fread(&amp;aux, 1, 1, arq))</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        {</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>            <span class="comment">// Procura o mesmo na tabela</span></div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>            index = 0;</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>            <span class="keywordflow">while</span> (index &lt; tam &amp;&amp; tab-&gt;carac[index] != aux)</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>            {</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>                index++;</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>            }</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>            codificando = tab-&gt;<a class="code hl_variable" href="struct_tabela_de_cod.html#a5af2dc11d3c56bfb6088e35156d42188">codigo</a>[index];</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>            <span class="comment">// Escreve no bitmap de saida o codigo do mesmo</span></div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_function" href="bitmap_8c.html#a98677dcbb43e9d69c5d0153675d9a978">bitmapGetLength</a>(codificando); i++)</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>            {</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>                <a class="code hl_function" href="bitmap_8c.html#a8bee243b51ff8daf8cf577d11e7e735c">bitmapAppendLeastSignificantBit</a>(saida,</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>                                                <a class="code hl_function" href="bitmap_8c.html#ac67802da30c1b2aa2fd983818b11d435">bitmapGetBit</a>(codificando, i));</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>            }</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        }</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        <span class="comment">// Escreve em disco caso buffer esteja maior que 7MB (50%) e tenha bytes completos</span></div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="bitmap_8c.html#a98677dcbb43e9d69c5d0153675d9a978">bitmapGetLength</a>(saida) &gt; 56000000 &amp;&amp; (<a class="code hl_function" href="bitmap_8c.html#a98677dcbb43e9d69c5d0153675d9a978">bitmapGetLength</a>(saida) % 8) == 0)</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        {</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>            fwrite(<a class="code hl_function" href="bitmap_8c.html#a35de4ff0d4746abe845d9977cd622120">bitmapGetContents</a>(saida), 1, <a class="code hl_function" href="bitmap_8c.html#a98677dcbb43e9d69c5d0153675d9a978">bitmapGetLength</a>(saida) / 8, arqSaida);</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>            <a class="code hl_function" href="bitmap_8c.html#a08def9dc3e8ae0e4d83a0039d770205c">bitmapLibera</a>(saida);</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>            <a class="code hl_struct" href="structmap.html">bitmap</a> *saida = <a class="code hl_function" href="bitmap_8c.html#a6fe05cb2e9889f347653f98edac7a114">bitmapInit</a>(112000000);</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        }</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    }</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    <span class="comment">// Garantia de que caso tenha algo a ser escrito, seja escrito</span></div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="bitmap_8c.html#a98677dcbb43e9d69c5d0153675d9a978">bitmapGetLength</a>(saida))</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    {</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        <span class="comment">// completa o resto do byte com 0&#39;s</span></div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        <a class="code hl_function" href="_codificador_8c.html#a2ce69d6a0063b64e46d17291840a583d">CompletaByteBitmap</a>(saida);</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        fwrite(<a class="code hl_function" href="bitmap_8c.html#a35de4ff0d4746abe845d9977cd622120">bitmapGetContents</a>(saida), 1, <a class="code hl_function" href="bitmap_8c.html#a98677dcbb43e9d69c5d0153675d9a978">bitmapGetLength</a>(saida) / 8, arqSaida);</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    }</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    <a class="code hl_function" href="bitmap_8c.html#a08def9dc3e8ae0e4d83a0039d770205c">bitmapLibera</a>(saida);</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    <a class="code hl_function" href="_codificador_8c.html#a01b1dedd8cad0104bfad2245a6eb37a9">LiberaTabela</a>(tab, tam);</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    rewind(arq);</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>}</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno"><a class="line" href="_codificador_8c.html#ae32543537d391c5756cb24ef60e2fdfc">  175</a></span><a class="code hl_struct" href="struct_tabela_de_cod.html">Tabela</a> *<a class="code hl_function" href="_codificador_8c.html#ae32543537d391c5756cb24ef60e2fdfc">MontandoTabela</a>(<a class="code hl_struct" href="structarv.html">Arv</a> *Huffman, <a class="code hl_struct" href="structvetchar.html">VetChar</a> *vetor, <span class="keywordtype">int</span> tam)</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>{</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    <span class="comment">// Montando tabela de codificacao</span></div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span> </div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    <a class="code hl_struct" href="struct_tabela_de_cod.html">Tabela</a> *tab = (<a class="code hl_struct" href="struct_tabela_de_cod.html">Tabela</a> *)malloc(<span class="keyword">sizeof</span>(<a class="code hl_struct" href="struct_tabela_de_cod.html">Tabela</a>));</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span> </div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    <span class="keywordtype">int</span> count = 0;</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span> </div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    tab-&gt;<a class="code hl_variable" href="struct_tabela_de_cod.html#a3b47cb0a41682f55ff81e709890e9943">carac</a> = (<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *)malloc(tam * <span class="keyword">sizeof</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>));</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    tab-&gt;<a class="code hl_variable" href="struct_tabela_de_cod.html#a5af2dc11d3c56bfb6088e35156d42188">codigo</a> = (<a class="code hl_struct" href="structmap.html">bitmap</a> **)malloc(tam * <span class="keyword">sizeof</span>(<a class="code hl_struct" href="structmap.html">bitmap</a> *));</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    <span class="comment">// Preenchendo a tabela</span></div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_define" href="_vetchar_8h.html#a4a6bbe8bb29265c001ee75389d55643d">MAX_VET</a>; i++)</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    {</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="_vetchar_8c.html#ad45019d807e44f1b7eb100266afc5b4b">VetGetPos</a>(vetor, i) != 0)</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        {</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>            <span class="comment">// para cada caracter existente no arquivo de saida um código é criado aqui</span></div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>            <span class="comment">// o i representa o caracter no vetor de frequencia</span></div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>            tab-&gt;<a class="code hl_variable" href="struct_tabela_de_cod.html#a3b47cb0a41682f55ff81e709890e9943">carac</a>[count] = (<span class="keywordtype">unsigned</span> char)i;</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>            tab-&gt;<a class="code hl_variable" href="struct_tabela_de_cod.html#a5af2dc11d3c56bfb6088e35156d42188">codigo</a>[count] = <a class="code hl_function" href="_arvore_8c.html#a7a7b30394ce1cb20cb9c3c044d267f28">CodificaChar</a>(Huffman, tab-&gt;<a class="code hl_variable" href="struct_tabela_de_cod.html#a3b47cb0a41682f55ff81e709890e9943">carac</a>[count]);</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>            count++;</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        }</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    }</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    <span class="keywordflow">return</span> tab;</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>}</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span> </div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno"><a class="line" href="_codificador_8c.html#a01b1dedd8cad0104bfad2245a6eb37a9">  201</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="_codificador_8c.html#a01b1dedd8cad0104bfad2245a6eb37a9">LiberaTabela</a>(<a class="code hl_struct" href="struct_tabela_de_cod.html">Tabela</a> *tab, <span class="keywordtype">int</span> qntd)</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>{</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; qntd; i++)</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    {</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>        <a class="code hl_function" href="bitmap_8c.html#a08def9dc3e8ae0e4d83a0039d770205c">bitmapLibera</a>(tab-&gt;<a class="code hl_variable" href="struct_tabela_de_cod.html#a5af2dc11d3c56bfb6088e35156d42188">codigo</a>[i]);</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>    }</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    free(tab-&gt;<a class="code hl_variable" href="struct_tabela_de_cod.html#a5af2dc11d3c56bfb6088e35156d42188">codigo</a>);</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    free(tab-&gt;<a class="code hl_variable" href="struct_tabela_de_cod.html#a3b47cb0a41682f55ff81e709890e9943">carac</a>);</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>    free(tab);</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>}</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span> </div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno"><a class="line" href="_codificador_8c.html#a8da2d818a6200783b78d7dfb242c7b7d">  212</a></span><span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> <a class="code hl_function" href="_codificador_8c.html#a8da2d818a6200783b78d7dfb242c7b7d">CalculaTamTotal</a>(<a class="code hl_struct" href="structvetchar.html">VetChar</a> *Vetor, <a class="code hl_struct" href="struct_tabela_de_cod.html">Tabela</a> *tab, <span class="keywordtype">int</span> tam)</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>{</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> TAM_TOTAL = 0;</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_define" href="_vetchar_8h.html#a4a6bbe8bb29265c001ee75389d55643d">MAX_VET</a>; i++)</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>    {</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="_vetchar_8c.html#ad45019d807e44f1b7eb100266afc5b4b">VetGetPos</a>(Vetor, i) != 0)</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>        {</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; tam; j++)</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>            {</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>                <span class="keywordflow">if</span> (tab-&gt;<a class="code hl_variable" href="struct_tabela_de_cod.html#a3b47cb0a41682f55ff81e709890e9943">carac</a>[j] == (<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)i)</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>                {</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>                    TAM_TOTAL += <a class="code hl_function" href="_vetchar_8c.html#ad45019d807e44f1b7eb100266afc5b4b">VetGetPos</a>(Vetor, i) * <a class="code hl_function" href="bitmap_8c.html#a98677dcbb43e9d69c5d0153675d9a978">bitmapGetLength</a>(tab-&gt;<a class="code hl_variable" href="struct_tabela_de_cod.html#a5af2dc11d3c56bfb6088e35156d42188">codigo</a>[j]);</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>                }</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>            }</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>        }</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    }</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>    <span class="keywordflow">return</span> TAM_TOTAL;</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>}</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span> </div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span><span class="keyword">static</span> FILE *AbreSaida(<span class="keywordtype">char</span> path[200])</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>{</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>    <span class="keywordtype">char</span> aux2[200];</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>    sscanf(path, <span class="stringliteral">&quot;./%[^.]&quot;</span>, aux2);</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span> </div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>    <span class="keywordtype">char</span> aux3[205];</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>    sprintf(aux3, <span class="stringliteral">&quot;%s.comp&quot;</span>, aux2);</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span> </div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>    <span class="keywordflow">return</span> fopen(aux3, <span class="stringliteral">&quot;w&quot;</span>);</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>}</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span> </div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span><span class="keyword">static</span> <span class="keywordtype">void</span> LiberaCodificador(FILE *ent, FILE *saida, <a class="code hl_struct" href="structvetchar.html">VetChar</a> *vetor, <a class="code hl_struct" href="structlistagen.html">Listagen</a> *lista)</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>{</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>    fclose(ent);</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    fclose(saida);</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    <a class="code hl_function" href="_vetchar_8c.html#a4b998fac5b31d1edec2838af7efde2e9">LiberaVetChar</a>(vetor);</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    <a class="code hl_function" href="_lista_arv_8c.html#a75ff022843c7361eb95f79715762b827">LiberaListaArv</a>(lista);</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>}</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span> </div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span><span class="keyword">static</span> <span class="keywordtype">void</span> ColocaArvoreNaSaida(<a class="code hl_struct" href="structarv.html">Arv</a> *arvorebase, FILE *saida)</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>{</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>    <a class="code hl_struct" href="structmap.html">bitmap</a> *SaidaArvore = <a class="code hl_function" href="_arvore_8c.html#ad9dbcc1eff0144c00dd5fa224684232f">ExportaArvore</a>(arvorebase);</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> tamArv = <a class="code hl_function" href="bitmap_8c.html#a98677dcbb43e9d69c5d0153675d9a978">bitmapGetLength</a>(SaidaArvore);</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>    fprintf(saida, <span class="stringliteral">&quot;%d&quot;</span>, tamArv);</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>    <a class="code hl_function" href="_codificador_8c.html#a2ce69d6a0063b64e46d17291840a583d">CompletaByteBitmap</a>(SaidaArvore);</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>    fwrite(<a class="code hl_function" href="bitmap_8c.html#a35de4ff0d4746abe845d9977cd622120">bitmapGetContents</a>(SaidaArvore), 1, <a class="code hl_function" href="bitmap_8c.html#a98677dcbb43e9d69c5d0153675d9a978">bitmapGetLength</a>(SaidaArvore) / 8, saida);</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>    <a class="code hl_function" href="bitmap_8c.html#a08def9dc3e8ae0e4d83a0039d770205c">bitmapLibera</a>(SaidaArvore);</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>}</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span> </div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span><span class="keyword">static</span> <span class="keywordtype">void</span> ColocaExtensaoNaSaida(<span class="keywordtype">char</span> path[200], FILE *saida)</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>{</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>    <span class="keywordtype">char</span> ext[200];</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>    sscanf(path, <span class="stringliteral">&quot;./%*[^.]%s&quot;</span>, ext);</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>    fprintf(saida, <span class="stringliteral">&quot;%ld%s&quot;</span>, strlen(ext), ext);</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>}</div>
+<div class="ttc" id="a_arvore_8c_html_a55bfb2f6fc17e62c97e93553709419e5"><div class="ttname"><a href="_arvore_8c.html#a55bfb2f6fc17e62c97e93553709419e5">QntdFolhas</a></div><div class="ttdeci">int QntdFolhas(Arv *a)</div><div class="ttdoc">Retorna a quantidade de folhas de certa árvore.</div><div class="ttdef"><b>Definition:</b> <a href="_arvore_8c_source.html#l00146">Arvore.c:146</a></div></div>
+<div class="ttc" id="a_arvore_8c_html_a7a7b30394ce1cb20cb9c3c044d267f28"><div class="ttname"><a href="_arvore_8c.html#a7a7b30394ce1cb20cb9c3c044d267f28">CodificaChar</a></div><div class="ttdeci">bitmap * CodificaChar(Arv *raiz, unsigned char carac)</div><div class="ttdoc">Retorna o codigo referente ao caractere dado, na codificacao da arvore fornecida.</div><div class="ttdef"><b>Definition:</b> <a href="_arvore_8c_source.html#l00289">Arvore.c:289</a></div></div>
+<div class="ttc" id="a_arvore_8c_html_ad9dbcc1eff0144c00dd5fa224684232f"><div class="ttname"><a href="_arvore_8c.html#ad9dbcc1eff0144c00dd5fa224684232f">ExportaArvore</a></div><div class="ttdeci">bitmap * ExportaArvore(Arv *a)</div><div class="ttdoc">Retorna o bitmap referente a arvore de codificacao seguindo a travessia de pre-ordem e bit de identif...</div><div class="ttdef"><b>Definition:</b> <a href="_arvore_8c_source.html#l00181">Arvore.c:181</a></div></div>
+<div class="ttc" id="a_codificador_8c_html_a01b1dedd8cad0104bfad2245a6eb37a9"><div class="ttname"><a href="_codificador_8c.html#a01b1dedd8cad0104bfad2245a6eb37a9">LiberaTabela</a></div><div class="ttdeci">void LiberaTabela(Tabela *tab, int qntd)</div><div class="ttdoc">Libera a memoria alocada por uma tabela de codificacao.</div><div class="ttdef"><b>Definition:</b> <a href="_codificador_8c_source.html#l00201">Codificador.c:201</a></div></div>
+<div class="ttc" id="a_codificador_8c_html_a2ce69d6a0063b64e46d17291840a583d"><div class="ttname"><a href="_codificador_8c.html#a2ce69d6a0063b64e46d17291840a583d">CompletaByteBitmap</a></div><div class="ttdeci">void CompletaByteBitmap(bitmap *entrada)</div><div class="ttdoc">Funcao que verifica o bitmap e caso o mesmo esteja com o byte final incompleto, completa-o com 0's.</div><div class="ttdef"><b>Definition:</b> <a href="_codificador_8c_source.html#l00100">Codificador.c:100</a></div></div>
+<div class="ttc" id="a_codificador_8c_html_a5b6627a39040b553a21e3c881473cd7d"><div class="ttname"><a href="_codificador_8c.html#a5b6627a39040b553a21e3c881473cd7d">FazArvoreHuffman</a></div><div class="ttdeci">Arv * FazArvoreHuffman(Listagen *listabase)</div><div class="ttdoc">Dada uma lista de arvores, aplica o algoritmo de Huffman e retorna a raiz da arvore resultante.</div><div class="ttdef"><b>Definition:</b> <a href="_codificador_8c_source.html#l00108">Codificador.c:108</a></div></div>
+<div class="ttc" id="a_codificador_8c_html_a74594cf130186445476babf7b7af8483"><div class="ttname"><a href="_codificador_8c.html#a74594cf130186445476babf7b7af8483">CodificaArq</a></div><div class="ttdeci">void CodificaArq(FILE *arq, Arv *Huffman, VetChar *Vetor, FILE *arqSaida)</div><div class="ttdoc">Utilizando da arvore fornecida, codifica o arquivo de entrada senguindo o algotimo de Huffman,...</div><div class="ttdef"><b>Definition:</b> <a href="_codificador_8c_source.html#l00116">Codificador.c:116</a></div></div>
+<div class="ttc" id="a_codificador_8c_html_a8da2d818a6200783b78d7dfb242c7b7d"><div class="ttname"><a href="_codificador_8c.html#a8da2d818a6200783b78d7dfb242c7b7d">CalculaTamTotal</a></div><div class="ttdeci">unsigned long int CalculaTamTotal(VetChar *Vetor, Tabela *tab, int tam)</div><div class="ttdoc">Faz o calculo de quantos bits serao ocupados pelo arquivo a ser codificado dada a tabela de codificac...</div><div class="ttdef"><b>Definition:</b> <a href="_codificador_8c_source.html#l00212">Codificador.c:212</a></div></div>
+<div class="ttc" id="a_codificador_8c_html_abf9e6b7e6f15df4b525a2e7705ba3089"><div class="ttname"><a href="_codificador_8c.html#abf9e6b7e6f15df4b525a2e7705ba3089">main</a></div><div class="ttdeci">int main(int argc, char const *argv[])</div><div class="ttdef"><b>Definition:</b> <a href="_codificador_8c_source.html#l00053">Codificador.c:53</a></div></div>
+<div class="ttc" id="a_codificador_8c_html_ae32543537d391c5756cb24ef60e2fdfc"><div class="ttname"><a href="_codificador_8c.html#ae32543537d391c5756cb24ef60e2fdfc">MontandoTabela</a></div><div class="ttdeci">Tabela * MontandoTabela(Arv *Huffman, VetChar *vetor, int tam)</div><div class="ttdoc">Inicia uma tabela de codificacao, a preenchendo com a informacao obtida a partir do vetor de frequenc...</div><div class="ttdef"><b>Definition:</b> <a href="_codificador_8c_source.html#l00175">Codificador.c:175</a></div></div>
+<div class="ttc" id="a_codificador_8h_html"><div class="ttname"><a href="_codificador_8h.html">Codificador.h</a></div></div>
+<div class="ttc" id="a_lista_arv_8c_html_a05965e86679a66c7e47fc6a1c0d21bfc"><div class="ttname"><a href="_lista_arv_8c.html#a05965e86679a66c7e47fc6a1c0d21bfc">IniciaListaArv</a></div><div class="ttdeci">Listagen * IniciaListaArv()</div><div class="ttdoc">Inicializa lista de Arvores.</div><div class="ttdef"><b>Definition:</b> <a href="_lista_arv_8c_source.html#l00014">ListaArv.c:14</a></div></div>
+<div class="ttc" id="a_lista_arv_8c_html_a54aa3bfd5b757ffc5b07e1e05a76078c"><div class="ttname"><a href="_lista_arv_8c.html#a54aa3bfd5b757ffc5b07e1e05a76078c">FundePrimeiros</a></div><div class="ttdeci">int FundePrimeiros(Listagen *lista)</div><div class="ttdoc">Retira as duas primeiras arvores da lista, cria um no raiz com o peso = soma dos pesos,...</div><div class="ttdef"><b>Definition:</b> <a href="_lista_arv_8c_source.html#l00052">ListaArv.c:52</a></div></div>
+<div class="ttc" id="a_lista_arv_8c_html_a75ff022843c7361eb95f79715762b827"><div class="ttname"><a href="_lista_arv_8c.html#a75ff022843c7361eb95f79715762b827">LiberaListaArv</a></div><div class="ttdeci">void LiberaListaArv(Listagen *lista)</div><div class="ttdoc">Faz a liberacao da lista de Arvores, liberando suas arvores.</div><div class="ttdef"><b>Definition:</b> <a href="_lista_arv_8c_source.html#l00076">ListaArv.c:76</a></div></div>
+<div class="ttc" id="a_lista_arv_8c_html_a83264b1c9d394c1d3dcf4e081060c9b3"><div class="ttname"><a href="_lista_arv_8c.html#a83264b1c9d394c1d3dcf4e081060c9b3">PreencheLista</a></div><div class="ttdeci">void PreencheLista(Listagen *lista, VetChar *VetTemp)</div><div class="ttdoc">Preenche a lista de arvores com os dados presentes no arquivo passado como parametro.</div><div class="ttdef"><b>Definition:</b> <a href="_lista_arv_8c_source.html#l00084">ListaArv.c:84</a></div></div>
+<div class="ttc" id="a_lista_arv_8c_html_af158e4c216192f206bf822c3cdb1c507"><div class="ttname"><a href="_lista_arv_8c.html#af158e4c216192f206bf822c3cdb1c507">ReorganizaListaArv</a></div><div class="ttdeci">Listagen * ReorganizaListaArv(Listagen *lista)</div><div class="ttdoc">Reorganiza lista baseada em peso.</div><div class="ttdef"><b>Definition:</b> <a href="_lista_arv_8c_source.html#l00041">ListaArv.c:41</a></div></div>
+<div class="ttc" id="a_listagen_8c_html_a41e6a25a5273318a453b37d3424e6761"><div class="ttname"><a href="_listagen_8c.html#a41e6a25a5273318a453b37d3424e6761">RetornaPrimeiro</a></div><div class="ttdeci">void * RetornaPrimeiro(Listagen *lista)</div><div class="ttdoc">Retorna item presente no primeiro elemento da lista.</div><div class="ttdef"><b>Definition:</b> <a href="_listagen_8c_source.html#l00306">Listagen.c:306</a></div></div>
+<div class="ttc" id="a_vetchar_8c_html_a4b998fac5b31d1edec2838af7efde2e9"><div class="ttname"><a href="_vetchar_8c.html#a4b998fac5b31d1edec2838af7efde2e9">LiberaVetChar</a></div><div class="ttdeci">void LiberaVetChar(VetChar *alvo)</div><div class="ttdoc">Libera o vetor frequencia.</div><div class="ttdef"><b>Definition:</b> <a href="_vetchar_8c_source.html#l00029">Vetchar.c:29</a></div></div>
+<div class="ttc" id="a_vetchar_8c_html_a8ca4fdc59bbff65c70b166ec2c88f4ac"><div class="ttname"><a href="_vetchar_8c.html#a8ca4fdc59bbff65c70b166ec2c88f4ac">VetCharCria</a></div><div class="ttdeci">VetChar * VetCharCria(FILE *arqbase)</div><div class="ttdoc">Faz a criacao de um vetor frequencia dado um arquivo base.</div><div class="ttdef"><b>Definition:</b> <a href="_vetchar_8c_source.html#l00015">Vetchar.c:15</a></div></div>
+<div class="ttc" id="a_vetchar_8c_html_ad45019d807e44f1b7eb100266afc5b4b"><div class="ttname"><a href="_vetchar_8c.html#ad45019d807e44f1b7eb100266afc5b4b">VetGetPos</a></div><div class="ttdeci">int VetGetPos(VetChar *vet, int i)</div><div class="ttdoc">Retorna quantas vezes uma dada combinacao de btis apareceu no arquivo.</div><div class="ttdef"><b>Definition:</b> <a href="_vetchar_8c_source.html#l00034">Vetchar.c:34</a></div></div>
+<div class="ttc" id="a_vetchar_8h_html_a4a6bbe8bb29265c001ee75389d55643d"><div class="ttname"><a href="_vetchar_8h.html#a4a6bbe8bb29265c001ee75389d55643d">MAX_VET</a></div><div class="ttdeci">#define MAX_VET</div><div class="ttdef"><b>Definition:</b> <a href="_vetchar_8h_source.html#l00004">Vetchar.h:4</a></div></div>
+<div class="ttc" id="abitmap_8c_html_a08def9dc3e8ae0e4d83a0039d770205c"><div class="ttname"><a href="bitmap_8c.html#a08def9dc3e8ae0e4d83a0039d770205c">bitmapLibera</a></div><div class="ttdeci">void bitmapLibera(bitmap *bm)</div><div class="ttdef"><b>Definition:</b> <a href="bitmap_8c_source.html#l00142">bitmap.c:142</a></div></div>
+<div class="ttc" id="abitmap_8c_html_a35de4ff0d4746abe845d9977cd622120"><div class="ttname"><a href="bitmap_8c.html#a35de4ff0d4746abe845d9977cd622120">bitmapGetContents</a></div><div class="ttdeci">unsigned char * bitmapGetContents(bitmap *bm)</div><div class="ttdef"><b>Definition:</b> <a href="bitmap_8c_source.html#l00041">bitmap.c:41</a></div></div>
+<div class="ttc" id="abitmap_8c_html_a6fe05cb2e9889f347653f98edac7a114"><div class="ttname"><a href="bitmap_8c.html#a6fe05cb2e9889f347653f98edac7a114">bitmapInit</a></div><div class="ttdeci">bitmap * bitmapInit(unsigned int max_size)</div><div class="ttdef"><b>Definition:</b> <a href="bitmap_8c_source.html#l00071">bitmap.c:71</a></div></div>
+<div class="ttc" id="abitmap_8c_html_a8bee243b51ff8daf8cf577d11e7e735c"><div class="ttname"><a href="bitmap_8c.html#a8bee243b51ff8daf8cf577d11e7e735c">bitmapAppendLeastSignificantBit</a></div><div class="ttdeci">void bitmapAppendLeastSignificantBit(bitmap *bm, unsigned char bit)</div><div class="ttdef"><b>Definition:</b> <a href="bitmap_8c_source.html#l00129">bitmap.c:129</a></div></div>
+<div class="ttc" id="abitmap_8c_html_a98677dcbb43e9d69c5d0153675d9a978"><div class="ttname"><a href="bitmap_8c.html#a98677dcbb43e9d69c5d0153675d9a978">bitmapGetLength</a></div><div class="ttdeci">unsigned int bitmapGetLength(bitmap *bm)</div><div class="ttdef"><b>Definition:</b> <a href="bitmap_8c_source.html#l00061">bitmap.c:61</a></div></div>
+<div class="ttc" id="abitmap_8c_html_ac67802da30c1b2aa2fd983818b11d435"><div class="ttname"><a href="bitmap_8c.html#ac67802da30c1b2aa2fd983818b11d435">bitmapGetBit</a></div><div class="ttdeci">unsigned char bitmapGetBit(bitmap *bm, unsigned int index)</div><div class="ttdef"><b>Definition:</b> <a href="bitmap_8c_source.html#l00094">bitmap.c:94</a></div></div>
+<div class="ttc" id="astruct_tabela_de_cod_html"><div class="ttname"><a href="struct_tabela_de_cod.html">TabelaDeCod</a></div><div class="ttdoc">Tabela que carrega os caracteres e seus respectivos códigos em bitmap;.</div><div class="ttdef"><b>Definition:</b> <a href="_codificador_8c_source.html#l00011">Codificador.c:12</a></div></div>
+<div class="ttc" id="astruct_tabela_de_cod_html_a3b47cb0a41682f55ff81e709890e9943"><div class="ttname"><a href="struct_tabela_de_cod.html#a3b47cb0a41682f55ff81e709890e9943">TabelaDeCod::carac</a></div><div class="ttdeci">unsigned char * carac</div><div class="ttdef"><b>Definition:</b> <a href="_codificador_8c_source.html#l00013">Codificador.c:13</a></div></div>
+<div class="ttc" id="astruct_tabela_de_cod_html_a5af2dc11d3c56bfb6088e35156d42188"><div class="ttname"><a href="struct_tabela_de_cod.html#a5af2dc11d3c56bfb6088e35156d42188">TabelaDeCod::codigo</a></div><div class="ttdeci">bitmap ** codigo</div><div class="ttdef"><b>Definition:</b> <a href="_codificador_8c_source.html#l00014">Codificador.c:14</a></div></div>
+<div class="ttc" id="astructarv_html"><div class="ttname"><a href="structarv.html">arv</a></div><div class="ttdoc">Estrutura da Arvore que carega o peso do caractere e o próprio caractere para implementação do Algori...</div><div class="ttdef"><b>Definition:</b> <a href="_arvore_8c_source.html#l00010">Arvore.c:11</a></div></div>
+<div class="ttc" id="astructlistagen_html"><div class="ttname"><a href="structlistagen.html">listagen</a></div><div class="ttdoc">Sentinela da lista genérica, carrega prim e ult.</div><div class="ttdef"><b>Definition:</b> <a href="_listagen_8c_source.html#l00010">Listagen.c:11</a></div></div>
+<div class="ttc" id="astructmap_html"><div class="ttname"><a href="structmap.html">map</a></div><div class="ttdoc">Estrutura para representar um mapa de bits.</div><div class="ttdef"><b>Definition:</b> <a href="bitmap_8c_source.html#l00016">bitmap.c:17</a></div></div>
+<div class="ttc" id="astructvetchar_html"><div class="ttname"><a href="structvetchar.html">vetchar</a></div><div class="ttdoc">Vetor frequencia, onde eh armazenada a quantidade de aparicoes de cada combinacao de 8 bits.</div><div class="ttdef"><b>Definition:</b> <a href="_vetchar_8c_source.html#l00008">Vetchar.c:9</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5
+</small></address>
+</body>
+</html>

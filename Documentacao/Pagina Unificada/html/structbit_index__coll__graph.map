@@ -1,0 +1,4 @@
+<map id="bitIndex" name="bitIndex">
+<area shape="rect" id="node1" title="Bitmap Indexado, tem funcoes para facilitar acesso continuo e tratar&#45;lo como pilha." alt="" coords="5,93,80,119"/>
+<area shape="rect" id="node2" href="$structmap.html" title="Estrutura para representar um mapa de bits." alt="" coords="17,5,68,31"/>
+</map>

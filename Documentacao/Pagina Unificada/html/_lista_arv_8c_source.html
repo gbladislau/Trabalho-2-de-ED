@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.5"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Decodificador e Codificador Huffman: Código-Fonte de ListaArv.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Decodificador e Codificador Huffman
+   </div>
+   <div id="projectbrief">Trabalho de Estrutura de dados - Feito por Gabriel Braga e Rhuan Garcia</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.9.5 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Busca');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">ListaArv.c</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_lista_arv_8c.html">Vá para a documentação desse arquivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="_lista_arv_8h.html">ListaArv.h</a>&quot;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;<a class="code" href="_arvore_8h.html">Arvore.h</a>&quot;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">static</span> <span class="keywordtype">int</span> MenosdeDoisElementos(<a class="code hl_struct" href="structlistagen.html">Listagen</a> *lista);</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">static</span> <span class="keywordtype">int</span> ComparaPeso(<span class="keywordtype">void</span> *e1, <span class="keywordtype">void</span> *e2);</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">static</span> <span class="keywordtype">int</span> ComparaLetra(<span class="keywordtype">void</span> *e1, <span class="keywordtype">void</span> *e2);</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">static</span> <span class="keywordtype">int</span> MenorPeso(<span class="keywordtype">void</span> *e1, <span class="keywordtype">void</span> *e2);</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">static</span> <span class="keywordtype">void</span> ImprimeArvListada(<span class="keywordtype">void</span> *e1);</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="_lista_arv_8c.html#a05965e86679a66c7e47fc6a1c0d21bfc">   14</a></span><a class="code hl_struct" href="structlistagen.html">Listagen</a> *<a class="code hl_function" href="_lista_arv_8c.html#a05965e86679a66c7e47fc6a1c0d21bfc">IniciaListaArv</a>()</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="_listagen_8c.html#aa3d3ca705d1add67cffc08320b527b8f">IniciaListaGen</a>();</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>}</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="_lista_arv_8c.html#aa8b1bfcba54f261f4dc02046fe06a1b0">   19</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="_lista_arv_8c.html#aa8b1bfcba54f261f4dc02046fe06a1b0">InsereListaArv</a>(<a class="code hl_struct" href="structlistagen.html">Listagen</a> *lista, <a class="code hl_struct" href="structarv.html">Arv</a> *inserida)</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>{</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <a class="code hl_function" href="_listagen_8c.html#a5d9040485e36346089247b105cd770bc">InsereItemGen</a>(lista, inserida);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>}</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="_lista_arv_8c.html#ac5c599d287176935b145ab3915029622">   24</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="_lista_arv_8c.html#ac5c599d287176935b145ab3915029622">RetiraListaArvPeso</a>(<a class="code hl_struct" href="structlistagen.html">Listagen</a> *lista, <span class="keywordtype">int</span> Peso)</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>{</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordtype">void</span> *arg = &amp;Peso;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <a class="code hl_function" href="_listagen_8c.html#afa2e7d29636585bbf57d3918f96fc8ff">RetiraDaListaGen</a>(lista, arg, ComparaPeso);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>}</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="_lista_arv_8c.html#a5e58079e55a4b754c7588e30a57ceb91">   30</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="_lista_arv_8c.html#a5e58079e55a4b754c7588e30a57ceb91">RetiraListaArvLetra</a>(<a class="code hl_struct" href="structlistagen.html">Listagen</a> *lista, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> letra)</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>{</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordtype">void</span> *arg = &amp;letra;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <a class="code hl_function" href="_listagen_8c.html#afa2e7d29636585bbf57d3918f96fc8ff">RetiraDaListaGen</a>(lista, arg, ComparaLetra);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>}</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="_lista_arv_8c.html#a12de862d9e9e7fbd08163df3270fb95a">   36</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="_lista_arv_8c.html#a12de862d9e9e7fbd08163df3270fb95a">ImprimeListaArv</a>(<a class="code hl_struct" href="structlistagen.html">Listagen</a> *lista)</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>{</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <a class="code hl_function" href="_listagen_8c.html#a61608ee5a24a69973526fe6f3cda8592">ImprimeListaGen</a>(lista, ImprimeArvListada);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>}</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="_lista_arv_8c.html#af158e4c216192f206bf822c3cdb1c507">   41</a></span><a class="code hl_struct" href="structlistagen.html">Listagen</a> *<a class="code hl_function" href="_lista_arv_8c.html#af158e4c216192f206bf822c3cdb1c507">ReorganizaListaArv</a>(<a class="code hl_struct" href="structlistagen.html">Listagen</a> *lista)</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>{</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="_listagen_8c.html#a03547a8459045cdeecc13cfeb60de6d2">ReorganizaLista</a>(lista, MenorPeso);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>}</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">// TODO: Ver como corrigir conversao inadequada aqui</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="_lista_arv_8c.html#ae9c6d2e3ddd05bf03a24ec430d609d69">   47</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="_lista_arv_8c.html#ae9c6d2e3ddd05bf03a24ec430d609d69">PercorreListaArv</a>(<a class="code hl_struct" href="structlistagen.html">Listagen</a> *lista, <span class="keywordtype">int</span> (*func)(<span class="keywordtype">void</span> *))</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>{</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="_listagen_8c.html#a0987171ed48568a79ff5334e21e5de23">PercorreLista</a>(lista, func);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>}</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="_lista_arv_8c.html#a54aa3bfd5b757ffc5b07e1e05a76078c">   52</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="_lista_arv_8c.html#a54aa3bfd5b757ffc5b07e1e05a76078c">FundePrimeiros</a>(<a class="code hl_struct" href="structlistagen.html">Listagen</a> *lista)</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>{</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordflow">if</span> (MenosdeDoisElementos(lista) == 0)</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    {</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <a class="code hl_struct" href="structarv.html">Arv</a> *esquerda = (<a class="code hl_struct" href="structarv.html">Arv</a> *)<a class="code hl_function" href="_listagen_8c.html#a5cf433a568957a594680bae921c13462">RetiraPrimeiro</a>(lista);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <a class="code hl_struct" href="structarv.html">Arv</a> *direita = (<a class="code hl_struct" href="structarv.html">Arv</a> *)<a class="code hl_function" href="_listagen_8c.html#a5cf433a568957a594680bae921c13462">RetiraPrimeiro</a>(lista);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <a class="code hl_struct" href="structarv.html">Arv</a> *inserido = <a class="code hl_function" href="_arvore_8c.html#ab523d769f5fa825ecfed60ccbf80735f">ArvCria</a>(<span class="charliteral">&#39;\0&#39;</span>, <a class="code hl_function" href="_arvore_8c.html#adbfc4cec04e2ca0f3b4976d68d874fa5">ArvPeso</a>(esquerda) + <a class="code hl_function" href="_arvore_8c.html#adbfc4cec04e2ca0f3b4976d68d874fa5">ArvPeso</a>(direita),</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                                esquerda, direita);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <a class="code hl_function" href="_listagen_8c.html#a68b0dd1179285db1358b19f96a022004">InsereUltItemGen</a>(lista, inserido);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    }</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>}</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="_lista_arv_8c.html#a8650b5c98eebc4cf49cb591fcec3b37e">   69</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="_lista_arv_8c.html#a8650b5c98eebc4cf49cb591fcec3b37e">ArvListadaLibera</a>(<span class="keywordtype">void</span> *e1)</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>{</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <a class="code hl_struct" href="structarv.html">Arv</a> *a1 = e1;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <a class="code hl_function" href="_arvore_8c.html#aca9c171e4c536291a32333edff1b0b3b">ArvLibera</a>(a1);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>}</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment">// LIBERANDO ARVORES</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="_lista_arv_8c.html#a75ff022843c7361eb95f79715762b827">   76</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="_lista_arv_8c.html#a75ff022843c7361eb95f79715762b827">LiberaListaArv</a>(<a class="code hl_struct" href="structlistagen.html">Listagen</a> *lista)</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>{</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <a class="code hl_function" href="_listagen_8c.html#aaa3734ea3c72cd3f3ae9634882098d85">LiberaListaGen</a>(lista, <a class="code hl_function" href="_lista_arv_8c.html#a8650b5c98eebc4cf49cb591fcec3b37e">ArvListadaLibera</a>);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>}</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="comment">// Dentro dessa funcao, Usar VetCHAR para preencher a lista gen com as arvores respectivas.</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="comment">// Com ela, preenche a lista de arvores inserindo todos com peso diff de 0</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="comment">// Apos, chama organiza listadeArv, libera vetchar e retorna</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="_lista_arv_8c.html#a83264b1c9d394c1d3dcf4e081060c9b3">   84</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="_lista_arv_8c.html#a83264b1c9d394c1d3dcf4e081060c9b3">PreencheLista</a>(<a class="code hl_struct" href="structlistagen.html">Listagen</a> *lista, <a class="code hl_struct" href="structvetchar.html">VetChar</a> *VetTemp)</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>{</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_define" href="_vetchar_8h.html#a4a6bbe8bb29265c001ee75389d55643d">MAX_VET</a>; i++)</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    {</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="_vetchar_8c.html#ad45019d807e44f1b7eb100266afc5b4b">VetGetPos</a>(VetTemp, i))</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        {</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>            <a class="code hl_struct" href="structarv.html">Arv</a> *a = <a class="code hl_function" href="_arvore_8c.html#ab523d769f5fa825ecfed60ccbf80735f">ArvCria</a>((<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)i, <a class="code hl_function" href="_vetchar_8c.html#ad45019d807e44f1b7eb100266afc5b4b">VetGetPos</a>(VetTemp, i),</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>                             <a class="code hl_function" href="_arvore_8c.html#a85910c70213c534fa1f5b61056e4dd4c">ArvCriaVazia</a>(), <a class="code hl_function" href="_arvore_8c.html#a85910c70213c534fa1f5b61056e4dd4c">ArvCriaVazia</a>());</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>            <a class="code hl_function" href="_lista_arv_8c.html#aa8b1bfcba54f261f4dc02046fe06a1b0">InsereListaArv</a>(lista, a);</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        }</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    }</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>}</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="_lista_arv_8c.html#ae294f349833a6c8188ca1983dc83bffb">   97</a></span><a class="code hl_struct" href="structarv.html">Arv</a> *<a class="code hl_function" href="_lista_arv_8c.html#ae294f349833a6c8188ca1983dc83bffb">BuscaArvChar</a>(<a class="code hl_struct" href="structlistagen.html">Listagen</a> *lista, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> c)</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>{</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="_listagen_8c.html#a4ef53e86997ff03c63fd09c5702e8d75">BuscaLista</a>(lista, ComparaLetra, &amp;c);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>}</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="keyword">static</span> <span class="keywordtype">int</span> MenosdeDoisElementos(<a class="code hl_struct" href="structlistagen.html">Listagen</a> *lista)</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>{</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="_listagen_8c.html#ac4d8e872692a99169cacc1ef8e07e453">VaziaLista</a>(lista) ||</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        <a class="code hl_function" href="_listagen_8c.html#a41e6a25a5273318a453b37d3424e6761">RetornaPrimeiro</a>(lista) == <a class="code hl_function" href="_listagen_8c.html#a4d085829ac9c5a5c7b83688865fa757f">RetornaUlt</a>(lista))</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>}</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="keyword">static</span> <span class="keywordtype">int</span> ComparaPeso(<span class="keywordtype">void</span> *e1, <span class="keywordtype">void</span> *e2)</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>{</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <a class="code hl_struct" href="structarv.html">Arv</a> *a1 = (<a class="code hl_struct" href="structarv.html">Arv</a> *)e1;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <span class="keywordtype">int</span> *peso = (<span class="keywordtype">int</span> *)e2;</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <span class="keywordflow">return</span> (<a class="code hl_function" href="_arvore_8c.html#adbfc4cec04e2ca0f3b4976d68d874fa5">ArvPeso</a>(e1) == *peso);</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>}</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="keyword">static</span> <span class="keywordtype">int</span> ComparaLetra(<span class="keywordtype">void</span> *e1, <span class="keywordtype">void</span> *e2)</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>{</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <a class="code hl_struct" href="structarv.html">Arv</a> *a1 = (<a class="code hl_struct" href="structarv.html">Arv</a> *)e1;</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *letra = (<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *)e2;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <span class="keywordflow">return</span> (<a class="code hl_function" href="_arvore_8c.html#a38c5945a9e3f36721f6af8f951861e5a">ArvChar</a>(a1) == *letra);</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>}</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="keyword">static</span> <span class="keywordtype">int</span> MenorPeso(<span class="keywordtype">void</span> *e1, <span class="keywordtype">void</span> *e2)</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>{</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <a class="code hl_struct" href="structarv.html">Arv</a> *a1 = (<a class="code hl_struct" href="structarv.html">Arv</a> *)e1;</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <a class="code hl_struct" href="structarv.html">Arv</a> *a2 = (<a class="code hl_struct" href="structarv.html">Arv</a> *)e2;</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <span class="keywordflow">return</span> (<a class="code hl_function" href="_arvore_8c.html#adbfc4cec04e2ca0f3b4976d68d874fa5">ArvPeso</a>(a1) &lt; <a class="code hl_function" href="_arvore_8c.html#adbfc4cec04e2ca0f3b4976d68d874fa5">ArvPeso</a>(a2));</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>}</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="keyword">static</span> <span class="keywordtype">void</span> ImprimeArvListada(<span class="keywordtype">void</span> *e1)</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>{</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    <a class="code hl_struct" href="structarv.html">Arv</a> *a1 = (<a class="code hl_struct" href="structarv.html">Arv</a> *)e1;</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="_arvore_8c.html#abb5c5af8b08c174e2302c05df2dfd9bb">ArvImprime</a>(a1);</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>}</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span><span class="comment">// void ConverteVetorALista(Listagen *lista, VetChar *vetor)</span></div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span><span class="comment">// {</span></div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span><span class="comment">//     for (int i = 0; i &lt; MAX_VET; i++)</span></div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span><span class="comment">//     {</span></div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span><span class="comment">//         if ((VetGetPos(vetor, i)) != 0)</span></div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span><span class="comment">//         {</span></div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span><span class="comment">//             InsereListaArv(lista, ArvCria((char)i, VetGetPos(vetor, i),</span></div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span><span class="comment">//                                           ArvCriaVazia(), ArvCriaVazia()));</span></div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span><span class="comment">//         }</span></div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span><span class="comment">//     }</span></div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><span class="comment">// }</span></div>
+<div class="ttc" id="a_arvore_8c_html_a38c5945a9e3f36721f6af8f951861e5a"><div class="ttname"><a href="_arvore_8c.html#a38c5945a9e3f36721f6af8f951861e5a">ArvChar</a></div><div class="ttdeci">unsigned char ArvChar(Arv *a)</div><div class="ttdoc">Retorna o caractere da árvore caso seja diferente de NULL.</div><div class="ttdef"><b>Definition:</b> <a href="_arvore_8c_source.html#l00161">Arvore.c:161</a></div></div>
+<div class="ttc" id="a_arvore_8c_html_a85910c70213c534fa1f5b61056e4dd4c"><div class="ttname"><a href="_arvore_8c.html#a85910c70213c534fa1f5b61056e4dd4c">ArvCriaVazia</a></div><div class="ttdeci">Arv * ArvCriaVazia()</div><div class="ttdoc">Cria arv Vazia.</div><div class="ttdef"><b>Definition:</b> <a href="_arvore_8c_source.html#l00076">Arvore.c:76</a></div></div>
+<div class="ttc" id="a_arvore_8c_html_ab523d769f5fa825ecfed60ccbf80735f"><div class="ttname"><a href="_arvore_8c.html#ab523d769f5fa825ecfed60ccbf80735f">ArvCria</a></div><div class="ttdeci">Arv * ArvCria(unsigned char letra, int peso, Arv *esq, Arv *dir)</div><div class="ttdoc">Função para criar Arvore, aqui podemos adicionar um caractere e seu peso correspodente na contagem do...</div><div class="ttdef"><b>Definition:</b> <a href="_arvore_8c_source.html#l00081">Arvore.c:81</a></div></div>
+<div class="ttc" id="a_arvore_8c_html_abb5c5af8b08c174e2302c05df2dfd9bb"><div class="ttname"><a href="_arvore_8c.html#abb5c5af8b08c174e2302c05df2dfd9bb">ArvImprime</a></div><div class="ttdeci">void ArvImprime(Arv *a)</div><div class="ttdoc">Função que imprime a arvore a, em pré-ordem.</div><div class="ttdef"><b>Definition:</b> <a href="_arvore_8c_source.html#l00112">Arvore.c:112</a></div></div>
+<div class="ttc" id="a_arvore_8c_html_aca9c171e4c536291a32333edff1b0b3b"><div class="ttname"><a href="_arvore_8c.html#aca9c171e4c536291a32333edff1b0b3b">ArvLibera</a></div><div class="ttdeci">Arv * ArvLibera(Arv *a)</div><div class="ttdoc">Função para liberar todo o espaço ocupado pela árvore a, libera também suas raizes.</div><div class="ttdef"><b>Definition:</b> <a href="_arvore_8c_source.html#l00094">Arvore.c:94</a></div></div>
+<div class="ttc" id="a_arvore_8c_html_adbfc4cec04e2ca0f3b4976d68d874fa5"><div class="ttname"><a href="_arvore_8c.html#adbfc4cec04e2ca0f3b4976d68d874fa5">ArvPeso</a></div><div class="ttdeci">int ArvPeso(Arv *a)</div><div class="ttdoc">Retorna o peso da árvore caso seja diferente de NULL.</div><div class="ttdef"><b>Definition:</b> <a href="_arvore_8c_source.html#l00167">Arvore.c:167</a></div></div>
+<div class="ttc" id="a_arvore_8h_html"><div class="ttname"><a href="_arvore_8h.html">Arvore.h</a></div></div>
+<div class="ttc" id="a_lista_arv_8c_html_a05965e86679a66c7e47fc6a1c0d21bfc"><div class="ttname"><a href="_lista_arv_8c.html#a05965e86679a66c7e47fc6a1c0d21bfc">IniciaListaArv</a></div><div class="ttdeci">Listagen * IniciaListaArv()</div><div class="ttdoc">Inicializa lista de Arvores.</div><div class="ttdef"><b>Definition:</b> <a href="_lista_arv_8c_source.html#l00014">ListaArv.c:14</a></div></div>
+<div class="ttc" id="a_lista_arv_8c_html_a12de862d9e9e7fbd08163df3270fb95a"><div class="ttname"><a href="_lista_arv_8c.html#a12de862d9e9e7fbd08163df3270fb95a">ImprimeListaArv</a></div><div class="ttdeci">void ImprimeListaArv(Listagen *lista)</div><div class="ttdoc">Imprime a lista de arvores.</div><div class="ttdef"><b>Definition:</b> <a href="_lista_arv_8c_source.html#l00036">ListaArv.c:36</a></div></div>
+<div class="ttc" id="a_lista_arv_8c_html_a54aa3bfd5b757ffc5b07e1e05a76078c"><div class="ttname"><a href="_lista_arv_8c.html#a54aa3bfd5b757ffc5b07e1e05a76078c">FundePrimeiros</a></div><div class="ttdeci">int FundePrimeiros(Listagen *lista)</div><div class="ttdoc">Retira as duas primeiras arvores da lista, cria um no raiz com o peso = soma dos pesos,...</div><div class="ttdef"><b>Definition:</b> <a href="_lista_arv_8c_source.html#l00052">ListaArv.c:52</a></div></div>
+<div class="ttc" id="a_lista_arv_8c_html_a5e58079e55a4b754c7588e30a57ceb91"><div class="ttname"><a href="_lista_arv_8c.html#a5e58079e55a4b754c7588e30a57ceb91">RetiraListaArvLetra</a></div><div class="ttdeci">void RetiraListaArvLetra(Listagen *lista, unsigned char letra)</div><div class="ttdoc">Retira a arvore da lista usando como chave de busca a letra.</div><div class="ttdef"><b>Definition:</b> <a href="_lista_arv_8c_source.html#l00030">ListaArv.c:30</a></div></div>
+<div class="ttc" id="a_lista_arv_8c_html_a75ff022843c7361eb95f79715762b827"><div class="ttname"><a href="_lista_arv_8c.html#a75ff022843c7361eb95f79715762b827">LiberaListaArv</a></div><div class="ttdeci">void LiberaListaArv(Listagen *lista)</div><div class="ttdoc">Faz a liberacao da lista de Arvores, liberando suas arvores.</div><div class="ttdef"><b>Definition:</b> <a href="_lista_arv_8c_source.html#l00076">ListaArv.c:76</a></div></div>
+<div class="ttc" id="a_lista_arv_8c_html_a83264b1c9d394c1d3dcf4e081060c9b3"><div class="ttname"><a href="_lista_arv_8c.html#a83264b1c9d394c1d3dcf4e081060c9b3">PreencheLista</a></div><div class="ttdeci">void PreencheLista(Listagen *lista, VetChar *VetTemp)</div><div class="ttdoc">Preenche a lista de arvores com os dados presentes no arquivo passado como parametro.</div><div class="ttdef"><b>Definition:</b> <a href="_lista_arv_8c_source.html#l00084">ListaArv.c:84</a></div></div>
+<div class="ttc" id="a_lista_arv_8c_html_a8650b5c98eebc4cf49cb591fcec3b37e"><div class="ttname"><a href="_lista_arv_8c.html#a8650b5c98eebc4cf49cb591fcec3b37e">ArvListadaLibera</a></div><div class="ttdeci">void ArvListadaLibera(void *e1)</div><div class="ttdef"><b>Definition:</b> <a href="_lista_arv_8c_source.html#l00069">ListaArv.c:69</a></div></div>
+<div class="ttc" id="a_lista_arv_8c_html_aa8b1bfcba54f261f4dc02046fe06a1b0"><div class="ttname"><a href="_lista_arv_8c.html#aa8b1bfcba54f261f4dc02046fe06a1b0">InsereListaArv</a></div><div class="ttdeci">void InsereListaArv(Listagen *lista, Arv *inserida)</div><div class="ttdoc">Insere arvore na lista passada.</div><div class="ttdef"><b>Definition:</b> <a href="_lista_arv_8c_source.html#l00019">ListaArv.c:19</a></div></div>
+<div class="ttc" id="a_lista_arv_8c_html_ac5c599d287176935b145ab3915029622"><div class="ttname"><a href="_lista_arv_8c.html#ac5c599d287176935b145ab3915029622">RetiraListaArvPeso</a></div><div class="ttdeci">void RetiraListaArvPeso(Listagen *lista, int Peso)</div><div class="ttdoc">Retira a arvore da lista usando como chave de busca o peso.</div><div class="ttdef"><b>Definition:</b> <a href="_lista_arv_8c_source.html#l00024">ListaArv.c:24</a></div></div>
+<div class="ttc" id="a_lista_arv_8c_html_ae294f349833a6c8188ca1983dc83bffb"><div class="ttname"><a href="_lista_arv_8c.html#ae294f349833a6c8188ca1983dc83bffb">BuscaArvChar</a></div><div class="ttdeci">Arv * BuscaArvChar(Listagen *lista, unsigned char c)</div><div class="ttdef"><b>Definition:</b> <a href="_lista_arv_8c_source.html#l00097">ListaArv.c:97</a></div></div>
+<div class="ttc" id="a_lista_arv_8c_html_ae9c6d2e3ddd05bf03a24ec430d609d69"><div class="ttname"><a href="_lista_arv_8c.html#ae9c6d2e3ddd05bf03a24ec430d609d69">PercorreListaArv</a></div><div class="ttdeci">int PercorreListaArv(Listagen *lista, int(*func)(void *))</div><div class="ttdoc">Percorre a lista de arvores executando a funcao fornecida para cada elemento presente na lista.</div><div class="ttdef"><b>Definition:</b> <a href="_lista_arv_8c_source.html#l00047">ListaArv.c:47</a></div></div>
+<div class="ttc" id="a_lista_arv_8c_html_af158e4c216192f206bf822c3cdb1c507"><div class="ttname"><a href="_lista_arv_8c.html#af158e4c216192f206bf822c3cdb1c507">ReorganizaListaArv</a></div><div class="ttdeci">Listagen * ReorganizaListaArv(Listagen *lista)</div><div class="ttdoc">Reorganiza lista baseada em peso.</div><div class="ttdef"><b>Definition:</b> <a href="_lista_arv_8c_source.html#l00041">ListaArv.c:41</a></div></div>
+<div class="ttc" id="a_lista_arv_8h_html"><div class="ttname"><a href="_lista_arv_8h.html">ListaArv.h</a></div></div>
+<div class="ttc" id="a_listagen_8c_html_a03547a8459045cdeecc13cfeb60de6d2"><div class="ttname"><a href="_listagen_8c.html#a03547a8459045cdeecc13cfeb60de6d2">ReorganizaLista</a></div><div class="ttdeci">Listagen * ReorganizaLista(Listagen *lista, int(*MenorQ)(void *, void *))</div><div class="ttdoc">Função para organizar a lista dependendo da função passada como argumento, (Cria uma nova lista inclu...</div><div class="ttdef"><b>Definition:</b> <a href="_listagen_8c_source.html#l00210">Listagen.c:210</a></div></div>
+<div class="ttc" id="a_listagen_8c_html_a0987171ed48568a79ff5334e21e5de23"><div class="ttname"><a href="_listagen_8c.html#a0987171ed48568a79ff5334e21e5de23">PercorreLista</a></div><div class="ttdeci">int PercorreLista(Listagen *lista, int(*cb)(void *))</div><div class="ttdoc">Percorre a lista executando a funcao passada como parametro.</div><div class="ttdef"><b>Definition:</b> <a href="_listagen_8c_source.html#l00252">Listagen.c:252</a></div></div>
+<div class="ttc" id="a_listagen_8c_html_a41e6a25a5273318a453b37d3424e6761"><div class="ttname"><a href="_listagen_8c.html#a41e6a25a5273318a453b37d3424e6761">RetornaPrimeiro</a></div><div class="ttdeci">void * RetornaPrimeiro(Listagen *lista)</div><div class="ttdoc">Retorna item presente no primeiro elemento da lista.</div><div class="ttdef"><b>Definition:</b> <a href="_listagen_8c_source.html#l00306">Listagen.c:306</a></div></div>
+<div class="ttc" id="a_listagen_8c_html_a4d085829ac9c5a5c7b83688865fa757f"><div class="ttname"><a href="_listagen_8c.html#a4d085829ac9c5a5c7b83688865fa757f">RetornaUlt</a></div><div class="ttdeci">void * RetornaUlt(Listagen *lista)</div><div class="ttdoc">Retorna item presente no ultimo elemento da lista.</div><div class="ttdef"><b>Definition:</b> <a href="_listagen_8c_source.html#l00314">Listagen.c:314</a></div></div>
+<div class="ttc" id="a_listagen_8c_html_a4ef53e86997ff03c63fd09c5702e8d75"><div class="ttname"><a href="_listagen_8c.html#a4ef53e86997ff03c63fd09c5702e8d75">BuscaLista</a></div><div class="ttdeci">void * BuscaLista(Listagen *lista, int(*Compara)(void *, void *), void *chave)</div><div class="ttdoc">Busca o elemento na lista dada a chave de busca, caso ache o elemento eh retornado caso contrario,...</div><div class="ttdef"><b>Definition:</b> <a href="_listagen_8c_source.html#l00322">Listagen.c:322</a></div></div>
+<div class="ttc" id="a_listagen_8c_html_a5cf433a568957a594680bae921c13462"><div class="ttname"><a href="_listagen_8c.html#a5cf433a568957a594680bae921c13462">RetiraPrimeiro</a></div><div class="ttdeci">void * RetiraPrimeiro(Listagen *lista)</div><div class="ttdoc">Retira o primeiro item da lista, retornando o objeto ligado a ele.</div><div class="ttdef"><b>Definition:</b> <a href="_listagen_8c_source.html#l00267">Listagen.c:267</a></div></div>
+<div class="ttc" id="a_listagen_8c_html_a5d9040485e36346089247b105cd770bc"><div class="ttname"><a href="_listagen_8c.html#a5d9040485e36346089247b105cd770bc">InsereItemGen</a></div><div class="ttdeci">void InsereItemGen(Listagen *lista, void *item)</div><div class="ttdoc">Insere um item no inicio da lista.</div><div class="ttdef"><b>Definition:</b> <a href="_listagen_8c_source.html#l00051">Listagen.c:51</a></div></div>
+<div class="ttc" id="a_listagen_8c_html_a61608ee5a24a69973526fe6f3cda8592"><div class="ttname"><a href="_listagen_8c.html#a61608ee5a24a69973526fe6f3cda8592">ImprimeListaGen</a></div><div class="ttdeci">void ImprimeListaGen(Listagen *lista, void(*Imprime)(void *))</div><div class="ttdoc">Imprime a Lista Generica, dada a funcao para a impressao de um elemento.</div><div class="ttdef"><b>Definition:</b> <a href="_listagen_8c_source.html#l00174">Listagen.c:174</a></div></div>
+<div class="ttc" id="a_listagen_8c_html_a68b0dd1179285db1358b19f96a022004"><div class="ttname"><a href="_listagen_8c.html#a68b0dd1179285db1358b19f96a022004">InsereUltItemGen</a></div><div class="ttdeci">void InsereUltItemGen(Listagen *lista, void *item)</div><div class="ttdoc">Insere um item no final da lista.</div><div class="ttdef"><b>Definition:</b> <a href="_listagen_8c_source.html#l00290">Listagen.c:290</a></div></div>
+<div class="ttc" id="a_listagen_8c_html_aa3d3ca705d1add67cffc08320b527b8f"><div class="ttname"><a href="_listagen_8c.html#aa3d3ca705d1add67cffc08320b527b8f">IniciaListaGen</a></div><div class="ttdeci">Listagen * IniciaListaGen()</div><div class="ttdoc">Inicia a lista vazia.</div><div class="ttdef"><b>Definition:</b> <a href="_listagen_8c_source.html#l00040">Listagen.c:40</a></div></div>
+<div class="ttc" id="a_listagen_8c_html_aaa3734ea3c72cd3f3ae9634882098d85"><div class="ttname"><a href="_listagen_8c.html#aaa3734ea3c72cd3f3ae9634882098d85">LiberaListaGen</a></div><div class="ttdeci">void LiberaListaGen(Listagen *lista, void(*Destroi)(void *))</div><div class="ttdoc">Libera a lista dando free também no item dela caso a função de destruir do tipo seja passada como arg...</div><div class="ttdef"><b>Definition:</b> <a href="_listagen_8c_source.html#l00194">Listagen.c:194</a></div></div>
+<div class="ttc" id="a_listagen_8c_html_ac4d8e872692a99169cacc1ef8e07e453"><div class="ttname"><a href="_listagen_8c.html#ac4d8e872692a99169cacc1ef8e07e453">VaziaLista</a></div><div class="ttdeci">int VaziaLista(Listagen *lista)</div><div class="ttdoc">Retorna 1 se a lista esta vazia, 0 caso contrário.</div><div class="ttdef"><b>Definition:</b> <a href="_listagen_8c_source.html#l00238">Listagen.c:238</a></div></div>
+<div class="ttc" id="a_listagen_8c_html_afa2e7d29636585bbf57d3918f96fc8ff"><div class="ttname"><a href="_listagen_8c.html#afa2e7d29636585bbf57d3918f96fc8ff">RetiraDaListaGen</a></div><div class="ttdeci">void * RetiraDaListaGen(Listagen *lista, void *chave, int(*Comparador)(void *, void *))</div><div class="ttdoc">Retira um item da lista comparando com uma função de callback do tipo de item.</div><div class="ttdef"><b>Definition:</b> <a href="_listagen_8c_source.html#l00070">Listagen.c:70</a></div></div>
+<div class="ttc" id="a_vetchar_8c_html_ad45019d807e44f1b7eb100266afc5b4b"><div class="ttname"><a href="_vetchar_8c.html#ad45019d807e44f1b7eb100266afc5b4b">VetGetPos</a></div><div class="ttdeci">int VetGetPos(VetChar *vet, int i)</div><div class="ttdoc">Retorna quantas vezes uma dada combinacao de btis apareceu no arquivo.</div><div class="ttdef"><b>Definition:</b> <a href="_vetchar_8c_source.html#l00034">Vetchar.c:34</a></div></div>
+<div class="ttc" id="a_vetchar_8h_html_a4a6bbe8bb29265c001ee75389d55643d"><div class="ttname"><a href="_vetchar_8h.html#a4a6bbe8bb29265c001ee75389d55643d">MAX_VET</a></div><div class="ttdeci">#define MAX_VET</div><div class="ttdef"><b>Definition:</b> <a href="_vetchar_8h_source.html#l00004">Vetchar.h:4</a></div></div>
+<div class="ttc" id="astructarv_html"><div class="ttname"><a href="structarv.html">arv</a></div><div class="ttdoc">Estrutura da Arvore que carega o peso do caractere e o próprio caractere para implementação do Algori...</div><div class="ttdef"><b>Definition:</b> <a href="_arvore_8c_source.html#l00010">Arvore.c:11</a></div></div>
+<div class="ttc" id="astructlistagen_html"><div class="ttname"><a href="structlistagen.html">listagen</a></div><div class="ttdoc">Sentinela da lista genérica, carrega prim e ult.</div><div class="ttdef"><b>Definition:</b> <a href="_listagen_8c_source.html#l00010">Listagen.c:11</a></div></div>
+<div class="ttc" id="astructvetchar_html"><div class="ttname"><a href="structvetchar.html">vetchar</a></div><div class="ttdoc">Vetor frequencia, onde eh armazenada a quantidade de aparicoes de cada combinacao de 8 bits.</div><div class="ttdef"><b>Definition:</b> <a href="_vetchar_8c_source.html#l00008">Vetchar.c:9</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5
+</small></address>
+</body>
+</html>

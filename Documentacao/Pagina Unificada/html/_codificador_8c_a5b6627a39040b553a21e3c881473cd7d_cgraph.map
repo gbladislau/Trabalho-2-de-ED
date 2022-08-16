@@ -1,0 +1,10 @@
+<map id="FazArvoreHuffman" name="FazArvoreHuffman">
+<area shape="rect" id="node1" title="Dada uma lista de arvores, aplica o algoritmo de Huffman e retorna a raiz da arvore resultante." alt="" coords="5,105,148,131"/>
+<area shape="rect" id="node2" href="$_lista_arv_8c.html#a54aa3bfd5b757ffc5b07e1e05a76078c" title="Retira as duas primeiras arvores da lista, cria um no raiz com o peso = soma dos pesos,..." alt="" coords="199,80,321,105"/>
+<area shape="rect" id="node8" href="$_listagen_8c.html#a41e6a25a5273318a453b37d3424e6761" title="Retorna item presente no primeiro elemento da lista." alt="" coords="196,129,324,155"/>
+<area shape="rect" id="node3" href="$_arvore_8c.html#ab523d769f5fa825ecfed60ccbf80735f" title="Função para criar Arvore, aqui podemos adicionar um caractere e seu peso correspodente na contagem do..." alt="" coords="405,5,476,31"/>
+<area shape="rect" id="node5" href="$_arvore_8c.html#adbfc4cec04e2ca0f3b4976d68d874fa5" title="Retorna o peso da árvore caso seja diferente de NULL." alt="" coords="403,55,478,80"/>
+<area shape="rect" id="node6" href="$_listagen_8c.html#a68b0dd1179285db1358b19f96a022004" title="Insere um item no final da lista." alt="" coords="372,104,509,129"/>
+<area shape="rect" id="node7" href="$_listagen_8c.html#a5cf433a568957a594680bae921c13462" title="Retira o primeiro item da lista, retornando o objeto ligado a ele." alt="" coords="383,153,499,179"/>
+<area shape="rect" id="node4" href="$bitmap_8c.html#ae6321531d73ebab0e0f1081a903be53c" title=" " alt="" coords="557,55,620,80"/>
+</map>

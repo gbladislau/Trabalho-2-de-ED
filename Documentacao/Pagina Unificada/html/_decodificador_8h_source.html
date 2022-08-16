@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.5"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Decodificador e Codificador Huffman: Código-Fonte de Decodificador.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Decodificador e Codificador Huffman
+   </div>
+   <div id="projectbrief">Trabalho de Estrutura de dados - Feito por Gabriel Braga e Rhuan Garcia</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.9.5 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Busca');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Decodificador.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_decodificador_8h.html">Vá para a documentação desse arquivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef DEC_h</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define DEC_h</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="_arvore_8h.html">Arvore.h</a>&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><a class="code hl_struct" href="structarv.html">Arv</a> *<a class="code hl_function" href="_decodificador_8h.html#a350e3a2d1764f2357fe860705c2be1a3">PegaArvore</a>(FILE *entrada);</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>FILE *<a class="code hl_function" href="_decodificador_8h.html#ae12eabf39d1f2843956d6790f17f898e">CriaSaida</a>(FILE *entrada, <span class="keyword">const</span> <span class="keywordtype">char</span> *path);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>FILE *<a class="code hl_function" href="_decodificador_8h.html#a2453c5cdbc44244e5c5d9d61002cb282">AbreEntrada</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *arg);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keywordtype">void</span> <a class="code hl_function" href="_decodificador_8h.html#ae772ebf98171e99b223a791bc867fbbf">PreencheBitMapArquivo</a>(<a class="code hl_struct" href="structmap.html">bitmap</a> *<a class="code hl_struct" href="structarv.html">arv</a>, FILE *arquivo, <span class="keywordtype">int</span> qntBit);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keywordtype">void</span> <a class="code hl_function" href="_decodificador_8h.html#a92327d77e14adac52847850f2aded1f3">DescodificarEntrada</a>(FILE* entrada, <a class="code hl_struct" href="structarv.html">Arv</a>* arvore, FILE* saida);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="a_arvore_8h_html"><div class="ttname"><a href="_arvore_8h.html">Arvore.h</a></div></div>
+<div class="ttc" id="a_decodificador_8h_html_a2453c5cdbc44244e5c5d9d61002cb282"><div class="ttname"><a href="_decodificador_8h.html#a2453c5cdbc44244e5c5d9d61002cb282">AbreEntrada</a></div><div class="ttdeci">FILE * AbreEntrada(const char *arg)</div><div class="ttdoc">Faz a abertura de um arquivo cujo caminho foi passado.</div><div class="ttdef"><b>Definition:</b> <a href="_decodificador_8c_source.html#l00033">Decodificador.c:33</a></div></div>
+<div class="ttc" id="a_decodificador_8h_html_a350e3a2d1764f2357fe860705c2be1a3"><div class="ttname"><a href="_decodificador_8h.html#a350e3a2d1764f2357fe860705c2be1a3">PegaArvore</a></div><div class="ttdeci">Arv * PegaArvore(FILE *entrada)</div><div class="ttdoc">Monta uma arvore de Huffman com base no cabecalho presente no arquivo de entrada.</div><div class="ttdef"><b>Definition:</b> <a href="_decodificador_8c_source.html#l00067">Decodificador.c:67</a></div></div>
+<div class="ttc" id="a_decodificador_8h_html_a92327d77e14adac52847850f2aded1f3"><div class="ttname"><a href="_decodificador_8h.html#a92327d77e14adac52847850f2aded1f3">DescodificarEntrada</a></div><div class="ttdeci">void DescodificarEntrada(FILE *entrada, Arv *arvore, FILE *saida)</div><div class="ttdoc">Decodifica o arquivo de entrada com base na arvore de Huffman passada Escrevendo o resultado no arqui...</div><div class="ttdef"><b>Definition:</b> <a href="_decodificador_8c_source.html#l00125">Decodificador.c:125</a></div></div>
+<div class="ttc" id="a_decodificador_8h_html_ae12eabf39d1f2843956d6790f17f898e"><div class="ttname"><a href="_decodificador_8h.html#ae12eabf39d1f2843956d6790f17f898e">CriaSaida</a></div><div class="ttdeci">FILE * CriaSaida(FILE *entrada, const char *path)</div><div class="ttdoc">Dada a informacao presente no cabecalho, eh criado o arquivo para a saida da decodificacao.</div><div class="ttdef"><b>Definition:</b> <a href="_decodificador_8c_source.html#l00040">Decodificador.c:40</a></div></div>
+<div class="ttc" id="a_decodificador_8h_html_ae772ebf98171e99b223a791bc867fbbf"><div class="ttname"><a href="_decodificador_8h.html#ae772ebf98171e99b223a791bc867fbbf">PreencheBitMapArquivo</a></div><div class="ttdeci">void PreencheBitMapArquivo(bitmap *arv, FILE *arquivo, int qntBit)</div><div class="ttdoc">Preenche bitmap com a quantidade de bits informada do arquivo passado.</div><div class="ttdef"><b>Definition:</b> <a href="_decodificador_8c_source.html#l00084">Decodificador.c:84</a></div></div>
+<div class="ttc" id="astructarv_html"><div class="ttname"><a href="structarv.html">arv</a></div><div class="ttdoc">Estrutura da Arvore que carega o peso do caractere e o próprio caractere para implementação do Algori...</div><div class="ttdef"><b>Definition:</b> <a href="_arvore_8c_source.html#l00010">Arvore.c:11</a></div></div>
+<div class="ttc" id="astructmap_html"><div class="ttname"><a href="structmap.html">map</a></div><div class="ttdoc">Estrutura para representar um mapa de bits.</div><div class="ttdef"><b>Definition:</b> <a href="bitmap_8c_source.html#l00016">bitmap.c:17</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5
+</small></address>
+</body>
+</html>

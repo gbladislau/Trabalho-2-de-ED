@@ -1,0 +1,8 @@
+<map id="FundePrimeiros" name="FundePrimeiros">
+<area shape="rect" id="node1" title="Retira as duas primeiras arvores da lista, cria um no raiz com o peso = soma dos pesos,..." alt="" coords="5,80,128,105"/>
+<area shape="rect" id="node2" href="$_arvore_8c.html#ab523d769f5fa825ecfed60ccbf80735f" title="Função para criar Arvore, aqui podemos adicionar um caractere e seu peso correspodente na contagem do..." alt="" coords="209,5,280,31"/>
+<area shape="rect" id="node4" href="$_arvore_8c.html#adbfc4cec04e2ca0f3b4976d68d874fa5" title="Retorna o peso da árvore caso seja diferente de NULL." alt="" coords="207,55,282,80"/>
+<area shape="rect" id="node5" href="$_listagen_8c.html#a68b0dd1179285db1358b19f96a022004" title="Insere um item no final da lista." alt="" coords="176,104,313,129"/>
+<area shape="rect" id="node6" href="$_listagen_8c.html#a5cf433a568957a594680bae921c13462" title="Retira o primeiro item da lista, retornando o objeto ligado a ele." alt="" coords="187,153,303,179"/>
+<area shape="rect" id="node3" href="$bitmap_8c.html#ae6321531d73ebab0e0f1081a903be53c" title=" " alt="" coords="361,55,424,80"/>
+</map>

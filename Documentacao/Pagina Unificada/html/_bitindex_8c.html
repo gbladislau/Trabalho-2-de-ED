@@ -1,0 +1,333 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.5"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Decodificador e Codificador Huffman: Referência do Arquivo Bitindex.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Decodificador e Codificador Huffman
+   </div>
+   <div id="projectbrief">Trabalho de Estrutura de dados - Feito por Gabriel Braga e Rhuan Garcia</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.9.5 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Busca');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Estruturas de Dados</a> &#124;
+<a href="#func-members">Funções</a>  </div>
+  <div class="headertitle"><div class="title">Referência do Arquivo Bitindex.c</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="_bitindex_8h_source.html">Bitindex.h</a>&quot;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;strings.h&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Gráfico de dependência de inclusões para Bitindex.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="_bitindex_8c__incl.png" border="0" usemap="#a_bitindex_8c" alt=""/></div>
+<map name="a_bitindex_8c" id="a_bitindex_8c">
+<area shape="rect" title=" " alt="" coords="155,5,242,31"/>
+<area shape="rect" href="_bitindex_8h.html" title=" " alt="" coords="51,79,139,104"/>
+<area shape="rect" title=" " alt="" coords="163,79,234,104"/>
+<area shape="rect" title=" " alt="" coords="258,79,337,104"/>
+<area shape="rect" href="bitmap_8h.html" title=" " alt="" coords="5,152,85,177"/>
+<area shape="rect" title=" " alt="" coords="110,152,181,177"/>
+</map>
+</div>
+</div>
+<p><a href="_bitindex_8c_source.html">Vá para o código-fonte desse arquivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Estruturas de Dados</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structbit_index.html">bitIndex</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bitmap Indexado, tem funcoes para facilitar acesso continuo e tratar-lo como pilha.  <a href="structbit_index.html#details">Mais...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:a8e4f2606d9ca79f193f8a7dc3d890455"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_bitindex_8h.html#a21c51523591fc4eb088b9011da000d32">BitIndex</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_bitindex_8c.html#a8e4f2606d9ca79f193f8a7dc3d890455">IniciaBitIndex</a> (<a class="el" href="bitmap_8h.html#a8b52a6f322f22e4781bce4ec7d325066">bitmap</a> *bitm)</td></tr>
+<tr class="memdesc:a8e4f2606d9ca79f193f8a7dc3d890455"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicia um Bitmap indexado, dado um bitmap comum.  <a href="_bitindex_8c.html#a8e4f2606d9ca79f193f8a7dc3d890455">Mais...</a><br /></td></tr>
+<tr class="separator:a8e4f2606d9ca79f193f8a7dc3d890455"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d10e37dd981c668b0db91cebc255246"><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_bitindex_8c.html#a3d10e37dd981c668b0db91cebc255246">ProxBit</a> (<a class="el" href="_bitindex_8h.html#a21c51523591fc4eb088b9011da000d32">BitIndex</a> *<a class="el" href="bitmap_8h.html#a8b52a6f322f22e4781bce4ec7d325066">bitmap</a>)</td></tr>
+<tr class="memdesc:a3d10e37dd981c668b0db91cebc255246"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna o proximo bit do bitmap, caso omesmo fosse tratado como uma pilha.  <a href="_bitindex_8c.html#a3d10e37dd981c668b0db91cebc255246">Mais...</a><br /></td></tr>
+<tr class="separator:a3d10e37dd981c668b0db91cebc255246"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0593341cccbcde30b5c85c832e1d4aa2"><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_bitindex_8c.html#a0593341cccbcde30b5c85c832e1d4aa2">LeCaractere</a> (<a class="el" href="_bitindex_8h.html#a21c51523591fc4eb088b9011da000d32">BitIndex</a> *base)</td></tr>
+<tr class="memdesc:a0593341cccbcde30b5c85c832e1d4aa2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna os proximos 8 bits do bitmap, concatenados em um char.  <a href="_bitindex_8c.html#a0593341cccbcde30b5c85c832e1d4aa2">Mais...</a><br /></td></tr>
+<tr class="separator:a0593341cccbcde30b5c85c832e1d4aa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0d17881c29ba316cfa620283c7b7e7b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_bitindex_8c.html#af0d17881c29ba316cfa620283c7b7e7b">LiberaBitIndx</a> (<a class="el" href="_bitindex_8h.html#a21c51523591fc4eb088b9011da000d32">BitIndex</a> *<a class="el" href="bitmap_8h.html#a8b52a6f322f22e4781bce4ec7d325066">bitmap</a>)</td></tr>
+<tr class="memdesc:af0d17881c29ba316cfa620283c7b7e7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Libera a estrutura de BitIndexado, sem liberar o bitmap em que foi baseado.  <a href="_bitindex_8c.html#af0d17881c29ba316cfa620283c7b7e7b">Mais...</a><br /></td></tr>
+<tr class="separator:af0d17881c29ba316cfa620283c7b7e7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52a01da1f3fcf52db776dfadd900c53f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_bitindex_8c.html#a52a01da1f3fcf52db776dfadd900c53f">ReturnIndex</a> (<a class="el" href="_bitindex_8h.html#a21c51523591fc4eb088b9011da000d32">BitIndex</a> *b)</td></tr>
+<tr class="separator:a52a01da1f3fcf52db776dfadd900c53f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Funções</h2>
+<a id="a8e4f2606d9ca79f193f8a7dc3d890455" name="a8e4f2606d9ca79f193f8a7dc3d890455"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e4f2606d9ca79f193f8a7dc3d890455">&#9670;&nbsp;</a></span>IniciaBitIndex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_bitindex_8h.html#a21c51523591fc4eb088b9011da000d32">BitIndex</a> * IniciaBitIndex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="bitmap_8h.html#a8b52a6f322f22e4781bce4ec7d325066">bitmap</a> *&#160;</td>
+          <td class="paramname"><em>bitm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Inicia um Bitmap indexado, dado um bitmap comum. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bitm</td><td>- Bitmap base </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>BitIndex* - Bitmap indexado </dd></dl>
+
+<p class="definition">Definição na linha <a class="el" href="_bitindex_8c_source.html#l00019">19</a> do arquivo <a class="el" href="_bitindex_8c_source.html">Bitindex.c</a>.</p>
+<div class="dynheader">
+Esse é o diagrama das funções que utilizam essa função:</div>
+<div class="dyncontent">
+<div class="center"><img src="_bitindex_8c_a8e4f2606d9ca79f193f8a7dc3d890455_icgraph.png" border="0" usemap="#a_bitindex_8c_a8e4f2606d9ca79f193f8a7dc3d890455_icgraph" alt=""/></div>
+<map name="a_bitindex_8c_a8e4f2606d9ca79f193f8a7dc3d890455_icgraph" id="a_bitindex_8c_a8e4f2606d9ca79f193f8a7dc3d890455_icgraph">
+<area shape="rect" title="Inicia um Bitmap indexado, dado um bitmap comum." alt="" coords="483,29,593,55"/>
+<area shape="rect" href="_decodificador_8c.html#a92327d77e14adac52847850f2aded1f3" title="Decodifica o arquivo de entrada com base na arvore de Huffman passada Escrevendo o resultado no arqui..." alt="" coords="108,5,260,31"/>
+<area shape="rect" href="_arvore_8c.html#a8fe51cc09bbed0a34bd2ac0d826c9512" title="Dado um bitmap contendo a arvore serializada em pre&#45;ordem, retorna a mesma desserializada para uso no..." alt="" coords="308,55,435,80"/>
+<area shape="rect" href="_decodificador_8c.html#abf9e6b7e6f15df4b525a2e7705ba3089" title=" " alt="" coords="5,31,60,56"/>
+<area shape="rect" href="_decodificador_8c.html#a350e3a2d1764f2357fe860705c2be1a3" title="Monta uma arvore de Huffman com base no cabecalho presente no arquivo de entrada." alt="" coords="135,55,233,80"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0593341cccbcde30b5c85c832e1d4aa2" name="a0593341cccbcde30b5c85c832e1d4aa2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0593341cccbcde30b5c85c832e1d4aa2">&#9670;&nbsp;</a></span>LeCaractere()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char LeCaractere </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_bitindex_8h.html#a21c51523591fc4eb088b9011da000d32">BitIndex</a> *&#160;</td>
+          <td class="paramname"><em>base</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retorna os proximos 8 bits do bitmap, concatenados em um char. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">base</td><td>- Bitmap Indexado </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>unsigned char - Bits obtidos concatenados </dd></dl>
+
+<p class="definition">Definição na linha <a class="el" href="_bitindex_8c_source.html#l00033">33</a> do arquivo <a class="el" href="_bitindex_8c_source.html">Bitindex.c</a>.</p>
+<div class="dynheader">
+Este é o diagrama das funções utilizadas por essa função:</div>
+<div class="dyncontent">
+<div class="center"><img src="_bitindex_8c_a0593341cccbcde30b5c85c832e1d4aa2_cgraph.png" border="0" usemap="#a_bitindex_8c_a0593341cccbcde30b5c85c832e1d4aa2_cgraph" alt=""/></div>
+<map name="a_bitindex_8c_a0593341cccbcde30b5c85c832e1d4aa2_cgraph" id="a_bitindex_8c_a0593341cccbcde30b5c85c832e1d4aa2_cgraph">
+<area shape="rect" title="Retorna os proximos 8 bits do bitmap, concatenados em um char." alt="" coords="5,89,105,114"/>
+<area shape="rect" href="bitmap_8c.html#a8bee243b51ff8daf8cf577d11e7e735c" title=" " alt="" coords="351,14,589,40"/>
+<area shape="rect" href="bitmap_8c.html#a35de4ff0d4746abe845d9977cd622120" title=" " alt="" coords="153,38,303,64"/>
+<area shape="rect" href="bitmap_8c.html#a6fe05cb2e9889f347653f98edac7a114" title=" " alt="" coords="425,89,515,114"/>
+<area shape="rect" href="bitmap_8c.html#a08def9dc3e8ae0e4d83a0039d770205c" title=" " alt="" coords="174,140,282,165"/>
+<area shape="rect" href="_bitindex_8c.html#a3d10e37dd981c668b0db91cebc255246" title="Retorna o proximo bit do bitmap, caso omesmo fosse tratado como uma pilha." alt="" coords="193,189,263,214"/>
+<area shape="rect" href="bitmap_8c.html#ae6321531d73ebab0e0f1081a903be53c" title=" " alt="" coords="637,89,700,114"/>
+<area shape="rect" href="bitmap_8c.html#ac67802da30c1b2aa2fd983818b11d435" title=" " alt="" coords="415,164,525,189"/>
+</map>
+</div>
+<div class="dynheader">
+Esse é o diagrama das funções que utilizam essa função:</div>
+<div class="dyncontent">
+<div class="center"><img src="_bitindex_8c_a0593341cccbcde30b5c85c832e1d4aa2_icgraph.png" border="0" usemap="#a_bitindex_8c_a0593341cccbcde30b5c85c832e1d4aa2_icgraph" alt=""/></div>
+<map name="a_bitindex_8c_a0593341cccbcde30b5c85c832e1d4aa2_icgraph" id="a_bitindex_8c_a0593341cccbcde30b5c85c832e1d4aa2_icgraph">
+<area shape="rect" title="Retorna os proximos 8 bits do bitmap, concatenados em um char." alt="" coords="645,29,745,55"/>
+<area shape="rect" href="_arvore_8c.html#a87505f6fe3718fc93dc8f907127a6a6b" title="Funcao recursiva auxiliar de FazArvdeBitMap. Nessa funcao, lemos o bitmap indexado contendo a arvore ..." alt="" coords="428,29,597,55"/>
+<area shape="rect" href="_arvore_8c.html#a8fe51cc09bbed0a34bd2ac0d826c9512" title="Dado um bitmap contendo a arvore serializada em pre&#45;ordem, retorna a mesma desserializada para uso no..." alt="" coords="253,29,380,55"/>
+<area shape="rect" href="_decodificador_8c.html#a350e3a2d1764f2357fe860705c2be1a3" title="Monta uma arvore de Huffman com base no cabecalho presente no arquivo de entrada." alt="" coords="108,29,205,55"/>
+<area shape="rect" href="_decodificador_8c.html#abf9e6b7e6f15df4b525a2e7705ba3089" title=" " alt="" coords="5,29,60,55"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af0d17881c29ba316cfa620283c7b7e7b" name="af0d17881c29ba316cfa620283c7b7e7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0d17881c29ba316cfa620283c7b7e7b">&#9670;&nbsp;</a></span>LiberaBitIndx()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LiberaBitIndx </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_bitindex_8h.html#a21c51523591fc4eb088b9011da000d32">BitIndex</a> *&#160;</td>
+          <td class="paramname"><em>bitmap</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Libera a estrutura de BitIndexado, sem liberar o bitmap em que foi baseado. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bitmap</td><td>- Bitmap Indexado a ser liberado </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definição na linha <a class="el" href="_bitindex_8c_source.html#l00049">49</a> do arquivo <a class="el" href="_bitindex_8c_source.html">Bitindex.c</a>.</p>
+<div class="dynheader">
+Esse é o diagrama das funções que utilizam essa função:</div>
+<div class="dyncontent">
+<div class="center"><img src="_bitindex_8c_af0d17881c29ba316cfa620283c7b7e7b_icgraph.png" border="0" usemap="#a_bitindex_8c_af0d17881c29ba316cfa620283c7b7e7b_icgraph" alt=""/></div>
+<map name="a_bitindex_8c_af0d17881c29ba316cfa620283c7b7e7b_icgraph" id="a_bitindex_8c_af0d17881c29ba316cfa620283c7b7e7b_icgraph">
+<area shape="rect" title="Libera a estrutura de BitIndexado, sem liberar o bitmap em que foi baseado." alt="" coords="483,29,591,55"/>
+<area shape="rect" href="_decodificador_8c.html#a92327d77e14adac52847850f2aded1f3" title="Decodifica o arquivo de entrada com base na arvore de Huffman passada Escrevendo o resultado no arqui..." alt="" coords="108,5,260,31"/>
+<area shape="rect" href="_arvore_8c.html#a8fe51cc09bbed0a34bd2ac0d826c9512" title="Dado um bitmap contendo a arvore serializada em pre&#45;ordem, retorna a mesma desserializada para uso no..." alt="" coords="308,55,435,80"/>
+<area shape="rect" href="_decodificador_8c.html#abf9e6b7e6f15df4b525a2e7705ba3089" title=" " alt="" coords="5,31,60,56"/>
+<area shape="rect" href="_decodificador_8c.html#a350e3a2d1764f2357fe860705c2be1a3" title="Monta uma arvore de Huffman com base no cabecalho presente no arquivo de entrada." alt="" coords="135,55,233,80"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3d10e37dd981c668b0db91cebc255246" name="a3d10e37dd981c668b0db91cebc255246"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d10e37dd981c668b0db91cebc255246">&#9670;&nbsp;</a></span>ProxBit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char ProxBit </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_bitindex_8h.html#a21c51523591fc4eb088b9011da000d32">BitIndex</a> *&#160;</td>
+          <td class="paramname"><em>bitmap</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retorna o proximo bit do bitmap, caso omesmo fosse tratado como uma pilha. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bitmap</td><td>- Bitmap Indexado </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>unsigned char - Bit obtido </dd></dl>
+
+<p class="definition">Definição na linha <a class="el" href="_bitindex_8c_source.html#l00027">27</a> do arquivo <a class="el" href="_bitindex_8c_source.html">Bitindex.c</a>.</p>
+<div class="dynheader">
+Este é o diagrama das funções utilizadas por essa função:</div>
+<div class="dyncontent">
+<div class="center"><img src="_bitindex_8c_a3d10e37dd981c668b0db91cebc255246_cgraph.png" border="0" usemap="#a_bitindex_8c_a3d10e37dd981c668b0db91cebc255246_cgraph" alt=""/></div>
+<map name="a_bitindex_8c_a3d10e37dd981c668b0db91cebc255246_cgraph" id="a_bitindex_8c_a3d10e37dd981c668b0db91cebc255246_cgraph">
+<area shape="rect" title="Retorna o proximo bit do bitmap, caso omesmo fosse tratado como uma pilha." alt="" coords="5,5,75,31"/>
+<area shape="rect" href="bitmap_8c.html#ac67802da30c1b2aa2fd983818b11d435" title=" " alt="" coords="123,5,232,31"/>
+<area shape="rect" href="bitmap_8c.html#ae6321531d73ebab0e0f1081a903be53c" title=" " alt="" coords="280,5,343,31"/>
+</map>
+</div>
+<div class="dynheader">
+Esse é o diagrama das funções que utilizam essa função:</div>
+<div class="dyncontent">
+<div class="center"><img src="_bitindex_8c_a3d10e37dd981c668b0db91cebc255246_icgraph.png" border="0" usemap="#a_bitindex_8c_a3d10e37dd981c668b0db91cebc255246_icgraph" alt=""/></div>
+<map name="a_bitindex_8c_a3d10e37dd981c668b0db91cebc255246_icgraph" id="a_bitindex_8c_a3d10e37dd981c668b0db91cebc255246_icgraph">
+<area shape="rect" title="Retorna o proximo bit do bitmap, caso omesmo fosse tratado como uma pilha." alt="" coords="1005,56,1075,81"/>
+<area shape="rect" href="_bitindex_8c.html#a0593341cccbcde30b5c85c832e1d4aa2" title="Retorna os proximos 8 bits do bitmap, concatenados em um char." alt="" coords="803,5,903,31"/>
+<area shape="rect" href="_arvore_8c.html#a87505f6fe3718fc93dc8f907127a6a6b" title="Funcao recursiva auxiliar de FazArvdeBitMap. Nessa funcao, lemos o bitmap indexado contendo a arvore ..." alt="" coords="507,56,676,81"/>
+<area shape="rect" href="_arvore_8c.html#a9dc4c14ca5384fca4c32be6d40e5b2b1" title="Funcao recusiva auxiliar de PercorreArvorePorBitEEscreveSaida. Faz a decodificacao de um caractere pr..." alt="" coords="748,131,957,156"/>
+<area shape="rect" href="_arvore_8c.html#a8fe51cc09bbed0a34bd2ac0d826c9512" title="Dado um bitmap contendo a arvore serializada em pre&#45;ordem, retorna a mesma desserializada para uso no..." alt="" coords="308,67,435,92"/>
+<area shape="rect" href="_decodificador_8c.html#a350e3a2d1764f2357fe860705c2be1a3" title="Monta uma arvore de Huffman com base no cabecalho presente no arquivo de entrada." alt="" coords="135,69,233,95"/>
+<area shape="rect" href="_decodificador_8c.html#abf9e6b7e6f15df4b525a2e7705ba3089" title=" " alt="" coords="5,95,60,120"/>
+<area shape="rect" href="_arvore_8c.html#a2a046926fc047d7085c4a1714366a868" title="Decodifica o conteudo de um Bitmap Indexado com base na Arvore de Huffman passada,..." alt="" coords="483,114,700,154"/>
+<area shape="rect" href="_decodificador_8c.html#a92327d77e14adac52847850f2aded1f3" title="Decodifica o arquivo de entrada com base na arvore de Huffman passada Escrevendo o resultado no arqui..." alt="" coords="108,119,260,144"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a52a01da1f3fcf52db776dfadd900c53f" name="a52a01da1f3fcf52db776dfadd900c53f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52a01da1f3fcf52db776dfadd900c53f">&#9670;&nbsp;</a></span>ReturnIndex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ReturnIndex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_bitindex_8h.html#a21c51523591fc4eb088b9011da000d32">BitIndex</a> *&#160;</td>
+          <td class="paramname"><em>b</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definição na linha <a class="el" href="_bitindex_8c_source.html#l00054">54</a> do arquivo <a class="el" href="_bitindex_8c_source.html">Bitindex.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5
+</small></address>
+</body>
+</html>

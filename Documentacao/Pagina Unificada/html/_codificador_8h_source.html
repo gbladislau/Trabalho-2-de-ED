@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.5"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Decodificador e Codificador Huffman: Código-Fonte de Codificador.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Decodificador e Codificador Huffman
+   </div>
+   <div id="projectbrief">Trabalho de Estrutura de dados - Feito por Gabriel Braga e Rhuan Garcia</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.9.5 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Busca');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Codificador.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_codificador_8h.html">Vá para a documentação desse arquivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef COD_h</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define COD_h</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="_lista_arv_8h.html">ListaArv.h</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="_arvore_8h.html">Arvore.h</a>&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="_vetchar_8h.html">Vetchar.h</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="_codificador_8h.html#a64b7ad079b027e3dc4772755fdce9c97">    8</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="struct_tabela_de_cod.html">TabelaDeCod</a> <a class="code hl_struct" href="struct_tabela_de_cod.html">Tabela</a>;</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><a class="code hl_struct" href="structarv.html">Arv</a> *<a class="code hl_function" href="_codificador_8h.html#a5b6627a39040b553a21e3c881473cd7d">FazArvoreHuffman</a>(<a class="code hl_struct" href="structlistagen.html">Listagen</a> *listabase);</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keywordtype">void</span> <a class="code hl_function" href="_codificador_8h.html#a2ce69d6a0063b64e46d17291840a583d">CompletaByteBitmap</a>(<a class="code hl_struct" href="structmap.html">bitmap</a> *entrada);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keywordtype">void</span> <a class="code hl_function" href="_codificador_8h.html#ac4ed54b9aa69f1f4ccf47b3d20b39e26">CodificaArq</a>(FILE *arq, <a class="code hl_struct" href="structarv.html">Arv</a> *Huffman, <a class="code hl_struct" href="structvetchar.html">VetChar</a> *Vetor, FILE *saida);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><a class="code hl_struct" href="struct_tabela_de_cod.html">Tabela</a> *<a class="code hl_function" href="_codificador_8h.html#ae32543537d391c5756cb24ef60e2fdfc">MontandoTabela</a>(<a class="code hl_struct" href="structarv.html">Arv</a> *Huffman, <a class="code hl_struct" href="structvetchar.html">VetChar</a> *vetor, <span class="keywordtype">int</span> tam);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keywordtype">void</span> <a class="code hl_function" href="_codificador_8h.html#a01b1dedd8cad0104bfad2245a6eb37a9">LiberaTabela</a>(<a class="code hl_struct" href="struct_tabela_de_cod.html">Tabela</a> *tab, <span class="keywordtype">int</span> qntd);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> <a class="code hl_function" href="_codificador_8h.html#a8da2d818a6200783b78d7dfb242c7b7d">CalculaTamTotal</a>(<a class="code hl_struct" href="structvetchar.html">VetChar</a> *Vetor, <a class="code hl_struct" href="struct_tabela_de_cod.html">Tabela</a> *tab, <span class="keywordtype">int</span> tam);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="a_arvore_8h_html"><div class="ttname"><a href="_arvore_8h.html">Arvore.h</a></div></div>
+<div class="ttc" id="a_codificador_8h_html_a01b1dedd8cad0104bfad2245a6eb37a9"><div class="ttname"><a href="_codificador_8h.html#a01b1dedd8cad0104bfad2245a6eb37a9">LiberaTabela</a></div><div class="ttdeci">void LiberaTabela(Tabela *tab, int qntd)</div><div class="ttdoc">Libera a memoria alocada por uma tabela de codificacao.</div><div class="ttdef"><b>Definition:</b> <a href="_codificador_8c_source.html#l00201">Codificador.c:201</a></div></div>
+<div class="ttc" id="a_codificador_8h_html_a2ce69d6a0063b64e46d17291840a583d"><div class="ttname"><a href="_codificador_8h.html#a2ce69d6a0063b64e46d17291840a583d">CompletaByteBitmap</a></div><div class="ttdeci">void CompletaByteBitmap(bitmap *entrada)</div><div class="ttdoc">Funcao que verifica o bitmap e caso o mesmo esteja com o byte final incompleto, completa-o com 0's.</div><div class="ttdef"><b>Definition:</b> <a href="_codificador_8c_source.html#l00100">Codificador.c:100</a></div></div>
+<div class="ttc" id="a_codificador_8h_html_a5b6627a39040b553a21e3c881473cd7d"><div class="ttname"><a href="_codificador_8h.html#a5b6627a39040b553a21e3c881473cd7d">FazArvoreHuffman</a></div><div class="ttdeci">Arv * FazArvoreHuffman(Listagen *listabase)</div><div class="ttdoc">Dada uma lista de arvores, aplica o algoritmo de Huffman e retorna a raiz da arvore resultante.</div><div class="ttdef"><b>Definition:</b> <a href="_codificador_8c_source.html#l00108">Codificador.c:108</a></div></div>
+<div class="ttc" id="a_codificador_8h_html_a8da2d818a6200783b78d7dfb242c7b7d"><div class="ttname"><a href="_codificador_8h.html#a8da2d818a6200783b78d7dfb242c7b7d">CalculaTamTotal</a></div><div class="ttdeci">unsigned long int CalculaTamTotal(VetChar *Vetor, Tabela *tab, int tam)</div><div class="ttdoc">Faz o calculo de quantos bits serao ocupados pelo arquivo a ser codificado dada a tabela de codificac...</div><div class="ttdef"><b>Definition:</b> <a href="_codificador_8c_source.html#l00212">Codificador.c:212</a></div></div>
+<div class="ttc" id="a_codificador_8h_html_ac4ed54b9aa69f1f4ccf47b3d20b39e26"><div class="ttname"><a href="_codificador_8h.html#ac4ed54b9aa69f1f4ccf47b3d20b39e26">CodificaArq</a></div><div class="ttdeci">void CodificaArq(FILE *arq, Arv *Huffman, VetChar *Vetor, FILE *saida)</div><div class="ttdoc">Utilizando da arvore fornecida, codifica o arquivo de entrada senguindo o algotimo de Huffman,...</div><div class="ttdef"><b>Definition:</b> <a href="_codificador_8c_source.html#l00116">Codificador.c:116</a></div></div>
+<div class="ttc" id="a_codificador_8h_html_ae32543537d391c5756cb24ef60e2fdfc"><div class="ttname"><a href="_codificador_8h.html#ae32543537d391c5756cb24ef60e2fdfc">MontandoTabela</a></div><div class="ttdeci">Tabela * MontandoTabela(Arv *Huffman, VetChar *vetor, int tam)</div><div class="ttdoc">Inicia uma tabela de codificacao, a preenchendo com a informacao obtida a partir do vetor de frequenc...</div><div class="ttdef"><b>Definition:</b> <a href="_codificador_8c_source.html#l00175">Codificador.c:175</a></div></div>
+<div class="ttc" id="a_lista_arv_8h_html"><div class="ttname"><a href="_lista_arv_8h.html">ListaArv.h</a></div></div>
+<div class="ttc" id="a_vetchar_8h_html"><div class="ttname"><a href="_vetchar_8h.html">Vetchar.h</a></div></div>
+<div class="ttc" id="astruct_tabela_de_cod_html"><div class="ttname"><a href="struct_tabela_de_cod.html">TabelaDeCod</a></div><div class="ttdoc">Tabela que carrega os caracteres e seus respectivos códigos em bitmap;.</div><div class="ttdef"><b>Definition:</b> <a href="_codificador_8c_source.html#l00011">Codificador.c:12</a></div></div>
+<div class="ttc" id="astructarv_html"><div class="ttname"><a href="structarv.html">arv</a></div><div class="ttdoc">Estrutura da Arvore que carega o peso do caractere e o próprio caractere para implementação do Algori...</div><div class="ttdef"><b>Definition:</b> <a href="_arvore_8c_source.html#l00010">Arvore.c:11</a></div></div>
+<div class="ttc" id="astructlistagen_html"><div class="ttname"><a href="structlistagen.html">listagen</a></div><div class="ttdoc">Sentinela da lista genérica, carrega prim e ult.</div><div class="ttdef"><b>Definition:</b> <a href="_listagen_8c_source.html#l00010">Listagen.c:11</a></div></div>
+<div class="ttc" id="astructmap_html"><div class="ttname"><a href="structmap.html">map</a></div><div class="ttdoc">Estrutura para representar um mapa de bits.</div><div class="ttdef"><b>Definition:</b> <a href="bitmap_8c_source.html#l00016">bitmap.c:17</a></div></div>
+<div class="ttc" id="astructvetchar_html"><div class="ttname"><a href="structvetchar.html">vetchar</a></div><div class="ttdoc">Vetor frequencia, onde eh armazenada a quantidade de aparicoes de cada combinacao de 8 bits.</div><div class="ttdef"><b>Definition:</b> <a href="_vetchar_8c_source.html#l00008">Vetchar.c:9</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5
+</small></address>
+</body>
+</html>
