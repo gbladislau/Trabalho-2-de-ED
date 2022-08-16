@@ -231,7 +231,7 @@ unsigned long int CalculaTamTotal(VetChar *Vetor, Tabela *tab, int tam)
 static FILE *AbreSaida(char path[200])
 {
     char aux2[200];
-    sscanf(path, "./%[^.]", aux2);
+    sscanf(path, "%[^.]", aux2);
 
     char aux3[205];
     sprintf(aux3, "%s.comp", aux2);

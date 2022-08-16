@@ -43,7 +43,7 @@ FILE *CriaSaida(FILE *entrada, const char *path)
     strcpy(aux, path);
     // pegando somente o nome sem a extensao .comp
     char aux2[200];
-    sscanf(path, "./%[^.]", aux2);
+    sscanf(path, "%[^.]", aux2);
 
     // pegando a extensao usada
     int ndebytes = 0;
