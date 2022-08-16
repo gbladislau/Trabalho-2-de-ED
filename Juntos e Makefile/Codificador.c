@@ -59,8 +59,8 @@ int main(int argc, char const *argv[])
         exit(1);
     }
 
-    char path[200];
-    strcpy(path,argv[1]);
+    char path[200] = "./";
+    strcat(path,argv[1]);
 
 
     // Abre arquivo de entrada

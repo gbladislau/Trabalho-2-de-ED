@@ -32,18 +32,18 @@ int main(int argc, char const *argv[])
 
 FILE *AbreEntrada(const char *arg)
 {
-    char aux[200];
-    strcpy(aux, arg);
+    char aux[200] = "./";
+    strcat(aux, arg);
     return fopen(aux, "r");
 }
 
 FILE *CriaSaida(FILE *entrada, const char *path)
 {
-    char aux[200];
-    strcpy(aux, path);
+    char aux[200] = "./";
+    strcat(aux, path);
     // pegando somente o nome sem a extensao .comp
     char aux2[200];
-    sscanf(path, "./%[^.]", aux2);
+    sscanf(aux, "./%[^.]", aux2);
 
     // pegando a extensao usada
     int ndebytes = 0;
