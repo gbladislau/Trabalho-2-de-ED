@@ -1,6 +1,6 @@
 # Trabalho-2-de-ED
 <br />
-Link para a documentação online: https://braga-bilads.github.io/Trabalho-2-de-ED/index.html
+Link para a documentação online: https://gbladislau.github.io/Trabalho-2-de-ED/index.html
 <br />
 Trabalho de Estruturas de Dados - Compactador//Algoritmo de Huffman<br />
 Escrito por Gabriel Braga Ladislau e Rhuan Garcia de Assis Teixeira
